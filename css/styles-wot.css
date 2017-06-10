@@ -7,7 +7,10 @@ body{
     background: url("../imgs/background.jpg") no-repeat fixed;
     margin: auto;
 }
-nav{
+.bg-red{background-color: #9e281e}
+.bg-white{background-color: #ffffff}
+
+nav {
     width: inherit;
     height: 11.5rem;
     color: white;
@@ -25,44 +28,17 @@ nav>a{
     color: white;
     margin-left: 2rem;
 }
-.app-container{
-    width: inherit;
-    height: 50rem;
-}
-.app-menu{
-    width: 1000px;
-    height: 200px;
-    background-color: #950008;
+
+#app-nav{
     position: fixed;
-    bottom: 1.5%;
-    color: white;
+    bottom: 1.6rem;
+    left: 10rem;
+    width: 55rem;
+    height: 10rem;
 }
-.app-menu img{
-    width: 120px;
-    height: 120px;
-    padding-top: 14px;
-    margin-left: 9.5rem;
-    /*margin-right: auto;*/
-}
-.app-stripe{
-    width: 1000px;
-    height: 65px;
-    background-color: white;
-    position: fixed;
-    bottom: 1.5%;
-}
-#sec-webgl{
-    background-color: rgba(121, 225, 255, 0.25);
-}
-#sec-search{
-    background-color: rgba(118, 255, 111, 0.25);
-}
-#sec-info{
-    background-color: rgba(255, 241, 120, 0.25);
-}
-.render-true{
-    display: none;
-}
-.render-false{
-    display: none;
+.win{
+    width: 55rem;
+    height: 35rem;
+    margin: auto;
+    margin-bottom: 15rem;
 }
