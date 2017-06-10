@@ -7,38 +7,57 @@ body{
     background: url("../imgs/background.jpg") no-repeat fixed;
     margin: auto;
 }
-.bg-red{background-color: #9e281e}
+.win{
+    width: inherit;
+    height: 563px;
+    background-color: white;
+    margin-top: 5rem;
+    border-radius: 5px;
+}
+.bg-red{background-color: #830012}
 .bg-white{background-color: #ffffff}
 
-nav {
-    width: inherit;
-    height: 11.5rem;
-    color: white;
-}
-nav>img{
-    padding-top: .5rem;
-    width: 40%;
-    height: 60%;
-}
-nav>a{
-    background-color: #000;
-    border-radius: 5px;
-    font-size: 2.0rem;
-    text-decoration: none;
-    color: white;
-    margin-left: 2rem;
+#webgl{
+    background: url("../imgs/WebGLPlaceholder.jpg")no-repeat center white;
+    background-size: 99%;
 }
 
-#app-nav{
-    position: fixed;
-    bottom: 1.6rem;
-    left: 10rem;
-    width: 55rem;
-    height: 10rem;
+nav{
+    margin-top: 1rem;
 }
-.win{
-    width: 55rem;
-    height: 35rem;
-    margin: auto;
-    margin-bottom: 15rem;
+nav img{
+    width: 35%;
+    height: 35%;
 }
+nav div{
+    display: inline-block;
+    margin-left: 10%;
+
+}
+nav a{
+    width: 2rem;
+    height: 2rem;
+    text-decoration: none;
+    font-size: 2rem;
+    color: white;
+    background-color: black;
+    margin-left: 1rem;
+    border-radius: .15rem;
+}
+
+.info{
+    font-size: 2rem;
+    font-weight: bolder;
+    border-bottom: 3px solid #cdcdcd;
+    margin-top: 0.75rem;
+    padding: 0 1rem 0 1rem;
+}
+.info p{
+    display: inline;
+    font-weight: normal;
+}
+
+@media (max-width: ){} /* Tablet Breakpoint */
+@media (max-width: ){} /* Phone Breakpoint */
+
+.hide{display: none;}
