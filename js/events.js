@@ -1,3 +1,9 @@
+$(document).ready(function(){
+    console.log('Doc Ready');
+    dReset();
+    dWebgl();
+});
+
 $('#js-tour').click(function(){
     dWebgl();
 });

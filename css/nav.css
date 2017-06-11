@@ -7,10 +7,16 @@ nav img{
 }
 nav div{
     text-align: right;
+    width: inherit;
+    height: inherit;
+    background-color: black;
+    border-radius: 3px;
+    padding: 0.3rem 1rem .3rem 1rem;
 }
 nav a{
     text-decoration: none;
-    font-size: 2rem;
+    font-size: 1.35rem;
     color: white;
-    margin-left: 3rem
+    /*margin-left: 3rem*/
+    margin-left: .5rem
 }
