@@ -1,0 +1,16 @@
+nav{
+    margin-top: 1rem;
+}
+nav img{
+    width: 35%;
+    height: 35%;
+}
+nav div{
+    text-align: right;
+}
+nav a{
+    text-decoration: none;
+    font-size: 2rem;
+    color: white;
+    margin-left: 3rem
+}

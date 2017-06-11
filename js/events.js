@@ -1,0 +1,9 @@
+$('#js-tour').click(function(){
+    console.log('Tour');
+});
+$('#js-search').click(function(){
+    console.log('Search');
+});
+$('#js-stories').click(function(){
+    console.log('Stories');
+});

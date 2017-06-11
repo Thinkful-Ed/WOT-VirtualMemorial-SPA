@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>War on Terror Virtual Memorial</title>
     <link rel="stylesheet" href="https://necolas.github.io/normalize.css/7.0.0/normalize.css">
+    <link rel="stylesheet" href="css/nav.css">
     <link rel="stylesheet" href="css/styles-wot.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/threejs/r84/three.min.js"></script>
@@ -13,18 +14,42 @@
 <body>
     <nav>
         <img src="imgs/banner.svg" alt="Foundation Banner">
-        <div>
-            <a href="#"><span>Home</span></a>
-            <a href="#"><span>Memorial</span></a>
-            <a href="#"><span>Virtual Tour</span></a>
-            <a href="#"><span>Media</span></a>
-        </div>
+        <a href="#" class="inline"><div>Home</div></a>
+        <a href="#" class="inline"><div>Memorial</div></a>
+        <a href="#" class="inline"><div>Virtual Tour</div></a>
+        <a href="#" class="inline"><div>Media</div></a>
     </nav>
 
     <main>
-        <section id="menu" class="bg-red"></section>
+        <section id="menu" class="menu-fix">
+            <div class="menu-flex bg-red">
+                <div class="btn-grp">
+                    <div id="js-tour" class="inline"><a href="#webgl"><img src="imgs/ico-tour.svg"><br>Tour</a></div>
+                    <div id="js-search" class="inline"><a href="#search"><img src="imgs/ico-search.svg"><br>Search</a></div>
+                    <div id="js-stories" class="inline"><a href="#story"><img src="imgs/ico-info.svg"><br>Stories</a></div>
+                </div>
+            </div>
+
+        </section>
         <section id="webgl" class="win bg-white"></section>
-        <section id="search" class="win bg-white"></section>
+        <section id="search" class="win bg-white">
+            <div class="bg-red search-box">
+                <input type="text">
+                <button>Search</button>
+            </div>
+            <div>
+                <div class="info">Edmunds John Joseph</div>
+                <div class="info">Stonesifer Kristofor T.</div>
+                <div class="info">Maria Giovanny</div>
+                <div class="info">Prosser Brain C.</div>
+                <div class="info">David Jefferson D.</div>
+                <div class="info">Petithory Danieal H.</div>
+                <div class="info">Chapman Nathan R.</div>
+                <div class="info">Davis Bryan L.</div>
+                <div class="info">Johnson Benjamin</div>
+                <div class="info">Jakes Jr. Michael J.</div>
+            </div>
+        </section>
         <section id="story" class="win bg-white">
             <div class="info">Name: <p id="name">Marshall John Winston</p></div>
             <div class="info">Age: <p id="age">50</p></div>
@@ -37,5 +62,7 @@
             <div class="info">Date of Death: <p id="dod">2003-04-08</p></div>
         </section>
     </main>
+
+    <script type="text/javascript" src="js/events.js"></script>
 </body>
 </html>

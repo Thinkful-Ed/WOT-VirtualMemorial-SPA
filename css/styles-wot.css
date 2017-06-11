@@ -15,49 +15,77 @@ body{
     border-radius: 5px;
 }
 .bg-red{background-color: #830012}
+.bg-gray{background-color: #cdcdcd}
 .bg-white{background-color: #ffffff}
+.inline{
+    display: inline-block;
+}
+
+#menu{
+    position: fixed;
+    width: 100%;
+    left: 0;
+    bottom: 1.9rem;
+}
+.menu-flex{
+    margin: auto;
+    width: 1000px;
+    height: 10rem;
+    text-align: center;
+}
+.btn-grp{
+    margin: auto;
+    margin-top: 0.5rem;
+    font-size: 1.5rem;
+    text-decoration: none;
+    color: white;
+}
+.btn-grp img{
+    width: 65%;
+    height: 65%;
+}
 
 #webgl{
     background: url("../imgs/WebGLPlaceholder.jpg")no-repeat center white;
     background-size: 99%;
 }
 
-nav{
-    margin-top: 1rem;
+.search-box{
+    height: 3rem;
+    text-align: center;
+    padding-top: 0.55rem;
+    font-size: 1.5rem;
 }
-nav img{
-    width: 35%;
-    height: 35%;
+.search-box input{
+    width: 45rem;
+    height: 1.85rem;
+    border-radius: 2px;
+    border: none;
 }
-nav div{
-    display: inline-block;
-    margin-left: 10%;
-
-}
-nav a{
-    width: 2rem;
-    height: 2rem;
-    text-decoration: none;
-    font-size: 2rem;
-    color: white;
-    background-color: black;
+.search-box button{
+    width: 15rem;
+    height: 1.85rem;
     margin-left: 1rem;
-    border-radius: .15rem;
+    border-radius: 2px;
+    border: none;
+}
+.search-box button:hover{background-color: #aaaaaa
+}
+.search-box button:active{background-color: #834840
 }
 
-.info{
+#search .info,#story .info{
     font-size: 2rem;
     font-weight: bolder;
     border-bottom: 3px solid #cdcdcd;
     margin-top: 0.75rem;
     padding: 0 1rem 0 1rem;
 }
-.info p{
+#story .info p{
     display: inline;
     font-weight: normal;
 }
 
-@media (max-width: ){} /* Tablet Breakpoint */
-@media (max-width: ){} /* Phone Breakpoint */
-
+@media (max-width: 768px){} /* Tablet Breakpoint */
+@media (max-width: 425px){} /* Phone Breakpoint */
 .hide{display: none;}
