@@ -3,7 +3,6 @@ $(document).ready(function(){
     dReset();
     dWebgl();
 });
-
 $('#js-tour').click(function(){
     dWebgl();
 });

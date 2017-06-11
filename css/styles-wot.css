@@ -90,7 +90,35 @@ a{
 }
 
 @media (max-width: 768px){
-
-} /* Tablet Breakpoint */
-@media (max-width: 425px){} /* Phone Breakpoint */
-.hide{display: none;}
+    nav{
+        text-align: center;
+    }
+    nav img{
+        display: block;
+        width: 50%;
+        height: 50%;
+        margin: auto;
+    }
+    nav a{
+        margin-top: 1.5rem;
+        font-size: 2.5rem;
+    }
+    .win{
+        margin-top: 1rem;
+    }
+}
+@media (max-width: 425px){
+    nav img{
+        display: block;
+        width: 75%;
+        height: 75%;
+        margin: auto;
+    }
+    nav a{
+        margin-top: 1.5rem;
+        font-size: 3.5rem;
+    }
+    #menu img{
+        width: 95%;
+    }
+}
