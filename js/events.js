@@ -1,9 +1,9 @@
 $('#js-tour').click(function(){
-    console.log('Tour');
+    dWebgl();
 });
 $('#js-search').click(function(){
-    console.log('Search');
+    dSearch();
 });
 $('#js-stories').click(function(){
-    console.log('Stories');
+    dInfo();
 });
