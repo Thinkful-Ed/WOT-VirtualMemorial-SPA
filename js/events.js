@@ -3,6 +3,7 @@ $(document).ready(function(){
     dReset();
     dWebgl();
 });
+    console.log('Document Ready | Events Added');
     $('#js-tour').click(function(){
         event.preventDefault();
         $('html, body').animate({
