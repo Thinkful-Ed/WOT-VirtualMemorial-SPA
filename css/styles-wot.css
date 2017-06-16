@@ -1,5 +1,6 @@
 *{
     box-sizing: border-box;
+    transition: all 1s;
 }
 body{
     width: 1000px;
