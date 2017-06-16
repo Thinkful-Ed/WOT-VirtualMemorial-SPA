@@ -20,3 +20,11 @@ nav a{
     /*margin-left: 3rem*/
     margin-left: .5rem
 }
+
+#tmp-webgl{
+    background: url("../imgs/WebGLPlaceholder.jpg")no-repeat center white;
+    height: inherit;
+    background-size: 99%;
+}
+
+#footer-brute{margin: 0 0 100px 0}

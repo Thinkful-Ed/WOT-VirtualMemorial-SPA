@@ -1,0 +1,148 @@
+*{
+    box-sizing: border-box;
+    /*transition: all 1s;*/
+}
+body{
+    width: 1000px;
+    font-size: 10px;
+    background: url("../imgs/background.jpg") no-repeat fixed;
+    margin: auto;
+}
+a{
+    text-decoration: none;
+    color: white;
+}
+section{
+    width: inherit;
+    height: 715px;
+    margin: 3.5rem 0 0 0;
+}
+section .content{
+    height: 565px;
+    overflow: hidden;
+}
+.menu{
+    z-index: 5;
+    height: 150px;
+    font-size: 1.5rem;
+    text-decoration: none;
+    text-align: center;
+    color: white;
+    margin: auto;
+    padding-top: 0.5rem;
+}
+.menu img{
+    width: 65%;
+    height: 65%;
+}
+.btn-scale{
+    transition: transform ease-in-out .25s;
+    transform: scale(1);
+}
+.btn-scale:hover{
+    transform: scale(1.1);
+}
+
+/* Search Box Styling */
+.search-box{
+    height: 4rem;
+    text-align: center;
+    padding-top: 0.55rem;
+    font-size: 1.8rem;
+}
+.search-box input{
+    width: 45rem;
+    height: 2.8rem;
+    border-radius: 2px;
+    border: none;
+}
+.search-box button{
+    width: 15rem;
+    height: 2.8rem;
+    margin-left: 1rem;
+    border-radius: 2px;
+    border: none;
+    transition: background-color ease-in-out .15s;
+}
+.search-box button:hover{background-color: #cdaca6}
+.search-box button:active{background-color: #b75246}
+
+/* Search View Buttons */
+.result-text div{
+    /*float: right;*/
+    position: relative;
+    right: 5px;
+    bottom: 5px;
+}
+.result-text button{
+    transition: opacity ease-in-out .25s;
+    opacity: .25;
+}
+.result-text button:hover{opacity: 1;}
+
+/* Search & Results Text */
+#search .result-text, #info .result-text{
+    font-size: 2rem;
+    font-weight: bolder;
+    border-bottom: 3px solid #cdcdcd;
+    padding: .75rem 1rem 0 1rem;
+    transition: background-color ease-in-out .15s;
+}
+#search .result-text:hover, #info .result-text:hover{
+    background-color: #cdaca6
+}
+#info p{
+    display: inline;
+    font-weight: normal;
+}
+
+/* Focused Styling */
+.bg-red{background-color: #830012}
+.bg-gray{background-color: #cdcdcd}
+.bg-white{background-color: #ffffff}
+.show{visibility: visible}
+.hide{visibility: hidden}
+.inline{display: inline-block}
+.target{
+    visibility: hidden;
+    width: 0;
+    height: 0;
+    position: relative;
+    top: -20%;
+    left: 50%;
+}
+
+/* Media Queries */
+@media (max-width: 768px){
+    nav{
+        text-align: center;
+    }
+    nav img{
+        display: block;
+        width: 50%;
+        height: 50%;
+        margin: auto;
+    }
+    nav a{
+        margin-top: 1.5rem;
+        font-size: 2.5rem;
+    }
+    .win{
+        margin-top: 1rem;
+    }
+}
+@media (max-width: 425px){
+    nav img{
+        display: block;
+        width: 75%;
+        height: 75%;
+        margin: auto;
+    }
+    nav a{
+        margin-top: 1.5rem;
+        font-size: 3.5rem;
+    }
+    #menu img{
+        width: 95%;
+    }
+}
