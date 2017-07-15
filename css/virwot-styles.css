@@ -43,6 +43,15 @@ section .content{
     transform: scale(1.1);
 }
 
+#wot-webgl{
+    position: relative;
+    right: 50%;
+    left: 50%;
+    transform: translate(-50%,0.50%);
+    height: 99%;
+    width: 99%;
+}
+
 /* Search Box Styling */
 .search-box{
     height: 4rem;
