@@ -2,7 +2,7 @@
   "name": "war-on-terror-memorial-virtual-tour",
   "version": "0.0.2",
   "description": "War on Terror Memorial virtual tour and servicemember database.",
-  "main": "server.js",
+  "main": "index.js",
   "directories": {
     "doc": "docs"
   },
