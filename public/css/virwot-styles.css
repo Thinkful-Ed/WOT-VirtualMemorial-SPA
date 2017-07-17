@@ -1,16 +1,12 @@
 *{
     box-sizing: border-box;
-    /*transition: all 1s;*/
 }
+/* Broad Effects */
 body{
     width: 1000px;
     font-size: 10px;
     background: url("../imgs/background.jpg") no-repeat fixed;
     margin: auto;
-}
-a{
-    text-decoration: none;
-    color: white;
 }
 section{
     width: inherit;
@@ -21,6 +17,18 @@ section .content{
     height: 565px;
     overflow: hidden;
 }
+
+/* WebGL Window - STABLE */
+#wot-webgl{
+    position: relative;
+    right: 50%;
+    left: 50%;
+    transform: translate(-50%,0.50%);
+    height: 99%;
+    width: 99%;
+}
+
+/* Application Menu - STABLE */
 .menu{
     z-index: 5;
     height: 150px;
@@ -35,24 +43,18 @@ section .content{
     width: 65%;
     height: 65%;
 }
-.btn-scale{
+.menu a{
+    text-decoration: none;
+    color: white;
+}
+.menu .btn-scale{
     transition: transform ease-in-out .25s;
     transform: scale(1);
 }
-.btn-scale:hover{
+.menu .btn-scale:hover{
     transform: scale(1.1);
 }
-
-#wot-webgl{
-    position: relative;
-    right: 50%;
-    left: 50%;
-    transform: translate(-50%,0.50%);
-    height: 99%;
-    width: 99%;
-}
-
-/* Search Box Styling */
+/* Search Box - STABLE */
 .search-box{
     height: 4rem;
     text-align: center;
@@ -73,43 +75,38 @@ section .content{
     border: none;
     transition: background-color ease-in-out .15s;
 }
-.search-box button:hover{background-color: #cdaca6}
-.search-box button:active{background-color: #b75246}
-
-/* Search View Buttons */
-.result-text div{
-    /*float: right;*/
-    position: relative;
-    right: 5px;
-    bottom: 5px;
-}
-.result-text button{
-    transition: opacity ease-in-out .25s;
-    opacity: .25;
-}
-.result-text button:hover{opacity: 1;}
-
-/* Search & Results Text */
-#search .result-text, #info .result-text{
-    font-size: 2rem;
-    font-weight: bolder;
-    border-bottom: 3px solid #cdcdcd;
-    padding: .75rem 1rem 0 1rem;
-    transition: background-color ease-in-out .15s;
-}
-#search .result-text:hover, #info .result-text:hover{
-    background-color: #cdaca6
-}
+/* Search Result - STABLE */
 #js-searchResults{
     height: 31.5rem;
+    text-align: right;
 }
-.scroll-y{
-    overflow-y: scroll;
+#js-searchResults li{}
+#js-searchResults span{
+    font-size: 2rem;
+    font-weight: bold;
 }
-#info p{
-    display: inline;
-    font-weight: normal;
+#js-searchResults button{
+    width: 15rem;
+    height: 2.5rem;
+    font-size: 1.5rem;
+    margin: 0 2rem 0 2rem;
+    border-radius: .2rem;
+    border-style: none;
+    transition: background-color ease-in-out .25s;
 }
+#js-searchResults button:hover, .search-box button:hover{
+    background-color: #c06a71;
+}
+#js-searchResults button:active, .search-box button:active{
+    background-color: #b75246
+}
+/* Null */
+#info-results{
+    height: 31.5rem;
+    font-size: 2rem;
+}
+
+/*=======================================================*/
 
 /* Focused Styling */
 .bg-red{background-color: #830012}
@@ -118,6 +115,9 @@ section .content{
 .show{visibility: visible}
 .hide{visibility: hidden}
 .inline{display: inline-block}
+.scroll-y{
+    overflow-y: scroll;
+}
 .target{
     visibility: hidden;
     width: 0;
