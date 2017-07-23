@@ -6,12 +6,17 @@ var state = (function(){
 
         var searchStr = $('#js-searchStr').val();
 
-        $.ajax({type:'post', url: endpoints.search, data:{target: $('#js-searchStr').val()}})
-        .then(function(result) {
-            $('#js-searchResults').html(result);
-        });
-    };
+        try{
+            $.ajax({type:'post', url: endpoints.search, data:{target: $('#js-searchStr').val()}})
+                .then(function(result) {
+                    $('#js-searchResults').html(result);
+                });
+        }
+        catch (err){
+            console.log(err);
+        }
 
+    };
     var viewInfo = function(){};
 
     return{
