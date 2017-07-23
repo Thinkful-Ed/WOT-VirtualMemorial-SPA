@@ -1,4 +1,5 @@
 <?php
+header("Access-Control-Allow-Origin: *");
 echo '<meta http-equiv="Content-Type" content="text/html; charset=utf8_unicode_ci">';
     $username = "waronter_jpw";
     $password = "@1094jord";
