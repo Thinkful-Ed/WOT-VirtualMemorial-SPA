@@ -17,10 +17,14 @@ var state = (function(){
         }
 
     };
-    var viewInfo = function(){};
+    //Currently using internal script.
+    var loadVetInfo  = function(){
+        console.log('In "loadVetInfo"');
+    };
 
     return{
         submitSearch: submitSearch,
-        viewInfo: viewInfo
+        loadVetInfo: loadVetInfo,
+        endpoints: endpoints
     }
 }());

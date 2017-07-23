@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5aea215d-50ac-4837-9e1a-95864aa5b5ff" name="Default" comment="">
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/state.js" afterPath="$PROJECT_DIR$/js/state.js" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
@@ -16,105 +17,121 @@
   </component>
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="index.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/index.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="770">
-              <caret line="223" column="7" lean-forward="true" selection-start-line="223" selection-start-column="7" selection-end-line="223" selection-end-column="7" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="virwot-styles.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/css/virwot-styles.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="396">
-              <caret line="103" column="10" lean-forward="true" selection-start-line="103" selection-start-column="10" selection-end-line="103" selection-end-column="10" />
-              <folding>
-                <element signature="e#1#32#0" expanded="false" />
-                <element signature="e#217#285#0" expanded="false" />
-                <element signature="e#302#346#0" expanded="false" />
-                <element signature="e#386#515#0" expanded="false" />
-                <element signature="e#554#727#0" expanded="false" />
-                <element signature="e#737#773#0" expanded="false" />
-                <element signature="e#781#829#0" expanded="false" />
-                <element signature="e#846#918#0" expanded="false" />
-                <element signature="e#941#971#0" expanded="false" />
-                <element signature="e#1009#1103#0" expanded="false" />
-                <element signature="e#1121#1204#0" expanded="false" />
-                <element signature="e#1223#1380#0" expanded="false" />
-                <element signature="e#1427#1474#0" expanded="false" />
-                <element signature="e#1520#1567#0" expanded="false" />
-                <element signature="e#1592#1784#0" expanded="false" />
-                <element signature="e#1841#1875#0" expanded="false" />
-                <element signature="e#1934#1967#0" expanded="false" />
-                <element signature="e#2358#2468#0" expanded="false" />
-                <element signature="e#2490#2781#0" expanded="false" />
-                <element signature="e#2524#2559#0" expanded="false" />
-                <element signature="e#2571#2665#0" expanded="false" />
-                <element signature="e#2675#2737#0" expanded="false" />
-                <element signature="e#2746#2779#0" expanded="false" />
-                <element signature="e#2782#3029#0" expanded="false" />
-                <element signature="e#2820#2914#0" expanded="false" />
-                <element signature="e#2924#2986#0" expanded="false" />
-                <element signature="e#3000#3027#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="temp.css" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/css/temp.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="events.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/events.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="68">
-              <caret line="4" column="3" lean-forward="false" selection-start-line="4" selection-start-column="3" selection-end-line="4" selection-end-column="3" />
-              <folding>
-                <element signature="e#289#421#0" expanded="false" />
-                <element signature="e#347#412#0" expanded="false" />
-                <element signature="e#456#588#0" expanded="false" />
-                <element signature="e#514#579#0" expanded="false" />
-                <element signature="e#624#754#0" expanded="false" />
-                <element signature="e#682#747#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="state.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/js/state.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="408">
-              <caret line="25" column="5" lean-forward="true" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
-              <folding>
-                <element signature="e#45#200#0" expanded="false" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="scene.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/js/wot-scene/scene.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
+    <splitter split-orientation="horizontal" split-proportion="0.5">
+      <split-first>
+        <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+          <file leaf-file-name="index.html" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/index.html">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="549">
+                  <caret line="239" column="0" lean-forward="true" selection-start-line="239" selection-start-column="0" selection-end-line="239" selection-end-column="0" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="virwot-styles.css" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/css/virwot-styles.css">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="396">
+                  <caret line="103" column="10" lean-forward="true" selection-start-line="103" selection-start-column="10" selection-end-line="103" selection-end-column="10" />
+                  <folding>
+                    <element signature="e#1#32#0" expanded="false" />
+                    <element signature="e#217#285#0" expanded="false" />
+                    <element signature="e#302#346#0" expanded="false" />
+                    <element signature="e#386#515#0" expanded="false" />
+                    <element signature="e#554#727#0" expanded="false" />
+                    <element signature="e#737#773#0" expanded="false" />
+                    <element signature="e#781#829#0" expanded="false" />
+                    <element signature="e#846#918#0" expanded="false" />
+                    <element signature="e#941#971#0" expanded="false" />
+                    <element signature="e#1009#1103#0" expanded="false" />
+                    <element signature="e#1121#1204#0" expanded="false" />
+                    <element signature="e#1223#1380#0" expanded="false" />
+                    <element signature="e#1427#1474#0" expanded="false" />
+                    <element signature="e#1520#1567#0" expanded="false" />
+                    <element signature="e#1592#1784#0" expanded="false" />
+                    <element signature="e#1841#1875#0" expanded="false" />
+                    <element signature="e#1934#1967#0" expanded="false" />
+                    <element signature="e#2358#2468#0" expanded="false" />
+                    <element signature="e#2490#2781#0" expanded="false" />
+                    <element signature="e#2524#2559#0" expanded="false" />
+                    <element signature="e#2571#2665#0" expanded="false" />
+                    <element signature="e#2675#2737#0" expanded="false" />
+                    <element signature="e#2746#2779#0" expanded="false" />
+                    <element signature="e#2782#3029#0" expanded="false" />
+                    <element signature="e#2820#2914#0" expanded="false" />
+                    <element signature="e#2924#2986#0" expanded="false" />
+                    <element signature="e#3000#3027#0" expanded="false" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="temp.css" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/css/temp.css">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="0">
+                  <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="events.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/js/events.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="68">
+                  <caret line="4" column="3" lean-forward="false" selection-start-line="4" selection-start-column="3" selection-end-line="4" selection-end-column="3" />
+                  <folding>
+                    <element signature="e#289#421#0" expanded="false" />
+                    <element signature="e#347#412#0" expanded="false" />
+                    <element signature="e#456#588#0" expanded="false" />
+                    <element signature="e#514#579#0" expanded="false" />
+                    <element signature="e#624#754#0" expanded="false" />
+                    <element signature="e#682#747#0" expanded="false" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="state.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/js/state.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="493">
+                  <caret line="29" column="5" lean-forward="true" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file leaf-file-name="scene.js" pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/js/wot-scene/scene.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="-122">
+                  <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-first>
+      <split-second>
+        <leaf>
+          <file leaf-file-name="InternalJS.js" pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/_Dep Assets_/InternalJS.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="561">
+                  <caret line="33" column="36" lean-forward="true" selection-start-line="33" selection-start-column="36" selection-end-line="33" selection-end-column="36" />
+                  <folding />
+                </state>
+              </provider>
+            </entry>
+          </file>
+        </leaf>
+      </split-second>
+    </splitter>
   </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
@@ -154,9 +171,9 @@
         <option value="$PROJECT_DIR$/index.js" />
         <option value="$PROJECT_DIR$/public/css/virwot-styles.css" />
         <option value="$PROJECT_DIR$/public/index.html" />
-        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/css/virwot-styles.css" />
         <option value="$PROJECT_DIR$/js/state.js" />
+        <option value="$PROJECT_DIR$/index.html" />
       </list>
     </option>
   </component>
@@ -199,6 +216,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="WOT-VirtualMemorial-SPA" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WOT-VirtualMemorial-SPA" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="WOT-VirtualMemorial-SPA" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="_Dep Assets_" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -341,7 +372,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="104436000" />
+    <option name="totallyTimeSpent" value="105415000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
@@ -444,13 +475,6 @@
     <entry file="file://$PROJECT_DIR$/server.js" />
     <entry file="file://$PROJECT_DIR$/package.json" />
     <entry file="file://$PROJECT_DIR$/server.js" />
-    <entry file="file://$PROJECT_DIR$/_Dep Assets_/InternalJS.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="21" column="66" lean-forward="false" selection-start-line="21" selection-start-column="66" selection-end-line="21" selection-end-column="66" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/css/temp.css">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -471,32 +495,6 @@
             <element signature="e#624#754#0" expanded="false" />
             <element signature="e#682#747#0" expanded="false" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/state.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="408">
-          <caret line="25" column="5" lean-forward="true" selection-start-line="25" selection-start-column="5" selection-end-line="25" selection-end-column="5" />
-          <folding>
-            <element signature="e#45#200#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/wot-scene/scene.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="770">
-          <caret line="223" column="7" lean-forward="true" selection-start-line="223" selection-start-column="7" selection-end-line="223" selection-end-column="7" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -533,6 +531,38 @@
             <element signature="e#2924#2986#0" expanded="false" />
             <element signature="e#3000#3027#0" expanded="false" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/wot-scene/scene.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-122">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/_Dep Assets_/InternalJS.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="561">
+          <caret line="33" column="36" lean-forward="true" selection-start-line="33" selection-start-column="36" selection-end-line="33" selection-end-column="36" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/state.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="493">
+          <caret line="29" column="5" lean-forward="true" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="549">
+          <caret line="239" column="0" lean-forward="true" selection-start-line="239" selection-start-column="0" selection-end-line="239" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>
