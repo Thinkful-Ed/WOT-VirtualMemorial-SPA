@@ -4,11 +4,10 @@ var state = (function(){
 
     var submitSearch = function(){
 
-        console.log($('#js-searchStr').val());
+        var searchStr = $('#js-searchStr').val();
 
-        $.ajax({type:'post',
-        url: endpoints.search,
-        data:{target: $('#js-searchStr').val()}}).then(function(result) {
+        $.ajax({type:'post', url: endpoints.search, data:{target: $('#js-searchStr').val()}})
+        .then(function(result) {
             $('#js-searchResults').html(result);
         });
     };
