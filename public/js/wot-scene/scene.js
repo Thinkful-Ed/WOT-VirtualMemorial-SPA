@@ -1,55 +1,58 @@
-// Core Assets
-var sceneWebgl = new THREE.Scene();
-var cameraWip = new THREE.PerspectiveCamera(90 ,window.innerWidth / window.innerHeight, 0.1, 1000);
-var cameraTour = new THREE.PerspectiveCamera(55 ,window.innerWidth / window.innerHeight, 0.1, 1000);
-var cameraMemorial = new THREE.PerspectiveCamera(90 ,window.innerWidth / window.innerHeight, 0.1, 1000);
-var renderer = new THREE.WebGLRenderer();
+var wotScene = (function(){
+    'use strict';
 
-function initWotScene(){
-    // Init Render Setup & Helper Axis
-    var wotAxis = new THREE.AxisHelper(50);
-    sceneWebgl.add(wotAxis);
+    // Scene Boiler
+    var scene = new THREE.Scene();
+    // Checks for WebGL Content. If not there fallback to canvas render for older browsers.
+    var camera = new THREE.PerspectiveCamera(35, window.innerWidth/window.innerHeight, 0.01, 1000);
+    var renderer = new THREE.WebGLRenderer();
 
-    var containerWidth = document.getElementById('wot-webgl').offsetWidth;
-    var containerHeight = document.getElementById('wot-webgl').offsetHeight;
-    renderer.setClearColor(0xc6f0ff);
-    // renderer.setSize(window.innerWidth, window.innerHeight);
-    renderer.setSize(containerWidth, containerHeight);
-    renderer.shadowMap = true;
-
-    // Scene Object Setup
-    var geoGround = new THREE.PlaneGeometry(60,30,1,1);
-    var matGround = new THREE.MeshLambertMaterial(255, 0,0);
-    var trsGround = new THREE.Mesh(geoGround, matGround);
-    trsGround.name = 'trsGround';
-    trsGround.receiveShadow = true;
-    sceneWebgl.add(trsGround);
+    // Setup scene render
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    document.getElementById('webgl-container').appendChild(renderer.domElement);
 
     // Lighting
-    var lgtSun = new THREE.PointLight(0xffffff);
-    lgtSun.position.set(0,10,0);
-    lgtSun.castShadow = true;
-    lgtSun.name='lgtSun';
-    sceneWebgl.add(lgtSun);
+    var light = new THREE.DirectionalLight(0xffffff, 3.5);
+    scene.add(light);
 
     // Camera
-    currentCamera = cameraWip;
-    // currentCamera.position.set(0,5,7);
-    currentCamera.position.x = -15;
-    currentCamera.position.y = 10;
-    currentCamera.position.z = 10;
-    currentCamera.lookAt(sceneWebgl.position);
-    sceneWebgl.add(currentCamera);
+    camera.position.set(10, 1, 35);
+    scene.add(camera);
 
-    function renderNextFrame(){
-        requestAnimationFrame(renderNextFrame); // Call this recursively to keep drawing new frames.
-        renderer.render(sceneWebgl, cameraWip);
+    // Cube Setup
+    var box = new THREE.Mesh(
+        new THREE.BoxGeometry(1,1,1),
+        new THREE.MeshLambertMaterial({color: 0xFF0000}
+        ));
+    box.name = "box";
+    scene.add(box);
+
+    var loader = new THREE.JSONLoader();
+    var wotMat = new THREE.MeshLambertMaterial({color: 0xd3d3d3});
+    loader.load('./json/wot-geometry-faceMaterialOn.json', function(geometry){
+        var wotMesh  = new THREE.Mesh(geometry, wotMat);
+        wotMesh.name = "wotMesh";
+        scene.add(wotMesh);
+    });
+
+    render();
+
+    function render(){
+        try{
+            var animMesh = wotScene.scene.getObjectByName("wotMesh");
+            animMesh.rotation.y += 0.001;
+        }
+        catch (err){
+            console.log(err);
+        }
+        finally {
+            renderer.render(scene, camera);
+            requestAnimationFrame(render);
+        }
     }
 
-    // Render to DOM.
-    document.getElementById('wot-webgl').appendChild(renderer.domElement);
-    renderNextFrame();
-
-}
-
-window.onload = initWotScene();
+    // Expose scene obj for debugging purposes.
+    return{
+        scene: scene
+    }
+}());
