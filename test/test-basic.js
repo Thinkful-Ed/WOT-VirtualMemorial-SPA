@@ -4,7 +4,7 @@ const chaiHttp = require('chai-http');
 const {app, runServer, closeServer} = require('../server');
 
 // Reference Linking
-const should = chai.should(); // Lets us use should syntax in our test.
+const should = chai.should; // Lets us use should syntax in our test.
 
 // Middleware
 chai.use(chaiHttp);
