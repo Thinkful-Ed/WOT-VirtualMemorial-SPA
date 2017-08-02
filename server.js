@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 const morgan = require('morgan');
 const{DATABASE_URL, PORT} = require('./config');
+const router = require('./public/js/router');
 
 // Static File Serving
 app.use(express.static(__dirname+'/public'));
@@ -12,11 +13,39 @@ app.use(express.static(__dirname+'/public'));
 // Middleware
 app.use(morgan('common'));
 
-// Endpoints
-app.get('/', (req, res)=>{
-    console.log('Enter "GET" endpoint...');
-    res.sendFile(__dirname+'/index.html')
+// Endpoints or Routing
+app.use('/veterans', router);
+app.use('/veterans/:search', router);
+app.use('/veterans/:id', router);
+app.use('/veterans/:id/:storyID', router);
+/*app.get('/veterans', (req, res)=>{
+    console.log('\nRequest at "GET: /veterans" endpoint.');
+    res.status(200).end();
+    // res.sendFile(__dirname+'/index.html')
 });
+app.get('/veterans/:name', (req, res)=>{
+    console.log('\nRequest at "GET: /veterans/:name" endpoint.');
+    console.log(req.params.name);
+    res.status(200).end();
+});
+app.post('/veterans/:id', (req, res)=>{
+    console.log('\nRequest at "POST: /veterans/:id" endpoint.');
+    console.log(req.params.id);
+    res.status(200).end();
+});
+app.put('/veterans/:id/:storyID', (req, res)=>{
+    console.log('\nRequest at "PUT: /veterans/:id/:content" endpoint.');
+    console.log(req.params.id);
+    console.log(req.params.storyID);
+    res.status(200).end();
+});
+app.delete('/veterans/:id/:storyID', (req, res)=>{
+    console.log('\nRequest at "DEL: /veterans/:id/:content" endpoint.');
+    console.log(req.params.id);
+    console.log(req.params.storyID);
+    res.status(200).end();
+});*/
+
 
 // Create server setup
 let server;
