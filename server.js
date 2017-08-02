@@ -32,7 +32,7 @@ function runServer(){
         });
         // Start express app listening a port, log it, and resolve promise
         server = app.listen(PORT, ()=>{
-            console.log(`Listening on port: ${PORT}`);
+            console.log(`Listening on port: ${PORT} at URL ${DATABASE_URL}`);
             resolve();
         })
         // If there is an error disconnect from DB and log fail.
