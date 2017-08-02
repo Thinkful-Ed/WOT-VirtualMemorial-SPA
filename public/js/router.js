@@ -3,6 +3,8 @@ const express = require('express');
 const router = express.Router();
 const bodyParser = require('body-parser');
 const jsonParser = bodyParser.json();
+const mongoose = require('mongoose');
+mongoose.Promise = global.Promise;
 
 // Endpoints
 router.get('/', (req, res)=>{
