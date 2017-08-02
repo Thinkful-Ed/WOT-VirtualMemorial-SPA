@@ -22,21 +22,31 @@ describe('Memorial Testing', ()=>{
         return closeServer()
     });
 
-    // describe('Endpoint Request Test', ()=>{
-    //     return chai.request(app)
-    //         .get('/')
-    //         .then((res)=>{
-    //             console.log(res);
-    //             res.should.have.status(200);
-    //             res.body.should.have.html('<!DOCTYPE html>');
-    //         })
-    // });
-    // describe('Database Query Test', ()=>{
-    //
-    // });
-    // describe('CRUD User Story Test', ()=>{
-    //
-    // });
+    describe('Endpoint Request Verification Test', ()=>{
+        it('should verify the "/" - "GET" endpoint responds', ()=>{
+            return chai.request(app)
+                .get('/')
+                .then((res)=>{
+                    res.should.have.status(200);
+                })
+        });
+        /*it('should verify the "/:search" - "GET" endpoint responds', ()=>{
+            // Testing
+        });*/
+       /* it('should verify the "/vetID-123456789" - "POST" endpoint responds', ()=>{
+            // Testing
+        });*/
+       /* it('should verify the "/:id/:storyID" - "PUT" endpoint responds', ()=>{
+            // Testing
+        });*/
+       /* it('should verify the "/:id/:storyID" - "DEL" endpoint responds', ()=>{
+            // Testing
+        });*/
+    });
+    /*describe('Database Query Test', ()=>{
 
+    });*/
+    /*describe('CRUD User Story Test', ()=>{
 
+    });*/
 });
