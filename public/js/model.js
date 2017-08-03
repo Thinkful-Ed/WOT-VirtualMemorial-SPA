@@ -22,5 +22,5 @@ const vetScheme = mongoose.Schema({
 // Methods
 
 // Associate & Export
-const vetDoc = mongoose.model('veterans', vetScheme);
-module.exports = {vetDoc};
+const VetDoc = mongoose.model('veterans', vetScheme);
+module.exports = {VetDoc};

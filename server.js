@@ -6,12 +6,14 @@ mongoose.Promise = global.Promise;
 const morgan = require('morgan');
 const{DATABASE_URL, PORT} = require('./config');
 const router = require('./public/js/router');
+const bodyParser = require('body-parser');
 
 // Static File Serving
 app.use(express.static(__dirname+'/public'));
 
 // Middleware
 app.use(morgan('common'));
+app.use(bodyParser.json());
 
 // Endpoints or Routing
 app.use('/veterans', router);
@@ -44,7 +46,7 @@ function runServer(){
 }
 function closeServer(){
     /*A promise that disconnects the database then shuts down the server.
-    * Stopping the express app from listeing on the config port. Also handles
+    * Stopping the express app from listening on the config port. Also handles
     * any failures*/
     return new Promise((resolve, reject)=>{
         mongoose.disconnect()

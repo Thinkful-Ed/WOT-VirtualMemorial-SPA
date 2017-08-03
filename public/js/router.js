@@ -1,14 +1,7 @@
 // Imports & Init
 const express = require('express');
-const app = express();
 const router = express.Router();
-const bodyParser = require('body-parser');
-const mongoose = require('mongoose');
-mongoose.Promise = global.Promise;
-const {vetDoc} = require('./model');
-
-// Middleware
-app.use(bodyParser.json());
+const {VetDoc} = require('./model');
 
 // Endpoints
 /*Endpoint past are just the absolute required string and
@@ -16,10 +9,9 @@ app.use(bodyParser.json());
 * Only the must HAVE portions for it to work.*/
 router.get('/', (req, res)=>{
     console.log('\nRequest at "GET: /veterans" endpoint.');
-    vetDoc.find({})
-        .exec()
+    VetDoc.find()
         .then((docs)=>{
-            res.json(docs);
+            res.send(docs);
             res.status(200).end();
         })
         .catch((err)=>{
