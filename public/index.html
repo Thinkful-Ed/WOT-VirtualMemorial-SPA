@@ -216,27 +216,7 @@
 
     <script type="text/javascript" src="libs/jquery.js"></script>
     <script type="text/javascript" src="libs/three.js"></script>
-    <script type="text/javascript" src="js/state.js"></script>
     <script type="text/javascript" src="js/wot-scene/scene.js"></script>
-    <script>
-        function loadVetInfo(number){
-            var vetTarget = $('#vet-name' + number).text();
-
-            $.ajax({
-                type: 'post',
-                url: state.endpoints.info,
-                data:{
-                    target: vetTarget,
-                },
-                success: function(response){
-                    $('#search-results').html(response);
-                }
-            })
-            .then(function(results){
-                $('#info-results').html(results);
-            });
-        }
-    </script>
     <script type="text/javascript" src="js/events.js"></script>
 </body>
 </html>

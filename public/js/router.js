@@ -16,8 +16,6 @@ app.use(bodyParser.json());
 * Only the must HAVE portions for it to work.*/
 router.get('/', (req, res)=>{
     console.log('\nRequest at "GET: /veterans" endpoint.');
-    // res.status(200).end();
-
     vetDoc.find({})
         .exec()
         .then((docs)=>{

@@ -1,13 +1,8 @@
-$(document).ready(function(){
-    console.log('Doc Ready');
-    // dReset();
-    // dWebgl();
-});
 console.log('Document Ready | Events Added');
 // Core
 $('#js-submitSearch').click(function(ev){
     ev.preventDefault();
-    state.submitSearch();
+    console.log('Search Query Goes Here');
 });
 
 
