@@ -1,36 +1,22 @@
 *{
     box-sizing: border-box;
+    font-size: 10px;
 }
-/* Broad Effects */
 body{
     width: 1000px;
-    font-size: 10px;
     background: url("../imgs/background.jpg") no-repeat fixed;
     background-size: cover;
     margin: auto;
 }
-section{
+#app-container{
     width: inherit;
-    height: 715px;
     margin: 3.5rem 0 0 0;
 }
-section .content{
-    height: 565px;
-    overflow: hidden;
-}
+#banner{text-align: center;}
+#banner img{width: 50%}
 
-/* WebGL Window - STABLE */
-#wot-webgl{
-    position: relative;
-    right: 50%;
-    left: 50%;
-    transform: translate(-50%,0.50%);
-    height: 99%;
-    width: 99%;
-}
-
-/* Application Menu - STABLE */
-.menu{
+#dynamic-container{height: 60rem;}
+#static-container{
     z-index: 5;
     height: 150px;
     font-size: 1.5rem;
@@ -38,23 +24,23 @@ section .content{
     text-align: center;
     color: white;
     margin: auto;
-    padding-top: 0.5rem;
+    padding: 0.5rem 0 0.5rem 0;
 }
-.menu img{
-    width: 65%;
-    height: 65%;
+
+.menu-btn{
+    width: 10%;
+    transition: transform ease-in-out .25s;
+    transform: scale(1);
+    margin: 0 1rem 0 1rem
 }
-.menu a{
+.menu-btn a{
+    font-size: 2.5rem;
     text-decoration: none;
     color: white;
 }
-.menu .btn-scale{
-    transition: transform ease-in-out .25s;
-    transform: scale(1);
-}
-.menu .btn-scale:hover{
-    transform: scale(1.1);
-}
+.menu-btn:hover{transform: scale(1.1);}
+
+/*=========== Undecided ===========*/
 /* Search Box - STABLE */
 .search-box{
     height: 4rem;
@@ -102,10 +88,10 @@ section .content{
     background-color: #b75246
 }
 /* Null */
-#info-results{
+/*#info-results{
     height: 31.5rem;
     font-size: 2rem;
-}
+}*/
 
 /*=======================================================*/
 
@@ -113,19 +99,9 @@ section .content{
 .bg-red{background-color: #830012}
 .bg-gray{background-color: #cdcdcd}
 .bg-white{background-color: #ffffff}
-.show{visibility: visible}
-.hide{visibility: hidden}
 .inline{display: inline-block}
 .scroll-y{
     overflow-y: scroll;
-}
-.target{
-    visibility: hidden;
-    width: 0;
-    height: 0;
-    position: relative;
-    top: -20%;
-    left: 50%;
 }
 
 /* Media Queries */
