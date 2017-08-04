@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="https://necolas.github.io/normalize.css/7.0.0/normalize.css">
     <link rel="stylesheet" href="css/temp.css">
     <link rel="stylesheet" href="css/virwot-styles.css">
-
 </head>
 
 <body>
@@ -49,13 +48,11 @@
         // WebGL Tour
         $('#menu-tour').click(function(){
             event.preventDefault();
-            console.log('Tour');
             htmlTemplates.tour();
         });
         // Search - Main Menu
         $('#menu-search').click(function(){
             event.preventDefault();
-            console.log('Search');
             htmlTemplates.searchUI();
         });
         // Search - Submission
@@ -63,16 +60,20 @@
             ev.preventDefault();
             crtl.submitSearch();
         });
-        // Information - Vet Info
-        $('#menu-information').click(function() {
+        // Information - Vet Info UI
+        $('#dynamic-container').on('click', 'button', function(event) {
             event.preventDefault();
-            console.log('Information');
-            htmlTemplates.info()
+            crtl.veteranInfo(event);
+
+        });
+        // Information - Vet Info
+        $('#dynamic-container').on('click', '#menu-information', function(event) {
+            event.preventDefault();
+            htmlTemplates.useExistingInfo();
         });
         // Stories - Main Menu
         $('#menu-stories').click(function(){
             event.preventDefault();
-            console.log('Stories');
         });
     </script>
 </body>

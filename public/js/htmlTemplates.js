@@ -7,7 +7,7 @@ var htmlTemplates = (function(){
         $('#dynamic-container').html(htmlTemplate);
     }
     function searchUI(){
-        // Html tempplate for the search UI
+        // Html template for the search UI
         var htmlTemplate = `
             <div id="search-container">
                 <div class="bg-red search-box">
@@ -29,6 +29,7 @@ var htmlTemplates = (function(){
 
         // Call 'buildSingleSearchResult' to generate each name display for results and append to "searchHtml" string for return
         jsonObj.forEach(function(item){
+            console.log(item);
             searchHtml = searchHtml + buildSingleSearchResult(item);
         });
         return searchHtml;
@@ -38,38 +39,41 @@ var htmlTemplates = (function(){
         return `
             <div>
                 <div class="search-col inline"><p><b>${item.Name}</b></p></div>
-                <div class="inline"><button>View Information</button></div>
+                <div class="inline"><button data-id="${item.Name}">View Information</button></div>
                 <div class="inline"><button>View on Memorial</button></div>
                 <hr>
             </div>
         `
     }
-    function info(vetName, vetAge, vetFrom, vetCountry, vetRank, vetBranch, vetUnit, vetStationed, vetDeath, vetCause, vetPlace, vetProvince){
+    function info(jsonObj){
+        console.log(jsonObj);
+        infoHtml = '';
+        infoHtml = buildInfo(jsonObj[0]);
+        $('#dynamic-container').html(infoHtml);
+    }
+    function useExistingInfo(){
+        $('#dynamic-container').html(infoHtml);
+    }
+    function buildInfo(jsonObj){
         return `
             <div id="info-container" class="bg-white scroll-y">
-                <p><b>Name: </b>${vetName}</p>
+                <p><b>Name: </b>${jsonObj.Name}</p>
                 <hr>
-                <p><b>Age: </b>${vetAge}</p>
+                <p><b>Age: </b>${jsonObj.Age}</p>
                 <hr>
-                <p><b>From: </b>${vetFrom}</p>
+                <p><b>From: </b>${jsonObj.City}, ${jsonObj.State}, ${jsonObj.Country}</p>
                 <hr>
-                <p><b>Country: </b>${vetCountry}</p>
+                <p><b>Rank: </b>${jsonObj.Rank}</p>
                 <hr>
-                <p><b>Rank: </b>${vetRank}</p>
+                <p><b>Branch: </b>${jsonObj.Branch}</p>
                 <hr>
-                <p><b>Branch: </b>${vetBranch}</p>
+                <p><b>Unit: </b>${jsonObj.Unit}</p>
                 <hr>
-                <p><b>Unit: </b>${vetUnit}</p>
+                <p><b>Stationed: </b>${jsonObj.Stationed}</p>
                 <hr>
-                <p><b>Stationed: </b>${vetStationed}</p>
+                <p><b>Cause of Death: </b>${jsonObj.Cause}</p>
                 <hr>
-                <p><b>Date of Death: </b>${vetDeath}</p>
-                <hr>
-                <p><b>Cause of Death: </b>${vetCause}</p>
-                <hr>
-                <p><b>Place of Death: </b>${vetPlace}</p>
-                <hr>
-                <p><b>Province: </b>${vetProvince}</p>
+                <p><b>Place of Death: </b>${jsonObj.Province}, ${jsonObj.Date}</p>
             </div>
         `
     }
@@ -80,6 +84,7 @@ var htmlTemplates = (function(){
          searchUI: searchUI,
          searchResults: searchResults,
          info: info,
+         useExistingInfo: useExistingInfo,
          storyUI: storyUI
      };
 }());
