@@ -9,31 +9,29 @@ const {VetDoc} = require('./model');
 * Only the must HAVE portions for it to work.*/
 router.get('/', (req, res)=>{
     console.log('\nRequest at "GET: /veterans" endpoint.');
-    res.json({content: "No content at this endpoint."}).status(204);
+    VetDoc.find()
+        .then((docs)=>{
+            res.json(docs);
+        })
+        .catch((err)=>{
+            console.warn(err);
+            res.json({err: "Sorry, an error occurred while retrieving all."})
+        })
 });
 router.get('/:search', (req, res)=>{
     console.log('\nRequest at "GET: /veterans/:name" endpoint.');
-    console.log(req.params.search);
-    let search = req.params.search;
+    let searchStr = req.params.search;
+    console.log(searchStr);
 
-    if(search === ''){
-        VetDoc.find()
-            .then((docs)=>{
-                res.send(docs);
-                res.status(200).end();
-            })
-            .catch((err)=>{
-                console.log(err);
-                res.status(500).json({error: 'something went terribly wrong'});
-            });
-    }
-    else {
-        VetDoc.find();
-    }
-
-
-
-    res.status(200).end();
+    VetDoc.find({name: searchStr})
+        .then((docs)=>{
+            res.json(docs);
+            res.status(200).end();
+        })
+        .catch((err)=>{
+            console.log(err);
+            res.status(500).json({error: 'something went terribly wrong'});
+        });
 
     /*db.veterans.find({Name: "Maria Giovanny"})
      res.sendFile(__dirname+'/index.html')*/
