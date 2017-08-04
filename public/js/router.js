@@ -9,22 +9,34 @@ const {VetDoc} = require('./model');
 * Only the must HAVE portions for it to work.*/
 router.get('/', (req, res)=>{
     console.log('\nRequest at "GET: /veterans" endpoint.');
-    VetDoc.find()
-        .then((docs)=>{
-            res.send(docs);
-            res.status(200).end();
-        })
-        .catch((err)=>{
-            console.log(err);
-            res.status(500).json({error: 'something went terribly wrong'});
-        });
-    /*db.veterans.find({Name: "Maria Giovanny"})
-    res.sendFile(__dirname+'/index.html')*/
+    res.json({content: "No content at this endpoint."}).status(204);
 });
 router.get('/:search', (req, res)=>{
     console.log('\nRequest at "GET: /veterans/:name" endpoint.');
     console.log(req.params.search);
+    let search = req.params.search;
+
+    if(search === ''){
+        VetDoc.find()
+            .then((docs)=>{
+                res.send(docs);
+                res.status(200).end();
+            })
+            .catch((err)=>{
+                console.log(err);
+                res.status(500).json({error: 'something went terribly wrong'});
+            });
+    }
+    else {
+        VetDoc.find();
+    }
+
+
+
     res.status(200).end();
+
+    /*db.veterans.find({Name: "Maria Giovanny"})
+     res.sendFile(__dirname+'/index.html')*/
 });
 router.post('/:id', (req, res)=>{
     console.log('\nRequest at "POST: /veterans/:id" endpoint.');
