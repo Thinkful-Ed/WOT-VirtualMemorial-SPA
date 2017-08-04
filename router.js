@@ -10,8 +10,8 @@ const {VetDoc} = require('./model');
 router.get('/', (req, res)=>{
     console.log('\nRequest at "GET: /veterans" endpoint.');
     VetDoc.find()
-        .then((docs)=>{
-            res.json(docs);
+        .then((jsonObj)=>{
+            res.json(jsonObj);
         })
         .catch((err)=>{
             console.warn(err);
@@ -24,17 +24,13 @@ router.get('/:search', (req, res)=>{
     console.log(searchStr);
 
     VetDoc.find({Name: searchStr})
-        .then((docs)=>{
-            res.json(docs);
-            res.status(200).end();
+        .then((jsonObj)=>{
+            res.json(jsonObj);
         })
         .catch((err)=>{
             console.log(err);
             res.status(500).json({error: 'something went terribly wrong'});
         });
-
-    /*db.veterans.find({Name: "Maria Giovanny"})
-     res.sendFile(__dirname+'/index.html')*/
 });
 router.post('/:id', (req, res)=>{
     console.log('\nRequest at "POST: /veterans/:id" endpoint.');

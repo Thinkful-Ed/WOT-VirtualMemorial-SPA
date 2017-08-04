@@ -1,22 +1,48 @@
 var htmlTemplates = (function(){
+    let searchHtml = '';
+    let infoHtml = '';
+
     function tour(){
         var htmlTemplate = `<div id="webgl-container"></div>`;
         $('#dynamic-container').html(htmlTemplate);
     }
     function searchUI(){
+        // Html tempplate for the search UI
         var htmlTemplate = `
             <div id="search-container">
                 <div class="bg-red search-box">
                     <input id="js-searchStr" type="text" placeholder="Search by Name, Rank, Branch of Military, & More">
                     <button id="js-submitSearch">Search</button>
                 </div>
-                <div id="js-searchResults" class="scroll-y">
+                <div id="js-searchResults" class="dynamic-container-results">
                 </div>
             </div>`;
+
+        // Replace existing UI with search template and add any existing search results.
         $('#dynamic-container').html(htmlTemplate);
+        $('#js-searchResults').html(searchHtml);
     }
     function searchResults(jsonObj){
-        var html
+        // Reset results
+        searchHtml = '';
+        $('#js-searchResults').html(searchHtml);
+
+        // Call 'buildSingleSearchResult' to generate each name display for results and append to "searchHtml" string for return
+        jsonObj.forEach(function(item){
+            searchHtml = searchHtml + buildSingleSearchResult(item);
+        });
+        return searchHtml;
+    }
+    function buildSingleSearchResult(item){
+        // Create html from each json object that represents a veteran
+        return `
+            <div>
+                <div class="search-col inline"><p><b>${item.Name}</b></p></div>
+                <div class="inline"><button>View Information</button></div>
+                <div class="inline"><button>View on Memorial</button></div>
+                <hr>
+            </div>
+        `
     }
     function info(vetName, vetAge, vetFrom, vetCountry, vetRank, vetBranch, vetUnit, vetStationed, vetDeath, vetCause, vetPlace, vetProvince){
         return `

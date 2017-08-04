@@ -3,9 +3,11 @@ var crtl = (function(){
         var searchStr = $('#js-searchStr').val();
         $.ajax({url:`veterans/${searchStr}`})
             .then(function(res){
-                $('#dynamic-container').html(res);
+                $('#js-searchResults').html(htmlTemplates.searchResults(res));
             })
-        .fail()
+        .fail(()=>{
+            console.warn('Something broke!');
+        })
     }
 
     return {

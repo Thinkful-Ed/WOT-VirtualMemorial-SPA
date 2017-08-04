@@ -16,6 +16,12 @@ body{
 #banner img{width: 50%}
 
 #dynamic-container{height: 60rem;}
+.dynamic-container-results{
+    width: inherit;
+    height: 56rem;
+    overflow: hidden;
+    overflow-y: scroll;
+}
 #static-container{
     z-index: 5;
     height: 150px;
@@ -27,21 +33,7 @@ body{
     padding: 0.5rem 0 0.5rem 0;
 }
 
-.menu-btn{
-    width: 10%;
-    transition: transform ease-in-out .25s;
-    transform: scale(1);
-    margin: 0 2rem 0 2rem
-}
-.menu-btn a{
-    font-size: 2.5rem;
-    text-decoration: none;
-    color: white;
-}
-.menu-btn:hover{transform: scale(1.15);}
-
-/*=========== Undecided ===========*/
-/* Search Box - STABLE */
+.search-col{width: calc(100%/3)}
 .search-box{
     height: 4rem;
     text-align: center;
@@ -62,17 +54,21 @@ body{
     border: none;
     transition: background-color ease-in-out .15s;
 }
-/* Search Result - STABLE */
-#js-searchResults{
-    height: 31.5rem;
-    text-align: right;
+
+.menu-btn{
+    width: 10%;
+    transition: transform ease-in-out .25s;
+    transform: scale(1);
+    margin: 0 2rem 0 2rem
 }
-#js-searchResults li{}
-#js-searchResults span{
-    font-size: 2rem;
-    font-weight: bold;
+.menu-btn a{
+    font-size: 2.5rem;
+    text-decoration: none;
+    color: white;
 }
-#js-searchResults button{
+.menu-btn:hover{transform: scale(1.15);}
+
+button{
     width: 15rem;
     height: 2.5rem;
     font-size: 1.5rem;
@@ -81,23 +77,18 @@ body{
     border-style: none;
     transition: background-color ease-in-out .25s;
 }
-#js-searchResults button:hover, .search-box button:hover{
+button:hover{
     background-color: #c06a71;
 }
-#js-searchResults button:active, .search-box button:active{
+button:active{
     background-color: #b75246
 }
 
-/*=======================================================*/
-
-/* Focused Styling */
+/* Single Styling */
 .bg-red{background-color: #830012}
 .bg-gray{background-color: #cdcdcd}
 .bg-white{background-color: #ffffff}
 .inline{display: inline-block}
-.scroll-y{
-    overflow-y: scroll;
-}
 
 /* Media Queries */
 @media (max-width: 768px){
