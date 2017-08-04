@@ -23,7 +23,7 @@ router.get('/:search', (req, res)=>{
     let searchStr = req.params.search;
     console.log(searchStr);
 
-    VetDoc.find({name: searchStr})
+    VetDoc.find({Name: searchStr})
         .then((docs)=>{
             res.json(docs);
             res.status(200).end();
