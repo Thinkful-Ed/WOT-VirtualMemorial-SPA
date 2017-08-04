@@ -42,36 +42,37 @@
 
     <script type="text/javascript" src="libs/jquery.js"></script>
     <script type="text/javascript" src="libs/three.js"></script>
+    <script type="text/javascript" src="js/htmlTemplates.js"></script>
     <script type="text/javascript" src="js/wot-scene/scene.js"></script>
+    <script type="text/javascript" src="js/controller.js"></script>
     <script>
-        // Menu / Static
+        // WebGL Tour
         $('#menu-tour').click(function(){
             event.preventDefault();
-            $('html, body').animate({
-                scrollTop: $( $.attr(this, 'href') ).offset().top
-            }, 500);
+            console.log('Tour');
+            htmlTemplates.tour();
         });
+        // Search - Main Menu
         $('#menu-search').click(function(){
             event.preventDefault();
-            $('html, body').animate({
-                scrollTop: $( $.attr(this, 'href') ).offset().top
-            }, 500);
+            console.log('Search');
+            htmlTemplates.searchUI();
         });
-        $('#menu-information').click(function(){
+        // Search - Submission
+        $('#dynamic-container').on('click', '#js-submitSearch', function(ev){
+            ev.preventDefault();
+            crtl.submitSearch();
+        });
+        // Information - Vet Info
+        $('#menu-information').click(function() {
             event.preventDefault();
-            $('html, body').animate({
-                scrollTop: $( $.attr(this, 'href') ).offset().top
-            }, 500)});
+            console.log('Information');
+            htmlTemplates.info()
+        });
+        // Stories - Main Menu
         $('#menu-stories').click(function(){
             event.preventDefault();
-            $('html, body').animate({
-                scrollTop: $( $.attr(this, 'href') ).offset().top
-            }, 500)});
-        
-        // Menu / Dynamic
-        $('#js-submitSearch').click(function(ev){
-            ev.preventDefault();
-            console.log('Search Query Goes Here');
+            console.log('Stories');
         });
     </script>
 </body>

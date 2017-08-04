@@ -1,9 +1,10 @@
 var htmlTemplates = (function(){
     function tour(){
-        return `<div id="webgl-container"></div>`
+        var htmlTemplate = `<div id="webgl-container"></div>`;
+        $('#dynamic-container').html(htmlTemplate);
     }
     function searchUI(){
-        return `
+        var htmlTemplate = `
             <div id="search-container">
                 <div class="bg-red search-box">
                     <input id="js-searchStr" type="text" placeholder="Search by Name, Rank, Branch of Military, & More">
@@ -11,8 +12,8 @@ var htmlTemplates = (function(){
                 </div>
                 <div id="js-searchResults" class="scroll-y">
                 </div>
-            </div>
-        `
+            </div>`;
+        $('#dynamic-container').html(htmlTemplate);
     }
     function searchResults(jsonObj){
         var html

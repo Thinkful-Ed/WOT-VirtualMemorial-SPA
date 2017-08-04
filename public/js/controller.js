@@ -1,3 +1,9 @@
 var crtl = (function(){
-    // Coming Soon!
+    function submitSearch(){
+        var searchStr = $('#js-searchStr').val();
+    }
+
+    return {
+        submitSearch: submitSearch
+    }
 }());
