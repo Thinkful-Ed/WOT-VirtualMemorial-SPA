@@ -1,5 +1,4 @@
 var wotScene = (function(){
-    // 'use strict';
     // Scene Boiler
     var scene = new THREE.Scene();
     // Checks for WebGL Content. If not there fallback to canvas render for older browsers.
@@ -24,7 +23,7 @@ var wotScene = (function(){
         scene.add(camera);
 
         // Cube Setup
-        var box = new THREE.Mesh(
+        box = new THREE.Mesh(
             new THREE.BoxGeometry(1,1,1),
             new THREE.MeshLambertMaterial({color: 0xFF0000}
             ));
@@ -34,7 +33,7 @@ var wotScene = (function(){
         var loader = new THREE.JSONLoader();
         var wotMat = new THREE.MeshLambertMaterial({color: 0xd3d3d3});
         loader.load('./json/wot-geometry-faceMaterialOn.json', function(geometry){
-            var wotMesh  = new THREE.Mesh(geometry, wotMat);
+            wotMesh  = new THREE.Mesh(geometry, wotMat);
             wotMesh.name = "wotMesh";
             scene.add(wotMesh);
         });
@@ -43,8 +42,8 @@ var wotScene = (function(){
 
     function render(){
         try{
-            var animMesh = wotScene.scene.getObjectByName("wotMesh");
-            animMesh.rotation.y += 0.001;
+            // var animMesh = wotScene.scene.getObjectByName("wotMesh");
+            wotMesh.rotation.y += 0.001;
         }
         catch (err){
             // console.log(err);
