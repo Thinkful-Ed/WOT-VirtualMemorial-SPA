@@ -68,12 +68,11 @@
         $('#dynamic-container').on('click', 'button', function(event) {
             event.preventDefault();
             crtl.veteranInfo(event);
-
         });
         // Information - Vet Info
-        $('#dynamic-container').on('click', '#menu-information', function(event) {
+        $('#menu-information').click(function() {
             event.preventDefault();
-            htmlTemplates.useExistingInfo();
+            htmlTemplates.info();
         });
         // Stories - Main Menu
         $('#menu-stories').click(function(){

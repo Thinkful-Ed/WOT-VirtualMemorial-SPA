@@ -49,13 +49,18 @@ var htmlTemplates = (function(){
         `
     }
     function info(jsonObj){
-        console.log(jsonObj);
-        infoHtml = '';
+        /*console.log(jsonObj);
         infoHtml = buildInfo(jsonObj[0]);
-        $('#dynamic-container').html(infoHtml);
-    }
-    function useExistingInfo(){
-        $('#dynamic-container').html(infoHtml);
+        $('#dynamic-container').html(infoHtml);*/
+        console.log(jsonObj);
+        if(!(jsonObj)){
+            $('#dynamic-container').html(infoHtml);
+        }
+        else{
+            console.log(jsonObj);
+            infoHtml = buildInfo(jsonObj[0]);
+            $('#dynamic-container').html(infoHtml);
+        }
     }
     function buildInfo(jsonObj){
         return `
@@ -87,7 +92,6 @@ var htmlTemplates = (function(){
          searchUI: searchUI,
          searchResults: searchResults,
          info: info,
-         useExistingInfo: useExistingInfo,
          storyUI: storyUI
      };
 }());
