@@ -1,13 +1,18 @@
 var htmlTemplates = (function(){
     let searchHtml = '';
     let infoHtml = '';
+    let checkLoader = false;
 
     function tour(){
+        console.log('Entering Function "tour()"');
+
         var htmlTemplate = `<div id="webgl-container"></div>`;
         $('#dynamic-container').html(htmlTemplate);
         wotScene.init();
     }
     function searchUI(){
+        console.log('Entering Function "searchUI()"');
+
         // Html template for the search UI
         var htmlTemplate = `
             <div id="search-container">
@@ -24,24 +29,27 @@ var htmlTemplates = (function(){
         $('#js-searchResults').html(searchHtml);
     }
     function searchResults(jsonObj){
+        console.log('Entering Function "searchResults()"');
+
         // Reset results
         searchHtml = '';
         $('#js-searchResults').html(searchHtml);
 
         // Call 'buildSingleSearchResult' to generate each name display for results and append to "searchHtml" string for return
         jsonObj.forEach(function(item){
-            console.log(item);
             searchHtml = searchHtml + buildSingleSearchResult(item);
         });
         return searchHtml;
     }
     function buildSingleSearchResult(item){
+        console.log('Entering Function "buildSingleSearchResult()"');
+
         // Create html from each json object that represents a veteran
         return `
             <div>
                 <div class="search-col inline"><p><b>${item.Name}</b></p></div>
                 <div class="search-col inline">
-                    <button data-id="${item.Name}">View Information</button>
+                    <button class="vet-info" data-id="${item.Name}">View Information</button>
                     <button>View on Memorial</button>
                 </div>
                 <hr>
@@ -49,20 +57,19 @@ var htmlTemplates = (function(){
         `
     }
     function info(jsonObj){
-        /*console.log(jsonObj);
-        infoHtml = buildInfo(jsonObj[0]);
-        $('#dynamic-container').html(infoHtml);*/
-        console.log(jsonObj);
+        console.log('Entering Function "info()"');
+
         if(!(jsonObj)){
             $('#dynamic-container').html(infoHtml);
         }
         else{
-            console.log(jsonObj);
             infoHtml = buildInfo(jsonObj[0]);
             $('#dynamic-container').html(infoHtml);
         }
     }
     function buildInfo(jsonObj){
+        console.log('Entering Function "buildInfo()"');
+
         return `
             <div id="info-container" class="bg-white scroll-y">
                 <p><b>Name: </b>${jsonObj.Name}</p>
@@ -85,13 +92,37 @@ var htmlTemplates = (function(){
             </div>
         `
     }
-    function storyUI(){}
+    function storyUI(){
+        console.log('Entering Function "storyUI()"');
 
+        return ``;
+    }
+    function loader(){
+        console.log('Entering Function "loader()"');
+        console.log(`CheckLoader current: ${checkLoader}`);
+
+        let htmlTemplate = `<div id="loader">
+                                <img src="imgs/loader.gif" alt="Loader">
+                                <h1>Loading</h1>
+                            </div>`;
+
+        if(checkLoader === false){
+            $('#app-container').append(htmlTemplate);
+            checkLoader = true;
+            console.log(`CheckLoader updated to: ${checkLoader}`);
+        }
+        else{
+            $('#loader').remove();
+            checkLoader = false;
+            console.log(`CheckLoader updated to: ${checkLoader}`);
+        }
+    }
      return{
          tour: tour,
          searchUI: searchUI,
          searchResults: searchResults,
          info: info,
-         storyUI: storyUI
+         storyUI: storyUI,
+         loader: loader
      };
 }());

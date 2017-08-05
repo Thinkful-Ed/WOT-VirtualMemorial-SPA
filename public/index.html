@@ -18,8 +18,7 @@
             </div>
 
             <!-- Content / Dynamic -->
-            <div id="dynamic-container" class="bg-white">
-            </div>
+            <div id="dynamic-container" class="bg-white"></div>
 
             <!-- Menu / Static -->
             <div id="static-container" class="bg-red">
@@ -65,7 +64,7 @@
             crtl.submitSearch();
         });
         // Information - Vet Info UI
-        $('#dynamic-container').on('click', 'button', function(event) {
+        $('#dynamic-container').on('click', '.vet-info', function(event) {
             event.preventDefault();
             crtl.veteranInfo(event);
         });
