@@ -5,6 +5,7 @@ var htmlTemplates = (function(){
     function tour(){
         var htmlTemplate = `<div id="webgl-container"></div>`;
         $('#dynamic-container').html(htmlTemplate);
+        wotScene.init();
     }
     function searchUI(){
         // Html template for the search UI

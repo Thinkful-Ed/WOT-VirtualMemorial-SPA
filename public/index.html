@@ -45,6 +45,9 @@
     <script type="text/javascript" src="js/wot-scene/scene.js"></script>
     <script type="text/javascript" src="js/controller.js"></script>
     <script>
+        // Set which section is the initial screen
+        $(document).ready(htmlTemplates.tour());
+
         // WebGL Tour
         $('#menu-tour').click(function(){
             event.preventDefault();
