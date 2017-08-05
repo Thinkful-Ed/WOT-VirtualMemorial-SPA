@@ -39,8 +39,10 @@ var htmlTemplates = (function(){
         return `
             <div>
                 <div class="search-col inline"><p><b>${item.Name}</b></p></div>
-                <div class="inline"><button data-id="${item.Name}">View Information</button></div>
-                <div class="inline"><button>View on Memorial</button></div>
+                <div class="search-col inline">
+                    <button data-id="${item.Name}">View Information</button>
+                    <button>View on Memorial</button>
+                </div>
                 <hr>
             </div>
         `

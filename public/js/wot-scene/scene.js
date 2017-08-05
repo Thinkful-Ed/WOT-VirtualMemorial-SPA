@@ -1,5 +1,7 @@
 var wotScene = (function(){
     'use strict';
+    var renderWindowWidth = document.getElementById('dynamic-container').offsetWidth;
+    var renderWindowHeight = document.getElementById('dynamic-container').offsetHeight;
 
     // Scene Boiler
     var scene = new THREE.Scene();
@@ -8,8 +10,9 @@ var wotScene = (function(){
     var renderer = new THREE.WebGLRenderer();
 
     // Setup scene render
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    document.getElementById('webgl-container').appendChild(renderer.domElement);
+    renderer.setSize(renderWindowWidth, renderWindowHeight);
+    // renderer.setSize(window.innerWidth, window.innerHeight);
+    document.getElementById('dynamic-container').appendChild(renderer.domElement);
 
     // Lighting
     var light = new THREE.DirectionalLight(0xffffff, 3.5);
