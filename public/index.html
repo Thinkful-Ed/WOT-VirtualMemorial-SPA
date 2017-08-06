@@ -19,15 +19,32 @@
 
             <!-- Content / Dynamic -->
             <div id="dynamic-container" class="bg-white">
-                <div id="stories-container">
-                    <div>
-                        <button>View Text</button>
-                        <button>View Picture</button>
-                        <div id="stories-content-container">
-                            <h1>Select from the options above to view content </h1>
-                        </div>
+                <div id="story-container">
+                    <div id="story-menu" class="bg-red" style="text-align: center">
+                        <a id="story-text" href="#" class="inline" style="text-align: center">
+                            <img src="imgs/ico-info.svg" alt="Text">
+                            <br>
+                            Text
+                        </a>
+                        <a id="story-pictures" href="#" class="inline" style="text-align: center">
+                            <img src="imgs/ico-info.svg" alt="Pictures">
+                            <br>
+                            Pictures
+                        </a>
+                        <a id="story-audio" href="#" class="inline" style="text-align: center">
+                            <img src="imgs/ico-info.svg" alt="Audio">
+                            <br>
+                            Audio
+                        </a>
+                        <a id="story-video" href="#" class="inline" style="text-align: center">
+                            <img src="imgs/ico-info.svg" alt="Video">
+                            <br>
+                            Video
+                        </a>
                     </div>
-                </div>
+
+                    <div id="stories-content-container" class="dynamic-container-results"></div>
+                </div>`;
             </div>
 
             <!-- Menu / Static -->

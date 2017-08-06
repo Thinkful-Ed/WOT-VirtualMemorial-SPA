@@ -14,15 +14,14 @@ var htmlTemplates = (function(){
         console.log('Entering Function "searchUI()"');
 
         // Html template for the search UI
-        var htmlTemplate = `
-            <div id="search-container">
-                <div class="bg-red search-box">
-                    <input id="js-searchStr" type="text" placeholder="Search by Name, Rank, Branch of Military, & More">
-                    <button id="js-submitSearch">Search</button>
-                </div>
-                <div id="js-searchResults" class="dynamic-container-results">
-                </div>
-            </div>`;
+        var htmlTemplate = `<div id="search-container">
+                                <div class="bg-red search-box">
+                                    <input id="js-searchStr" type="text" placeholder="Search by Name, Rank, Branch of Military, & More">
+                                    <button id="js-submitSearch">Search</button>
+                                </div>
+                                <div id="js-searchResults" class="dynamic-container-results">
+                                </div>
+                            </div>`;
 
         // Replace existing UI with search template and add any existing search results.
         $('#dynamic-container').html(htmlTemplate);
