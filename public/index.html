@@ -18,7 +18,17 @@
             </div>
 
             <!-- Content / Dynamic -->
-            <div id="dynamic-container" class="bg-white"></div>
+            <div id="dynamic-container" class="bg-white">
+                <div id="stories-container">
+                    <div>
+                        <button>View Text</button>
+                        <button>View Picture</button>
+                        <div id="stories-content-container">
+                            <h1>Select from the options above to view content </h1>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <!-- Menu / Static -->
             <div id="static-container" class="bg-red">
@@ -46,7 +56,7 @@
     <script type="text/javascript" src="js/controller.js"></script>
     <script>
         // Set which section is the initial screen
-        $(document).ready(htmlTemplates.tour());
+//        $(document).ready(htmlTemplates.tour());
 
         // WebGL Tour
         $('#menu-tour').click(function(){
