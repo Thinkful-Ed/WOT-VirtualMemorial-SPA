@@ -125,14 +125,26 @@ var htmlTemplates = (function(){
     function textStoryUI(){
         let htmlTemplate = `<div>
                                 <div style=" height: 6rem;">
-                                    <button>Add a New Story</button>
+                                    <button id="create-new-text-story">Add a New Story</button>
                                 </div>
                                 <div id="text-stories-container"></div>
                             </div>`;
 
         $('#stories-content-container').html(htmlTemplate);
     }
-    function createNewStory(){}
+    function createNewStory(){
+        let htmlTemplate = `<div id="new-text-story-container">
+                                <form>
+                                    <h2 class="inline">Title</h2><input id="text-title" type="text" class="inline" style="font-size: 2rem">
+                                    <h2 class="inline">Author</h2><input id="text-author" type="text" class="inline" style="font-size: 2rem">
+                                    <textarea id="text-text" cols="90%" rows="10%" style="font-size: 2rem"></textarea>
+                                    <button id="text-story-clear">Clear</button>
+                                    <button id="text-story-submit">Submit</button>
+                                </form>
+                            </div>`;
+
+        $('#stories-content-container').html(htmlTemplate);
+    }
     function buildSingleTextStory(title, author, text){
         return `<article>
                     <h2>${title}</h2>
@@ -183,6 +195,7 @@ var htmlTemplates = (function(){
          info: info,
          storyMainUI: storyMainUI,
          textStoryUI: textStoryUI,
+         createNewStory: createNewStory,
          loader: loader,
          comingSoon: comingSoon
      };

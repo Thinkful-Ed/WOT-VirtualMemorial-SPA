@@ -18,9 +18,7 @@
             </div>
 
             <!-- Content / Dynamic -->
-            <div id="dynamic-container" class="bg-white">
-
-            </div>
+            <div id="dynamic-container" class="bg-white"></div>
 
             <!-- Menu / Static -->
             <div id="static-container" class="bg-red">
@@ -79,26 +77,43 @@
             crtl.submitSearch();
         });
         // Information - Vet Info UI
-        $('#dynamic-container').on('click', '.vet-info', function(event) {
-            event.preventDefault();
-            crtl.veteranInfo(event);
+        $('#dynamic-container').on('click', '.vet-info', function(ev) {
+            ev.preventDefault();
+            crtl.veteranInfo(ev);
         });
-        // Stories
-        $('#dynamic-container').on('click', '#story-text', ()=>{
+        // Stories - Main
+        $('#dynamic-container').on('click', '#story-text', (ev)=>{
+            ev.preventDefault();
             console.log('Text');
             htmlTemplates.textStoryUI();
         });
-        $('#dynamic-container').on('click', '#story-picture', ()=>{
+        $('#dynamic-container').on('click', '#story-picture', (ev)=>{
+            ev.preventDefault();
             console.log('Pictures');
             htmlTemplates.comingSoon();
         });
-        $('#dynamic-container').on('click', '#story-audio', ()=>{
+        $('#dynamic-container').on('click', '#story-audio', (ev)=>{
+            ev.preventDefault();
             console.log('Audio');
             htmlTemplates.comingSoon();
         });
-        $('#dynamic-container').on('click', '#story-video', ()=>{
+        $('#dynamic-container').on('click', '#story-video', (ev)=>{
+            ev.preventDefault();
             console.log('Video');
             htmlTemplates.comingSoon();
+        });
+        // Stories - Focused - Text
+        $('#dynamic-container').on('click', '#create-new-text-story', (ev)=>{
+            ev.preventDefault();
+            htmlTemplates.createNewStory();
+        });
+        $('#dynamic-container').on('click', '#text-story-clear', (ev)=>{
+            ev.preventDefault();
+            alert('Your story hasn\'t been submitted. Are you sure you want to clear the text?');
+        });
+        $('#dynamic-container').on('click', '#text-story-submit', (ev)=>{
+            ev.preventDefault();
+            console.log('Story Submitted');
         });
     </script>
 </body>
