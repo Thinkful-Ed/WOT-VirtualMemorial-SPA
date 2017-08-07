@@ -18,12 +18,11 @@ const vetScheme = mongoose.Schema({
     Unit: {type: String},
     Stationed: {type: String},
     Stories: [
-        {Text: [
-            {}
-        ]},
-        {Picture: []},
-        {Audio: []},
-        {Video: []}
+        {Text:[{
+            Title: {type: String},
+            Author: {type: String},
+            Text: {type: String}
+        }]}
     ]
 });
 

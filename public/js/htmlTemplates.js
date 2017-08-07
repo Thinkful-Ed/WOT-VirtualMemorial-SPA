@@ -122,7 +122,17 @@ var htmlTemplates = (function(){
 
         $('#dynamic-container').html(htmlTemplate);
     }
-    function buildStoryUI(){}
+    function textStoryUI(){
+        let htmlTemplate = `<div>
+                                <div style=" height: 6rem;">
+                                    <button>Add a New Story</button>
+                                </div>
+                                <div id="text-stories-container"></div>
+                            </div>`;
+
+        $('#stories-content-container').html(htmlTemplate);
+    }
+    function createNewStory(){}
     function buildSingleTextStory(title, author, text){
         return `<article>
                     <h2>${title}</h2>
@@ -162,7 +172,7 @@ var htmlTemplates = (function(){
                                 </ul>
                             </div>`;
 
-        $('#dynamic-container').html(htmlTemplate);
+        $('#stories-content-container').html(htmlTemplate);
     }
 
     // Exposed
@@ -172,7 +182,7 @@ var htmlTemplates = (function(){
          searchResults: searchResults,
          info: info,
          storyMainUI: storyMainUI,
-         buildStoryUI: buildStoryUI,
+         textStoryUI: textStoryUI,
          loader: loader,
          comingSoon: comingSoon
      };

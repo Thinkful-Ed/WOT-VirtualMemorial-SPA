@@ -48,7 +48,7 @@
     <script type="text/javascript" src="js/controller.js"></script>
     <script>
         // Set which section is the initial screen
-//        $(document).ready(htmlTemplates.tour());
+        $(document).ready(htmlTemplates.tour());
 
         // ===================== Static Main Menu Events
         // WebGL Tour
@@ -86,7 +86,7 @@
         // Stories
         $('#dynamic-container').on('click', '#story-text', ()=>{
             console.log('Text');
-            htmlTemplates.comingSoon();
+            htmlTemplates.textStoryUI();
         });
         $('#dynamic-container').on('click', '#story-picture', ()=>{
             console.log('Pictures');

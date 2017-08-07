@@ -138,11 +138,6 @@ canvas{
     margin: 0 2rem 0 2rem
 }
 .menu-top{width: 6.5%}
-/*.menu-btn a{*/
-    /*font-size: 2.5rem;*/
-    /*text-decoration: none;*/
-    /*color: white;*/
-/*}*/
 .menu-btn:hover{transform: scale(1.15);}
 
 button{
