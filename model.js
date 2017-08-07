@@ -16,7 +16,15 @@ const vetScheme = mongoose.Schema({
     State: {type: String},
     City: {type: String},
     Unit: {type: String},
-    Stationed: {type: String}
+    Stationed: {type: String},
+    Stories: [
+        {Text: [
+            {}
+        ]},
+        {Picture: []},
+        {Audio: []},
+        {Video: []}
+    ]
 });
 
 // Methods

@@ -25,6 +25,7 @@ router.get('/:search', (req, res)=>{
 
     VetDoc.find({Name: searchStr})
         .then((jsonObj)=>{
+            console.log(jsonObj);
             res.json(jsonObj);
         })
         .catch((err)=>{

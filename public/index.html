@@ -19,32 +19,7 @@
 
             <!-- Content / Dynamic -->
             <div id="dynamic-container" class="bg-white">
-                <div id="story-container">
-                    <div id="story-menu" class="bg-red" style="text-align: center">
-                        <a id="story-text" href="#" class="inline" style="text-align: center">
-                            <img src="imgs/ico-info.svg" alt="Text">
-                            <br>
-                            Text
-                        </a>
-                        <a id="story-pictures" href="#" class="inline" style="text-align: center">
-                            <img src="imgs/ico-info.svg" alt="Pictures">
-                            <br>
-                            Pictures
-                        </a>
-                        <a id="story-audio" href="#" class="inline" style="text-align: center">
-                            <img src="imgs/ico-info.svg" alt="Audio">
-                            <br>
-                            Audio
-                        </a>
-                        <a id="story-video" href="#" class="inline" style="text-align: center">
-                            <img src="imgs/ico-info.svg" alt="Video">
-                            <br>
-                            Video
-                        </a>
-                    </div>
 
-                    <div id="stories-content-container" class="dynamic-container-results"></div>
-                </div>`;
             </div>
 
             <!-- Menu / Static -->
@@ -75,6 +50,7 @@
         // Set which section is the initial screen
 //        $(document).ready(htmlTemplates.tour());
 
+        // ===================== Static Main Menu Events
         // WebGL Tour
         $('#menu-tour').click(function(){
             event.preventDefault();
@@ -85,6 +61,18 @@
             event.preventDefault();
             htmlTemplates.searchUI();
         });
+        // Information - Vet Info
+        $('#menu-information').click(function() {
+            event.preventDefault();
+            htmlTemplates.info();
+        });
+        // Stories - Main Menu
+        $('#menu-stories').click(function(){
+            event.preventDefault();
+            htmlTemplates.storyMainUI();
+        });
+
+        // ===================== Dynamic Menu Events
         // Search - Submission
         $('#dynamic-container').on('click', '#js-submitSearch', function(ev){
             ev.preventDefault();
@@ -95,14 +83,22 @@
             event.preventDefault();
             crtl.veteranInfo(event);
         });
-        // Information - Vet Info
-        $('#menu-information').click(function() {
-            event.preventDefault();
-            htmlTemplates.info();
+        // Stories
+        $('#dynamic-container').on('click', '#story-text', ()=>{
+            console.log('Text');
+            htmlTemplates.comingSoon();
         });
-        // Stories - Main Menu
-        $('#menu-stories').click(function(){
-            event.preventDefault();
+        $('#dynamic-container').on('click', '#story-picture', ()=>{
+            console.log('Pictures');
+            htmlTemplates.comingSoon();
+        });
+        $('#dynamic-container').on('click', '#story-audio', ()=>{
+            console.log('Audio');
+            htmlTemplates.comingSoon();
+        });
+        $('#dynamic-container').on('click', '#story-video', ()=>{
+            console.log('Video');
+            htmlTemplates.comingSoon();
         });
     </script>
 </body>

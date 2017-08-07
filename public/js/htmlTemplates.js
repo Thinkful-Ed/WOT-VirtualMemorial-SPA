@@ -49,7 +49,7 @@ var htmlTemplates = (function(){
                 <div class="search-col inline"><p><b>${item.Name}</b></p></div>
                 <div class="search-col inline">
                     <button class="vet-info" data-id="${item.Name}">View Information</button>
-                    <button>View on Memorial</button>
+                    <button>View Stories</button>
                 </div>
                 <hr>
             </div>
@@ -91,10 +91,45 @@ var htmlTemplates = (function(){
             </div>
         `
     }
-    function storyUI(){
+    function storyMainUI(){
         console.log('Entering Function "storyUI()"');
+        let htmlTemplate = `<div id="story-container">
+                                <div id="story-menu" class="bg-red" style="text-align: center">
+                                    <a id="story-text" href="#" class="menu-btn menu-top inline" style="text-align: center">
+                                        <img src="imgs/ico-info.svg" alt="Text">
+                                        <br>
+                                        Text
+                                    </a>
+                                    <a id="story-picture" href="#" class="menu-btn menu-top inline" style="text-align: center">
+                                        <img src="imgs/ico-info.svg" alt="Pictures">
+                                        <br>
+                                        Pictures
+                                    </a>
+                                    <a id="story-audio" href="#" class="menu-btn menu-top inline" style="text-align: center">
+                                        <img src="imgs/ico-info.svg" alt="Audio">
+                                        <br>
+                                        Audio
+                                    </a>
+                                    <a id="story-video" href="#" class="menu-btn menu-top inline" style="text-align: center">
+                                        <img src="imgs/ico-info.svg" alt="Video">
+                                        <br>
+                                        Video
+                                    </a>
+                                </div>
+            
+                                <div id="stories-content-container" class="dynamic-container-results"></div>
+                            </div>`;
 
-        return ``;
+        $('#dynamic-container').html(htmlTemplate);
+    }
+    function buildStoryUI(){}
+    function buildSingleTextStory(title, author, text){
+        return `<article>
+                    <h2>${title}</h2>
+                    <h3>${author}</h3>
+                    <p>${text}</p>
+                    <hr>
+                </article>`;
     }
     function loader(){
         console.log('Entering Function "loader()"');
@@ -116,12 +151,29 @@ var htmlTemplates = (function(){
             console.log(`CheckLoader updated to: ${checkLoader}`);
         }
     }
+    function comingSoon(){
+        let htmlTemplate = `<div id="coming-soon-container">
+                                <h1 style="text-align: center; padding: 1rem 0 0 0;">Coming Soon</h1>
+                                <h2 style="text-align: center;">Learn more about those who served with stories submitted by family and friends. Content will include...</h2>
+                                <ul>
+                                    <li>Picture</li>
+                                    <li>Audio</li>
+                                    <li>Video</li>
+                                </ul>
+                            </div>`;
+
+        $('#dynamic-container').html(htmlTemplate);
+    }
+
+    // Exposed
      return{
          tour: tour,
          searchUI: searchUI,
          searchResults: searchResults,
          info: info,
-         storyUI: storyUI,
-         loader: loader
+         storyMainUI: storyMainUI,
+         buildStoryUI: buildStoryUI,
+         loader: loader,
+         comingSoon: comingSoon
      };
 }());

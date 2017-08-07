@@ -3,6 +3,8 @@ var crtl = (function(){
         let searchStr = $('#js-searchStr').val();
         htmlTemplates.loader();
 
+
+
         $.ajax({url:`veterans/${searchStr}`})
             .then(function(res){
                 $('#js-searchResults').html(htmlTemplates.searchResults(res));
