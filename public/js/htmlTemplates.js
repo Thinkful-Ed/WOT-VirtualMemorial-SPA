@@ -1,6 +1,7 @@
 var htmlTemplates = (function(){
     let searchHtml = '';
     let infoHtml = '';
+    let storiesTextHtml = '';
     let checkLoader = false;
 
     function tour(){
@@ -49,7 +50,7 @@ var htmlTemplates = (function(){
                 <div class="search-col inline"><p><b>${item.Name}</b></p></div>
                 <div class="search-col inline">
                     <button class="vet-info" data-id="${item.Name}">View Information</button>
-                    <button>View Stories</button>
+                    <button class="vet-story" data-id="${item.Name}">View Stories</button>
                 </div>
                 <hr>
             </div>
@@ -122,7 +123,7 @@ var htmlTemplates = (function(){
 
         $('#dynamic-container').html(htmlTemplate);
     }
-    function textStoryUI(){
+    function textStoryUI(jsonObj){
         let htmlTemplate = `<div>
                                 <div style=" height: 6rem;">
                                     <button id="create-new-text-story">Add a New Story</button>
@@ -130,7 +131,14 @@ var htmlTemplates = (function(){
                                 <div id="text-stories-container"></div>
                             </div>`;
 
-        $('#stories-content-container').html(htmlTemplate);
+        if(!(jsonObj)){
+            $('#stories-content-container').html(htmlTemplate);
+            $('#text-stories-container').html(storiesTextHtml);
+        }
+        else{
+            $('#stories-content-container').html(htmlTemplate);
+            $('#text-stories-container').html(buildTextStories(jsonObj));
+        }
     }
     function createNewStory(){
         let htmlTemplate = `<div id="new-text-story-container">
@@ -145,14 +153,24 @@ var htmlTemplates = (function(){
 
         $('#stories-content-container').html(htmlTemplate);
     }
-    function buildSingleTextStory(title, author, text){
-        return `<article>
-                    <h2>${title}</h2>
-                    <h3>${author}</h3>
-                    <p>${text}</p>
-                    <hr>
-                </article>`;
+    function buildTextStories(jsonObj){
+        let htmlStoriesTemplate = '';
+
+        jsonObj[0].Text.forEach(item=>{
+            console.log(item);
+            htmlStoriesTemplate += `<article>
+                                        <h2>${item.Title}</h2>
+                                        <h3>${item.Author}</h3>
+                                        <p>${item.Text}</p>
+                                        <hr>
+                                    </article>`;
+        });
+
+        storiesTextHtml = htmlStoriesTemplate;
+        $('#text-stories-container').html(htmlStoriesTemplate);
     }
+
+
     function loader(){
         console.log('Entering Function "loader()"');
         console.log(`CheckLoader current: ${checkLoader}`);

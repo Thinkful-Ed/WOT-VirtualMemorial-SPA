@@ -8,6 +8,7 @@ const {VetDoc} = require('./model');
 * nothing more. So it will not include the '/veterans/' portion.
 * Only the must HAVE portions for it to work.*/
 router.get('/', (req, res)=>{
+    // Empty search submission which returns all Veterans
     console.log('\nRequest at "GET: /veterans" endpoint.');
     VetDoc.find()
         .then((jsonObj)=>{
@@ -19,6 +20,7 @@ router.get('/', (req, res)=>{
         })
 });
 router.get('/:search', (req, res)=>{
+    // Single search query which returns the
     console.log('\nRequest at "GET: /veterans/:name" endpoint.');
     let searchStr = req.params.search;
     console.log(searchStr);

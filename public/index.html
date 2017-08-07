@@ -81,6 +81,11 @@
             ev.preventDefault();
             crtl.veteranInfo(ev);
         });
+        $('#dynamic-container').on('click', '.vet-story', function(ev) {
+            ev.preventDefault();
+            crtl.veteranStoriesText(ev);
+        });
+
         // Stories - Main
         $('#dynamic-container').on('click', '#story-text', (ev)=>{
             ev.preventDefault();

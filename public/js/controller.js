@@ -14,19 +14,35 @@ var crtl = (function(){
             console.warn('Something broke!');
         })
     }
-    function veteranInfo(event){
-        let vetName = event.currentTarget.dataset.id;
+    function veteranInfo(ev){
+        let vetName = ev.currentTarget.dataset.id;
         htmlTemplates.loader();
 
         $.ajax({url:`veterans/${vetName}`})
             .then((res)=>{
+                console.log(res);
                 htmlTemplates.info(res);
                 htmlTemplates.loader();
             })
         .fail();
     }
+    function veteranStoriesText(ev){
+        let vetName = ev.currentTarget.dataset.id;
+        // htmlTemplates.loader();
+
+        $.ajax({url:`veterans/${vetName}`})
+            .then((res)=>{
+                htmlTemplates.storyMainUI();
+                htmlTemplates.textStoryUI(res);
+                // htmlTemplates.loader();
+            })
+            .fail();
+    }
+
+    // Exposed
     return {
         submitSearch: submitSearch,
-        veteranInfo: veteranInfo
+        veteranInfo: veteranInfo,
+        veteranStoriesText: veteranStoriesText
     }
 }());

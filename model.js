@@ -17,13 +17,9 @@ const vetScheme = mongoose.Schema({
     City: {type: String},
     Unit: {type: String},
     Stationed: {type: String},
-    Stories: [
-        {Text:[{
-            Title: {type: String},
-            Author: {type: String},
-            Text: {type: String}
-        }]}
-    ]
+    Text:[{Title: {type: String},
+           Author: {type: String},
+           Text: {type: String}}]
 });
 
 // Methods
