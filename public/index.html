@@ -83,7 +83,7 @@
         });
         $('#dynamic-container').on('click', '.vet-story', function(ev) {
             ev.preventDefault();
-            crtl.veteranStoriesText(ev);
+            crtl.getTextStories(ev);
         });
 
         // Stories - Main
@@ -119,6 +119,7 @@
         $('#dynamic-container').on('click', '#text-story-submit', (ev)=>{
             ev.preventDefault();
             console.log('Story Submitted');
+            crtl.submitTextStory();
         });
     </script>
 </body>

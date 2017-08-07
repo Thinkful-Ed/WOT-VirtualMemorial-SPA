@@ -26,23 +26,30 @@ var crtl = (function(){
             })
         .fail();
     }
-    function veteranStoriesText(ev){
+    function getTextStories(ev){
         let vetName = ev.currentTarget.dataset.id;
-        // htmlTemplates.loader();
+        htmlTemplates.loader();
 
         $.ajax({url:`veterans/${vetName}`})
             .then((res)=>{
                 htmlTemplates.storyMainUI();
                 htmlTemplates.textStoryUI(res);
-                // htmlTemplates.loader();
+                htmlTemplates.loader();
             })
             .fail();
+    }
+    function submitTextStory(){
+        let title = $('#text-title').val();
+        let author = $('#text-author').val();
+        let text = $('#text-text').val();
+        console.log(`${title}, ${author}, ${text}`);
     }
 
     // Exposed
     return {
         submitSearch: submitSearch,
         veteranInfo: veteranInfo,
-        veteranStoriesText: veteranStoriesText
+        getTextStories: getTextStories,
+        submitTextStory: submitTextStory
     }
 }());
