@@ -20,7 +20,6 @@ var crtl = (function(){
 
         $.ajax({url:`veterans/${vetName}`})
             .then((res)=>{
-                console.log(res);
                 htmlTemplates.info(res);
                 htmlTemplates.loader();
             })
@@ -45,6 +44,9 @@ var crtl = (function(){
         let author = $('#text-author').val();
         let text = $('#text-text').val();
         console.log(`${title}, ${author}, ${text}`);
+        console.log(state.currentVet);
+
+        $.ajax({url: `veterans/${state.currentVet._id}`})
     }
 
     // Exposed

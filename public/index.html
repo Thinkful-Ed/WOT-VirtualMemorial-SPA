@@ -14,9 +14,7 @@
         <!-- App DOM Container -->
         <section id="app-container" class="show">
             <!-- Banner -->
-            <div id="banner">
-                <img src="imgs/banner.svg" alt="Foundation Banner">
-            </div>
+            <div id="banner"><img src="imgs/banner.svg" alt="Foundation Banner"></div>
 
             <!-- Content / Dynamic -->
             <div id="dynamic-container" class="bg-white"></div>
@@ -41,10 +39,10 @@
 
     <script type="text/javascript" src="libs/jquery.js"></script>
     <script type="text/javascript" src="libs/three.js"></script>
+    <script type="text/javascript" src="js/state.js"></script>
     <script type="text/javascript" src="js/htmlTemplates.js"></script>
-    <script type="text/javascript" src="js/wot-scene/wotScene_Test.js"></script>
-    <!--<script type="text/javascript" src="js/wot-scene/wotScene_Deploy.js"></script>-->
     <script type="text/javascript" src="js/controller.js"></script>
+    <script type="text/javascript" src="js/wot-scene/wotScene_Test.js"></script>
     <script>
         // Set which section is the initial screen
         $(document).ready(htmlTemplates.tour());
@@ -91,24 +89,24 @@
 
         // ====================== Stories
         // =========== Stories Main Menu
+        // Load current vet text stories
         $('#dynamic-container').on('click', '#story-text', (ev)=>{
             ev.preventDefault();
-            console.log('Text');
             htmlTemplates.textStoryUI();
         });
+        // Load current vet picture stories
         $('#dynamic-container').on('click', '#story-picture', (ev)=>{
             ev.preventDefault();
-            console.log('Pictures');
             htmlTemplates.comingSoon();
         });
+        // Load current vet audio stories
         $('#dynamic-container').on('click', '#story-audio', (ev)=>{
             ev.preventDefault();
-            console.log('Audio');
             htmlTemplates.comingSoon();
         });
+        // Load current vet video stories
         $('#dynamic-container').on('click', '#story-video', (ev)=>{
             ev.preventDefault();
-            console.log('Video');
             htmlTemplates.comingSoon();
         });
 
@@ -128,7 +126,6 @@
         // Submit Story
         $('#dynamic-container').on('click', '#text-story-submit', (ev)=>{
             ev.preventDefault();
-            console.log('Story Submitted');
             crtl.submitTextStory();
         });
     </script>

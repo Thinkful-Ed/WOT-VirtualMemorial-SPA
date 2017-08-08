@@ -20,7 +20,7 @@ router.get('/', (req, res)=>{
 router.get('/:search', (req, res)=>{
     console.log('\nRequest at "GET: /veterans/:name" endpoint.');
     let searchStr = req.params.search;
-    console.log(searchStr);
+    console.log(`Query string: ${searchStr}`);
 
     VetDoc.find({Name: searchStr})
         .then((jsonObj)=>{
@@ -36,6 +36,7 @@ router.get('/:search', (req, res)=>{
 router.post('/:id', (req, res)=>{
     console.log('\nRequest at "POST: /veterans/:id" endpoint.');
     console.log(req.params.id);
+    console.log();
     res.status(201).end();
 });
 // Modifies Veteran Text Story

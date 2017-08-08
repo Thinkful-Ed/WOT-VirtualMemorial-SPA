@@ -1,20 +1,15 @@
 var htmlTemplates = (function(){
-    let searchHtml = '';
-    let infoHtml = '';
-    let storiesTextHtml = '';
     let checkLoader = false;
-    var currentVet;
 
+    // Tour
     function tour(){
-        console.log('Entering Function "tour()"');
-
-        var htmlTemplate = `<div id="webgl-container"></div>`;
+         var htmlTemplate = `<div id="webgl-container"></div>`;
         $('#dynamic-container').html(htmlTemplate);
         wotScene.init();
     }
-    function searchUI(){
-        console.log('Entering Function "searchUI()"');
 
+    // Search
+    function searchUI(){
         // Html template for the search UI
         var htmlTemplate = `<div id="search-container">
                                 <div class="bg-red search-box">
@@ -27,24 +22,20 @@ var htmlTemplates = (function(){
 
         // Replace existing UI with search template and add any existing search results.
         $('#dynamic-container').html(htmlTemplate);
-        $('#js-searchResults').html(searchHtml);
+        $('#js-searchResults').html(state.searchHtml);
     }
     function searchResults(jsonObj){
-        console.log('Entering Function "searchResults()"');
-
         // Reset results
-        searchHtml = '';
-        $('#js-searchResults').html(searchHtml);
+        state.searchHtml = '';
+        $('#js-searchResults').html(state.searchHtml);
 
-        // Call 'buildSingleSearchResult' to generate each name display for results and append to "searchHtml" string for return
+        // Call 'buildSingleSearchResult' to generate each name display for results and append to "state.searchHtml" string for return
         jsonObj.forEach(function(item){
-            searchHtml = searchHtml + buildSingleSearchResult(item);
+            state.searchHtml = state.searchHtml + buildSingleSearchResult(item);
         });
-        return searchHtml;
+        return state.searchHtml;
     }
     function buildSingleSearchResult(item){
-        console.log('Entering Function "buildSingleSearchResult()"');
-
         // Create html from each json object that represents a veteran
         return `
             <div>
@@ -57,23 +48,21 @@ var htmlTemplates = (function(){
             </div>
         `
     }
-    function info(jsonObj){
-        console.log('Entering Function "info()"');
 
+    // Info
+    function info(jsonObj){
         if(!(jsonObj)){
-            $('#dynamic-container').html(infoHtml);
+            $('#dynamic-container').html(state.infoHtml);
         }
         else{
-            currentVet = jsonObj;
-            console.log(currentVet[0]._id);
-            infoHtml = buildInfo(jsonObj[0]);
-            $('#dynamic-container').html(infoHtml);
+            state.currentVet = jsonObj[0];
+            state.infoHtml = buildInfo(jsonObj[0]);
+            console.log(state.currentVet);
+            $('#dynamic-container').html(state.infoHtml);
         }
     }
     function buildInfo(jsonObj){
-        console.log('Entering Function "buildInfo()"');
-
-        return `
+     return `
             <div id="info-container" class="bg-white scroll-y">
                 <p><b>Name: </b>${jsonObj.Name}</p>
                 <hr>
@@ -95,8 +84,9 @@ var htmlTemplates = (function(){
             </div>
         `
     }
+
+    // Stories
     function storyMainUI(){
-        console.log('Entering Function "storyUI()"');
         let htmlTemplate = `<div id="story-container">
                                 <div id="story-menu" class="bg-red" style="text-align: center">
                                     <a id="story-text" href="#" class="menu-btn menu-top inline" style="text-align: center">
@@ -126,6 +116,7 @@ var htmlTemplates = (function(){
 
         $('#dynamic-container').html(htmlTemplate);
     }
+    // Text
     function textStoryUI(jsonObj){
         let htmlTemplate = `<div>
                                 <div style=" height: 6rem;">
@@ -136,9 +127,11 @@ var htmlTemplates = (function(){
 
         if(!(jsonObj)){
             $('#stories-content-container').html(htmlTemplate);
-            $('#text-stories-container').html(storiesTextHtml);
-          }
+            $('#text-stories-container').html(state.storiesHtmll);
+        }
         else{
+            state.currentVet = jsonObj[0];
+            console.log(state.currentVet);
             $('#stories-content-container').html(htmlTemplate);
             $('#text-stories-container').html(buildTextStories(jsonObj));
         }
@@ -147,7 +140,6 @@ var htmlTemplates = (function(){
         let htmlStoriesTemplate = '';
 
         jsonObj[0].Text.forEach(item=>{
-            console.log(item);
             htmlStoriesTemplate += `<article>
                                         <h2>${item.Title}</h2>
                                         <h3>${item.Author}</h3>
@@ -156,7 +148,7 @@ var htmlTemplates = (function(){
                                     </article>`;
         });
 
-        storiesTextHtml = htmlStoriesTemplate;
+        state.storiesHtmll = htmlStoriesTemplate;
         $('#text-stories-container').html(htmlStoriesTemplate);
     }
     function createNewStory(){
@@ -172,10 +164,9 @@ var htmlTemplates = (function(){
 
         $('#stories-content-container').html(htmlTemplate);
     }
-    function loader(){
-        console.log('Entering Function "loader()"');
-        console.log(`CheckLoader current: ${checkLoader}`);
 
+    // Misc
+    function loader(typeString){
         let htmlTemplate = `<div id="loader">
                                 <img src="imgs/loader.gif" alt="Loader">
                                 <h1>Loading</h1>
@@ -184,12 +175,10 @@ var htmlTemplates = (function(){
         if(checkLoader === false){
             $('#app-container').append(htmlTemplate);
             checkLoader = true;
-            console.log(`CheckLoader updated to: ${checkLoader}`);
         }
         else{
             $('#loader').remove();
             checkLoader = false;
-            console.log(`CheckLoader updated to: ${checkLoader}`);
         }
     }
     function comingSoon(){
