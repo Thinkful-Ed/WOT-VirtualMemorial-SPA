@@ -58,6 +58,7 @@ var htmlTemplates = (function(){
             state.currentVet = jsonObj[0];
             state.infoHtml = buildInfo(jsonObj[0]);
             console.log(state.currentVet);
+            $('#menu-information-anchor').removeClass('no-click');
             $('#dynamic-container').html(state.infoHtml);
         }
     }
@@ -110,11 +111,20 @@ var htmlTemplates = (function(){
                                         Video
                                     </a>
                                 </div>
-            
                                 <div id="stories-content-container" class="dynamic-container-results"></div>
                             </div>`;
 
         $('#dynamic-container').html(htmlTemplate);
+    }
+    function storyLogin(){
+        let htlmTemplate = `<form>
+                                <label>User</label>
+                                <input placeholder="Username">
+                                <label>Password</label>
+                                <input placeholder="Password">
+                            </form>`;
+
+        $('#stories-content-container').html(htlmTemplate);
     }
     // Text
     function textStoryUI(jsonObj){
@@ -127,13 +137,15 @@ var htmlTemplates = (function(){
 
         if(!(jsonObj)){
             $('#stories-content-container').html(htmlTemplate);
-            $('#text-stories-container').html(state.storiesHtmll);
+            $('#text-stories-container').html(state.storiesHtml);
         }
         else{
             state.currentVet = jsonObj[0];
             console.log(state.currentVet);
             $('#stories-content-container').html(htmlTemplate);
-            $('#text-stories-container').html(buildTextStories(jsonObj));
+
+            let vetStories = buildTextStories(jsonObj);
+            $('#text-stories-container').html(vetStories);
         }
     }
     function buildTextStories(jsonObj){
@@ -152,7 +164,8 @@ var htmlTemplates = (function(){
                                     </article>`;
         });
 
-        state.storiesHtmll = htmlStoriesTemplate;
+        state.storiesHtml = htmlStoriesTemplate;
+        $('#menu-stories-anchor').removeClass('no-click');
         $('#text-stories-container').html(htmlStoriesTemplate);
     }
     function createNewStory(){
@@ -208,6 +221,7 @@ var htmlTemplates = (function(){
          storyMainUI: storyMainUI,
          textStoryUI: textStoryUI,
          createNewStory: createNewStory,
+         storyLogin: storyLogin,
          loader: loader,
          comingSoon: comingSoon,
      };

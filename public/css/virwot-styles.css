@@ -149,6 +149,7 @@ button{
     width: calc(83%/2);
     height: 3.75rem;
     font-size: 2rem;
+    background-color: white;
     margin: 0.25rem 2rem 0.25rem 2rem;
     border-radius: .2rem;
     border-style: none;
@@ -168,6 +169,10 @@ button:active{
 .bg-red{background-color: #830012}
 .bg-gray{background-color: #cdcdcd}
 .bg-white{background-color: #ffffff}
+.no-click{
+    opacity: 0.2575;
+    pointer-events: none;
+}
 .inline{display: inline-block}
 
 /* Media Queries */
