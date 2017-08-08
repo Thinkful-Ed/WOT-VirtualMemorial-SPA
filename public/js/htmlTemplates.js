@@ -63,7 +63,7 @@ var htmlTemplates = (function(){
     }
     function buildInfo(jsonObj){
      return `
-            <div id="info-container" class="bg-white scroll-y">
+            <div id="info-container" class="scroll-y">
                 <p><b>Name: </b>${jsonObj.Name}</p>
                 <hr>
                 <p><b>Age: </b>${jsonObj.Age}</p>
@@ -173,7 +173,7 @@ var htmlTemplates = (function(){
     function loader(typeString){
         let htmlTemplate = `<div id="loader">
                                 <img src="imgs/loader.gif" alt="Loader">
-                                <h1>Loading</h1>
+                                <h1>${typeString}</h1>
                             </div>`;
 
         if(checkLoader === false){

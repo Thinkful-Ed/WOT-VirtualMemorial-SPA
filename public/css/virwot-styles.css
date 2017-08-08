@@ -49,6 +49,11 @@ li{
     padding: .25rem 0 .25rem 0;
 }
 
+.wot-bg-matte{
+    background: url("../imgs/dynamic-bg.jpg") no-repeat center;
+    background-size: cover;
+}
+
 #app-container{
     width: inherit;
     margin: 3.5rem 0 0 0;

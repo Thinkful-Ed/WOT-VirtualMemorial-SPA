@@ -2,7 +2,7 @@ var crtl = (function(){
     // Submit request for veteran(s) then generate HTML results
     function submitSearch(){
         let searchStr = $('#js-searchStr').val();
-        htmlTemplates.loader();
+        htmlTemplates.loader('Searching');
 
         $.ajax({url:`veterans/${searchStr}`})
             .then(function(res){
@@ -16,7 +16,7 @@ var crtl = (function(){
     // Get service information on specific veteran
     function veteranInfo(ev){
         let vetName = ev.currentTarget.dataset.id;
-        htmlTemplates.loader();
+        htmlTemplates.loader('Loading');
 
         $.ajax({url:`veterans/${vetName}`})
             .then((res)=>{
@@ -28,7 +28,7 @@ var crtl = (function(){
     // Get stories for specific veteran
     function getTextStories(ev){
         let vetName = ev.currentTarget.dataset.id;
-        htmlTemplates.loader();
+        htmlTemplates.loader('Loading');
 
         $.ajax({url:`veterans/${vetName}`})
             .then((res)=>{
