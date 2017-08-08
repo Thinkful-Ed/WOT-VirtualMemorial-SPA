@@ -11,6 +11,7 @@
 
 <body>
     <main>
+        <!-- App DOM Container -->
         <section id="app-container" class="show">
             <!-- Banner -->
             <div id="banner">
@@ -48,45 +49,48 @@
         // Set which section is the initial screen
         $(document).ready(htmlTemplates.tour());
 
-        // ===================== Static Main Menu Events
-        // WebGL Tour
+        // ================================ Main Menu
+        // WebGL Tour Loader
         $('#menu-tour').click(function(){
             event.preventDefault();
             htmlTemplates.tour();
         });
-        // Search - Main Menu
+        // Search Main Menu
         $('#menu-search').click(function(){
             event.preventDefault();
             htmlTemplates.searchUI();
         });
-        // Information - Vet Info
+        // Information
         $('#menu-information').click(function() {
             event.preventDefault();
             htmlTemplates.info();
         });
-        // Stories - Main Menu
+        // Stories Main Menu
         $('#menu-stories').click(function(){
             event.preventDefault();
             htmlTemplates.storyMainUI();
         });
 
-        // ===================== Dynamic Menu Events
-        // Search - Submission
+        // ================================ Dynamic Menus
+        // ====================== Search
+        // Search Submission
         $('#dynamic-container').on('click', '#js-submitSearch', function(ev){
             ev.preventDefault();
             crtl.submitSearch();
         });
-        // Information - Vet Info UI
+        // View Vet Info
         $('#dynamic-container').on('click', '.vet-info', function(ev) {
             ev.preventDefault();
             crtl.veteranInfo(ev);
         });
+        // View Exiting Vet Stories
         $('#dynamic-container').on('click', '.vet-story', function(ev) {
             ev.preventDefault();
             crtl.getTextStories(ev);
         });
 
-        // Stories - Main
+        // ====================== Stories
+        // =========== Stories Main Menu
         $('#dynamic-container').on('click', '#story-text', (ev)=>{
             ev.preventDefault();
             console.log('Text');
@@ -107,15 +111,21 @@
             console.log('Video');
             htmlTemplates.comingSoon();
         });
-        // Stories - Focused - Text
+
+        // =========== View Stories
+        // Load "Create New Story" window
         $('#dynamic-container').on('click', '#create-new-text-story', (ev)=>{
             ev.preventDefault();
             htmlTemplates.createNewStory();
         });
+
+        // =========== Create New Story
+        // Clear Text Fields
         $('#dynamic-container').on('click', '#text-story-clear', (ev)=>{
             ev.preventDefault();
             alert('Your story hasn\'t been submitted. Are you sure you want to clear the text?');
         });
+        // Submit Story
         $('#dynamic-container').on('click', '#text-story-submit', (ev)=>{
             ev.preventDefault();
             console.log('Story Submitted');

@@ -4,11 +4,8 @@ const router = express.Router();
 const {VetDoc} = require('./model');
 
 // Endpoints
-/*Endpoint past are just the absolute required string and
-* nothing more. So it will not include the '/veterans/' portion.
-* Only the must HAVE portions for it to work.*/
+// Returns All Veterans in the DB
 router.get('/', (req, res)=>{
-    // Empty search submission which returns all Veterans
     console.log('\nRequest at "GET: /veterans" endpoint.');
     VetDoc.find()
         .then((jsonObj)=>{
@@ -19,8 +16,8 @@ router.get('/', (req, res)=>{
             res.json({err: "Sorry, an error occurred while retrieving all."})
         })
 });
+// Returns Specific Veteran Information Based on Query
 router.get('/:search', (req, res)=>{
-    // Single search query which returns the
     console.log('\nRequest at "GET: /veterans/:name" endpoint.');
     let searchStr = req.params.search;
     console.log(searchStr);
@@ -35,17 +32,20 @@ router.get('/:search', (req, res)=>{
             res.status(500).json({error: 'something went terribly wrong'});
         });
 });
+// Post Veteran Text Story
 router.post('/:id', (req, res)=>{
     console.log('\nRequest at "POST: /veterans/:id" endpoint.');
     console.log(req.params.id);
     res.status(201).end();
 });
+// Modifies Veteran Text Story
 router.put('/:id/:storyID', (req, res)=>{
     console.log('\nRequest at "PUT: /veterans/:id/:content" endpoint.');
     console.log(req.params.id);
     console.log(req.params.storyID);
     res.status(202).end();
 });
+// Removes Veteran Text Story
 router.delete('/:id/:storyID', (req, res)=>{
     console.log('\nRequest at "DEL: /veterans/:id/:content" endpoint.');
     console.log(req.params.id);

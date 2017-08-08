@@ -22,8 +22,6 @@ const vetScheme = mongoose.Schema({
            Text: {type: String}}]
 });
 
-// Methods
-
 // Associate & Export
 const VetDoc = mongoose.model('veterans', vetScheme);
 module.exports = {VetDoc};

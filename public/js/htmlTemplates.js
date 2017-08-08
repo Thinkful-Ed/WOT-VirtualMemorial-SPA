@@ -3,6 +3,7 @@ var htmlTemplates = (function(){
     let infoHtml = '';
     let storiesTextHtml = '';
     let checkLoader = false;
+    var currentVet;
 
     function tour(){
         console.log('Entering Function "tour()"');
@@ -63,6 +64,8 @@ var htmlTemplates = (function(){
             $('#dynamic-container').html(infoHtml);
         }
         else{
+            currentVet = jsonObj;
+            console.log(currentVet[0]._id);
             infoHtml = buildInfo(jsonObj[0]);
             $('#dynamic-container').html(infoHtml);
         }
@@ -140,19 +143,6 @@ var htmlTemplates = (function(){
             $('#text-stories-container').html(buildTextStories(jsonObj));
         }
     }
-    function createNewStory(){
-        let htmlTemplate = `<div id="new-text-story-container">
-                                <form>
-                                    <h2 class="inline">Title</h2><input id="text-title" type="text" class="inline" style="font-size: 2rem">
-                                    <h2 class="inline">Author</h2><input id="text-author" type="text" class="inline" style="font-size: 2rem">
-                                    <textarea id="text-text" cols="90%" rows="10%" style="font-size: 2rem"></textarea>
-                                    <button id="text-story-clear">Clear</button>
-                                    <button id="text-story-submit">Submit</button>
-                                </form>
-                            </div>`;
-
-        $('#stories-content-container').html(htmlTemplate);
-    }
     function buildTextStories(jsonObj){
         let htmlStoriesTemplate = '';
 
@@ -169,8 +159,19 @@ var htmlTemplates = (function(){
         storiesTextHtml = htmlStoriesTemplate;
         $('#text-stories-container').html(htmlStoriesTemplate);
     }
+    function createNewStory(){
+        let htmlTemplate = `<div id="new-text-story-container">
+                                <form>
+                                    <h2 class="inline">Title</h2><input id="text-title" type="text" class="inline" style="font-size: 2rem">
+                                    <h2 class="inline">Author</h2><input id="text-author" type="text" class="inline" style="font-size: 2rem">
+                                    <textarea id="text-text" cols="90%" rows="10%" style="font-size: 2rem"></textarea>
+                                    <button id="text-story-clear">Clear</button>
+                                    <button id="text-story-submit">Submit</button>
+                                </form>
+                            </div>`;
 
-
+        $('#stories-content-container').html(htmlTemplate);
+    }
     function loader(){
         console.log('Entering Function "loader()"');
         console.log(`CheckLoader current: ${checkLoader}`);
@@ -215,6 +216,6 @@ var htmlTemplates = (function(){
          textStoryUI: textStoryUI,
          createNewStory: createNewStory,
          loader: loader,
-         comingSoon: comingSoon
+         comingSoon: comingSoon,
      };
 }());

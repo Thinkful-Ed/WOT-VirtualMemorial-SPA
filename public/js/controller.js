@@ -1,9 +1,8 @@
 var crtl = (function(){
+    // Submit request for veteran(s) then generate HTML results
     function submitSearch(){
         let searchStr = $('#js-searchStr').val();
         htmlTemplates.loader();
-
-
 
         $.ajax({url:`veterans/${searchStr}`})
             .then(function(res){
@@ -14,6 +13,7 @@ var crtl = (function(){
             console.warn('Something broke!');
         })
     }
+    // Get service information on specific veteran
     function veteranInfo(ev){
         let vetName = ev.currentTarget.dataset.id;
         htmlTemplates.loader();
@@ -26,6 +26,7 @@ var crtl = (function(){
             })
         .fail();
     }
+    // Get stories for specific veteran
     function getTextStories(ev){
         let vetName = ev.currentTarget.dataset.id;
         htmlTemplates.loader();
@@ -38,6 +39,7 @@ var crtl = (function(){
             })
             .fail();
     }
+    // Submit story on specific veteran
     function submitTextStory(){
         let title = $('#text-title').val();
         let author = $('#text-author').val();
