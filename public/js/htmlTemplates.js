@@ -134,7 +134,7 @@ var htmlTemplates = (function(){
         if(!(jsonObj)){
             $('#stories-content-container').html(htmlTemplate);
             $('#text-stories-container').html(storiesTextHtml);
-        }
+          }
         else{
             $('#stories-content-container').html(htmlTemplate);
             $('#text-stories-container').html(buildTextStories(jsonObj));
