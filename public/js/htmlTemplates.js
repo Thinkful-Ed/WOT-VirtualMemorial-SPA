@@ -141,7 +141,11 @@ var htmlTemplates = (function(){
 
         jsonObj[0].Text.forEach(item=>{
             htmlStoriesTemplate += `<article>
-                                        <h2>${item.Title}</h2>
+                                        <h2 style="display: inline-block">${item.Title}</h2>
+                                        <div style="display: inline-block; float: right;">
+                                            <button style="width: 10rem;">Edit</button>
+                                            <button style="width: 10rem;">Delete</button>
+                                        </div>
                                         <h3>${item.Author}</h3>
                                         <p>${item.Text}</p>
                                         <hr>
