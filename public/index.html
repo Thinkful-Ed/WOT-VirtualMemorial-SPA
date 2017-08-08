@@ -71,7 +71,12 @@
 
         // ================================ Dynamic Menus
         // ====================== Search
-        // Search Submission
+        // Search Submission - "Mouse Click"
+        $('#dynamic-container').on('click', '#js-submitSearch', function(ev){
+            ev.preventDefault();
+            crtl.submitSearch();
+        });
+        // Search Submission - "Enter"
         $('#dynamic-container').on('click', '#js-submitSearch', function(ev){
             ev.preventDefault();
             crtl.submitSearch();
