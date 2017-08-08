@@ -40,15 +40,17 @@ var crtl = (function(){
     }
     // Submit story on specific veteran
     function submitTextStory(){
-        let title = $('#text-title').val();
-        let author = $('#text-author').val();
-        let text = $('#text-text').val();
-        console.log(`${title},
-                     ${author},
-                     ${text}`);
         console.log(state.currentVet);
 
-        $.ajax({url: `veterans/${state.currentVet._id}`})
+        $.ajax({url: `veterans/${state.currentVet._id}`,
+                type: 'POST',
+                data: JSON.stringify([
+                    {title: $('#text-title').val()},
+                    {author: $('#text-author').val()},
+                    {text: $('#text-text').val()}
+                ]),
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json'})
     }
 
     // Exposed

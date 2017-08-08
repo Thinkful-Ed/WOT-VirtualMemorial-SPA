@@ -37,8 +37,11 @@ router.post('/:id', (req, res)=>{
     console.log('\nRequest at "POST: /veterans/:id" endpoint.');
     let docID = req.params.id;
     console.log(docID);
+    console.log(req.body);
 
-    VetDoc.findByIdAndUpdate(docID);
+    // VetDoc.findByIdAndUpdate(docID);
+    let merp = VetDoc.findById(docID);
+    console.log(merp);
 
     res.status(201).end();
 });
