@@ -43,7 +43,9 @@ var crtl = (function(){
         let title = $('#text-title').val();
         let author = $('#text-author').val();
         let text = $('#text-text').val();
-        console.log(`${title}, ${author}, ${text}`);
+        console.log(`${title},
+                     ${author},
+                     ${text}`);
         console.log(state.currentVet);
 
         $.ajax({url: `veterans/${state.currentVet._id}`})

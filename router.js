@@ -35,8 +35,11 @@ router.get('/:search', (req, res)=>{
 // Post Veteran Text Story
 router.post('/:id', (req, res)=>{
     console.log('\nRequest at "POST: /veterans/:id" endpoint.');
-    console.log(req.params.id);
-    console.log();
+    let docID = req.params.id;
+    console.log(docID);
+
+    VetDoc.findByIdAndUpdate(docID);
+
     res.status(201).end();
 });
 // Modifies Veteran Text Story
