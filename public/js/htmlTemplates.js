@@ -129,7 +129,7 @@ var htmlTemplates = (function(){
     // Text
     function textStoryUI(jsonObj){
         let htmlTemplate = `<div>
-                                <div style=" height: 6rem; text-align: center">
+                                <div style=" height: 6rem; text-align: center; margin: 0.5rem 0 0 0;">
                                     <button id="create-new-text-story">Add a New Story</button>
                                     <button id="user-login">Login</button>
                                 </div>

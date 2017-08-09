@@ -34,12 +34,19 @@ router.get('/:search', (req, res)=>{
         });
 });
 // Post Veteran Text Story
-router.post('/:id', (req, res)=>{
+router.post('/:vetID', (req, res)=>{
     console.log('\nRequest at "POST: /veterans/:id" endpoint.');
-    let docID = req.params.id;
-    console.log(docID);
     console.log(req.body);
-    console.log(uuid());
+
+    let vetID = req.params.vetID;
+    let newDoc = {
+        "storyID": uuid(),
+        "title": req.body[0].title,
+        "author": req.body[1].author,
+        "text": req.body[2].text
+    };
+
+    console.log(newDoc);
 
     // VetDoc.findByIdAndUpdate(docID);
     /*let merp = VetDoc.findById(docID);

@@ -17,9 +17,12 @@ const vetScheme = mongoose.Schema({
     City: {type: String},
     Unit: {type: String},
     Stationed: {type: String},
-    Text:[{Title: {type: String},
-           Author: {type: String},
-           Text: {type: String}}]
+    Text:[{
+            storyID:{type: Number},
+            Title: {type: String},
+            Author: {type: String},
+            Text: {type: String}
+    }]
 });
 
 // Associate & Export
