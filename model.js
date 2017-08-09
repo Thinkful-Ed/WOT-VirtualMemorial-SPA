@@ -25,6 +25,15 @@ const vetScheme = mongoose.Schema({
     }]
 });
 
+const textStoryScheme = mongoose.Schema({
+    vetID: {type: String},
+    Title: {type: String},
+    Author: {type: String},
+    Text: {type: String}
+});
+
 // Associate & Export
 const VetDoc = mongoose.model('veterans', vetScheme);
-module.exports = {VetDoc};
+const TextDoc = mongoose.model('stories-text', textStoryScheme);
+
+module.exports = {VetDoc, TextDoc};
