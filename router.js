@@ -1,6 +1,7 @@
 // Imports & Init
 const express = require('express');
 const router = express.Router();
+const uuid = require('uuid/v4');
 const {VetDoc} = require('./model');
 
 // Endpoints
@@ -38,10 +39,11 @@ router.post('/:id', (req, res)=>{
     let docID = req.params.id;
     console.log(docID);
     console.log(req.body);
+    console.log(uuid());
 
     // VetDoc.findByIdAndUpdate(docID);
-    let merp = VetDoc.findById(docID);
-    console.log(merp);
+    /*let merp = VetDoc.findById(docID);
+    console.log(merp);*/
 
     res.status(201).end();
 });

@@ -129,8 +129,9 @@ var htmlTemplates = (function(){
     // Text
     function textStoryUI(jsonObj){
         let htmlTemplate = `<div>
-                                <div style=" height: 6rem;">
+                                <div style=" height: 6rem; text-align: center">
                                     <button id="create-new-text-story">Add a New Story</button>
+                                    <button id="user-login">Login</button>
                                 </div>
                                 <div id="text-stories-container"></div>
                             </div>`;
@@ -152,15 +153,15 @@ var htmlTemplates = (function(){
         let htmlStoriesTemplate = '';
 
         jsonObj[0].Text.forEach(item=>{
-            htmlStoriesTemplate += `<article>
-                                        <h2 style="display: inline-block">${item.Title}</h2>
+            htmlStoriesTemplate += `<article data-id="${item.id}">
+                                        <h2 style="display: inline-block; text-decoration: underline;">${item.Title}</h2>
                                         <div style="display: inline-block; float: right;">
                                             <button style="width: 10rem;">Edit</button>
                                             <button style="width: 10rem;">Delete</button>
                                         </div>
-                                        <h3>${item.Author}</h3>
+                                        <h3 style="text-decoration: underline;">${item.Author}</h3>
                                         <p>${item.Text}</p>
-                                        <hr>
+                                        <hr style="margin: 2.5rem 0 2.5rem 0;">
                                     </article>`;
         });
 
@@ -169,13 +170,15 @@ var htmlTemplates = (function(){
         $('#text-stories-container').html(htmlStoriesTemplate);
     }
     function createNewStory(){
-        let htmlTemplate = `<div id="new-text-story-container">
+        let htmlTemplate = `<div id="new-text-story-container" style="text-align: center">
                                 <form>
-                                    <h2 class="inline">Title</h2><input id="text-title" type="text" class="inline" style="font-size: 2rem">
-                                    <h2 class="inline">Author</h2><input id="text-author" type="text" class="inline" style="font-size: 2rem">
-                                    <textarea id="text-text" cols="90%" rows="10%" style="font-size: 2rem"></textarea>
-                                    <button id="text-story-clear">Clear</button>
-                                    <button id="text-story-submit">Submit</button>
+                                    <h2 class="inline" style="font-size: 2.5rem; margin: 2rem 0 1rem 0;">Title</h2><input id="text-title" type="text" class="inline" style="font-size: 2.5rem; height: 3.5rem;">
+                                    <h2 class="inline" style="font-size: 2.5rem; margin: 2rem 0 1rem 0;">Author</h2><input id="text-author" type="text" class="inline" style="font-size: 2.5rem; height: 3.5rem;">
+                                    <textarea id="text-text" cols="90%" rows="15%" style="font-size: 2rem"></textarea>
+                                    <div>
+                                        <button id="text-story-clear">Clear</button>
+                                        <button id="text-story-submit">Submit</button>
+                                    </div>
                                 </form>
                             </div>`;
 
