@@ -27,14 +27,16 @@ var crtl = (function(){
     }
     // Get stories for specific veteran
     function getTextStories(ev){
-        let vetName = ev.currentTarget.dataset.id;
-        htmlTemplates.loader('Loading');
+        let vetID = ev.currentTarget.dataset.id;
+        state.currentStoryVet = vetID;
+        console.log(`MongoDB ID:  ${vetID}`);
 
-        $.ajax({url:`veterans/${vetName}`})
+        // htmlTemplates.loader('Loading');
+        $.ajax({url:`veterans/text/${vetID}`})
             .then((res)=>{
                 htmlTemplates.storyMainUI();
                 htmlTemplates.textStoryUI(res);
-                htmlTemplates.loader();
+                // htmlTemplates.loader();
             })
             .fail();
     }

@@ -17,23 +17,11 @@ const vetScheme = mongoose.Schema({
     City: {type: String},
     Unit: {type: String},
     Stationed: {type: String},
-    Text:[{
-            storyID:{type: Number},
-            Title: {type: String},
-            Author: {type: String},
-            Text: {type: String}
-    }]
-});
-
-const textStoryScheme = mongoose.Schema({
-    vetID: {type: String},
-    Title: {type: String},
-    Author: {type: String},
-    Text: {type: String}
-});
+    },
+    {collection: "veterans"}
+);
 
 // Associate & Export
 const VetDoc = mongoose.model('veterans', vetScheme);
-const TextDoc = mongoose.model('stories-text', textStoryScheme);
 
-module.exports = {VetDoc, TextDoc};
+module.exports = {VetDoc};

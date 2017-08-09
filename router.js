@@ -2,7 +2,8 @@
 const express = require('express');
 const router = express.Router();
 const uuid = require('uuid/v4');
-const {VetDoc, TextDoc} = require('./model');
+const {VetDoc} = require('./model');
+const {TextDoc} = require('./model-story-text');
 
 // Endpoints
 // Returns All Veterans in the DB
@@ -32,6 +33,18 @@ router.get('/:search', (req, res)=>{
             console.log(err);
             res.status(500).json({error: 'something went terribly wrong'});
         });
+});
+// Get Stories - Text
+router.get('/text/:vetSearchVal', (req, res)=>{
+    console.log('\nRequest at "GET: /veterans/text/:vetID" endpoint.');
+    let vetSearchVal = req.params.vetSearchVal;
+    console.log(vetSearchVal);
+
+    TextDoc.find({vetID: vetSearchVal})
+        .then((jsonObj)=>{
+            console.log(jsonObj);
+            res.json(jsonObj);
+        })
 });
 // Post Veteran Text Story
 router.post('/:vetID', (req, res)=>{

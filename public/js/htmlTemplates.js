@@ -57,7 +57,7 @@ var htmlTemplates = (function(){
                 <div class="search-col inline"><p><b>${item.Name}</b></p></div>
                 <div class="search-col inline">
                     <button class="vet-info" data-id="${item.Name}">View Information</button>
-                    <button class="vet-story" data-id="${item.Name}">View Stories</button>
+                    <button class="vet-story" data-id="${item._id}">View Stories</button>
                 </div>
                 <hr>
             </div>
@@ -151,24 +151,22 @@ var htmlTemplates = (function(){
                                 <div id="text-stories-container"></div>
                             </div>`;
 
+        $('#stories-content-container').html(htmlTemplate);
         if(!(jsonObj)){
-            $('#stories-content-container').html(htmlTemplate);
             $('#text-stories-container').html(state.storiesHtml);
         }
         else{
-            state.currentVet = jsonObj[0];
-            console.log(state.currentVet);
-            $('#stories-content-container').html(htmlTemplate);
-
-            let vetStories = buildTextStories(jsonObj);
-            $('#text-stories-container').html(vetStories);
+            console.log(`Story Vet ID ${jsonObj[0].vetID}`);
+            $('#text-stories-container').html(buildTextStories(jsonObj));
         }
     }
     function buildTextStories(jsonObj){
         let htmlStoriesTemplate = '';
 
-        jsonObj[0].Text.forEach(item=>{
-            htmlStoriesTemplate += `<article data-id="${item.id}">
+        console.log(jsonObj);
+
+        jsonObj.forEach(item=>{
+            htmlStoriesTemplate += `<article data-id="${item._id}">
                                         <h2 style="display: inline-block; text-decoration: underline;">${item.Title}</h2>
                                         <div style="display: inline-block; float: right;">
                                             <button style="width: 10rem;">Edit</button>

@@ -6,11 +6,13 @@ var state = (function(){
     var infoHtml = Null;
     var storiesHtml = Null;
     var currentVet = Null;
+    var currentStoryVet = Null;
 
     return{
         searchHtml: searchHtml,
         infoHtml: infoHtml,
         storiesHtml: storiesHtml,
-        currentVet: currentVet
+        currentVet: currentVet,
+        currentStoryVet: currentStoryVet
     }
 });

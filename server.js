@@ -42,6 +42,17 @@ function runServer(){
             mongoose.disconnect();
             reject(err);
         });
+
+        // Report existing DB collections
+        /*mongoose.connection.on('open', function () {
+            mongoose.connection.db.listCollections().toArray(function (err, names) {
+                if (err) {
+                    console.log(err);
+                } else {
+                    console.log(names);
+                }
+            });
+        });*/
     })
 }
 function closeServer(){
