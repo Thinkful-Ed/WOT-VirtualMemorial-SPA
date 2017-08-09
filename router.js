@@ -36,8 +36,8 @@ router.get('/:search', (req, res)=>{
 // Post Veteran Text Story
 router.post('/:vetID', (req, res)=>{
     console.log('\nRequest at "POST: /veterans/:id" endpoint.');
-    console.log(req.body);
 
+    // Prep data for use by Mongo
     let vetID = req.params.vetID;
     let newDoc = {
         "storyID": uuid(),
@@ -46,11 +46,13 @@ router.post('/:vetID', (req, res)=>{
         "text": req.body[2].text
     };
 
-    console.log(newDoc);
+    // Get veteran doc
+    let vetDoc = VetDoc.findById(vetID);
+    let vetDocAlt = VetDoc.findOne({_id: vetID});
 
-    // VetDoc.findByIdAndUpdate(docID);
-    /*let merp = VetDoc.findById(docID);
-    console.log(merp);*/
+    console.log(newDoc);
+    console.log(vetDoc);
+    console.log(vetDocAlt);
 
     res.status(201).end();
 });
