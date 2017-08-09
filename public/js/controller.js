@@ -4,7 +4,7 @@ var crtl = (function(){
         let searchStr = $('#js-searchStr').val();
         htmlTemplates.loader('Searching');
 
-        $.ajax({url:`veterans/${searchStr}`})
+        $.ajax({url:`veterans/${searchStr}`, type: 'GET'})
             .then(function(res){
                 $('#js-searchResults').html(htmlTemplates.searchResults(res));
                 htmlTemplates.loader();
@@ -18,7 +18,7 @@ var crtl = (function(){
         let vetName = ev.currentTarget.dataset.id;
         htmlTemplates.loader('Loading');
 
-        $.ajax({url:`veterans/${vetName}`})
+        $.ajax({url:`veterans/${vetName}`, type: 'GET'})
             .then((res)=>{
                 htmlTemplates.info(res);
                 htmlTemplates.loader();
@@ -32,7 +32,7 @@ var crtl = (function(){
         console.log(`MongoDB ID:  ${vetID}`);
 
         // htmlTemplates.loader('Loading');
-        $.ajax({url:`veterans/text/${vetID}`})
+        $.ajax({url:`veterans/text/${vetID}`, type: 'GET'})
             .then((res)=>{
                 htmlTemplates.storyMainUI();
                 htmlTemplates.textStoryUI(res);
@@ -52,12 +52,38 @@ var crtl = (function(){
                 contentType: 'application/json; charset=utf-8',
                 dataType: 'json'})
     }
+    function editTextStory(ev){
+        console.log(ev.currentTarget.dataset.id);
+        let storyID = ev.currentTarget.dataset.id;
+        console.log('Entering Edit');
+
+        let title = $(`#${storyID}`).children('h2').text();
+        let author = $(`#${storyID}`).children('h3').text();
+        let text = $(`#${storyID}`).children('p').text();
+
+        console.log(title);
+        console.log(author);
+        console.log(text);
+
+
+    }
+    function deleteTextStory(ev){
+        let textID = ev.currentTarget.dataset.id;
+        console.log(`Current Text ID is: ${textID}`);
+
+        $.ajax({url: `veterans/${textID}`, type: 'DELETE'});
+
+        console.log(`Removing text story with ID: ${textID}`);
+        $(`#${textID}`).remove();
+    }
 
     // Exposed
     return {
         submitSearch: submitSearch,
         veteranInfo: veteranInfo,
         getTextStories: getTextStories,
-        submitTextStory: submitTextStory
+        submitTextStory: submitTextStory,
+        editTextStory: editTextStory,
+        deleteTextStory: deleteTextStory
     }
 }());

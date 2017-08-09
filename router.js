@@ -63,17 +63,19 @@ router.post('/:vetID', (req, res)=>{
     res.status(201).end();
 });
 // Modifies Veteran Text Story
-router.put('/:id/:storyID', (req, res)=>{
-    console.log('\nRequest at "PUT: /veterans/:id/:content" endpoint.');
+router.put('/:textID', (req, res)=>{
+    console.log('\nRequest at "PUT: /veterans/:textID" endpoint.');
     console.log(req.params.id);
     console.log(req.params.storyID);
     res.status(202).end();
 });
 // Removes Veteran Text Story
-router.delete('/:id/:storyID', (req, res)=>{
-    console.log('\nRequest at "DEL: /veterans/:id/:content" endpoint.');
-    console.log(req.params.id);
-    console.log(req.params.storyID);
+router.delete('/:textID', (req, res)=>{
+    console.log('\nRequest at "DEL: /veterans/:textID" endpoint.');
+    console.log(req.params.textID);
+
+    TextDoc.findByIdAndRemove(req.params.textID);
+
     res.status(204).end();
 });
 

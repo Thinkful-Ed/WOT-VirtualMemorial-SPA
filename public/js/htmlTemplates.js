@@ -166,11 +166,11 @@ var htmlTemplates = (function(){
         console.log(jsonObj);
 
         jsonObj.forEach(item=>{
-            htmlStoriesTemplate += `<article data-id="${item._id}">
+            htmlStoriesTemplate += `<article id="${item._id}">
                                         <h2 style="display: inline-block; text-decoration: underline;">${item.Title}</h2>
                                         <div style="display: inline-block; float: right;">
-                                            <button style="width: 10rem;">Edit</button>
-                                            <button style="width: 10rem;">Delete</button>
+                                            <button style="width: 10rem;" class="edit" data-id="${item._id}">Edit</button>
+                                            <button style="width: 10rem;" class="delete" data-id="${item._id}">Delete</button>
                                         </div>
                                         <h3 style="text-decoration: underline;">${item.Author}</h3>
                                         <p>${item.Text}</p>
@@ -182,11 +182,13 @@ var htmlTemplates = (function(){
         $('#menu-stories-anchor').removeClass('no-click');
         $('#text-stories-container').html(htmlStoriesTemplate);
     }
-    function createNewStory(){
+    function createNewStory(title, author, text){
         let htmlTemplate = `<div id="new-text-story-container" style="text-align: center">
                                 <form>
-                                    <h2 class="inline" style="font-size: 2.5rem; margin: 2rem 0 1rem 0;">Title</h2><input id="text-title" type="text" class="inline" style="font-size: 2.5rem; height: 3.5rem;">
-                                    <h2 class="inline" style="font-size: 2.5rem; margin: 2rem 0 1rem 0;">Author</h2><input id="text-author" type="text" class="inline" style="font-size: 2.5rem; height: 3.5rem;">
+                                    <h2 class="inline" style="font-size: 2.5rem; margin: 2rem 0 1rem 0;">Title</h2>
+                                    <input id="text-title" type="text" class="inline" style="font-size: 2.5rem; height: 3.5rem;">
+                                    <h2 class="inline" style="font-size: 2.5rem; margin: 2rem 0 1rem 0;">Author</h2>
+                                    <input id="text-author" type="text" class="inline" style="font-size: 2.5rem; height: 3.5rem;">
                                     <textarea id="text-text" cols="90%" rows="15%" style="font-size: 2rem"></textarea>
                                     <div>
                                         <button id="text-story-clear">Clear</button>

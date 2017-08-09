@@ -116,6 +116,14 @@
             ev.preventDefault();
             htmlTemplates.createNewStory();
         });
+        $('#dynamic-container').on('click', '.edit', (ev)=>{
+            ev.preventDefault();
+            crtl.editTextStory(ev);
+        });
+        $('#dynamic-container').on('click', '.delete', (ev)=>{
+            ev.preventDefault();
+            crtl.deleteTextStory(ev);
+        });
 
         // =========== Create New Story
         // Clear Text Fields
