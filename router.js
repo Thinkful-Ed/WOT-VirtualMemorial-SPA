@@ -5,8 +5,8 @@ const uuid = require('uuid/v4');
 const {VetDoc} = require('./model');
 const {TextDoc} = require('./model-story-text');
 
-// Endpoints
-// Returns All Veterans in the DB
+
+// GET - All Veterans
 router.get('/', (req, res)=>{
     console.log('\nRequest at "GET: /veterans" endpoint.');
     VetDoc.find()
@@ -18,7 +18,7 @@ router.get('/', (req, res)=>{
             res.json({err: "Sorry, an error occurred while retrieving all."})
         })
 });
-// Returns Specific Veteran Information Based on Query
+// GET - Specific Veteran
 router.get('/:search', (req, res)=>{
     console.log('\nRequest at "GET: /veterans/:name" endpoint.');
     let searchStr = req.params.search;
@@ -34,7 +34,7 @@ router.get('/:search', (req, res)=>{
             res.status(500).json({error: 'something went terribly wrong'});
         });
 });
-// Get Stories - Text
+// GET - Text Story
 router.get('/text/:vetSearchVal', (req, res)=>{
     console.log('\nRequest at "GET: /veterans/text/:vetID" endpoint.');
     let vetSearchVal = req.params.vetSearchVal;
@@ -46,7 +46,7 @@ router.get('/text/:vetSearchVal', (req, res)=>{
             res.json(jsonObj);
         })
 });
-// Post Veteran Text Story
+// POST - Text Story
 router.post('/:vetID', (req, res)=>{
     console.log('\nRequest at "POST: /veterans/:id" endpoint.');
 
@@ -62,19 +62,21 @@ router.post('/:vetID', (req, res)=>{
     TextDoc.create(newDoc);
     res.status(201).end();
 });
-// Modifies Veteran Text Story
+// PUT - Update Text Story
 router.put('/:textID', (req, res)=>{
     console.log('\nRequest at "PUT: /veterans/:textID" endpoint.');
     console.log(req.params.id);
     console.log(req.params.storyID);
     res.status(202).end();
 });
-// Removes Veteran Text Story
+// DELETE - Text Story
 router.delete('/:textID', (req, res)=>{
     console.log('\nRequest at "DEL: /veterans/:textID" endpoint.');
-    console.log(req.params.textID);
+    let textID = req.params.textID;
+    console.log(textID);
 
-    TextDoc.findByIdAndRemove(req.params.textID);
+    // 598b62495ebbf92a30337464
+    TextDoc.remove({_id: textID});
 
     res.status(204).end();
 });
