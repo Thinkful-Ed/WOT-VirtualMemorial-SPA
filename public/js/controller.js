@@ -42,9 +42,7 @@ var crtl = (function(){
     }
     // Submit story on specific veteran
     function submitTextStory(){
-        console.log(state.currentVet);
-
-        $.ajax({url: `veterans/${state.currentVet._id}`,
+        $.ajax({url: `veterans/${state.currentStoryVet}`,
                 type: 'POST',
                 data: JSON.stringify([
                     {title: $('#text-title').val()},

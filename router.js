@@ -53,20 +53,13 @@ router.post('/:vetID', (req, res)=>{
     // Prep data for use by Mongo
     let vetID = req.params.vetID;
     let newDoc = {
-        "storyID": uuid(),
-        "title": req.body[0].title,
-        "author": req.body[1].author,
-        "text": req.body[2].text
+        vetID: vetID,
+        "Title": req.body[0].title,
+        "Author": req.body[1].author,
+        "Text": req.body[2].text
     };
 
-    // Get veteran doc
-    let vetDoc = VetDoc.findById(vetID);
-    let vetDocAlt = VetDoc.findOne({_id: vetID});
-
-    console.log(newDoc);
-    console.log(vetDoc);
-    console.log(vetDocAlt);
-
+    TextDoc.create(newDoc);
     res.status(201).end();
 });
 // Modifies Veteran Text Story
