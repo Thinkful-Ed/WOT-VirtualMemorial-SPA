@@ -145,7 +145,7 @@ var htmlTemplates = (function(){
     function textStoryUI(jsonObj){
         let htmlTemplate = `<div>
                                 <div style=" height: 6rem; text-align: center; margin: 0.5rem 0 0 0;">
-                                    <button id="create-new-text-story">Add a New Story</button>
+                                    <button id="create-new-text-story">Add New Story</button>
                                     <button id="user-login">Login</button>
                                 </div>
                                 <div id="text-stories-container"></div>
@@ -156,17 +156,21 @@ var htmlTemplates = (function(){
             $('#text-stories-container').html(state.storiesHtml);
         }
         else{
-            console.log(`Story Vet ID ${jsonObj[0].vetID}`);
             $('#text-stories-container').html(buildTextStories(jsonObj));
         }
     }
     function buildTextStories(jsonObj){
         let htmlStoriesTemplate = '';
 
-        console.log(jsonObj);
-
-        jsonObj.forEach(item=>{
-            htmlStoriesTemplate += `<article id="${item._id}">
+        if(jsonObj.length === 0){
+            console.log('No existing stories!');
+            htmlStoriesTemplate += `<h2 style="text-decoration: underline;text-align: center;font-size: 5rem;margin: 10% 0 2.5% 0;">Sorry, no stories were found.</h2>
+                                     <h3 style="text-align: center;">Select "Add New Story" from above to share your story with the community.</h3>`;
+        }
+        else{
+            console.log(jsonObj);
+            jsonObj.forEach(item=>{
+                htmlStoriesTemplate += `<article id="${item._id}">
                                         <h2 style="display: inline-block; text-decoration: underline;">${item.Title}</h2>
                                         <div style="display: inline-block; float: right;">
                                             <button style="width: 10rem;" class="edit" data-id="${item._id}">Edit</button>
@@ -176,10 +180,11 @@ var htmlTemplates = (function(){
                                         <p>${item.Text}</p>
                                         <hr style="margin: 2.5rem 0 2.5rem 0;">
                                     </article>`;
-        });
+            });
 
-        state.storiesHtml = htmlStoriesTemplate;
-        $('#menu-stories-anchor').removeClass('no-click');
+            state.storiesHtml = htmlStoriesTemplate;
+            $('#menu-stories-anchor').removeClass('no-click');
+        }
         $('#text-stories-container').html(htmlStoriesTemplate);
     }
     function createNewStory(title, author, text){
