@@ -42,7 +42,7 @@ var crtl = (function(){
     }
     // Submit story on specific veteran
     function submitTextStory(){
-        $.ajax({url: `veterans/${state.currentStoryVet}`,
+        /*$.ajax({url: `veterans/${state.currentStoryVet}`,
                 type: 'POST',
                 data: JSON.stringify([
                     {title: $('#text-title').val()},
@@ -50,7 +50,9 @@ var crtl = (function(){
                     {text: $('#text-text').val()}
                 ]),
                 contentType: 'application/json; charset=utf-8',
-                dataType: 'json'})
+                dataType: 'json'});*/
+
+        htmlTemplates.submitNotification();
     }
     function editTextStory(ev){
         console.log(ev.currentTarget.dataset.id);

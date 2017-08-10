@@ -129,7 +129,7 @@
         // Clear Text Fields
         $('#dynamic-container').on('click', '#text-story-clear', (ev)=>{
             ev.preventDefault();
-            alert('Your story hasn\'t been submitted. Are you sure you want to clear the text?');
+            htmlTemplates.clearNewStoryFields();
         });
         // Submit Story
         $('#dynamic-container').on('click', '#text-story-submit', (ev)=>{

@@ -204,6 +204,22 @@ var htmlTemplates = (function(){
 
         $('#stories-content-container').html(htmlTemplate);
     }
+    function clearNewStoryFields(){
+        $('#text-title').val('');
+        $('#text-author').val('');
+        $('#text-text').val('');
+    }
+    function submitNotification(){
+        htmlTemplate = `<div id="submission-notification" style="position: relative;top: -50%;left: 50%;width: 50%;height: 50%;transform: translate(-50%, -50%);background-color: white;border: 5px solid #830012;border-radius: 0.25rem;z-index: 2;">
+                            <h1>Your story has been shared with the community!</h1>
+                        </div>`;
+
+        $('#stories-content-container').append(htmlTemplate);
+        clearNewStoryFields();
+        setTimeout(function(){
+            $('#submission-notification').remove();
+        }, 4000)
+    }
 
     // Misc
     function loader(typeString){
@@ -247,5 +263,7 @@ var htmlTemplates = (function(){
          storyLogin: storyLogin,
          loader: loader,
          comingSoon: comingSoon,
+         submitNotification: submitNotification,
+         clearNewStoryFields: clearNewStoryFields
      };
 }());
