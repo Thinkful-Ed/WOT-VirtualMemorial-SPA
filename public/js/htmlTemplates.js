@@ -106,22 +106,22 @@ var htmlTemplates = (function(){
         let htmlTemplate = `<div id="story-container">
                                 <div id="story-menu" class="bg-red" style="text-align: center">
                                     <a id="story-text" href="#" class="menu-btn menu-top inline" style="text-align: center">
-                                        <img src="imgs/ico-info.svg" alt="Text">
+                                        <img src="imgs/ico-text.svg" alt="Text">
                                         <br>
                                         Text
                                     </a>
                                     <a id="story-picture" href="#" class="menu-btn menu-top inline" style="text-align: center">
-                                        <img src="imgs/ico-info.svg" alt="Pictures">
+                                        <img src="imgs/ico-picture.svg" alt="Pictures">
                                         <br>
                                         Pictures
                                     </a>
                                     <a id="story-audio" href="#" class="menu-btn menu-top inline" style="text-align: center">
-                                        <img src="imgs/ico-info.svg" alt="Audio">
+                                        <img src="imgs/ico-audio.svg" alt="Audio">
                                         <br>
                                         Audio
                                     </a>
                                     <a id="story-video" href="#" class="menu-btn menu-top inline" style="text-align: center">
-                                        <img src="imgs/ico-info.svg" alt="Video">
+                                        <img src="imgs/ico-video.svg" alt="Video">
                                         <br>
                                         Video
                                     </a>
