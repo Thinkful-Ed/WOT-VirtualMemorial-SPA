@@ -42,7 +42,7 @@ var crtl = (function(){
     }
     // Submit story on specific veteran
     function submitTextStory(){
-        /*$.ajax({url: `veterans/${state.currentStoryVet}`,
+        $.ajax({url: `veterans/${state.currentStoryVet}`,
                 type: 'POST',
                 data: JSON.stringify([
                     {title: $('#text-title').val()},
@@ -50,22 +50,15 @@ var crtl = (function(){
                     {text: $('#text-text').val()}
                 ]),
                 contentType: 'application/json; charset=utf-8',
-                dataType: 'json'});*/
+                dataType: 'json'});
 
         htmlTemplates.submitNotification();
     }
     function editTextStory(ev){
-        console.log(ev.currentTarget.dataset.id);
         let textID = ev.currentTarget.dataset.id;
-        console.log('Entering Edit');
-
-        /*let title = $(`#${storyID}`).children('h2').text();
-        let author = $(`#${storyID}`).children('h3').text();
-        let text = $(`#${storyID}`).children('p').text();
-
-        console.log(title);
-        console.log(author);
-        console.log(text);*/
+        let title = $(`#${textID}`).children('h2').text();
+        let author = $(`#${textID}`).children('h3').text();
+        let text = $(`#${textID}`).children('p').text();
 
         $.ajax({url: `veterans/${textID}`, type: 'PUT'});
 

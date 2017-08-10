@@ -141,6 +141,7 @@ var htmlTemplates = (function(){
 
         $('#stories-content-container').html(htlmTemplate);
     }
+
     // Text
     function textStoryUI(jsonObj){
         let htmlTemplate = `<div>
@@ -158,6 +159,23 @@ var htmlTemplates = (function(){
         else{
             $('#text-stories-container').html(buildTextStories(jsonObj));
         }
+    }
+    function createReviseText(title, author, text){
+        let htmlTemplate = `<div id="new-text-story-container" style="text-align: center">
+                                <form>
+                                    <h2 class="inline" style="font-size: 2.5rem; margin: 2rem 0 1rem 0;">Title</h2>
+                                    <input id="text-title" type="text" class="inline" style="font-size: 2.5rem; height: 3.5rem;">
+                                    <h2 class="inline" style="font-size: 2.5rem; margin: 2rem 0 1rem 0;">Author</h2>
+                                    <input id="text-author" type="text" class="inline" style="font-size: 2.5rem; height: 3.5rem;">
+                                    <textarea id="text-text" cols="90%" rows="15%" style="font-size: 2rem"></textarea>
+                                    <div>
+                                        <button id="text-story-clear">Clear</button>
+                                        <button id="text-story-submit">Submit</button>
+                                    </div>
+                                </form>
+                            </div>`;
+
+        $('#stories-content-container').html(htmlTemplate);
     }
     function buildTextStories(jsonObj){
         let htmlStoriesTemplate = '';
@@ -186,23 +204,6 @@ var htmlTemplates = (function(){
             $('#menu-stories-anchor').removeClass('no-click');
         }
         $('#text-stories-container').html(htmlStoriesTemplate);
-    }
-    function createNewStory(title, author, text){
-        let htmlTemplate = `<div id="new-text-story-container" style="text-align: center">
-                                <form>
-                                    <h2 class="inline" style="font-size: 2.5rem; margin: 2rem 0 1rem 0;">Title</h2>
-                                    <input id="text-title" type="text" class="inline" style="font-size: 2.5rem; height: 3.5rem;">
-                                    <h2 class="inline" style="font-size: 2.5rem; margin: 2rem 0 1rem 0;">Author</h2>
-                                    <input id="text-author" type="text" class="inline" style="font-size: 2.5rem; height: 3.5rem;">
-                                    <textarea id="text-text" cols="90%" rows="15%" style="font-size: 2rem"></textarea>
-                                    <div>
-                                        <button id="text-story-clear">Clear</button>
-                                        <button id="text-story-submit">Submit</button>
-                                    </div>
-                                </form>
-                            </div>`;
-
-        $('#stories-content-container').html(htmlTemplate);
     }
     function clearNewStoryFields(){
         $('#text-title').val('');
@@ -259,7 +260,7 @@ var htmlTemplates = (function(){
          info: info,
          storyMainUI: storyMainUI,
          textStoryUI: textStoryUI,
-         createNewStory: createNewStory,
+         createReviseText: createReviseText,
          storyLogin: storyLogin,
          loader: loader,
          comingSoon: comingSoon,
