@@ -177,36 +177,37 @@ button:active{
 .inline{display: inline-block}
 
 /* Media Queries */
+/* Ipad & Sim */
 @media (max-width: 768px){
-    nav{
-        text-align: center;
+    body{
+        width: 100%;
     }
-    nav img{
+    #app-container{
+        margin: 1rem 1rem 1rem 1rem;
+    }
+    #banner img{
+        width: 75%;
+    }
+    #dynamic-container{
+
+    }
+    #static-container{
+
+    }
+    .search-col button{
         display: block;
-        width: 50%;
-        height: 50%;
-        margin: auto;
-    }
-    nav a{
-        margin-top: 1.5rem;
-        font-size: 2.5rem;
-    }
-    .win{
-        margin-top: 1rem;
+        width: 100%
     }
 }
+/* Iphone 6plus & Sim */
 @media (max-width: 425px){
-    nav img{
-        display: block;
-        width: 75%;
-        height: 75%;
-        margin: auto;
+    #banner img{
+        width: 100%;
     }
-    nav a{
-        margin-top: 1.5rem;
-        font-size: 3.5rem;
+    #dynamic-container{
+
     }
-    #menu img{
-        width: 95%;
+    #static-container{
+
     }
 }

@@ -3,19 +3,18 @@ var htmlTemplates = (function(){
 
     // Tour
     function tour(){
-        const tourType = "VIDEO";
-        const tourVideo = {standard: 'https://www.youtube.com/embed/51dNsNogQ3I?autoplay=1&loop=1',
-                           panorama: 'https://www.youtube.com/embed/yGVTpS5CzTQ?autoplay=1&loop=1'};
-        const htmlTemplateVideo = `<iframe style="width: 100%; height: 100%;"  src="${tourVideo.standard}" frameborder="0"></iframe>`;
-        const htmlTemplateWebgl = `<div id="webgl-container"></div>`;
+        const tourType = "VIDEOHD"; // VIDEOPA || VIDEOHD || WEBGL
+        const tourContent = {VIDEOHD: 'https://www.youtube.com/embed/51dNsNogQ3I?autoplay=1&loop=1',
+                             VIDEOPA: 'https://www.youtube.com/embed/yGVTpS5CzTQ?autoplay=1&loop=1',
+                             WEBGL: `<div id="webgl-container"></div>`
+        };
+        const htmlTemplateVideo = `<iframe style="width: 100%; height: 100%;"  src="${tourContent[tourType]}" frameborder="0"></iframe>`;
 
-        if(tourType==="VIDEO"){
-            console.log("Starting Video Tour");
+        if(tourType==="VIDEOPA" || tourType==="VIDEOHD"){
             $('#dynamic-container').html(htmlTemplateVideo);
         }
         else if(tourType==="WEBGL"){
-            console.log("Starting WebGL Scene");
-            $('#dynamic-container').html(htmlTemplateWebgl);
+            $('#dynamic-container').html(tourContent[tourType]);
             wotScene.init();
         }
         else{
