@@ -65,20 +65,32 @@ router.post('/:vetID', (req, res)=>{
 // PUT - Update Text Story
 router.put('/:textID', (req, res)=>{
     console.log('\nRequest at "PUT: /veterans/:textID" endpoint.');
-    console.log(req.params.id);
-    console.log(req.params.storyID);
+    let textID  = req.params.textID;
+    console.log(textID);
+
+    TextDoc.findByIdAndUpdate(
+        textID,
+        {
+            Title: 'Pale Blue Dot',
+            Author: 'Carl Sagan',
+            Text: 'Look again at that dot. That\'s here. That\'s home. That\'s us. On it everyone you love, everyone you know, everyone you ever heard of, every human being who ever was, lived out their lives there.'
+        }
+    );
+
     res.status(202).end();
 });
+
 // DELETE - Text Story
 router.delete('/:textID', (req, res)=>{
     console.log('\nRequest at "DEL: /veterans/:textID" endpoint.');
     let textID = req.params.textID;
     console.log(textID);
 
-    // 598b62495ebbf92a30337464
-    TextDoc.remove({_id: textID});
-
-    res.status(204).end();
+    TextDoc.remove({_id: textID})
+        .exec()
+        .then(()=>{
+            res.status(204).end();
+        });
 });
 
 module.exports = router;

@@ -54,16 +54,18 @@ var crtl = (function(){
     }
     function editTextStory(ev){
         console.log(ev.currentTarget.dataset.id);
-        let storyID = ev.currentTarget.dataset.id;
+        let textID = ev.currentTarget.dataset.id;
         console.log('Entering Edit');
 
-        let title = $(`#${storyID}`).children('h2').text();
+        /*let title = $(`#${storyID}`).children('h2').text();
         let author = $(`#${storyID}`).children('h3').text();
         let text = $(`#${storyID}`).children('p').text();
 
         console.log(title);
         console.log(author);
-        console.log(text);
+        console.log(text);*/
+
+        $.ajax({url: `veterans/${textID}`, type: 'PUT'});
 
 
     }
