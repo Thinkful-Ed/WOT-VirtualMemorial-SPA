@@ -22,31 +22,50 @@ describe('Memorial Testing', ()=>{
         return closeServer()
     });
 
+    var vetName = 'Andrew';
+
     describe('Endpoint Request Verification Test', ()=>{
-        it('should verify the "/" - "GET" endpoint responds', ()=>{
+        it('should verify the "GET - ALL" endpoint.', ()=>{
             return chai.request(app)
                 .get('/')
                 .then((res)=>{
                     res.should.have.status(200);
                 })
         });
-        /*it('should verify the "/:search" - "GET" endpoint responds', ()=>{
-            // Testing
-        });*/
-       /* it('should verify the "/vetID-123456789" - "POST" endpoint responds', ()=>{
-            // Testing
-        });*/
-       /* it('should verify the "/:id/:storyID" - "PUT" endpoint responds', ()=>{
-            // Testing
-        });*/
-       /* it('should verify the "/:id/:storyID" - "DEL" endpoint responds', ()=>{
-            // Testing
-        });*/
+        it('should verify the "GET - Specific" endpoint.', ()=>{
+            return chai.request(app)
+                .get('/')
+                .then((res)=>{
+                    res.should.have.status(200);
+                })
+        });
+        it('should verify the "GET - Story" endpoint.', ()=>{
+            return chai.request(app)
+                .get('/text')
+                .then((res)=>{
+                    res.should.have.status(200);
+                })
+        });
+        it('should verify the "POST - Text Story" endpoint.', ()=>{
+            return chai.request(app)
+                .post('/')
+                .then((res)=>{
+                    res.should.have.status(201);
+                })
+        });
+        it('should verify the "PUT - Update Text Story" endpoint.', ()=>{
+            return chai.request(app)
+                .put('/')
+                .then((res)=>{
+                    res.should.have.status(202);
+                })
+        });
+        it('should verify the "Delete - Single Text Story" endpoint.', ()=>{
+            return chai.request(app)
+                .delete('/')
+                .then((res)=>{
+                    res.should.have.status(204);
+                })
+        })
     });
-    /*describe('Database Query Test', ()=>{
-
-    });*/
-    /*describe('CRUD User Story Test', ()=>{
-
-    });*/
 });

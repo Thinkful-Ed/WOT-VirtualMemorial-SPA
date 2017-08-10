@@ -11,7 +11,7 @@ router.get('/', (req, res)=>{
     console.log('\nRequest at "GET: /veterans" endpoint.');
     VetDoc.find()
         .then((jsonObj)=>{
-            res.json(jsonObj);
+            res.status(200).json(jsonObj);
         })
         .catch((err)=>{
             console.warn(err);
@@ -27,7 +27,7 @@ router.get('/:search', (req, res)=>{
     VetDoc.find({Name: {$regex: `${searchStr}`}})
         .then((jsonObj)=>{
             console.log(jsonObj);
-            res.json(jsonObj);
+            res.status(200).json(jsonObj);
         })
         .catch((err)=>{
             console.log(err);
@@ -43,7 +43,7 @@ router.get('/text/:vetSearchVal', (req, res)=>{
     TextDoc.find({vetID: vetSearchVal})
         .then((jsonObj)=>{
             console.log(jsonObj);
-            res.json(jsonObj);
+            res.status(200).json(jsonObj);
         })
 });
 // POST - Text Story
@@ -81,7 +81,6 @@ router.put('/:textID', (req, res)=>{
             res.status(202).end();
         });
 });
-
 // DELETE - Text Story
 router.delete('/:textID', (req, res)=>{
     console.log('\nRequest at "DEL: /veterans/:textID" endpoint.');
