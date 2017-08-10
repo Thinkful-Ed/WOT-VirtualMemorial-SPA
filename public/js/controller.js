@@ -60,7 +60,9 @@ var crtl = (function(){
         let author = $(`#${textID}`).children('h3').text();
         let text = $(`#${textID}`).children('p').text();
 
-        $.ajax({url: `veterans/${textID}`, type: 'PUT'});
+        htmlTemplates.createReviseText('EDIT', title, author, text)
+
+        // $.ajax({url: `veterans/${textID}`, type: 'PUT'});
 
 
     }
