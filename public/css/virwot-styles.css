@@ -201,8 +201,9 @@ button:active{
     }
     .search-box input{width: 45%}
     .search-box button{width: 45%}
-    form input{
+    form input #text-title, form input #text-text{
         display: block;
+        width: 40%;
     }
 }
 @media (max-width: 600px) {
