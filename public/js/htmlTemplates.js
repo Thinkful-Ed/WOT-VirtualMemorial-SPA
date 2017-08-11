@@ -233,7 +233,7 @@ var htmlTemplates = (function(){
     }
     function submitNotification(){
         htmlTemplate = `<div id="submission-notification" style="position: relative;top: -50%;left: 50%;width: 50%;height: 50%;transform: translate(-50%, -50%);background-color: white;border: 5px solid #830012;border-radius: 0.25rem;z-index: 2;">
-                            <h1>Your story has been shared with the community!</h1>
+                            <h1 style="text-align: center">Your content has been submitted</h1>
                         </div>`;
 
         $('#stories-content-container').append(htmlTemplate);
