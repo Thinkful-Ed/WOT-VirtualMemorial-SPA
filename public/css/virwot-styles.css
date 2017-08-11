@@ -3,10 +3,21 @@
     font-size: 10px;
 }
 body{
-    width: 1000px;
+    max-width: 1000px;
+    height: 100%;
     background: url("../imgs/background.jpg") no-repeat fixed;
     background-size: cover;
     margin: auto;
+}
+main{
+    width: 100%;
+}
+section{
+    width: 100%
+}
+#app-container{
+    width: inherit;
+    margin: 3.5rem 1rem 1rem 1rem;
 }
 article{
     margin:  .25rem 0 .25rem 0;
@@ -55,15 +66,12 @@ li{
     background-size: cover;
 }
 
-#app-container{
-    width: inherit;
-    margin: 3.5rem 0 0 0;
-}
+
 #banner{
     text-align: center;
     margin-bottom: 0.5rem;
 }
-#banner img{width: 50%}
+#banner img{max-width: 50%}
 #loader{
     /*z-index: 10;*/
     width: 30rem;
@@ -81,7 +89,7 @@ li{
 #dynamic-container{height: 60rem;}
 .dynamic-container-results{
     width: inherit;
-    height: 50rem;
+    height: 53.5rem;
     overflow: hidden;
     overflow-y: scroll;
 }
@@ -138,10 +146,16 @@ canvas{
 }
 
 .menu-btn{
-    width: 10%;
+    width: 10rem;
     transition: transform ease-in-out .25s;
     transform: scale(1);
-    margin: 0 2rem 0 2rem
+    margin: 0 2rem 0 2rem;
+    text-align: center;
+}
+.menu-btn h3{
+    font-size: 2.5rem;
+    padding: 0;
+    margin: 0;
 }
 .menu-top{width: 6.5%}
 .menu-btn:hover{transform: scale(1.15);}
@@ -177,17 +191,9 @@ button:active{
 .inline{display: inline-block}
 
 /* Media Queries */
-/* Ipad & Sim */
 @media (max-width: 800px){
     body{
         width: 100%;
-    }
-    #app-container{
-        margin: 1rem 1rem 1rem 1rem;
-    }
-    #banner img{
-        width: 75%;
-        display: none;
     }
     #dynamic-container{
 
@@ -197,10 +203,13 @@ button:active{
     }
     .search-col button{
         display: block;
-        width: 100%
+        width: 100%;
+        margin: .25rem 0 .25rem 0;
     }
     .search-box input{width: 45%}
-    .search-box button{width: 45%}
+    .search-box button{
+        width: 45%;
+    }
     form input #text-title, form input #text-text{
         display: block;
         width: 40%;
@@ -216,11 +225,12 @@ button:active{
         display: block;
         width: 100%;
     }
-}
-/* Iphone 6plus & Sim */
-@media (max-width: 500px){
     #banner img{
-        width: 100%;
+        display: none;
+    }
+    #app-container{
+        width: inherit;
+        margin: 1rem 1rem 1rem 1rem;
     }
     #static-container{
 
@@ -231,6 +241,20 @@ button:active{
     .search-box{
         height: 11.5rem;
     }
-    .search-box input{width: 100%}
-    .search-box button{width: 100%}
+    .search-box input, .search-box button{
+        width: 97%;
+        margin: .25rem 0 0 0;
+    }
+    .menu-btn{
+        width: 8.5rem;
+        margin: .35rem .35rem 0 .35rem;
+    }
+    .menu-btn h3{display: none}
+}
+@media (max-width: 450px) {
+    #app-container{
+        width: inherit;
+        margin: 0;
+    }
+    .menu-btn{width: 20%}
 }
