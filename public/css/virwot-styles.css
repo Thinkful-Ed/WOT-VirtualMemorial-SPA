@@ -178,7 +178,7 @@ button:active{
 
 /* Media Queries */
 /* Ipad & Sim */
-@media (max-width: 768px){
+@media (max-width: 800px){
     body{
         width: 100%;
     }
@@ -187,6 +187,7 @@ button:active{
     }
     #banner img{
         width: 75%;
+        display: none;
     }
     #dynamic-container{
 
@@ -198,16 +199,34 @@ button:active{
         display: block;
         width: 100%
     }
+    .search-box input{width: 45%}
+    .search-box button{width: 45%}
 }
-/* Iphone 6plus & Sim */
-@media (max-width: 425px){
-    #banner img{
+@media (max-width: 600px) {
+    .search-col{
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+    .vet-info, .vet-story{
+        display: block;
         width: 100%;
     }
-    #dynamic-container{
-
+}
+/* Iphone 6plus & Sim */
+@media (max-width: 500px){
+    #banner img{
+        width: 100%;
     }
     #static-container{
 
     }
+    #dynamic-container{
+
+    }
+    .search-box{
+        height: 11.5rem;
+    }
+    .search-box input{width: 100%}
+    .search-box button{width: 100%}
 }
