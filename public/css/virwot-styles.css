@@ -201,6 +201,9 @@ button:active{
     }
     .search-box input{width: 45%}
     .search-box button{width: 45%}
+    form input{
+        display: block;
+    }
 }
 @media (max-width: 600px) {
     .search-col{
