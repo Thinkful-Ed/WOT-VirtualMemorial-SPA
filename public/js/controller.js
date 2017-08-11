@@ -29,7 +29,7 @@ var crtl = (function(){
     function getTextStories(ev){
         let vetID = ev.currentTarget.dataset.id;
         state.currentStoryVet = vetID;
-        console.log(`MongoDB ID:  ${vetID}`);
+        console.log(`MongoDB Vet ID:  ${vetID}`);
 
         // htmlTemplates.loader('Loading');
         $.ajax({url:`veterans/text/${vetID}`, type: 'GET'})
@@ -42,7 +42,23 @@ var crtl = (function(){
     }
     // Submit story on specific veteran
     function submitTextStory(){
-        $.ajax({url: `veterans/${state.currentStoryVet}`,
+        let postType;
+        console.log(state.newText);
+        if(state.newText === false){
+            $.ajax({url: `veterans/${state.currentStory}`,
+                type: 'PUT',
+                data: JSON.stringify([
+                    {title: $('#text-title').val()},
+                    {author: $('#text-author').val()},
+                    {text: $('#text-text').val()}
+                ]),
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json'});
+            htmlTemplates.submitNotification();
+            state.newText = true;
+        }
+        else{
+            $.ajax({url: `veterans/${state.currentStoryVet}`,
                 type: 'POST',
                 data: JSON.stringify([
                     {title: $('#text-title').val()},
@@ -51,20 +67,19 @@ var crtl = (function(){
                 ]),
                 contentType: 'application/json; charset=utf-8',
                 dataType: 'json'});
-
-        htmlTemplates.submitNotification();
+            htmlTemplates.submitNotification();
+            state.newText = true;
+        }
     }
     function editTextStory(ev){
-        let textID = ev.currentTarget.dataset.id;
+        state.currentStory = ev.currentTarget.dataset.id;
+        textID = ev.currentTarget.dataset.id;
+        console.log(`Text ID: ${textID}`);
         let title = $(`#${textID}`).children('h2').text();
         let author = $(`#${textID}`).children('h3').text();
         let text = $(`#${textID}`).children('p').text();
 
         htmlTemplates.createReviseText('EDIT', title, author, text)
-
-        // $.ajax({url: `veterans/${textID}`, type: 'PUT'});
-
-
     }
     function deleteTextStory(ev){
         let textID = ev.currentTarget.dataset.id;

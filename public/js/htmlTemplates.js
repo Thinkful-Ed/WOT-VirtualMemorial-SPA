@@ -176,6 +176,7 @@ var htmlTemplates = (function(){
 
         $('#stories-content-container').html(htmlTemplate);
         if(mode==='EDIT'){
+            state.newText = false;
             $('#stories-content-container').html(htmlTemplate);
             $('#text-title').val(title);
             $('#text-author').val(author);
@@ -192,7 +193,6 @@ var htmlTemplates = (function(){
                                      <h3 style="text-align: center;">Select "Add New Story" from above to share your story with the community.</h3>`;
         }
         else{
-            console.log(jsonObj);
             jsonObj.forEach(item=>{
                 htmlStoriesTemplate += `<article id="${item._id}">
                                         <h2 style="display: inline-block; text-decoration: underline;">${item.Title}</h2>

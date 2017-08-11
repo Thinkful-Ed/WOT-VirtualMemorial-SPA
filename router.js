@@ -65,19 +65,20 @@ router.post('/:vetID', (req, res)=>{
 // PUT - Update Text Story
 router.put('/:textID', (req, res)=>{
     console.log('\nRequest at "PUT: /veterans/:textID" endpoint.');
-    let textID  = req.params.textID;
-    console.log(textID);
+    console.log(`Text ID: ${req.params.textID}`);
+    console.log(req.body);
 
+    let textID  = req.params.textID;
     TextDoc.findByIdAndUpdate(
         textID,
         {
-            Title: 'Pale Blue Dot',
-            Author: 'Carl Sagan',
-            Text: 'Look again at that dot. That\'s here. That\'s home. That\'s us. On it everyone you love, everyone you know, everyone you ever heard of, every human being who ever was, lived out their lives there.'
+            Title: req.body[0].title,
+            Author: req.body[1].author,
+            Text: req.body[2].text
         }
     )
         .exec()
-        .then((res)=>{
+        .then(()=>{
             res.status(202).end();
         });
 });
