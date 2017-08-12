@@ -27,10 +27,13 @@ var htmlTemplates = (function(){
         // Html template for the search UI
         var htmlTemplate = `<div id="search-container">
                                 <div class="bg-red search-box">
-                                    <input id="js-searchStr" type="text" placeholder="Search by Name, Rank, Branch of Military, & More">
+                                    <input id="js-searchStr" type="text" placeholder="Enter Your Search Text Here">
                                     <button id="js-submitSearch">Search</button>
                                 </div>
                                 <div id="js-searchResults" class="dynamic-container-results">
+                                    <div style="text-align: center; margin: 10% 0 0 0">
+                                        <h1 style="padding: 0 1rem 0 1rem;">Search for veterans by their last then first name above above! Coming soon, search by rank, branch of service, unit, and more.</h1>
+                                    </div>
                                 </div>
                             </div>`;
 
@@ -128,10 +131,10 @@ var htmlTemplates = (function(){
                                 <div id="stories-content-container" class="dynamic-container-results">
                                     <h1 style="margin: 7.5rem 0 0 0; text-align: center; font-size: 3.5rem;">Select from the story types above to learn more about the veterans on the memorial.</h1>
                                     <div style="text-align: center; margin: 5rem 0 0 0">
-                                        <img class="inline" style="background-color: red; width: 20rem; height: 15rem;" src="#">
-                                        <img class="inline" style="background-color: red; width: 20rem; height: 15rem; margin: 0 .5rem 0 1rem;" src="#">
-                                        <img class="inline" style="background-color: red; width: 20rem; height: 15rem; margin: 0 1rem 0 .5rem;" src="#">
-                                        <img class="inline" style="background-color: red; width: 20rem; height: 15rem;" src="#">
+                                        <img class="inline" style="width: 20rem; height: 15rem;" src="../imgs/story-img-01.jpg">
+                                        <img class="inline" style="width: 20rem; height: 15rem; margin: 0 .5rem 0 1rem;" src="../imgs/story-img-02.jpg">
+                                        <img class="inline" style="width: 20rem; height: 15rem; margin: 0 1rem 0 .5rem;" src="../imgs/story-img-03.jpg">
+                                        <img class="inline" style="width: 20rem; height: 15rem;" src="../imgs/story-img-04.jpg">
                                     </div>
                                 </div>
                             </div>`;
@@ -233,7 +236,7 @@ var htmlTemplates = (function(){
         clearNewStoryFields();
         setTimeout(function(){
             $('#submission-notification').remove();
-        }, 4000)
+        }, 3000)
     }
 
     // Misc
@@ -256,12 +259,23 @@ var htmlTemplates = (function(){
         let htmlTemplate = `<div id="coming-soon-container">
                                 <div style="text-align: center; margin: 5% 0 0 0;">
                                     <h1 style="margin: 0; font-size: 5.5rem;">Coming Soon</h1>
-                                    <h2 style="margin: 3.5% 4rem 0 4rem;">Learn more about those who served with stories submitted by family and friends. Content will include pictures, audio, and video.</h2>
-                                    <h2 style="margin: 3.5% 4rem 0 4rem;">Have an idea on how we can improve the virtual memorial? Connect with us at <a href="mailto:virtualmemorial@waronterror.org?Subject=Hello%20again" target="_top" style="color: black; font-size: 3.5rem; text-decoration: underline">virtualmemorial@waronterror.org</a>.</h2>
+                                    <h2 style="color: #830012; margin: 3.5% 4rem 0 4rem;">Learn more about those who served with stories submitted by family and friends. Content will include pictures, audio, and video.</h2>
+                                    <h2 style="color: #830012; margin: 3.5% 4rem 0 4rem;">Have an idea on how we can improve the virtual memorial? Connect with us at <a href="mailto:virtualmemorial@waronterror.org?Subject=Hello%20again" target="_top" style="color: black; font-size: 3.5rem; text-decoration: underline">virtualmemorial@waronterror.org</a>.</h2>
                                 </div>
                             </div>`;
 
         $('#stories-content-container').html(htmlTemplate);
+    }
+    function errorNotification(err){
+        htmlTemplate = `<div id="error-notification" style="text-align: center; position: relative;top: -50%;left: 50%;width: 50%;height: 50%;transform: translate(-50%, -50%);background-color: white;border: 5px solid #830012;border-radius: 0.25rem;z-index: 2;">
+                            <h1>Sorry, an error occured!</h1>
+                            <h2 style="color: #830012">Try again in a moment.</h2>
+                        </div>`;
+
+        $('#stories-content-container').append(htmlTemplate);
+        setTimeout(function(){
+            $('#error-notification').remove();
+        }, 4000)
     }
 
     // Exposed
@@ -277,6 +291,7 @@ var htmlTemplates = (function(){
          loader: loader,
          comingSoon: comingSoon,
          submitNotification: submitNotification,
-         clearNewStoryFields: clearNewStoryFields
+         clearNewStoryFields: clearNewStoryFields,
+         errorNotification: errorNotification
      };
 }());
