@@ -4,7 +4,7 @@ var htmlTemplates = (function(){
     // Tour
     function tour(){
         const tourType = "VIDEOHD"; // VIDEOPA || VIDEOHD || WEBGL
-        const tourContent = {VIDEOHD: 'https://www.youtube.com/embed/51dNsNogQ3I?autoplay=1&loop=1',
+        const tourContent = {VIDEOHD: 'https://www.youtube.com/embed/51dNsNogQ3I?autoplay=1&loop=1&playlist=51dNsNogQ3I',
                              VIDEOPA: 'https://www.youtube.com/embed/yGVTpS5CzTQ?autoplay=1&loop=1',
                              WEBGL: `<div id="webgl-container"></div>`
         };
