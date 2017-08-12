@@ -125,7 +125,15 @@ var htmlTemplates = (function(){
                                         Video
                                     </a>
                                 </div>
-                                <div id="stories-content-container" class="dynamic-container-results"></div>
+                                <div id="stories-content-container" class="dynamic-container-results">
+                                    <h1 style="margin: 7.5rem 0 0 0; text-align: center; font-size: 3.5rem;">Select from the story types above to learn more about the veterans on the memorial.</h1>
+                                    <div style="text-align: center; margin: 5rem 0 0 0">
+                                        <img class="inline" style="background-color: red; width: 20rem; height: 15rem;" src="#">
+                                        <img class="inline" style="background-color: red; width: 20rem; height: 15rem; margin: 0 .5rem 0 1rem;" src="#">
+                                        <img class="inline" style="background-color: red; width: 20rem; height: 15rem; margin: 0 1rem 0 .5rem;" src="#">
+                                        <img class="inline" style="background-color: red; width: 20rem; height: 15rem;" src="#">
+                                    </div>
+                                </div>
                             </div>`;
 
         $('#dynamic-container').html(htmlTemplate);
@@ -246,13 +254,11 @@ var htmlTemplates = (function(){
     }
     function comingSoon(){
         let htmlTemplate = `<div id="coming-soon-container">
-                                <h1 style="text-align: center; padding: 1rem 0 0 0;">Coming Soon</h1>
-                                <h2 style="text-align: center;">Learn more about those who served with stories submitted by family and friends. Content will include...</h2>
-                                <ul>
-                                    <li>Picture</li>
-                                    <li>Audio</li>
-                                    <li>Video</li>
-                                </ul>
+                                <div style="text-align: center; margin: 5% 0 0 0;">
+                                    <h1 style="margin: 0; font-size: 5.5rem;">Coming Soon</h1>
+                                    <h2 style="margin: 3.5% 4rem 0 4rem;">Learn more about those who served with stories submitted by family and friends. Content will include pictures, audio, and video.</h2>
+                                    <h2 style="margin: 3.5% 4rem 0 4rem;">Have an idea on how we can improve the virtual memorial? Connect with us at <a href="mailto:virtualmemorial@waronterror.org?Subject=Hello%20again" target="_top" style="color: black; font-size: 3.5rem; text-decoration: underline">virtualmemorial@waronterror.org</a>.</h2>
+                                </div>
                             </div>`;
 
         $('#stories-content-container').html(htmlTemplate);
