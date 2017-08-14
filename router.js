@@ -2,7 +2,7 @@
 const express = require('express');
 const router = express.Router();
 const uuid = require('uuid/v4');
-const {VetDoc} = require('./model');
+const {VetDoc} = require('./model-veteran');
 const {TextDoc} = require('./model-story-text');
 const {UserDoc} = require('./model-user');
 
