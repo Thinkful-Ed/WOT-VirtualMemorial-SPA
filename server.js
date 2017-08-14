@@ -21,7 +21,7 @@ app.use('/veterans', router);
 app.use('/veterans/:search', router);
 app.use('/veterans/:id', router);
 app.use('/veterans/:id/:storyID', router);
-app.use('/api/', router);
+app.use('/user/', router);
 
 // Create server setup
 let server;

@@ -251,11 +251,11 @@ var htmlTemplates = (function(){
                                 <hr>
                                 <div id="new-user">
                                     <h1>New User</h1>
-                                    <input type="text" placeholder="First Name">
-                                    <input type="text" placeholder="Last Name">
-                                    <input type="text" placeholder="User Name">
-                                    <input type="text" placeholder="Password">
-                                    <button>Submit</button>
+                                    <input id="new-first" type="text" placeholder="First Name">
+                                    <input id="new-last" type="text" placeholder="Last Name">
+                                    <input id="new-username" type="text" placeholder="User Name">
+                                    <input id="new-password" type="text" placeholder="Password">
+                                    <button id="submit-new-user">Submit</button>
                                 </div>
                             </div>`;
         $('#stories-content-container').html(htmlTemplate);

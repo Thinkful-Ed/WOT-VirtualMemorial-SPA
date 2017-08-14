@@ -48,6 +48,12 @@ var appEvents = function(){
     });
 
     // ================================ Dynamic Menus
+    // ====================== Users
+    // Search Submission - "Mouse Click"
+    $('#dynamic-container').on('click', '#submit-new-user', function(ev){
+        ev.preventDefault();
+        crtl.createNewUser();
+    });
     // ====================== Search
     // Search Submission - "Mouse Click"
     $('#dynamic-container').on('click', '#js-submitSearch', function(ev){

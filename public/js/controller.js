@@ -1,4 +1,6 @@
 var crtl = (function(){
+
+    // Story Endpoints
     // Submit request for veteran(s) then generate HTML results
     function submitSearch(){
         let searchStr = $('#js-searchStr').val();
@@ -91,6 +93,24 @@ var crtl = (function(){
         $(`#${textID}`).remove();
     }
 
+    // User Endpoints
+    function createNewUser(){
+        console.log('Entering "Create New User fn..."');
+        $.ajax(
+            {
+                url: `/user/new`,
+                type: 'POST',
+                data: JSON.stringify([
+                    {firstName: $('#new-first').val()},
+                    {lastName: $('#new-last').val()},
+                    {user: $('#new-username').val()},
+                    {password: $('#new-password').val()}
+                ]),
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json'
+            });
+    }
+
     // Exposed
     return {
         submitSearch: submitSearch,
@@ -98,6 +118,7 @@ var crtl = (function(){
         getTextStories: getTextStories,
         submitTextStory: submitTextStory,
         editTextStory: editTextStory,
-        deleteTextStory: deleteTextStory
+        deleteTextStory: deleteTextStory,
+        createNewUser: createNewUser
     }
 }());

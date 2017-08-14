@@ -4,6 +4,7 @@ const router = express.Router();
 const uuid = require('uuid/v4');
 const {VetDoc} = require('./model');
 const {TextDoc} = require('./model-story-text');
+const {UserDoc} = require('./model-user');
 
 
 // GET - All Veterans
@@ -96,8 +97,10 @@ router.delete('/:textID', (req, res)=>{
 });
 
 // User Endpoints
-router.post('/user', (req, res)=>{
-    console.log('In user endpoint');
+router.post('/new', (req, res)=>{
+    console.log('In New User Endpoint');
+    console.log(res.body);
+    res.end();
 });
 
 module.exports = router;
