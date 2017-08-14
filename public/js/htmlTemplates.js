@@ -239,6 +239,28 @@ var htmlTemplates = (function(){
         }, 3000)
     }
 
+    // Login
+    function user(){
+        let htmlTemplate = `<div>
+                                <div id="login">
+                                    <h1>Login</h1>
+                                    <input type="text" placeholder="User Name">
+                                    <input type="text" placeholder="Password">
+                                    <button>Submit</button>
+                                </div>
+                                <hr>
+                                <div id="new-user">
+                                    <h1>New User</h1>
+                                    <input type="text" placeholder="First Name">
+                                    <input type="text" placeholder="Last Name">
+                                    <input type="text" placeholder="User Name">
+                                    <input type="text" placeholder="Password">
+                                    <button>Submit</button>
+                                </div>
+                            </div>`;
+        $('#stories-content-container').html(htmlTemplate);
+    }
+
     // Misc
     function loader(typeString){
         let htmlTemplate = `<div id="loader">
@@ -280,6 +302,7 @@ var htmlTemplates = (function(){
 
     // Exposed
      return{
+         user: user,
          tour: tour,
          searchUI: searchUI,
          searchResults: searchResults,

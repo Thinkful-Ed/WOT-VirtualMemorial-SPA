@@ -90,6 +90,10 @@ var appEvents = function(){
 
     // =========== View Stories
     // Load "Create New Story" window
+    $('#dynamic-container').on('click', '#user-login',(ev)=>{
+        ev.preventDefault();
+        htmlTemplates.user();
+    });
     $('#dynamic-container').on('click', '#create-new-text-story', (ev)=>{
         ev.preventDefault();
         htmlTemplates.createReviseText();

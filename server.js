@@ -3,6 +3,7 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
+const passport = require('passport');
 const morgan = require('morgan');
 const{DATABASE_URL, PORT} = require('./config');
 const router = require('./router');
@@ -20,6 +21,7 @@ app.use('/veterans', router);
 app.use('/veterans/:search', router);
 app.use('/veterans/:id', router);
 app.use('/veterans/:id/:storyID', router);
+app.use('/api/', router);
 
 // Create server setup
 let server;

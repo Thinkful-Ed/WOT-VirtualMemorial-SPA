@@ -95,4 +95,9 @@ router.delete('/:textID', (req, res)=>{
         });
 });
 
+// User Endpoints
+router.post('/user', (req, res)=>{
+    console.log('In user endpoint');
+});
+
 module.exports = router;
