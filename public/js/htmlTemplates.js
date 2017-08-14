@@ -159,7 +159,7 @@ var htmlTemplates = (function(){
     // Text
     function textStoryUI(jsonObj){
         let htmlTemplate = `<div>
-                                <div style=" height: 6rem; text-align: center; margin: 0.5rem 0 0 0;">
+                                <div id="story-btn-container" style="text-align: center; margin: 0.5rem 0 0 0;">
                                     <button id="create-new-text-story">Add New Story</button>
                                     <button id="user-login">Login</button>
                                 </div>
@@ -210,12 +210,12 @@ var htmlTemplates = (function(){
         else{
             jsonObj.forEach(item=>{
                 htmlStoriesTemplate += `<article id="${item._id}">
-                                        <h2 style="display: inline-block; text-decoration: underline;">${item.Title}</h2>
+                                        <h2 style="text-decoration: underline;">${item.Title}</h2>
+                                        <h3 class="inline" style="text-decoration: underline;">${item.Author}</h3>
                                         <div style="display: inline-block; float: right;">
                                             <button style="width: 10rem;" class="edit" data-id="${item._id}">Edit</button>
                                             <button style="width: 10rem;" class="delete" data-id="${item._id}">Delete</button>
                                         </div>
-                                        <h3 style="text-decoration: underline;">${item.Author}</h3>
                                         <p>${item.Text}</p>
                                         <hr style="margin: 2.5rem 0 2.5rem 0;">
                                     </article>`;
@@ -283,7 +283,7 @@ var htmlTemplates = (function(){
     }
     function comingSoon(){
         let htmlTemplate = `<div id="coming-soon-container">
-                                <div style="text-align: center; margin: 5% 0 0 0;">
+                                <div style="text-align: center; margin: 1% 0 0 0;">
                                     <h1 style="margin: 0; font-size: 5.5rem;">Coming Soon</h1>
                                     <h2 style="color: #830012; margin: 3.5% 4rem 0 4rem;">Learn more about those who served with stories submitted by family and friends. Content will include pictures, audio, and video.</h2>
                                     <h2 style="color: #830012; margin: 3.5% 4rem 0 4rem;">Have an idea on how we can improve the virtual memorial? Connect with us at <a href="mailto:virtualmemorial@waronterror.org?Subject=Hello%20again" target="_top" style="color: black; font-size: 3.5rem; text-decoration: underline">virtualmemorial@waronterror.org</a>.</h2>
