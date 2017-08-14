@@ -57,8 +57,8 @@ var htmlTemplates = (function(){
         return `
             <div>
                 <div class="search-col inline"><p><b>${item.Name}</b></p></div>
-                <div class="search-col inline">
-                    <button class="vet-info" data-id="${item.Name}">View Information</button>
+                <div class="search-col inline" style="text-align: center">
+                    <button class="vet-info" data-id="${item.Name}">View Info</button>
                     <button class="vet-story" data-id="${item._id}">View Stories</button>
                 </div>
                 <hr>
@@ -129,12 +129,12 @@ var htmlTemplates = (function(){
                                     </a>
                                 </div>
                                 <div id="stories-content-container" class="dynamic-container-results">
-                                    <h1 style="margin: 7.5rem 0 0 0; text-align: center; font-size: 3.5rem;">Select from the story types above to learn more about the veterans on the memorial.</h1>
+                                    <h1 style="margin: 1.5rem 0 0 0; text-align: center; font-size: 3.5rem;">Select from the story types above to learn more about the veterans on the memorial.</h1>
                                     <div style="text-align: center; margin: 5rem 0 0 0">
-                                        <img class="inline" style="width: 20rem; height: 15rem;" src="../imgs/story-img-01.jpg">
-                                        <img class="inline" style="width: 20rem; height: 15rem; margin: 0 .5rem 0 1rem;" src="../imgs/story-img-02.jpg">
-                                        <img class="inline" style="width: 20rem; height: 15rem; margin: 0 1rem 0 .5rem;" src="../imgs/story-img-03.jpg">
-                                        <img class="inline" style="width: 20rem; height: 15rem;" src="../imgs/story-img-04.jpg">
+                                        <img class="inline" style="width: 15vw;;" src="../imgs/story-img-01.jpg">
+                                        <img class="inline" style="width: 15vw;; margin: 0 .5rem 0 1rem;" src="../imgs/story-img-02.jpg">
+                                        <img class="inline" style="width: 15vw;; margin: 0 1rem 0 .5rem;" src="../imgs/story-img-03.jpg">
+                                        <img class="inline" style="width: 15vw;;" src="../imgs/story-img-04.jpg">
                                     </div>
                                 </div>
                             </div>`;
