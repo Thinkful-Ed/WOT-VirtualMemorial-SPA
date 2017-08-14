@@ -249,20 +249,20 @@ var htmlTemplates = (function(){
 
     // Login
     function user(){
-        let htmlTemplate = `<div>
+        let htmlTemplate = `<div style="text-align: center">
                                 <div id="login">
                                     <h1>Login</h1>
-                                    <input type="text" placeholder="User Name">
-                                    <input type="text" placeholder="Password">
+                                    <input class="login-creds-input" type="text" placeholder="User Name"><br>
+                                    <input class="login-creds-input" type="text" placeholder="Password"><br>
                                     <button>Submit</button>
                                 </div>
                                 <hr>
                                 <div id="new-user">
                                     <h1>New User</h1>
-                                    <input id="new-first" type="text" placeholder="First Name">
-                                    <input id="new-last" type="text" placeholder="Last Name">
-                                    <input id="new-username" type="text" placeholder="User Name">
-                                    <input id="new-password" type="text" placeholder="Password">
+                                    <input class="login-creds-input" id="new-first" type="text" placeholder="First Name"><br>
+                                    <input class="login-creds-input" id="new-last" type="text" placeholder="Last Name"><br>
+                                    <input class="login-creds-input" id="new-username" type="text" placeholder="User Name"><br>
+                                    <input class="login-creds-input" id="new-password" type="text" placeholder="Password"><br>
                                     <button id="submit-new-user">Submit</button>
                                 </div>
                             </div>`;

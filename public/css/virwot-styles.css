@@ -67,6 +67,11 @@ li{
     font-size: 3.5rem;
     padding: .25rem 0 .25rem 0;
 }
+.login-creds-input{
+    width: 50%;
+    height: 3rem;
+    font-size: 3rem;
+}
 
 #banner{
     text-align: center;
@@ -228,6 +233,9 @@ button:active{
         display: block;
         width: 40%;
     }
+    .login-creds-input{
+        width: 75%;
+    }
 }
 @media (max-width: 600px) {
     #app-container{
@@ -276,4 +284,7 @@ button:active{
         max-width: 15vw;
     }
     .menu-btn h3{display: none}
+    .login-creds-input{
+        width: 95%;
+    }
 }
