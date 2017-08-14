@@ -32,7 +32,6 @@ var crtl = (function(){
         // Get stories for specific veteran
         let vetID = ev.currentTarget.dataset.id;
         state.currentStoryVet = vetID;
-        console.log(`MongoDB Vet ID:  ${vetID}`);
 
         // htmlTemplates.loader('Loading');
         $.ajax({url:`veterans/text/${vetID}`, type: 'GET'})
@@ -48,7 +47,6 @@ var crtl = (function(){
     function submitTextStory(){
         // Submit story on specific veteran
         let postType;
-        console.log(state.newText);
         if(state.newText === false){
             $.ajax({url: `veterans/${state.currentStory}`,
                 type: 'PUT',
@@ -80,7 +78,6 @@ var crtl = (function(){
         // Edit a text story
         state.currentStory = ev.currentTarget.dataset.id;
         textID = ev.currentTarget.dataset.id;
-        console.log(`Text ID: ${textID}`);
         let title = $(`#${textID}`).children('h2').text();
         let author = $(`#${textID}`).children('h3').text();
         let text = $(`#${textID}`).children('p').text();
@@ -89,11 +86,9 @@ var crtl = (function(){
     }
     function deleteTextStory(ev){
         let textID = ev.currentTarget.dataset.id;
-        console.log(`Current Text ID is: ${textID}`);
 
         $.ajax({url: `veterans/${textID}`, type: 'DELETE'});
 
-        console.log(`Removing text story with ID: ${textID}`);
         $(`#${textID}`).remove();
     }
 

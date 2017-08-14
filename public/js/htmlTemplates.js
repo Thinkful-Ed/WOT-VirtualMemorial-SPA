@@ -18,7 +18,7 @@ var htmlTemplates = (function(){
             wotScene.init();
         }
         else{
-            console.warn("Something went wrong loading tour content.");
+            htmlTemplates.errorNotification('Problem loading the tour. Try refreshing the page in a moment.');
         }
     }
 
@@ -74,7 +74,6 @@ var htmlTemplates = (function(){
         else{
             state.currentVet = jsonObj[0];
             state.infoHtml = buildInfo(jsonObj[0]);
-            console.log(state.currentVet);
             $('#menu-information-anchor').removeClass('no-click');
             $('#dynamic-container').html(state.infoHtml);
         }
@@ -207,7 +206,6 @@ var htmlTemplates = (function(){
         let htmlStoriesTemplate = '';
 
         if(jsonObj.length === 0){
-            console.log('No existing stories!');
             htmlStoriesTemplate += `<h2 style="text-decoration: underline;text-align: center;font-size: 5rem;margin: 10% 0 2.5% 0;">Sorry, no stories were found.</h2>
                                      <h3 style="text-align: center;">Select "Add New Story" from above to share your story with the community.</h3>`;
         }

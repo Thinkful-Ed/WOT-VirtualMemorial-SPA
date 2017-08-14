@@ -9,7 +9,6 @@ const {UserDoc} = require('./model-user');
 
 // GET - All Veterans
 router.get('/', (req, res)=>{
-    console.log('\nRequest at "GET: /veterans" endpoint.');
     VetDoc.find()
         .then((jsonObj)=>{
             res.status(200).json(jsonObj);
@@ -21,13 +20,10 @@ router.get('/', (req, res)=>{
 });
 // GET - Specific Veteran
 router.get('/:search', (req, res)=>{
-    console.log('\nRequest at "GET: /veterans/:name" endpoint.');
     let searchStr = req.params.search;
-    console.log(`Query string: ${searchStr}`);
 
     VetDoc.find({Name: {$regex: `${searchStr}`}})
         .then((jsonObj)=>{
-            console.log(jsonObj);
             res.status(200).json(jsonObj);
         })
         .catch((err)=>{
@@ -37,20 +33,15 @@ router.get('/:search', (req, res)=>{
 });
 // GET - Text Story
 router.get('/text/:vetSearchVal', (req, res)=>{
-    console.log('\nRequest at "GET: /veterans/text/:vetID" endpoint.');
     let vetSearchVal = req.params.vetSearchVal;
-    console.log(vetSearchVal);
 
     TextDoc.find({vetID: vetSearchVal})
         .then((jsonObj)=>{
-            console.log(jsonObj);
             res.status(200).json(jsonObj);
         })
 });
 // POST - Text Story
 router.post('/:vetID', (req, res)=>{
-    console.log('\nRequest at "POST: /veterans/:id" endpoint.');
-
     // Prep data for use by Mongo
     let vetID = req.params.vetID;
     let newDoc = {
@@ -65,10 +56,6 @@ router.post('/:vetID', (req, res)=>{
 });
 // PUT - Update Text Story
 router.put('/:textID', (req, res)=>{
-    console.log('\nRequest at "PUT: /veterans/:textID" endpoint.');
-    console.log(`Text ID: ${req.params.textID}`);
-    console.log(req.body);
-
     let textID  = req.params.textID;
     TextDoc.findByIdAndUpdate(
         textID,
@@ -85,9 +72,7 @@ router.put('/:textID', (req, res)=>{
 });
 // DELETE - Text Story
 router.delete('/:textID', (req, res)=>{
-    console.log('\nRequest at "DEL: /veterans/:textID" endpoint.');
     let textID = req.params.textID;
-    console.log(textID);
 
     TextDoc.remove({_id: textID})
         .exec()
