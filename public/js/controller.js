@@ -1,8 +1,7 @@
 var crtl = (function(){
-
     // Story Endpoints
-    // Submit request for veteran(s) then generate HTML results
     function submitSearch(){
+        // Submit request for veteran(s) then generate HTML results
         let searchStr = $('#js-searchStr').val();
         htmlTemplates.loader('Searching');
 
@@ -12,11 +11,11 @@ var crtl = (function(){
                 htmlTemplates.loader();
             })
         .fail(()=>{
-            console.warn('Something broke!');
+            htmlTemplate.errorNotification('Sorry, there was a problem. Try again in a moment.');
         })
     }
-    // Get service information on specific veteran
     function veteranInfo(ev){
+        // Get service information on specific veteran
         let vetName = ev.currentTarget.dataset.id;
         htmlTemplates.loader('Loading');
 
@@ -25,10 +24,12 @@ var crtl = (function(){
                 htmlTemplates.info(res);
                 htmlTemplates.loader();
             })
-        .fail();
+        .fail(()=>{
+            htmlTemplate.errorNotification('Sorry, there was a problem. Try again in a moment.');
+        });
     }
-    // Get stories for specific veteran
     function getTextStories(ev){
+        // Get stories for specific veteran
         let vetID = ev.currentTarget.dataset.id;
         state.currentStoryVet = vetID;
         console.log(`MongoDB Vet ID:  ${vetID}`);
@@ -40,10 +41,12 @@ var crtl = (function(){
                 htmlTemplates.textStoryUI(res);
                 // htmlTemplates.loader();
             })
-            .fail();
+            .fail(()=>{
+                htmlTemplate.errorNotification('Sorry, there was a problem. Try again in a moment.');
+            });
     }
-    // Submit story on specific veteran
     function submitTextStory(){
+        // Submit story on specific veteran
         let postType;
         console.log(state.newText);
         if(state.newText === false){
@@ -74,6 +77,7 @@ var crtl = (function(){
         }
     }
     function editTextStory(ev){
+        // Edit a text story
         state.currentStory = ev.currentTarget.dataset.id;
         textID = ev.currentTarget.dataset.id;
         console.log(`Text ID: ${textID}`);

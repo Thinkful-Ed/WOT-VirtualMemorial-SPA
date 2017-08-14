@@ -70,7 +70,6 @@ var appEvents = function(){
         ev.preventDefault();
         crtl.getTextStories(ev);
     });
-
     // ====================== Stories
     // =========== Stories Main Menu
     // Load current vet text stories
@@ -93,7 +92,6 @@ var appEvents = function(){
         ev.preventDefault();
         htmlTemplates.comingSoon();
     });
-
     // =========== View Stories
     // Load "Create New Story" window
     $('#dynamic-container').on('click', '#user-login',(ev)=>{
@@ -112,7 +110,6 @@ var appEvents = function(){
         ev.preventDefault();
         crtl.deleteTextStory(ev);
     });
-
     // =========== Create New Story
     // Clear Text Fields
     $('#dynamic-container').on('click', '#text-story-clear', (ev)=>{
