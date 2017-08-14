@@ -143,10 +143,14 @@ li{
 .stories-button{
     width: 20%;
 }
+.story-main-imgs{
+    width: 20vh;
+    max-width: 230px;
+    min-width: 5vh;
+}
 
 .menu-btn{
-    width: 8.5vw;
-    max-width: 11.5%;
+    width: 10.5rem;
     transition: transform ease-in-out .25s;
     transform: scale(1);
     margin: .3rem 2rem 0 2rem;
@@ -158,7 +162,8 @@ li{
     margin: 0;
 }
 .menu-top{
-    width: 7.5vw
+    max-width: 6.5rem;
+    min-width: 6.5rem;
 }
 .menu-btn:hover{transform: scale(1.15);}
 
@@ -203,6 +208,10 @@ button:active{
     }
     #banner img{
         width: 50vw;
+    }
+    .menu-btn{
+        width: 8.5rem;
+        margin: .3rem 1rem 0 1rem;
     }
     .search-col button{
         display: block;
@@ -255,6 +264,9 @@ button:active{
         width: 18vw;
         max-width: 20vw;
         margin: .35rem .35rem 0 .35rem;
+    }
+    .menu-top{
+        max-width: 15vw;
     }
     .menu-btn h3{display: none}
 }

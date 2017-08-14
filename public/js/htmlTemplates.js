@@ -110,31 +110,35 @@ var htmlTemplates = (function(){
                                     <a id="story-text" href="#" class="menu-btn menu-top inline" style="text-align: center">
                                         <img src="imgs/ico-text.svg" alt="Text">
                                         <br>
-                                        Text
+                                        <h3>Text</h3>
                                     </a>
                                     <a id="story-picture" href="#" class="menu-btn menu-top inline" style="text-align: center">
                                         <img src="imgs/ico-picture.svg" alt="Pictures">
                                         <br>
-                                        Pictures
+                                        <h3>Pictures</h3>
                                     </a>
                                     <a id="story-audio" href="#" class="menu-btn menu-top inline" style="text-align: center">
                                         <img src="imgs/ico-audio.svg" alt="Audio">
                                         <br>
-                                        Audio
+                                        <h3>Audio</h3>
                                     </a>
                                     <a id="story-video" href="#" class="menu-btn menu-top inline" style="text-align: center">
                                         <img src="imgs/ico-video.svg" alt="Video">
                                         <br>
-                                        Video
+                                        <h3>Video</h3>
                                     </a>
                                 </div>
                                 <div id="stories-content-container" class="dynamic-container-results">
                                     <h1 style="margin: 1.5rem 0 0 0; text-align: center; font-size: 3.5rem;">Select from the story types above to learn more about the veterans on the memorial.</h1>
                                     <div style="text-align: center; margin: 5rem 0 0 0">
-                                        <img class="inline" style="width: 15vw;;" src="../imgs/story-img-01.jpg">
-                                        <img class="inline" style="width: 15vw;; margin: 0 .5rem 0 1rem;" src="../imgs/story-img-02.jpg">
-                                        <img class="inline" style="width: 15vw;; margin: 0 1rem 0 .5rem;" src="../imgs/story-img-03.jpg">
-                                        <img class="inline" style="width: 15vw;;" src="../imgs/story-img-04.jpg">
+                                        <div class="inline">
+                                            <img class="inline story-main-imgs"src="../imgs/story-img-01.jpg">
+                                            <img class="inline story-main-imgs" style="margin: 0 .5rem 0 1rem;" src="../imgs/story-img-02.jpg">
+                                        </div>
+                                        <div class="inline">
+                                            <img class="inline story-main-imgs" style="margin: 0 1rem 0 .5rem;" src="../imgs/story-img-03.jpg">
+                                            <img class="inline story-main-imgs" src="../imgs/story-img-04.jpg">
+                                        </div>
                                     </div>
                                 </div>
                             </div>`;

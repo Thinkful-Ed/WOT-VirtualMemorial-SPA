@@ -21,15 +21,20 @@ about the men and women who have served.
 User start off on the tour page and from there can navigate to the search page, or
 continue viewing the tour. On the "Search" page users can enter in the first,last,
 or a combination of the two to produce results of the existing names on the memorial.
+
 ![Search Image](doc-images/search.jpg)
+
 From here the viewer has two option. The first is to view a names information, pictured
 below. Information here, provides, name, rank, unit, and more. Whenever the viewer
 Navigates away from search, info, or stories, the existing content is stored should they
 return during the session.
+
 ![Search Image](doc-images/info.jpg)
+
 Users can also select view stories from the search window. Currently this allows viewers
 to view text stories(shown below) related to the name which they selected the menu option from. 
 Future plans hope to expand on this functionality.
+
 ![Search Image](doc-images/story.jpg)
 
 ### Technology
