@@ -75,10 +75,10 @@ li{
 
 #banner{
     text-align: center;
-    margin-bottom: 0.5rem;
+    margin: .5rem 0 .5rem 0;
 }
 #banner img{
-    width: 35vw;
+    width: 25vw;
 }
 #loader{
     /*z-index: 10;*/
