@@ -2,9 +2,9 @@
 const express = require('express');
 const router = express.Router();
 const uuid = require('uuid/v4');
-const {VetDoc} = require('../models/veteran');
-const {TextDoc} = require('../models/story-text');
-const {UserDoc} = require('../models/user');
+const {VetDoc} = require('../models/model-veteran');
+const {TextDoc} = require('../models/model-story-text');
+const {UserDoc} = require('../models/model-user');
 
 
 // GET - All Veterans
