@@ -99,12 +99,12 @@ var crtl = (function(){
             {
                 url: `/user/new`,
                 type: 'POST',
-                data: JSON.stringify([
-                    {firstName: $('#new-first').val()},
-                    {lastName: $('#new-last').val()},
-                    {user: $('#new-username').val()},
-                    {password: $('#new-password').val()}
-                ]),
+                data: JSON.stringify({
+                    firstName: $('#new-first').val(),
+                    lastName: $('#new-last').val(),
+                    user: $('#new-username').val(),
+                    password: $('#new-password').val()
+                }),
                 contentType: 'application/json; charset=utf-8',
                 dataType: 'json'
             });

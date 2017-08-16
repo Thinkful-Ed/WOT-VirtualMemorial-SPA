@@ -6,7 +6,7 @@ mongoose.Promise = global.Promise;
 const passport = require('passport');
 const morgan = require('morgan');
 const{DATABASE_URL, PORT} = require('./config');
-const router = require('./router');
+const router = require('./routing/stories');
 const bodyParser = require('body-parser');
 
 // Static File Serving
