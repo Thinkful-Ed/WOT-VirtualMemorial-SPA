@@ -5,6 +5,8 @@ const {UserDoc} = require('../models/model-user');
 
 // New User
 routerUser.post('/new', (req, res)=>{
+    let {firstName, lastName, user, password}= req.body;
+
     Object.keys(field => {
         console.log(field);
         if(req.body[field]===''){res.json({error: 'All new user fields must contain text.'})}
@@ -24,17 +26,19 @@ routerUser.post('/new', (req, res)=>{
                     console.log('\nUser already exist.');
                     res.json({error: 'User already exist'})
                 }
-                else{
-                    console.log('\nCreating new user');
-                    UserDoc.create({
-                        firstName: req.body.firstName,
-                        lastName: req.body.lastName,
-                        user: req.body.user,
-                        password: req.body.password
-                    });
-                    res.status(202).json({success: 'New user created'});
-
-                }
+            })
+            .then(()=>{
+                return UserDoc.hashPassword(password);
+            })
+            .then((hashpw)=>{
+                console.log('\nCreating new user');
+                UserDoc.create({
+                    firstName: firstName,
+                    lastName: lastName,
+                    user: user,
+                    password: hashpw
+                });
+                res.status(202).json({success: 'New user created'});
             })
             .catch((err)=>{console.warn(err)});
     }
