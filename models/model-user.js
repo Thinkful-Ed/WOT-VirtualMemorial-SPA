@@ -11,7 +11,10 @@ const UserScheme = new mongoose.Schema({
 UserScheme.statics.hashPassword = function(password){
     return bcrypt.hash(password, 10);
 };
+UserScheme.methods.validatePassword = function(password){
+    return bcrypt.compare(password, this.password);
+};
+
 
 const UserDoc = mongoose.model('users', UserScheme);
-
 module.exports = {UserDoc};

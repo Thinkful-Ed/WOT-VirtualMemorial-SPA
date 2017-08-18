@@ -5,8 +5,9 @@ const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 const passport = require('passport');
 const morgan = require('morgan');
-const{DATABASE_URL, PORT} = require('./config');
-const router = require('./routing/routing-stories');
+const{DATABASE_URL, PORT, JWT_SECRET} = require('./config');
+const routerStoryText = require('./routing/routing-stories');
+const routerUser = require('./routing/routing-users');
 const bodyParser = require('body-parser');
 
 // Static File Serving
@@ -17,11 +18,11 @@ app.use(morgan('common'));
 app.use(bodyParser.json());
 
 // Endpoints or Routing
-app.use('/veterans', router);
-app.use('/veterans/:search', router);
-app.use('/veterans/:id', router);
-app.use('/veterans/:id/:storyID', router);
-app.use('/user/', router);
+app.use('/veterans', routerStoryText);
+app.use('/veterans/:search', routerStoryText);
+app.use('/veterans/:id', routerStoryText);
+app.use('/veterans/:id/:storyID', routerStoryText);
+app.use('/user/', routerUser);
 
 // Create server setup
 let server;
