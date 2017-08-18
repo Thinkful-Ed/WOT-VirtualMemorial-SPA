@@ -1,5 +1,6 @@
 const express = require('express');
 const routerUser = express.Router();
+const passport = require('passport');
 
 const {UserDoc} = require('../models/model-user');
 
@@ -24,7 +25,10 @@ routerUser.post('/new', (req, res)=>{
             .then((jsonObj)=>{
                 if(jsonObj.length >= 1){
                     console.log('\nUser already exist.');
-                    res.json({error: 'User already exist'})
+                    return Promise.reject({
+                        reason:"LoginError",
+                        message:"Username is already in use."
+                    }) // Breaks then chain. Handled in catch
                 }
             })
             .then(()=>{
@@ -40,8 +44,16 @@ routerUser.post('/new', (req, res)=>{
                 });
                 res.status(202).json({success: 'New user created'});
             })
-            .catch((err)=>{console.warn(err)});
+            .catch((err)=>{
+            console.warn(err);
+            res.status(500).json({err});
+        });
     }
+});
+routerUser.post('/login', passport.authenticate('basic', {session: false}), (req, res)=>{
+    /*Protected. Passport Auth is used every time this endpoint is called. User supplies
+    * a username and password which is then evaluated to true or false*/
+    console.log(req.body);
 });
 
 module.exports = routerUser;

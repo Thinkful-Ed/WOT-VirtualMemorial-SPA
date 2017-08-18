@@ -250,17 +250,17 @@ var htmlTemplates = (function(){
         let htmlTemplate = `<div style="text-align: center">
                                 <div id="login">
                                     <h1>Login</h1>
-                                    <input class="login-creds-input" type="text" placeholder="User Name"><br>
-                                    <input class="login-creds-input" type="text" placeholder="Password"><br>
-                                    <button>Submit</button>
+                                    <input id="login-username" class="login-creds-input" type="text" placeholder="User Name"><br>
+                                    <input id="login-password" class="login-creds-input" type="text" placeholder="Password"><br>
+                                    <button id="submit-user-login">Submit</button>
                                 </div>
                                 <hr>
                                 <div id="new-user">
                                     <h1>New User</h1>
-                                    <input class="login-creds-input" id="new-first" type="text" placeholder="First Name"><br>
-                                    <input class="login-creds-input" id="new-last" type="text" placeholder="Last Name"><br>
-                                    <input class="login-creds-input" id="new-username" type="text" placeholder="User Name"><br>
-                                    <input class="login-creds-input" id="new-password" type="text" placeholder="Password"><br>
+                                    <input id="new-first" class="login-creds-input" type="text" placeholder="First Name"><br>
+                                    <input id="new-last" class="login-creds-input" type="text" placeholder="Last Name"><br>
+                                    <input id="new-username" class="login-creds-input" type="text" placeholder="User Name"><br>
+                                    <input id="new-password" class="login-creds-input" type="text" placeholder="Password"><br>
                                     <button id="submit-new-user">Submit</button>
                                 </div>
                             </div>`;

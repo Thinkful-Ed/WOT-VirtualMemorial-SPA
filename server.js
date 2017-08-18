@@ -8,6 +8,7 @@ const morgan = require('morgan');
 const{DATABASE_URL, PORT, JWT_SECRET} = require('./config');
 const routerStoryText = require('./routing/routing-stories');
 const routerUser = require('./routing/routing-users');
+const {basicStrategy, jwtStrategy} = require('./auth/strategies');
 const bodyParser = require('body-parser');
 
 // Static File Serving
@@ -16,6 +17,9 @@ app.use(express.static(__dirname+'/public'));
 // Middleware
 app.use(morgan('common'));
 app.use(bodyParser.json());
+app.use(passport.initialize()); // Init passport
+passport.use(basicStrategy); // Register basicStrategy
+passport.use(jwtStrategy);
 
 // Endpoints or Routing
 app.use('/veterans', routerStoryText);
@@ -23,6 +27,7 @@ app.use('/veterans/:search', routerStoryText);
 app.use('/veterans/:id', routerStoryText);
 app.use('/veterans/:id/:storyID', routerStoryText);
 app.use('/user/', routerUser);
+app.use('user/login', routerUser);
 
 // Create server setup
 let server;

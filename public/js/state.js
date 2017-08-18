@@ -54,6 +54,10 @@ var appEvents = function(){
         ev.preventDefault();
         crtl.createNewUser();
     });
+    $('#dynamic-container').on('click', '#submit-user-login', function(ev){
+        ev.preventDefault();
+        crtl.loginUser();
+    });
     // ====================== Search
     // Search Submission - "Mouse Click"
     $('#dynamic-container').on('click', '#js-submitSearch', function(ev){

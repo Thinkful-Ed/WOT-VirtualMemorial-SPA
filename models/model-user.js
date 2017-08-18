@@ -9,7 +9,7 @@ const UserScheme = new mongoose.Schema({
 });
 
 UserScheme.statics.hashPassword = function(password){
-    return bcrypt.hash(password, 10);
+    return bcrypt.hash(password, 10); // Int is how many times pw is salted
 };
 UserScheme.methods.validatePassword = function(password){
     return bcrypt.compare(password, this.password);

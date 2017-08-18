@@ -94,7 +94,6 @@ var crtl = (function(){
 
     // User Endpoints
     function createNewUser(){
-        console.log('Entering "Create New User fn..."');
         $.ajax(
             {
                 url: `/user/new`,
@@ -109,6 +108,19 @@ var crtl = (function(){
                 dataType: 'json'
             });
     }
+    function loginUser(){
+        $.ajax(
+            {
+                url: `/user/login`,
+                type: 'POST',
+                data: JSON.stringify({
+                    username: $('#login-username').val(),
+                    password: $('#login-password').val()
+                }),
+                contentType: 'application/json; charset=utf-8',
+                dataType: 'json'
+            });
+    }
 
     // Exposed
     return {
@@ -118,6 +130,7 @@ var crtl = (function(){
         submitTextStory: submitTextStory,
         editTextStory: editTextStory,
         deleteTextStory: deleteTextStory,
-        createNewUser: createNewUser
+        createNewUser: createNewUser,
+        loginUser: loginUser
     }
 }());
