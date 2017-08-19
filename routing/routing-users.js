@@ -4,6 +4,14 @@ const passport = require('passport');
 
 const {UserDoc} = require('../models/model-user');
 
+const createAuthToken = user => {
+    return jwt.sign({user}, config.JWT_SECRET, {
+        subject: user.username,
+        expiresIn: config.JWT_EXPIRY,
+        algorithm: 'HS256'
+    });
+};
+
 // New User
 routerUser.post('/new', (req, res)=>{
     let {firstName, lastName, user, password}= req.body;
@@ -52,8 +60,13 @@ routerUser.post('/new', (req, res)=>{
 });
 routerUser.post('/login', passport.authenticate('basic', {session: false}), (req, res)=>{
     /*Protected. Passport Auth is used every time this endpoint is called. User supplies
-    * a username and password which is then evaluated to true or false*/
+     * a username and password which is then evaluated to true or false*/
+    // const authToken = createAuthToken(req.user.apiRepr());
+    // res.json({authToken});
+
     console.log(req.body);
+    // res.json({ username: req.user.username, email: req.user.emails[0].value });
+    res.json({message: "Please work"})
 });
 
 module.exports = routerUser;

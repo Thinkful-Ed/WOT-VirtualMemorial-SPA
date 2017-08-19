@@ -2,7 +2,7 @@
 const mongoose = require('mongoose');
 
 // Mongoose Doc Scheme
-const textStoryScheme = mongoose.Schema({
+const textStorySchema = mongoose.Schema({
     vetID: {type: String},
     Title: {type: String},
     Author: {type: String},
@@ -12,6 +12,6 @@ const textStoryScheme = mongoose.Schema({
 );
 
 // Associate & Export
-const TextDoc = mongoose.model('stories-text', textStoryScheme);
+const TextDoc = mongoose.model('stories-text', textStorySchema);
 
 module.exports = {TextDoc};

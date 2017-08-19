@@ -2,7 +2,7 @@
 const mongoose = require('mongoose');
 
 // Mongoose Doc Scheme
-const vetScheme = mongoose.Schema({
+const vetSchema = mongoose.Schema({
     id: {type: String},
     Date: {type: String},
     Country: {type: String},
@@ -22,6 +22,6 @@ const vetScheme = mongoose.Schema({
 );
 
 // Associate & Export
-const VetDoc = mongoose.model('veterans', vetScheme);
+const VetDoc = mongoose.model('veterans', vetSchema);
 
 module.exports = {VetDoc};

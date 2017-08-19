@@ -1,19 +1,21 @@
 const passport = require('passport');
 const JWT_SECRET = require('../config');
+const {UserDoc} = require('../models/model-user');
 const {BasicStrategy} = require('passport-http');
+
 /*
 Assigns the Strategy export to the name JwtStrategy using object
 destructuring https://developer.mozilla.org/en/docs/Web/JavaScript/
 Reference/Operators/Destructuring_assignment#Assigning_to_new_variable
 _names
 */
-const {Strategy: JwtStrategy, ExtractJwt} = require('passport-jwt');
-const {UserDoc} = require('../models/model-user');
 
-const basicStrategy = new BasicStrategy((username, password, callback) => {
+const {Strategy: JwtStrategy, ExtractJwt} = require('passport-jwt');
+
+const basicStrategy = new BasicStrategy((username, password, callback)=>{
     let user;
     UserDoc
-        .findOne({username})
+        .findOne({user: username})
         .then(_user => {
             user = _user;
             if (!user) {
@@ -56,3 +58,4 @@ const jwtStrategy = new JwtStrategy({
 );
 
 module.exports = {basicStrategy, jwtStrategy};
+

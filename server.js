@@ -16,18 +16,28 @@ app.use(express.static(__dirname+'/public'));
 
 // Middleware
 app.use(morgan('common'));
+// CORS
+/*app.use(function (req, res, next) {
+    res.header('Access-Control-Allow-Origin', '*');
+    res.header('Access-Control-Allow-Headers', 'Content-Type,Authorization');
+    res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,PATCH,DELETE');
+    if (req.method === 'OPTIONS') {
+        return res.send(204);
+    }
+    next();
+});*/
 app.use(bodyParser.json());
 app.use(passport.initialize()); // Init passport
 passport.use(basicStrategy); // Register basicStrategy
-passport.use(jwtStrategy);
+// passport.use(jwtStrategy);
 
 // Endpoints or Routing
 app.use('/veterans', routerStoryText);
 app.use('/veterans/:search', routerStoryText);
 app.use('/veterans/:id', routerStoryText);
 app.use('/veterans/:id/:storyID', routerStoryText);
-app.use('/user/', routerUser);
-app.use('user/login', routerUser);
+app.use('/user', routerUser);
+app.use('/user/login', routerUser);
 
 // Create server setup
 let server;
