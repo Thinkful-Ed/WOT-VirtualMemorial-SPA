@@ -66,4 +66,11 @@ Documentation Coming Soon
 - Search: Special characters cause results issue.
 
 ### Changelog
-- WIP 1.0 Release Candidate
+2017.08.24
+- UI: Added margin-top for app container.
+- UI: Reduced button scaling transition to prevent clipping.
+- Vid: Added "?rel=0", disabling video suggestions.
+- Vid: Added "loop=1", enabling video to loop.
+
+2017.08.18
+- Release Candidate

@@ -4,8 +4,8 @@ var htmlTemplates = (function(){
     // Tour
     function tour(){
         const tourType = "VIDEOHD"; // VIDEOPA || VIDEOHD || WEBGL
-        const tourContent = {VIDEOHD: 'https://www.youtube.com/embed/51dNsNogQ3I?autoplay=1&loop=1&playlist=51dNsNogQ3I',
-                             VIDEOPA: 'https://www.youtube.com/embed/yGVTpS5CzTQ?autoplay=1&loop=1',
+        const tourContent = {VIDEOHD: 'https://www.youtube.com/embed/51dNsNogQ3I?rel=0?autoplay=1&loop=1&playlist=51dNsNogQ3I',
+                             VIDEOPA: 'https://www.youtube.com/embed/yGVTpS5CzTQ?rel=0?autoplay=1&loop=1',
                              WEBGL: `<div id="webgl-container"></div>`
         };
         const htmlTemplateVideo = `<iframe style="width: 100%; height: 100%;"  src="${tourContent[tourType]}" frameborder="0"></iframe>`;
