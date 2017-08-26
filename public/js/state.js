@@ -23,7 +23,7 @@ var state = (function(){
 
 var appEvents = function(){
     // Set which section is the initial screen
-    $(document).ready(htmlTemplates.tour());
+    $(document).ready(htmlTemplates.intro());
 
     // ================================ Main Menu
     // WebGL Tour Loader

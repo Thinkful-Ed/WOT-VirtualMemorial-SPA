@@ -1,6 +1,30 @@
 var htmlTemplates = (function(){
     let checkLoader = false;
 
+    //Intro
+    function intro(){
+        const htmlTemplate = `
+            <div style='position: relative; top: 5%; text-align: center;'>
+                <p style="padding: 1rem 2.5rem 1rem 2.5rem; ">
+                <em>On May 21, 1975, less than a month after the fall of Saigon ended the Vietnam War, Col 
+                Paul R Shaffer Jr. and LTC Jack H. Turner were assassinated in Tehran, Iran. Those are the 
+                first two names on the War on Terror Memorial in America's Cemetery, Hermitage PA, which list 
+                the names of more than 7,000 American servicemen and women who have sacrificed their lives since 
+                then in the battle against terrorism. New names continue to be added as more members of the 
+                American armed forces lose their lives in this ongoing war.</em>
+                <br>
+                <br>
+                Learn more about the servicmembers on the memorial by selecting from the options below. Tour
+                provides a virtual tour of the memorial located at America's Cemetery, Hermitage PA. Search allows 
+                viewers to search the names present on the memorial along with viewing their service information and
+                submitted stories provided by family and friends.
+                </p>
+            </div>
+        `;
+
+        $('#dynamic-container').html(htmlTemplate);
+    }
+
     // Tour
     function tour(){
         const tourType = "VIDEOHD"; // VIDEOPA || VIDEOHD || WEBGL
@@ -31,8 +55,8 @@ var htmlTemplates = (function(){
                                     <button id="js-submitSearch">Search</button>
                                 </div>
                                 <div id="js-searchResults" class="dynamic-container-results">
-                                    <div style="text-align: center; margin: 10% 0 0 0">
-                                        <h1 style="padding: 0 1rem 0 1rem;">Search for veterans by their last then first name above above! Coming soon, search by rank, branch of service, unit, and more.</h1>
+                                    <div style="text-align: center; margin: 21.5% 0 0 0">
+                                        <h1 style="padding: 0 1rem 0 1rem;">Search for veterans by their last then first name above above!</h1>
                                     </div>
                                 </div>
                             </div>`;
@@ -218,7 +242,7 @@ var htmlTemplates = (function(){
                                             <button style="width: 10rem;" class="edit" data-id="${item._id}">Edit</button>
                                             <button style="width: 10rem;" class="delete" data-id="${item._id}">Delete</button>
                                         </div>
-                                        <p>${item.Text}</p>
+                                        <p style="padding: 3rem 3rem 0 3rem;">${item.Text}</p>
                                         <hr style="margin: 2.5rem 0 2.5rem 0;">
                                     </article>`;
             });
@@ -308,6 +332,7 @@ var htmlTemplates = (function(){
 
     // Exposed
      return{
+         intro: intro,
          user: user,
          tour: tour,
          searchUI: searchUI,

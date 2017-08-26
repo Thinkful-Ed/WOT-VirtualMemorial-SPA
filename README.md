@@ -66,6 +66,11 @@ Documentation Coming Soon
 - Search: Special characters cause results issue.
 
 ### Changelog
+2017.08.26
+- Added intro screen to provide info on the memorial & "how-to".
+- Simplified search info "how-to".
+- Adjusted "Information" text offset to icon.
+
 2017.08.24
 - UI: Added margin-top for app container.
 - UI: Reduced button scaling transition to prevent clipping.
