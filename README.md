@@ -73,6 +73,7 @@ Documentation Coming Soon
 - Adjusted padding for story text.
 - Adjusted line height for story text.
 - Simplified coming soon page for stories section.
+- Updated stories artwork.
 
 2017.08.24
 - UI: Added margin-top for app container.

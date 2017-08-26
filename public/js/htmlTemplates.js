@@ -152,16 +152,9 @@ var htmlTemplates = (function(){
                                     </a>
                                 </div>
                                 <div id="stories-content-container" class="dynamic-container-results">
-                                    <h1 style="margin: 1.5rem 0 0 0; text-align: center; font-size: 3.5rem;">Select from the story types above to learn more about the veterans on the memorial.</h1>
-                                    <div style="text-align: center; margin: 5rem 0 0 0">
-                                        <div class="inline">
-                                            <img class="inline story-main-imgs"src="../imgs/story-img-01.jpg">
-                                            <img class="inline story-main-imgs" style="margin: 0 .5rem 0 1rem;" src="../imgs/story-img-02.jpg">
-                                        </div>
-                                        <div class="inline">
-                                            <img class="inline story-main-imgs" style="margin: 0 1rem 0 .5rem;" src="../imgs/story-img-03.jpg">
-                                            <img class="inline story-main-imgs" src="../imgs/story-img-04.jpg">
-                                        </div>
+                                    <h1 style="margin: 1rem 0 0 0; text-align: center; font-size: 3.5rem;">Select from the above story types to learn more about the veterans on the memorial.</h1>
+                                    <div style="text-align: center;">
+                                        <img class="story-main-imgs" style="margin: 1rem 0 0 0; width: 80%" src="../imgs/stories.png">
                                     </div>
                                 </div>
                             </div>`;
