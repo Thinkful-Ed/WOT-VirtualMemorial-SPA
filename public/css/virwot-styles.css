@@ -3,8 +3,6 @@
     font-size: 10px;
 }
 body{
-    width: 100vw;
-    height: 100vh;
     max-width: 1000px;
     background: url("../imgs/background.jpg") no-repeat fixed;
     background-size: cover;
@@ -97,11 +95,8 @@ li{
 
 #dynamic-container{
     height: 60vh;
-}
-.dynamic-container-results{
     overflow: hidden;
     overflow-y: scroll;
-    height: 52.8vh;
 }
 #static-container{
     z-index: 5;

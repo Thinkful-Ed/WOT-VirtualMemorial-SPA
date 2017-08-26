@@ -72,7 +72,7 @@ Documentation Coming Soon
 - Adjusted "Information" text offset to icon.
 - Adjusted padding for story text.
 - Adjusted line height for story text.
-- Simplified coming soon page for stories section.
+- Simplified coming soon page for stories section and reduced font size.
 - Updated stories artwork.
 
 2017.08.24

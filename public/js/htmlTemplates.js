@@ -152,7 +152,7 @@ var htmlTemplates = (function(){
                                     </a>
                                 </div>
                                 <div id="stories-content-container" class="dynamic-container-results">
-                                    <h1 style="margin: 1rem 0 0 0; text-align: center; font-size: 3.5rem;">Select from the above story types to learn more about the veterans on the memorial.</h1>
+                                    <h1 style="margin: 1rem 3rem 0 3rem; text-align: center; font-size: 3.5rem;">Select from the above story types to learn more about the veterans on the memorial.</h1>
                                     <div style="text-align: center;">
                                         <img class="story-main-imgs" style="margin: 1rem 0 0 0; width: 80%" src="../imgs/stories.png">
                                     </div>
@@ -251,11 +251,11 @@ var htmlTemplates = (function(){
         $('#text-text').val('');
     }
     function submitNotification(){
-        htmlTemplate = `<div id="submission-notification" style="position: relative;top: -50%;left: 50%;width: 50%;height: 50%;transform: translate(-50%, -50%);background-color: white;border: 5px solid #830012;border-radius: 0.25rem;z-index: 2;">
+        htmlTemplate = `<div id="submission-notification" style="width: 50%; height: 25%;background-color: white;border: 5px solid #830012;border-radius: 0.25rem;z-index: 2;">
                             <h1 style="text-align: center">Your content has been submitted</h1>
                         </div>`;
 
-        $('#stories-content-container').append(htmlTemplate);
+        $('#app-container').append(htmlTemplate);
         clearNewStoryFields();
         setTimeout(function(){
             $('#submission-notification').remove();
@@ -304,7 +304,7 @@ var htmlTemplates = (function(){
         let htmlTemplate = `<div id="coming-soon-container">
                                 <div style="text-align: center; margin: 5rem 0 0 0;">
                                     <h1 style="margin: 0; font-size: 5.5rem;">Coming Soon</h1>
-                                    <h2 style="color: #830012; margin: 3.5% 4rem 0 4rem;">Learn more about those who served with stories submitted by family and friends. Content will include pictures, audio, and video.</h2>
+                                    <h2 style="color: #830012; margin: 3.5% 4rem 0 4rem; font-size: 3rem;">Learn more about those who served with stories submitted by family and friends. Content will include pictures, audio, and video.</h2>
                                 </div>
                             </div>`;
 
