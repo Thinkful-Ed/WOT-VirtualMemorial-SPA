@@ -236,13 +236,13 @@ var htmlTemplates = (function(){
         else{
             jsonObj.forEach(item=>{
                 htmlStoriesTemplate += `<article id="${item._id}">
-                                        <h2 style="text-decoration: underline;">${item.Title}</h2>
-                                        <h3 class="inline" style="text-decoration: underline;">${item.Author}</h3>
+                                        <h2 style="padding: 1rem 0 0 1rem; text-decoration: underline;">${item.Title}</h2>
+                                        <h3 class="inline" style="padding: .5rem 0 0 1rem; text-decoration: underline;">${item.Author}</h3>
                                         <div style="display: inline-block; float: right;">
                                             <button style="width: 10rem;" class="edit" data-id="${item._id}">Edit</button>
                                             <button style="width: 10rem;" class="delete" data-id="${item._id}">Delete</button>
                                         </div>
-                                        <p style="padding: 3rem 3rem 0 3rem;">${item.Text}</p>
+                                        <p style="padding: 3rem 3rem 0 3rem; line-height: 5rem;">${item.Text}</p>
                                         <hr style="margin: 2.5rem 0 2.5rem 0;">
                                     </article>`;
             });
@@ -309,10 +309,9 @@ var htmlTemplates = (function(){
     }
     function comingSoon(){
         let htmlTemplate = `<div id="coming-soon-container">
-                                <div style="text-align: center; margin: 1% 0 0 0;">
+                                <div style="text-align: center; margin: 5rem 0 0 0;">
                                     <h1 style="margin: 0; font-size: 5.5rem;">Coming Soon</h1>
                                     <h2 style="color: #830012; margin: 3.5% 4rem 0 4rem;">Learn more about those who served with stories submitted by family and friends. Content will include pictures, audio, and video.</h2>
-                                    <h2 style="color: #830012; margin: 3.5% 4rem 0 4rem;">Have an idea on how we can improve the virtual memorial? Connect with us at <a href="mailto:virtualmemorial@waronterror.org?Subject=Hello%20again" target="_top" style="color: black; font-size: 3.5rem; text-decoration: underline">virtualmemorial@waronterror.org</a>.</h2>
                                 </div>
                             </div>`;
 

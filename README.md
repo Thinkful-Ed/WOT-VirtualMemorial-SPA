@@ -70,6 +70,9 @@ Documentation Coming Soon
 - Added intro screen to provide info on the memorial & "how-to".
 - Simplified search info "how-to".
 - Adjusted "Information" text offset to icon.
+- Adjusted padding for story text.
+- Adjusted line height for story text.
+- Simplified coming soon page for stories section.
 
 2017.08.24
 - UI: Added margin-top for app container.
