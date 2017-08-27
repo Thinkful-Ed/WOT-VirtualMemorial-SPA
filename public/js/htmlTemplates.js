@@ -154,7 +154,7 @@ var htmlTemplates = (function(){
                                 <div id="stories-content-container" class="dynamic-container-results">
                                     <h1 style="margin: 1rem 3rem 0 3rem; text-align: center; font-size: 3.5rem;">Select from the above story types to learn more about the veterans on the memorial.</h1>
                                     <div style="text-align: center;">
-                                        <img class="story-main-imgs" style="margin: 1rem 0 0 0; width: 80%" src="../imgs/stories.png">
+                                        <img class="story-main-imgs" style="margin: .5rem 0 0 0; width: 95%; max-width: 70rem" src="../imgs/stories.png">
                                     </div>
                                 </div>
                             </div>`;

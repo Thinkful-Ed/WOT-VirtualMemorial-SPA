@@ -66,6 +66,13 @@ Documentation Coming Soon
 - Search: Special characters cause results issue.
 
 ### Changelog
+2017.0827
+- UI: Scrolls for "Intro" screen to allow for full text.
+- Search: Autocap for names entered that were set as lowercase.
+- Clipping for stories into image.
+- !!! Adjusted login screen to fix clipping
+- !!! RWD Review
+
 2017.08.26
 - Added intro screen to provide info on the memorial & "how-to".
 - Simplified search info "how-to".

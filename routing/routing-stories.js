@@ -48,10 +48,7 @@ routerStoryText.get('/', (req, res)=>{
 // GET - Specific Veteran
 routerStoryText.get('/:search', (req, res)=>{
     let searchStr = req.params.search;
-    console.log(`Searching: ${searchStr}`);
-
     searchStr = nameUpperCase(searchStr);
-    console.log(`Searching Str Updated: ${searchStr}`);
 
     VetDoc.find({Name: {$regex: `${searchStr}`}})
         .then((jsonObj)=>{
