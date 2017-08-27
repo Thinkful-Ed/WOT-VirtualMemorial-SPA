@@ -266,14 +266,14 @@ var htmlTemplates = (function(){
     function user(){
         let htmlTemplate = `<div style="text-align: center">
                                 <div id="login">
-                                    <h1>Login</h1>
+                                    <h1 style="font-size: 3rem;">Login</h1>
                                     <input id="login-username" class="login-creds-input" type="text" placeholder="User Name"><br>
                                     <input id="login-password" class="login-creds-input" type="text" placeholder="Password"><br>
                                     <button id="submit-user-login">Submit</button>
                                 </div>
                                 <hr>
                                 <div id="new-user">
-                                    <h1>New User</h1>
+                                    <h1 style="font-size: 3rem;">New User</h1>
                                     <input id="new-first" class="login-creds-input" type="text" placeholder="First Name"><br>
                                     <input id="new-last" class="login-creds-input" type="text" placeholder="Last Name"><br>
                                     <input id="new-username" class="login-creds-input" type="text" placeholder="User Name"><br>

@@ -70,8 +70,7 @@ Documentation Coming Soon
 - UI: Scrolls for "Intro" screen to allow for full text.
 - Search: Autocap for names entered that were set as lowercase.
 - Clipping for stories into image.
-- !!! Adjusted login screen to fix clipping
-- !!! RWD Review
+- Adjusted login screen to fix clipping
 
 2017.08.26
 - Added intro screen to provide info on the memorial & "how-to".
