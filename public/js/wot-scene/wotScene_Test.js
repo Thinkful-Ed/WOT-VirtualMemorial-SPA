@@ -32,7 +32,7 @@ var wotScene = (function(){
 
         var loader = new THREE.JSONLoader();
         var wotMat = new THREE.MeshLambertMaterial({color: 0xd3d3d3});
-        loader.load('./json/wot-geometry-faceMaterialOn.json', function(geometry){
+        loader.load('./json/_wot-geometry-faceMaterialOn.json', function(geometry){
             wotMesh  = new THREE.Mesh(geometry, wotMat);
             wotMesh.name = "wotMesh";
             scene.add(wotMesh);
