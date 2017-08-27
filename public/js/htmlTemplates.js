@@ -251,7 +251,7 @@ var htmlTemplates = (function(){
         $('#text-text').val('');
     }
     function submitNotification(){
-        htmlTemplate = `<div id="submission-notification" style="width: 50%; height: 25%;background-color: white;border: 5px solid #830012;border-radius: 0.25rem;z-index: 2;">
+        htmlTemplate = `<div id="submission-notification" style="position: absolute; top: 50vh; left: 50vw; transform: translate(-25vw, -25vh); width: 50%; height: 25%;background-color: white;border: 5px solid #830012;border-radius: 0.25rem;z-index: 2;">
                             <h1 style="text-align: center">Your content has been submitted</h1>
                         </div>`;
 
