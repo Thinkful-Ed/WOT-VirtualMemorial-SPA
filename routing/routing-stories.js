@@ -5,6 +5,35 @@ const uuid = require('uuid/v4');
 const {VetDoc} = require('../models/model-veteran');
 const {TextDoc} = require('../models/model-story-text');
 
+// Middleware FN Declarations
+function nameUpperCase(submission){
+    // Vars & Init
+    let submitName = submission;
+    let submitNameUpdated = '';
+    let nameArray;
+
+    // Split submitted name into parts
+    nameArray = submitName.split(" ");
+    /*console.log(`\nUpdating name: ${submitName}`);
+     console.log(`Name array: ${nameArray}`);*/
+
+    // Capitalize first letter of first & last
+    for(let i=0; i <= nameArray.length-1; i++){
+        let strToCap = nameArray[i][0].toUpperCase(); // Get & capitalize letter
+        /*console.log(`Capitalized letter: ${strToCap}`);
+         console.log(`STR: ${nameArray[i].slice(1, nameArray[i].length)}`);*/
+        nameArray[i] = strToCap + nameArray[i].slice(1, nameArray[i].length); // Append cap letter to lowercase str
+    }
+
+    // Combine words & trim
+    nameArray.forEach(word =>{
+        submitNameUpdated = submitNameUpdated+' '+word;
+    });
+    submitNameUpdated = submitNameUpdated.trim();
+
+    return submitNameUpdated;
+}
+
 // GET - All Veterans
 routerStoryText.get('/', (req, res)=>{
     VetDoc.find()
@@ -19,6 +48,10 @@ routerStoryText.get('/', (req, res)=>{
 // GET - Specific Veteran
 routerStoryText.get('/:search', (req, res)=>{
     let searchStr = req.params.search;
+    console.log(`Searching: ${searchStr}`);
+
+    searchStr = nameUpperCase(searchStr);
+    console.log(`Searching Str Updated: ${searchStr}`);
 
     VetDoc.find({Name: {$regex: `${searchStr}`}})
         .then((jsonObj)=>{
