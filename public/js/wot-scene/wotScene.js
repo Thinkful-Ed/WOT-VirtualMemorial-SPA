@@ -4,6 +4,8 @@ var wotScene = (function(){
     // Checks for WebGL Content. If not there fallback to canvas render for older browsers.
     var camera = new THREE.PerspectiveCamera(35, window.innerWidth/window.innerHeight, 0.01, 1000);
     var renderer = new THREE.WebGLRenderer();
+    var load_Json = new THREE.JSONLoader();
+    var load_Tex = new THREE.TextureLoader();
 
     function init(){
         var renderWindowWidth = document.getElementById('dynamic-container').offsetWidth;
@@ -22,18 +24,13 @@ var wotScene = (function(){
         camera.position.set(10, 1, 35);
         scene.add(camera);
 
-        // Cube Setup
-        box = new THREE.Mesh(
-            new THREE.BoxGeometry(1,1,1),
-            new THREE.MeshLambertMaterial({color: 0xFF0000}
-            ));
-        box.name = "box";
-        scene.add(box);
+        // Material & Textures
+        // var mat_atlas = new THREE.MeshPhongMaterial({map: new THREE.TextureLoader.ImageLoader('./textures/atlas.png')});
+        var mat_atlas = new THREE.MeshPhongMaterial({map: load_Tex.load('./js/wot-scene/textures/atlas.png')});
 
-        var loader = new THREE.JSONLoader();
-        var wotMat = new THREE.MeshLambertMaterial({color: 0xd3d3d3});
-        loader.load('./json/wot-geometry-faceMaterialOn.json', function(geometry){
-            wotMesh  = new THREE.Mesh(geometry, wotMat);
+       // Load Model Assets
+        load_Json.load('./js/wot-scene/_tempScene.json', function(geometry){
+            wotMesh  = new THREE.Mesh(geometry, mat_atlas);
             wotMesh.name = "wotMesh";
             scene.add(wotMesh);
         });
