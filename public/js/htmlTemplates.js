@@ -41,8 +41,9 @@ var htmlTemplates = (function(){
             $('#dynamic-container').html(tourContent[tourType]);
             wotScene.init()
                 .then(setTimeout(function(){wotScene.setParents()}, 5000))
-                .catch(function(){
-                    alert('An error occurred. Please refresh the Browser...');
+                .catch(function(e){
+                    alert(`An error occurred, please check the console for more info.`);
+                    console.warn(e);
                 })
         }
         else{

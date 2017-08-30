@@ -28,7 +28,8 @@ var wotScene = (function(){
                 scene.add(lgt_directional, lgt_ambient);
 
                 // Camera
-                camera.position.set(10,1,13.85);
+                camera.name = 'renCam';
+                camera.position.set(0,4.5, 27.5);
                 camera.rotation.set(0,0,0);
                 scene.add(camera);
 
@@ -41,7 +42,10 @@ var wotScene = (function(){
                 var mat_water = new THREE.MeshPhongMaterial({map: load_Tex.load('./js/wot-scene/textures/water.jpg')});
 
 
-                // Load Model Assets
+                // Load Model Assets & Create Objects
+                var trs_camPivot = new THREE.Mesh(new THREE.BoxGeometry(), new THREE.MeshBasicMaterial());
+                trs_camPivot.name = 'camPivot';
+                scene.add(trs_camPivot);
                 // Ground
                 load_Json.load('./js/wot-scene/json/groundsMain.json', function(geo){
                     var obj_groundMain = new THREE.Mesh(geo, mat_grass);
@@ -53,6 +57,19 @@ var wotScene = (function(){
                     var obj_flag = new THREE.Mesh(geo, mat_atlas);
                     obj_flag.name = "flag";
                     scene.add(obj_flag);
+                });
+
+                // Memorial - Metal
+                load_Json.load('./js/wot-scene/json/memorialMetal.json', function(geo){
+                    var obj_memorialMetal = new THREE.Mesh(geo, mat_atlas);
+                    obj_memorialMetal.name = 'memorialMetal';
+                    scene.add(obj_memorialMetal);
+                });
+                // @Memorial - Glass
+                load_Json.load('./js/wot-scene/json/memorialGlass.json', function(geo){
+                    var obj_memorialGlass = new THREE.Mesh(geo, new THREE.MeshPhongMaterial({color: 0x05001c}));
+                    obj_memorialGlass.name = 'memorialGlass';
+                    scene.add(obj_memorialGlass);
                 });
 
                 // Fountain - Stone
@@ -127,7 +144,10 @@ var wotScene = (function(){
         console.log('Setting Parents');
 
         // Parenting
+        // Camera
+        THREE.SceneUtils.attach(scene.getObjectByName('renCam'), scene, scene.getObjectByName('camPivot'));
         // Fountain
+        THREE.SceneUtils.attach(scene.getObjectByName('memorialGlass'), scene, scene.getObjectByName('memorialMetal'));
         THREE.SceneUtils.attach(scene.getObjectByName('fountainSandstone'), scene, scene.getObjectByName('fountainStone'));
         THREE.SceneUtils.attach(scene.getObjectByName('fountainWater'), scene, scene.getObjectByName('fountainStone'));
         THREE.SceneUtils.attach(scene.getObjectByName('fountainLights'), scene, scene.getObjectByName('fountainStone'));
@@ -140,13 +160,16 @@ var wotScene = (function(){
     function positionProps(){
         console.log('Positioning Props');
 
+        scene.getObjectByName('memorialMetal').position.set(6.2,0,2.1);
+        scene.getObjectByName('memorialMetal').rotation.y = -.15;
         scene.getObjectByName('sidewalkTileSmallBevelCap').position.x = 10.27;
         scene.getObjectByName('sidewalkTileSmall').position.x = 12.71;
         scene.getObjectByName('eternalFlame').position.x = 17.975;
     }
     function render(){
         try{
-            // camera.rotation.y += 0.005;
+            let animCam = scene.getObjectByName('camPivot');
+            animCam.rotation.y += 0.005;
         }
         catch (err){
             console.log(err);
