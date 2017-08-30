@@ -29,7 +29,7 @@ var wotScene = (function(){
         var mat_atlas = new THREE.MeshPhongMaterial({map: load_Tex.load('./js/wot-scene/textures/atlas.png')});
 
        // Load Model Assets
-        load_Json.load('./js/wot-scene/_tempScene.json', function(geometry){
+        load_Json.load('./js/wot-scene/json/_tempScene.json', function(geometry){
             wotMesh  = new THREE.Mesh(geometry, mat_atlas);
             wotMesh.name = "wotMesh";
             scene.add(wotMesh);
