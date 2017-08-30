@@ -39,7 +39,11 @@ var htmlTemplates = (function(){
         }
         else if(tourType==="WEBGL"){
             $('#dynamic-container').html(tourContent[tourType]);
-            wotScene.init();
+            wotScene.init()
+                .then(setTimeout(function(){wotScene.setParents()}, 5000))
+                .catch(function(){
+                    alert('An error occurred. Please refresh the Browser...');
+                })
         }
         else{
             htmlTemplates.errorNotification('Problem loading the tour. Try refreshing the page in a moment.');
