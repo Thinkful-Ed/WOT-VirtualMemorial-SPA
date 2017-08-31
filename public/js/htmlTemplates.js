@@ -179,8 +179,9 @@ var htmlTemplates = (function(){
 
     // Text
     function textStoryUI(jsonObj){
+        console.log('Entering textStoryUI');
         let htmlTemplate = `<div>
-                                <div id="story-btn-container" style="text-align: center; margin: 0.5rem 0 0 0;">
+                                <div id="story-btn-container" style="text-align: center; padding: 1rem 0 1rem 0; background-color: rgba(255, 255, 255, 0.3);">
                                     <button id="create-new-text-story">Add New Story</button>
                                     <button id="user-login">Login</button>
                                 </div>
@@ -206,7 +207,7 @@ var htmlTemplates = (function(){
                                           <h2 class="inline" style="font-size: 2.5rem; margin: 2rem 0 1rem 0;">Author</h2>
                                     <input id="text-author" type="text" class="inline" style="font-size: 2.5rem; height: 3.5rem;">
                                     </div>
-                                    <textarea id="text-text" cols="90%" rows="10%" style="font-size: 2rem"></textarea>
+                                    <textarea id="text-text" cols="90%" rows="10%" style="font-size: 2rem; height: 55vh; resize: none"></textarea>
                                     <div>
                                         <button id="text-story-clear">Clear</button>
                                         <button id="text-story-submit">Submit</button>

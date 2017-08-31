@@ -104,7 +104,7 @@ li{
     color: white;
     margin: 3rem 0 1rem 0;
 }
-#js-searchResults{
+#js-searchResults, #text-stories-container{
     overflow-y: scroll;
     max-height: 80vh;
 }
@@ -202,9 +202,9 @@ button:active{
     #app-container{
         width: 80vw;
     }
-    /*#banner img{*/
-        /*width: 50vw;*/
-    /*}*/
+    #banner img{
+        width: 50vw;
+    }
     .menu-btn{
         width: 8.5rem;
         margin: .3rem 1rem 0 1rem;
@@ -237,9 +237,6 @@ button:active{
     #dynamic-container{
         height: 80vh;
     }
-    /*#banner img{*/
-        /*display: none;*/
-    /*}*/
     h2{font-size: 2.5em}
     h3{font-size: 2.5rem}
     .search-col{
