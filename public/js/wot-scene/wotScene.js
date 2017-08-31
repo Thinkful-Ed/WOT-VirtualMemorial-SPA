@@ -46,6 +46,12 @@ var wotScene = (function(){
                 var trs_camPivot = new THREE.Mesh(new THREE.BoxGeometry(), new THREE.MeshBasicMaterial());
                 trs_camPivot.name = 'camPivot';
                 scene.add(trs_camPivot);
+                // Skybox
+                load_Json.load('./js/wot-scene/json/skybox.json', function(geo){
+                    var obj_skybox = new THREE.Mesh(geo, mat_atlas);
+                    obj_skybox.name = "skybox";
+                    scene.add(obj_skybox);
+                });
                 // Ground
                 load_Json.load('./js/wot-scene/json/groundsMain.json', function(geo){
                     var obj_groundMain = new THREE.Mesh(geo, mat_grass);
