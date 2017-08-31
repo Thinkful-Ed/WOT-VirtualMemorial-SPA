@@ -207,7 +207,7 @@ var htmlTemplates = (function(){
                                           <h2 class="inline" style="font-size: 2.5rem; margin: 2rem 0 1rem 0;">Author</h2>
                                     <input id="text-author" type="text" class="inline" style="font-size: 2.5rem; height: 3.5rem;">
                                     </div>
-                                    <textarea id="text-text" cols="90%" rows="10%" style="font-size: 2rem; height: 55vh; resize: none"></textarea>
+                                    <textarea id="text-text" cols="90%" rows="10%" style="font-size: 2rem; width: 87.5%; height: 55vh; resize: none"></textarea>
                                     <div>
                                         <button id="text-story-clear">Clear</button>
                                         <button id="text-story-submit">Submit</button>
