@@ -73,8 +73,8 @@ li{
 }
 
 #banner{
-    text-align: center;
-    margin: .5rem 0 .5rem 0;
+    width: 35%;
+    margin: 0 9rem 0 0;
 }
 #banner img{
     width: 25vw;
@@ -94,19 +94,19 @@ li{
 }
 
 #dynamic-container{
-    height: 60vh;
+    height: 80vh;
     overflow: hidden;
-    overflow-y: scroll;
 }
 #static-container{
     z-index: 5;
-    height: 20vh;
     font-size: 1.5rem;
     text-decoration: none;
-    text-align: center;
     color: white;
-    margin: auto;
-    padding: 0.5rem 0 0.5rem 0;
+    margin: 3rem 0 1rem 0;
+}
+#js-searchResults{
+    overflow-y: scroll;
+    max-height: 80vh;
 }
 
 .search-col{
@@ -146,14 +146,14 @@ li{
 }
 
 .menu-btn{
-    width: 10.5rem;
+    width: 6.5rem;
     transition: transform ease-in-out .25s;
     transform: scale(1);
-    margin: .3rem 2rem 0 2rem;
+    margin: 0 0 0 4.5rem;
     text-align: center;
 }
 .menu-btn h3{
-    font-size: 2.5rem;
+    font-size: 2.25rem;
     padding: 0;
     margin: 0;
 }
@@ -202,9 +202,9 @@ button:active{
     #app-container{
         width: 80vw;
     }
-    #banner img{
-        width: 50vw;
-    }
+    /*#banner img{*/
+        /*width: 50vw;*/
+    /*}*/
     .menu-btn{
         width: 8.5rem;
         margin: .3rem 1rem 0 1rem;
@@ -237,9 +237,9 @@ button:active{
     #dynamic-container{
         height: 80vh;
     }
-    #banner img{
-        display: none;
-    }
+    /*#banner img{*/
+        /*display: none;*/
+    /*}*/
     h2{font-size: 2.5em}
     h3{font-size: 2.5rem}
     .search-col{

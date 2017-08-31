@@ -135,22 +135,22 @@ var htmlTemplates = (function(){
     function storyMainUI(){
         let htmlTemplate = `<div id="story-container">
                                 <div id="story-menu" class="bg-red" style="text-align: center">
-                                    <a id="story-text" href="#" class="menu-btn menu-top inline" style="text-align: center">
+                                    <a id="story-text" href="#" class="menu-btn menu-top inline" style="text-align: center; margin-top: 0.4rem">
                                         <img src="imgs/ico-text.svg" alt="Text">
                                         <br>
                                         <h3>Text</h3>
                                     </a>
-                                    <a id="story-picture" href="#" class="menu-btn menu-top inline" style="text-align: center">
+                                    <a id="story-picture" href="#" class="menu-btn menu-top inline" style="text-align: center; margin-top: 0.4rem">
                                         <img src="imgs/ico-picture.svg" alt="Pictures">
                                         <br>
                                         <h3>Pictures</h3>
                                     </a>
-                                    <a id="story-audio" href="#" class="menu-btn menu-top inline" style="text-align: center">
+                                    <a id="story-audio" href="#" class="menu-btn menu-top inline" style="text-align: center; margin-top: 0.4rem">
                                         <img src="imgs/ico-audio.svg" alt="Audio">
                                         <br>
                                         <h3>Audio</h3>
                                     </a>
-                                    <a id="story-video" href="#" class="menu-btn menu-top inline" style="text-align: center">
+                                    <a id="story-video" href="#" class="menu-btn menu-top inline" style="text-align: center; margin-top: 0.4rem">
                                         <img src="imgs/ico-video.svg" alt="Video">
                                         <br>
                                         <h3>Video</h3>
