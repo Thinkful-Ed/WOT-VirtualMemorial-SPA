@@ -202,6 +202,7 @@ var htmlTemplates = (function(){
         }
         else{
             $('#text-stories-container').html(buildTextStories(jsonObj));
+            dummyBlock('text-stories-container', 15);
         }
     }
     function createReviseText(mode, title, author, text){
@@ -336,6 +337,11 @@ var htmlTemplates = (function(){
         setTimeout(function(){
             $('#error-notification').remove();
         }, 4000)
+    }
+    function dummyBlock(domTarget, height){
+        let htmlTemplate =  `<div id="dummyBlock" style="height: ${height}rem;"></div>>`;
+        console.log('Attempting Append');
+        $(`#${domTarget}`).append(htmlTemplate);
     }
 
     // Exposed
