@@ -133,7 +133,7 @@ var htmlTemplates = (function(){
 
     // Stories
     function storyMainUI(){
-        let htmlTemplate = `<div id="story-container">
+        let htmlTemplate = `<div id="story-container" style="height: inherit">
                                 <div id="story-menu" class="bg-red" style="text-align: center">
                                     <div id="story-text" class="menu-btn menu-top inline" style="text-align: center;">
                                         <a href="#">
@@ -164,7 +164,7 @@ var htmlTemplates = (function(){
                                         </a>
                                     </div>
                                 </div>
-                                <div id="stories-content-container" class="dynamic-container-results">
+                                <div id="stories-content-container" class="dynamic-container-results" style="height: inherit">
                                     <h1 style="margin: 1rem 3rem 0 3rem; text-align: center; font-size: 3.5rem;">Select from the above story types to learn more about the veterans on the memorial.</h1>
                                     <div style="text-align: center;">
                                         <img class="story-main-imgs" style="margin: .5rem 0 0 0; width: 95%; max-width: 70rem" src="../imgs/stories.png">
@@ -188,7 +188,7 @@ var htmlTemplates = (function(){
     // Text
     function textStoryUI(jsonObj){
         console.log('Entering textStoryUI');
-        let htmlTemplate = `<div>
+        let htmlTemplate = `<div style="height: inherit">
                                 <div id="story-btn-container" style="text-align: center; padding: 1rem 0 1rem 0; background-color: rgba(255, 255, 255, 0.3);">
                                     <button id="create-new-text-story">Add New Story</button>
                                     <button id="user-login">Login</button>
