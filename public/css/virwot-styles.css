@@ -111,7 +111,8 @@ li{
 }
 #js-searchResults, #text-stories-container{
     overflow-y: scroll;
-    max-height: 80vh;
+    height: inherit;
+    max-height: 100%;
 }
 
 .search-col{
