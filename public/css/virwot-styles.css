@@ -138,13 +138,6 @@ li{
     transition: background-color ease-in-out .15s;
 }
 
-#story-menu{
-    height: 10rem;
-}
-.stories-button{
-    width: 20%;
-}
-
 .menu-btn{
     width: 6.5rem;
     transition: transform ease-in-out .25s;
@@ -157,11 +150,15 @@ li{
     padding: 0;
     margin: 0;
 }
-.menu-top{
-    max-width: 6.5rem;
-    min-width: 6.5rem;
-}
 .menu-btn:hover{transform: scale(1.0375);}
+
+.stories-button{
+    width: 20%;
+}
+.menu-top{
+    margin-top: .5rem;
+    margin-bottom: .5rem;
+}
 
 button{
     width: calc(83%/2);
@@ -188,9 +185,9 @@ button:active{
 }
 
 /* Single Styling */
-.bg-red{background-color: #830012}
-.bg-gray{background-color: #cdcdcd}
-.bg-white{background-color: #ffffff}
+.bg-red{ background-color: #830012}
+.bg-gray{ background-color: #cdcdcd}
+.bg-white{ background-color: #ffffff}
 .no-click{
     opacity: 0.2575;
     pointer-events: none;
@@ -206,21 +203,18 @@ button:active{
     #app-container{
         width: 100vw;
         height: 100vh;
+        margin: 0;
     }
-    #banner{
-        margin-left: 1rem;
-    }
-    h2{font-size: 2.75rem}
-    h3{font-size: 2.75rem}
+    #banner{ margin-left: 1rem}
+    h2{ font-size: 2.75rem}
+    h3{ font-size: 2.75rem}
     .search-col button{
         display: block;
         width: 100%;
         margin: .25rem 0 .25rem 0;
     }
-    .search-box input{width: 45%}
-    .search-box button{
-        width: 45%;
-    }
+    .search-box input{ width: 45%}
+    .search-box button{ width: 45%}
     /*form input #text-title, form input #text-text{*/
         /*display: block;*/
         /*width: 40%;*/
@@ -230,29 +224,16 @@ button:active{
     /*}*/
 }
 @media(max-width: 790px){
-    #app-container{
-        width: 100vw;
-        height: 100vh;
-        margin: 0;
-    }
     #banner{
         display: inline-block;
         width: 25rem;
     }
-    .menu-btn {
-        width: 4.75rem;
-    }
-    #static-menu-btns{
-        margin-right: 3rem
-    }
-    #static-menu-btns h3{
-        font-size: 2rem;
-    }
+    .menu-btn { width: 4.75rem}
+    #static-menu-btns{ margin-right: 3rem}
+    #static-menu-btns h3{ font-size: 2rem}
 }
 @media (max-width: 634px) {
-    #static-container{
-        margin:  .5rem 0 0 0;
-    }
+    #static-container{ margin: .5rem 0 0 0}
     #banner-container{
         width: 100%;
         text-align: center;
@@ -268,13 +249,17 @@ button:active{
         text-align: center;
         margin: 0 0 0.5rem 0;
     }
-    .menu-btn{margin: 0 0 0 7.25rem;}
+    .menu-btn{ margin: 0 3.5rem 0 3.5rem !important;}
+    .menu-top{
+        width: 4rem;
+        margin-top: .5rem !important;
+        margin-bottom: .5rem !important;
+    }
+    .menu-top h3{font-size: 1.75rem}
 }
 
 @media (max-width: 475px) {
-    #banner{
-        width: 50%;
-    }
+    #banner{ width: 50%}
     h2{font-size: 2.5em}
     h3{font-size: 2.5rem}
     .search-col{
@@ -291,12 +276,7 @@ button:active{
         display: block;
         width: 100%;
     }
-    #static-container{
-
-    }
-    .search-box{
-        height: 11.5rem;
-    }
+    .search-box{ height: 11.5rem}
     .search-box input, .search-box button{
         width: 97%;
         margin: .25rem 0 0 0;
@@ -306,13 +286,5 @@ button:active{
         max-width: 10vw;
         margin: .35rem .35rem 0 5rem;
     }
-    .menu-top{
-        max-width: 15vw;
-    }
-    .menu-btn h3{
-        font-size: 1rem;
-    }
-    .login-creds-input{
-        width: 95%;
-    }
+    .login-creds-input{ width: 95%}
 }

@@ -135,26 +135,34 @@ var htmlTemplates = (function(){
     function storyMainUI(){
         let htmlTemplate = `<div id="story-container">
                                 <div id="story-menu" class="bg-red" style="text-align: center">
-                                    <a id="story-text" href="#" class="menu-btn menu-top inline" style="text-align: center; margin-top: 0.4rem">
-                                        <img src="imgs/ico-text.svg" alt="Text">
-                                        <br>
-                                        <h3>Text</h3>
-                                    </a>
-                                    <a id="story-picture" href="#" class="menu-btn menu-top inline" style="text-align: center; margin-top: 0.4rem">
-                                        <img src="imgs/ico-picture.svg" alt="Pictures">
-                                        <br>
-                                        <h3>Pictures</h3>
-                                    </a>
-                                    <a id="story-audio" href="#" class="menu-btn menu-top inline" style="text-align: center; margin-top: 0.4rem">
-                                        <img src="imgs/ico-audio.svg" alt="Audio">
-                                        <br>
-                                        <h3>Audio</h3>
-                                    </a>
-                                    <a id="story-video" href="#" class="menu-btn menu-top inline" style="text-align: center; margin-top: 0.4rem">
-                                        <img src="imgs/ico-video.svg" alt="Video">
-                                        <br>
-                                        <h3>Video</h3>
-                                    </a>
+                                    <div id="story-text" class="menu-btn menu-top inline" style="text-align: center;">
+                                        <a href="#">
+                                            <img src="imgs/ico-text.svg" alt="Text">
+                                            <br>
+                                            <h3>Text</h3>
+                                        </a>
+                                    </div>
+                                    <div id="story-picture" class="menu-btn menu-top inline" style="text-align: center;">
+                                        <a href="#">
+                                            <img src="imgs/ico-picture.svg" alt="Pictures">
+                                            <br>
+                                            <h3>Pictures</h3>
+                                        </a>
+                                    </div>
+                                    <div id="story-audio" class="menu-btn menu-top inline" style="text-align: center;">
+                                        <a href="#">
+                                            <img src="imgs/ico-audio.svg" alt="Audio">
+                                            <br>
+                                            <h3>Audio</h3>
+                                        </a>
+                                    </div>
+                                    <div id="story-video" class="menu-btn menu-top inline" style="text-align: center;">
+                                        <a href="#">
+                                            <img src="imgs/ico-video.svg" alt="Video">
+                                            <br>
+                                            <h3>Video</h3>
+                                        </a>
+                                    </div>
                                 </div>
                                 <div id="stories-content-container" class="dynamic-container-results">
                                     <h1 style="margin: 1rem 3rem 0 3rem; text-align: center; font-size: 3.5rem;">Select from the above story types to learn more about the veterans on the memorial.</h1>
