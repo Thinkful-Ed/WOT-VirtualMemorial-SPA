@@ -231,6 +231,11 @@ button:active{
     .menu-btn { width: 4.75rem}
     #static-menu-btns{ margin-right: 3rem}
     #static-menu-btns h3{ font-size: 2rem}
+    .login-creds-input{
+        width: 75%;
+        height: 3.5rem;
+        font-size: 2.5rem;
+    }
 }
 @media (max-width: 634px) {
     #static-container{ margin: .5rem 0 0 0}
@@ -258,7 +263,7 @@ button:active{
     .menu-top h3{font-size: 1.75rem}
 }
 
-@media (max-width: 475px) {
+@media (max-width: 480px) {
     #banner{ width: 50%}
     h2{font-size: 2.5em}
     h3{font-size: 2.5rem}
@@ -282,9 +287,19 @@ button:active{
         margin: .25rem 0 0 0;
     }
     .menu-btn{
-        width: 18vw;
-        max-width: 10vw;
-        margin: .35rem .35rem 0 5rem;
+        width: 10vw;
+        margin-left: 2.5rem !important;
+        margin-right: 2.5rem !important;
     }
     .login-creds-input{ width: 95%}
+}
+@media(max-width: 360px){
+    .menu-btn{
+        width: 10vw;
+        margin-left: 1rem !important;
+        margin-right: 1rem !important;
+    }
+    .menu-btn h3{
+        display: none;
+    }
 }
