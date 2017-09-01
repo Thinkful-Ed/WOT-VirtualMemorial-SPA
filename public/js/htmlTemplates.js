@@ -27,7 +27,7 @@ var htmlTemplates = (function(){
 
     // Tour
     function tour(){
-        const tourType = "WEBGL"; // VIDEOPA || VIDEOHD || WEBGL
+        const tourType = "VIDEOHD"; // VIDEOPA || VIDEOHD || WEBGL
         const tourContent = {VIDEOHD: 'https://www.youtube.com/embed/51dNsNogQ3I?rel=0?autoplay=1&loop=1&playlist=51dNsNogQ3I',
                              VIDEOPA: 'https://www.youtube.com/embed/yGVTpS5CzTQ?rel=0?autoplay=1&loop=1',
                              WEBGL: `<div id="webgl-container"></div>`
