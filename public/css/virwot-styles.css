@@ -94,8 +94,10 @@ li{
 
 #dynamic-container{
     height: 80vh;
+    max-height: 80vh;
     overflow: hidden;
 }
+#search-container{ height: inherit}
 #static-container{
     z-index: 5;
     font-size: 1.5rem;
@@ -154,13 +156,32 @@ li{
     margin: 0;
 }
 .menu-btn:hover{transform: scale(1.0375);}
-
 .stories-button{
     width: 20%;
 }
+
 .menu-top{
     margin-top: .5rem;
     margin-bottom: .5rem;
+}
+.text-story-info-field{
+    margin: 0 0 0 6.5%;
+}
+form input{
+    width: 81.5%;
+}
+form h2{
+    margin: 1rem 0 1rem 0;
+    width: 10rem;
+}
+form textarea{
+    font-size: 2rem;
+    width: 87.5%;
+    height: 50vh;
+    resize: none;
+}
+form button{
+    width: 35%;
 }
 
 button{
@@ -218,13 +239,9 @@ button:active{
     }
     .search-box input{ width: 45%}
     .search-box button{ width: 45%}
-    /*form input #text-title, form input #text-text{*/
-        /*display: block;*/
-        /*width: 40%;*/
-    /*}*/
-    /*.login-creds-input{*/
-        /*width: 75%;*/
-    /*}*/
+    form input{
+        width: 78.5%;
+    }
 }
 @media(max-width: 790px){
     #banner{
@@ -235,6 +252,14 @@ button:active{
     #static-menu-btns{ margin-right: 3rem}
     #static-menu-btns h3{ font-size: 2rem}
     .login-creds-input, #login button, #new-user button{ width: 75%}
+    form textarea{height: 45vh}
+    form input{
+        width: 75.5%;
+    }
+    /*form input #text-title, form input #text-text{
+        display: block;
+        width: 40%;
+    }*/
 }
 @media (max-width: 634px) {
     #static-container{ margin: .5rem 0 0 0}
@@ -260,6 +285,9 @@ button:active{
         margin-bottom: .5rem !important;
     }
     .menu-top h3{font-size: 1.75rem}
+    form input{
+        width: 69%;
+    }
 }
 @media (max-width: 480px) {
     #banner{ width: 50%}
@@ -289,6 +317,9 @@ button:active{
         margin-left: 2.5rem !important;
         margin-right: 2.5rem !important;
     }
+    form input{
+        width: 61.5%;
+    }
     .login-creds-input, #login button, #new-user button{
         width: 95%;
     }
@@ -301,5 +332,8 @@ button:active{
     }
     .menu-btn h3{
         display: none;
+    }
+    form input{
+        width: 81.5%;
     }
 }
