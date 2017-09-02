@@ -69,7 +69,6 @@ var htmlTemplates = (function(){
         // Replace existing UI with search template and add any existing search results.
         $('#dynamic-container').html(htmlTemplate);
         $('#js-searchResults').html(state.searchHtml);
-        dummyBlock('js-searchResults', 50);
     }
     function searchResults(jsonObj){
         // Reset results
