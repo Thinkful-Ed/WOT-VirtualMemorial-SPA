@@ -94,6 +94,7 @@ li{
 
 #dynamic-container{
     height: 80vh;
+    border-radius: 3px;
     max-height: 80vh;
     overflow: hidden;
 }

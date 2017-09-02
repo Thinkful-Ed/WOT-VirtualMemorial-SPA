@@ -68,11 +68,12 @@ Documentation Coming Soon
 ### Changelog
 2017.09.01
 - Search: Backend feature to auto-cap name entered to match with the Mongo keys.
-- UI/Intro: Scrolls for "Intro" screen to allow for full text.
+- Design: #dynamic-container border-radius set to 3pv. - Match WOT Main page theme.
 - UI/Main: Layout width locked in at 1K. - Match WOT Main page theme.
 - UI/Main: Banner set left. - Match WOT Main page theme.
 - UI/Main: Static menu set inline with banner. - Match WOT Main page theme.
 - UI/Main: Red background removed. - Match WOT Main page theme.
+- UI/Intro: Scrolls for "Intro" screen to allow for full text.
 - UI/Main: Decreased static menu buttons & text.
 - UI/Main: Increased app height.
 - UI/Search: Search field fixed at top.
