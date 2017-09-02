@@ -66,20 +66,31 @@ Documentation Coming Soon
 - Search: Special characters cause results issue.
 
 ### Changelog
-2017.0827
-- UI: Scrolls for "Intro" screen to allow for full text.
-- Search: Autocap for names entered that were set as lowercase.
-- Clipping for stories into image.
-- Adjusted login screen to fix clipping
+2017.09.01
+- Search: Backend feature to auto-cap name entered to match with the Mongo keys.
+- UI/Intro: Scrolls for "Intro" screen to allow for full text.
+- UI/Main: Layout width locked in at 1K. - Match WOT Main page theme.
+- UI/Main: Banner set left. - Match WOT Main page theme.
+- UI/Main: Static menu set inline with banner. - Match WOT Main page theme.
+- UI/Main: Red background removed. - Match WOT Main page theme.
+- UI/Main: Decreased static menu buttons & text.
+- UI/Main: Increased app height.
+- UI/Search: Search field fixed at top.
+- UI/Stories: Adjust stories menu padding & margin.
+- UI/Stories: Add Story & Login are now fixed at the top of their box.
+- UI/Login: Adjust width of input & button elements to match in width.
+- UI/Login: Adjusted login screen to fix clipping
+- UI/RWD: Series of breakpoints adjusted for mobile screens.
+- 3D/WebGL: Test scene along with texture atlas are in place with limited mobile testing. Will replace video solution in near future.
 
 2017.08.26
-- Added intro screen to provide info on the memorial & "how-to".
-- Simplified search info "how-to".
-- Adjusted "Information" text offset to icon.
-- Adjusted padding for story text.
-- Adjusted line height for story text.
-- Simplified coming soon page for stories section and reduced font size.
-- Updated stories artwork.
+- UI/Intro: Added intro screen to provide info on the memorial & "how-to".
+- UI/Search: Simplified search info "how-to".
+- UI/Search: Adjusted "Information" text offset to icon.
+- UI/Stories: Adjusted padding for story text.
+- UI/Stories: Adjusted line height for story text.
+- UI/Stories: Simplified coming soon page for stories section and reduced font size.
+- UI/Stories: Updated stories artwork.
 
 2017.08.24
 - UI: Added margin-top for app container.
