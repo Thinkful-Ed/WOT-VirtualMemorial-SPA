@@ -27,7 +27,7 @@ var htmlTemplates = (function(){
 
     // Tour
     function tour(){
-        const tourType = "VIDEOHD"; // VIDEOPA || VIDEOHD || WEBGL
+        const tourType = "WEBGL"; // VIDEOPA || VIDEOHD || WEBGL
         const tourContent = {VIDEOHD: 'https://www.youtube.com/embed/51dNsNogQ3I?rel=0?autoplay=1&loop=1&playlist=51dNsNogQ3I',
                              VIDEOPA: 'https://www.youtube.com/embed/yGVTpS5CzTQ?rel=0?autoplay=1&loop=1',
                              WEBGL: `<div id="webgl-container"></div>`
@@ -40,7 +40,9 @@ var htmlTemplates = (function(){
         else if(tourType==="WEBGL"){
             $('#dynamic-container').html(tourContent[tourType]);
             wotScene.init()
-                .then(setTimeout(function(){wotScene.setParents()}, 5000))
+                .then(setTimeout(function(){wotScene.setMaterials()}, 5000))
+                .then(wotScene.setParents())
+                .then(wotScene.positionProps())
                 .catch(function(e){
                     alert(`An error occurred, please check the console for more info.`);
                     console.warn(e);
