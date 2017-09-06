@@ -4,7 +4,7 @@ var htmlTemplates = (function(){
     //Intro
     function intro(){
         const htmlTemplate = `
-            <div style='position: relative; top: 5%; text-align: center;'>
+            <div id="intro" style='position: relative; text-align: center;'>
                 <p style="padding: 1rem 2.5rem 1rem 2.5rem; ">
                 <em>On May 21, 1975, less than a month after the fall of Saigon ended the Vietnam War, Col 
                 Paul R Shaffer Jr. and LTC Jack H. Turner were assassinated in Tehran, Iran. Those are the 
@@ -13,6 +13,7 @@ var htmlTemplates = (function(){
                 then in the battle against terrorism. New names continue to be added as more members of the 
                 American armed forces lose their lives in this ongoing war.</em>
                 <br>
+                <img src="../imgs/intro.png" alt="Intro Banner">
                 <br>
                 Learn more about the servicmembers on the memorial by selecting from the options below. Tour
                 provides a virtual tour of the memorial located at America's Cemetery, Hermitage PA. Search allows 
@@ -27,7 +28,7 @@ var htmlTemplates = (function(){
 
     // Tour
     function tour(){
-        const tourType = "WEBGL"; // VIDEOPA || VIDEOHD || WEBGL
+        const tourType = "VIDEOHD"; // VIDEOPA || VIDEOHD || WEBGL
         const tourContent = {VIDEOHD: 'https://www.youtube.com/embed/51dNsNogQ3I?rel=0?autoplay=1&loop=1&playlist=51dNsNogQ3I',
                              VIDEOPA: 'https://www.youtube.com/embed/yGVTpS5CzTQ?rel=0?autoplay=1&loop=1',
                              WEBGL: `<div id="webgl-container"></div>`

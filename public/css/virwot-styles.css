@@ -110,7 +110,7 @@ li{
     float: right;
     margin-right: 1rem
 }
-#js-searchResults, #text-stories-container{
+#js-searchResults, #text-stories-container, #intro{
     overflow-y: scroll;
     height: inherit;
     max-height: 100%;
