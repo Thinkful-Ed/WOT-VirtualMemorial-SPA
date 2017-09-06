@@ -13,7 +13,7 @@ var htmlTemplates = (function(){
                 then in the battle against terrorism. New names continue to be added as more members of the 
                 American armed forces lose their lives in this ongoing war.</em>
                 <br>
-                <img src="../imgs/intro.png" alt="Intro Banner">
+                <img src="../imgs/intro.png" alt="Intro Banner" style="text-align: left; width: 65%; max-width: 65%;">
                 <br>
                 Learn more about the servicmembers on the memorial by selecting from the options below. Tour
                 provides a virtual tour of the memorial located at America's Cemetery, Hermitage PA. Search allows 
