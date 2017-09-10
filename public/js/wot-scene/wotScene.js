@@ -5,6 +5,7 @@ var wotScene = (function(){
     var renderer = new THREE.WebGLRenderer();
     var materials;
     var load_Objs = new THREE.ObjectLoader();
+    var load_Json = new THREE.JSONLoader();
     var load_Tex = new THREE.TextureLoader();
     var useHelpers = true;
 
@@ -30,51 +31,63 @@ var wotScene = (function(){
 
             // Camera
             camera.name = 'renCam';
-            camera.position.set(0, 4.5, 70);
-            camera.rotation.set(0, 0, 0);
+            camera.position.set(0, 20, 80);
+            camera.rotation.set(-.2, 0, 0);
             scene.add(camera);
 
             // Create Materials & Textures
             var atlas = new THREE.MeshPhongMaterial({map: load_Tex.load('./js/wot-scene/textures/atlas.png')});
             atlas.name = 'atlas';
-            var concrete = new THREE.MeshLambertMaterial({map: load_Tex.load('./js/wot-scene/textures/concrete.jpg'), function(texture){
 
-            }});
+            var concrete = new THREE.MeshLambertMaterial({map: load_Tex.load('./js/wot-scene/textures/concrete.jpg', function(texture){
+                texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
+                texture.repeat.set(5, 5);
+            })});
             concrete.name='concrete';
+            concrete.color = {r:.5, g:.5, b:.5};
+
             var grass = new THREE.MeshLambertMaterial({map: load_Tex.load('./js/wot-scene/textures/grass.jpg', function(texture){
                 texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
                 texture.repeat.set(100, 100);
             })});
             grass.name = 'grass';
-            var sandstone = new THREE.MeshLambertMaterial({map: load_Tex.load('./js/wot-scene/textures/sandstone.jpg'), function(texture){
 
-            }});
+            var sandstone = new THREE.MeshLambertMaterial({map: load_Tex.load('./js/wot-scene/textures/sandstone.jpg')});
             sandstone.name = 'sandstone';
-            var stones = new THREE.MeshPhongMaterial({map: load_Tex.load('./js/wot-scene/textures/stones.jpg'), function(texture){
 
-            }});
+            var stones = new THREE.MeshPhongMaterial({map: load_Tex.load('./js/wot-scene/textures/stones.jpg')});
             stones.name = 'stones';
-            var water = new THREE.MeshPhongMaterial({map: load_Tex.load('./js/wot-scene/textures/water.jpg'), function(texture){
 
-            }});
+            var water = new THREE.MeshPhongMaterial({map: load_Tex.load('./js/wot-scene/textures/water.jpg', function(texture){
+                texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
+                texture.repeat.set(1.75, 1.75);
+            })});
             water.name = 'water';
+
+            var memorialNames = new THREE.MeshBasicMaterial({color: 0x000000});
             materials = {
                 atlas: atlas,
                 concrete: concrete,
                 grass: grass,
                 sandstone: sandstone,
                 stones: stones,
-                water: water
+                water: water,
+                memorialNames: memorialNames
             }; // Package materials up in an object
 
-            // Load Model Assets & Create Objects
+            // Helper Objects
             var trs_camPivot = new THREE.Object3D();
             trs_camPivot.name = 'camPivot';
             scene.add(trs_camPivot);
 
-            // Main Scene
+            // Load JSON Assets
             load_Objs.load("./js/wot-scene/json/wot-scene-minify.json", function(obj){
                     // Add the loaded object to the scene
+                    obj.traverse(function(child){
+                        if( child.type == 'Mesh' ){
+                            child.rotation.z = 0;
+                        }
+                    });
                     scene.add(obj);
                 },
                 // Function called when download progresses
@@ -95,9 +108,22 @@ var wotScene = (function(){
         for(var i=0; i<scene.children[4].children.length; i++){
             scene.children[4].children[i].material = materials.atlas;
         }
+        // Traverse Scene Mat Setup
+        scene.traverse(function(obj){
+            var objName = obj.name;
+
+            if(objName.match(/Road/)){
+                obj.material = materials.concrete;
+            }
+            if(objName.match(/sidewalk/)){
+                obj.material = materials.concrete;
+            }
+        });
         // Apply Specific Textures
         scene.getObjectByName('fountainStone').material = materials.concrete;
         scene.getObjectByName('ground').material = materials.grass;
+        scene.getObjectByName('fountainWater').material = materials.water;
+        scene.getObjectByName('reflectingPoolWater').material = materials.water;
     }
     function setParents(){
         console.log('Setting Parents');
@@ -115,7 +141,7 @@ var wotScene = (function(){
         var animCam = scene.getObjectByName('camPivot');
         try{
             if(useHelpers===true){
-                animCam.rotation.y += 0.001;
+                animCam.rotation.y += 0.005;
             }
         }
         catch (err){
