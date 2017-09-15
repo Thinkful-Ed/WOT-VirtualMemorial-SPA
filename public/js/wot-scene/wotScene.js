@@ -7,6 +7,17 @@ var wotScene = (function(){
     var load_Objs = new THREE.ObjectLoader();
     var load_Json = new THREE.JSONLoader();
     var load_Tex = new THREE.TextureLoader();
+    var keyframe = {
+        shot1: {start:[0,0,0,0,0,0], end: [0,0,0,0,0,0]},
+        shot2: {start:[0,0,0,0,0,0], end: [0,0,0,0,0,0]},
+        shot3: {start:[0,0,0,0,0,0], end: [0,0,0,0,0,0]},
+        shot4: {start:[0,0,0,0,0,0], end: [0,0,0,0,0,0]},
+        shot5: {start:[0,0,0,0,0,0], end: [0,0,0,0,0,0]},
+        shot6: {start:[0,0,0,0,0,0], end: [0,0,0,0,0,0]},
+        shot7: {start:[0,0,0,0,0,0], end: [0,0,0,0,0,0]},
+        shot8: {start:[0,0,0,0,0,0], end: [0,0,0,0,0,0]},
+        shot9: {start:[0,0,0,0,0,0], end: [0,0,0,0,0,0]}
+    };
     var useHelpers = true;
 
     function init(){
@@ -38,6 +49,8 @@ var wotScene = (function(){
             // Create Materials & Textures
             var atlas = new THREE.MeshPhongMaterial({map: load_Tex.load('./js/wot-scene/textures/atlas.png')});
             atlas.name = 'atlas';
+            atlas.transparent = true;
+            atlas.side = THREE.DoubleSide;
 
             var concrete = new THREE.MeshLambertMaterial({map: load_Tex.load('./js/wot-scene/textures/concrete.jpg', function(texture){
                 texture.wrapS = texture.wrapT = THREE.RepeatWrapping;

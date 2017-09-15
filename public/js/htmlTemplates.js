@@ -31,7 +31,32 @@ var htmlTemplates = (function(){
         const tourType = "WEBGL"; // VIDEOPA || VIDEOHD || WEBGL
         const tourContent = {VIDEOHD: 'https://www.youtube.com/embed/51dNsNogQ3I?rel=0?autoplay=1&loop=1&playlist=51dNsNogQ3I',
                              VIDEOPA: 'https://www.youtube.com/embed/yGVTpS5CzTQ?rel=0?autoplay=1&loop=1',
-                             WEBGL: `<div id="webgl-container"></div>`
+                             WEBGL: `<div>
+                                        <div id="webgl-controls" class="bg-red" style="text-align: center">
+                                            <div id="webgl-controls-backwards" class="menu-btn menu-top inline" style="text-align: center;">
+                                                <a href="#">
+                                                    <img src="imgs/ico-controls-back.svg" alt="Rewind">
+                                                    <br>
+                                                    <h3><<<</h3>
+                                                </a>
+                                            </div>
+                                            <div id="webgl-controls-play" class="menu-btn menu-top inline" style="text-align: center;">
+                                                <a href="#">
+                                                    <img src="imgs/ico-controls-play-pause.svg" alt="Play">
+                                                    <br>
+                                                    <h3>Play</h3>
+                                                </a>
+                                            </div> 
+                                            <div id="webgl-controls-forward" class="menu-btn menu-top inline" style="text-align: center;">
+                                                <a href="#">
+                                                    <img src="imgs/ico-controls-next.svg" alt="Fast Forward">
+                                                    <br>
+                                                    <h3>>>></h3>
+                                                </a>
+                                            </div> 
+                                        </div>
+                                        <div id="webgl-container"></div>
+                                    </div>`
         };
         const htmlTemplateVideo = `<iframe style="width: 100%; height: 100%;"  src="${tourContent[tourType]}" frameborder="0"></iframe>`;
 
