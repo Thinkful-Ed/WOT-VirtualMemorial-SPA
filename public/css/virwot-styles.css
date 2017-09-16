@@ -196,8 +196,8 @@ button{
     border-style: none;
     transition: background-color ease-in-out .25s;
 }
-.vet-info, .vet-story{
-    width: calc(90%/2);
+.vet-info, .vet-story, .vet-memorial{
+    width: calc(90%/3);
     margin: 0.25rem .2rem 0.25rem .2rem;
 }
 button:hover{
