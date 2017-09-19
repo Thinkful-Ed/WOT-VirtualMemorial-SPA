@@ -69,6 +69,7 @@ var htmlTemplates = (function(){
                 .then(setTimeout(function(){wotScene.setMaterials()}, 5000))
                 .then(wotScene.setParents())
                 .then(wotScene.positionProps())
+                .then(wotScene.addControlListeners())
                 .catch(function(e){
                     alert(`An error occurred, please check the console for more info.`);
                     console.warn(e);

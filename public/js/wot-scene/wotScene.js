@@ -5,19 +5,8 @@ var wotScene = (function(){
     var renderer = new THREE.WebGLRenderer();
     var materials;
     var load_Objs = new THREE.ObjectLoader();
-    var load_Json = new THREE.JSONLoader();
     var load_Tex = new THREE.TextureLoader();
-    var keyframe = {
-        shot1: {start:[0,0,0,0,0,0], end: [0,0,0,0,0,0]},
-        shot2: {start:[0,0,0,0,0,0], end: [0,0,0,0,0,0]},
-        shot3: {start:[0,0,0,0,0,0], end: [0,0,0,0,0,0]},
-        shot4: {start:[0,0,0,0,0,0], end: [0,0,0,0,0,0]},
-        shot5: {start:[0,0,0,0,0,0], end: [0,0,0,0,0,0]},
-        shot6: {start:[0,0,0,0,0,0], end: [0,0,0,0,0,0]},
-        shot7: {start:[0,0,0,0,0,0], end: [0,0,0,0,0,0]},
-        shot8: {start:[0,0,0,0,0,0], end: [0,0,0,0,0,0]},
-        shot9: {start:[0,0,0,0,0,0], end: [0,0,0,0,0,0]}
-    };
+    var anim_Tour;
     var useHelpers = true;
 
     function init(){
@@ -96,12 +85,14 @@ var wotScene = (function(){
             // Load JSON Assets
             load_Objs.load("./js/wot-scene/json/wot-scene-minify.json", function(obj){
                     // Add the loaded object to the scene
+                    console.log(obj);
                     obj.traverse(function(child){
                         if( child.type == 'Mesh' ){
                             child.rotation.z = 0;
                         }
                     });
                     scene.add(obj);
+                    scene.animations = obj.animations;
                 },
                 // Function called when download progresses
                 function ( xhr ) {
@@ -150,6 +141,18 @@ var wotScene = (function(){
         // Reposition
         // scene.getObjectByName('memorialMetal').position.set(6.2,0,2.1);
     }
+    function addControlListeners(){
+        console.log('Adding control listeners');
+        $('#dynamic-container').on('click', '#webgl-controls-backwards', function(event){
+            console.log('Rewinding to past position');
+        });
+        $('#dynamic-container').on('click', '#webgl-controls-play', function(event){
+            console.log('Playing or pausing the animation')
+        });
+        $('#dynamic-container').on('click', '#webgl-controls-forward', function(event){
+            console.log('Fast-forwarding to past position')
+        });
+    }
     function render(){
         var animCam = scene.getObjectByName('camPivot');
         try{
@@ -173,6 +176,7 @@ var wotScene = (function(){
         init: init,
         setMaterials: setMaterials,
         setParents: setParents,
+        addControlListeners: addControlListeners,
         positionProps: positionProps
     }
 }());
