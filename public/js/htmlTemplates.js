@@ -66,9 +66,9 @@ var htmlTemplates = (function(){
         else if(tourType==="WEBGL"){
             $('#dynamic-container').html(tourContent[tourType]);
             wotScene.init()
-                .then(setTimeout(function(){wotScene.setMaterials()}, 5000))
+                .then(setTimeout(function(){wotScene.setMaterials()}, 3000))
                 .then(wotScene.setParents())
-                .then(wotScene.positionProps())
+                .then(setTimeout(function(){wotScene.positionProps()}, 3000))
                 .then(wotScene.addControlListeners())
                 .catch(function(e){
                     alert(`An error occurred, please check the console for more info.`);
@@ -117,8 +117,8 @@ var htmlTemplates = (function(){
                 <div class="search-col inline"><p><b>${item.Name}</b></p></div>
                 <div class="search-col inline" style="text-align: center">
                     <button class="vet-info" data-id="${item.Name}">Info</button>
+                    <button class="vet-memorial" data-id="${item.Name}">Memorial</button>
                     <button class="vet-story" data-id="${item._id}">Stories</button>
-                    <button class="vet-memorial">Memorial</button>
                 </div>
                 <hr>
             </div>

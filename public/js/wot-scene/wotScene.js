@@ -2,7 +2,7 @@ var wotScene = (function(){
     // Scene Boiler
     var scene = new THREE.Scene(); scene.name="scene";
     var camera = new THREE.PerspectiveCamera(35, window.innerWidth/window.innerHeight, 0.01, 1000);// Checks for WebGL Content. If not there fallback to canvas render for older browsers.
-    var renderer = new THREE.WebGLRenderer();
+    var renderer = new THREE.WebGLRenderer({antialias:true});
     var materials;
     var load_Objs = new THREE.ObjectLoader();
     var load_Tex = new THREE.TextureLoader();
@@ -35,37 +35,31 @@ var wotScene = (function(){
             camera.rotation.set(-.2, 0, 0);
             scene.add(camera);
 
-            // Create Materials & Textures
+            // Materials & Textures
             var atlas = new THREE.MeshPhongMaterial({map: load_Tex.load('./js/wot-scene/textures/atlas.png')});
             atlas.name = 'atlas';
             atlas.transparent = true;
             atlas.side = THREE.DoubleSide;
-
             var concrete = new THREE.MeshLambertMaterial({map: load_Tex.load('./js/wot-scene/textures/concrete.jpg', function(texture){
                 texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
                 texture.repeat.set(5, 5);
             })});
             concrete.name='concrete';
             concrete.color = {r:.5, g:.5, b:.5};
-
             var grass = new THREE.MeshLambertMaterial({map: load_Tex.load('./js/wot-scene/textures/grass.jpg', function(texture){
                 texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
                 texture.repeat.set(100, 100);
             })});
             grass.name = 'grass';
-
             var sandstone = new THREE.MeshLambertMaterial({map: load_Tex.load('./js/wot-scene/textures/sandstone.jpg')});
             sandstone.name = 'sandstone';
-
             var stones = new THREE.MeshPhongMaterial({map: load_Tex.load('./js/wot-scene/textures/stones.jpg')});
             stones.name = 'stones';
-
             var water = new THREE.MeshPhongMaterial({map: load_Tex.load('./js/wot-scene/textures/water.jpg', function(texture){
                 texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
                 texture.repeat.set(1.75, 1.75);
             })});
             water.name = 'water';
-
             var memorialNames = new THREE.MeshBasicMaterial({color: 0x000000});
             materials = {
                 atlas: atlas,
@@ -85,12 +79,11 @@ var wotScene = (function(){
             // Load JSON Assets
             load_Objs.load("./js/wot-scene/json/wot-scene-minify.json", function(obj){
                     // Add the loaded object to the scene
-                    console.log(obj);
-                    obj.traverse(function(child){
+                    /*obj.traverse(function(child){
                         if( child.type == 'Mesh' ){
                             child.rotation.z = 0;
                         }
-                    });
+                    });*/
                     scene.add(obj);
                     scene.animations = obj.animations;
                 },
@@ -139,7 +132,18 @@ var wotScene = (function(){
     function positionProps(){
         console.log('Positioning Props');
         // Reposition
-        // scene.getObjectByName('memorialMetal').position.set(6.2,0,2.1);
+        scene.getObjectByName('Road_TriCap').rotation.z = 0;
+        scene.getObjectByName('Road_HCap_R').rotation.z = 0;
+        scene.getObjectByName('Road_HCap_L').rotation.z = 0;
+        scene.getObjectByName('Road_T').rotation.z = 0;
+        scene.getObjectByName('Road_T.001').rotation.z = 0;
+        scene.getObjectByName('sidewalkTileLargeBevel.001').rotation.z = 0;
+        scene.getObjectByName('sidewalkTileLargeBevel.002').rotation.z = 0;
+        scene.getObjectByName('sidewalkReflectingPoolNorth').rotation.z = 0;
+        scene.getObjectByName('sidewalkReflectingPoolSouth').rotation.z = 0;
+        scene.getObjectByName('sidewalkSouthSteps').rotation.z = 0;
+        scene.getObjectByName('Road_TriSplit').rotation.z = 0;
+        scene.getObjectByName('Road_TriSplit.001').rotation.z = 0;
     }
     function addControlListeners(){
         console.log('Adding control listeners');
