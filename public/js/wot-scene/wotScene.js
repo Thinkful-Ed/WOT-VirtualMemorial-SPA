@@ -31,15 +31,19 @@ var wotScene = (function(){
 
             // Camera
             camera.name = 'renCam';
-            camera.position.set(0, 20, 80);
+            camera.position.set(0, 5, 10);
             camera.rotation.set(-.2, 0, 0);
             scene.add(camera);
+
+            scene.fog = new THREE.Fog(0xd4e1f4, 10, 725);
 
             // Materials & Textures
             var atlas = new THREE.MeshPhongMaterial({map: load_Tex.load('./js/wot-scene/textures/atlas.png')});
             atlas.name = 'atlas';
             atlas.transparent = true;
             atlas.side = THREE.DoubleSide;
+            // atlas.depthWrite = false;
+            atlas.alphaTest = 0.5;
             var concrete = new THREE.MeshLambertMaterial({map: load_Tex.load('./js/wot-scene/textures/concrete.jpg', function(texture){
                 texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
                 texture.repeat.set(5, 5);
@@ -144,6 +148,7 @@ var wotScene = (function(){
         scene.getObjectByName('sidewalkSouthSteps').rotation.z = 0;
         scene.getObjectByName('Road_TriSplit').rotation.z = 0;
         scene.getObjectByName('Road_TriSplit.001').rotation.z = 0;
+        scene.getObjectByName('fence').rotation.z = 0;
     }
     function addControlListeners(){
         console.log('Adding control listeners');
@@ -177,6 +182,7 @@ var wotScene = (function(){
     return{
         scene: scene,
         camera: camera,
+        renderer: renderer,
         init: init,
         setMaterials: setMaterials,
         setParents: setParents,
