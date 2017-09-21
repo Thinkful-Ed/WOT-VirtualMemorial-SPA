@@ -160,41 +160,11 @@ var htmlTemplates = (function(){
         `
     }
 
-    // Stories
+    // Story Main & Users
     function storyMainUI(){
         let htmlTemplate = `<div id="story-container" style="height: inherit">
-                                <div id="story-menu" class="bg-red" style="text-align: center">
-                                    <div id="story-text" class="menu-btn menu-top inline" style="text-align: center;">
-                                        <a href="#">
-                                            <img src="imgs/ico-text.svg" alt="Text">
-                                            <br>
-                                            <h3>Text</h3>
-                                        </a>
-                                    </div>
-                                    <div id="story-picture" class="menu-btn menu-top inline" style="text-align: center;">
-                                        <a href="#">
-                                            <img src="imgs/ico-picture.svg" alt="Pictures">
-                                            <br>
-                                            <h3>Pictures</h3>
-                                        </a>
-                                    </div>
-                                    <div id="story-audio" class="menu-btn menu-top inline" style="text-align: center;">
-                                        <a href="#">
-                                            <img src="imgs/ico-audio.svg" alt="Audio">
-                                            <br>
-                                            <h3>Audio</h3>
-                                        </a>
-                                    </div>
-                                    <div id="story-video" class="menu-btn menu-top inline" style="text-align: center;">
-                                        <a href="#">
-                                            <img src="imgs/ico-video.svg" alt="Video">
-                                            <br>
-                                            <h3>Video</h3>
-                                        </a>
-                                    </div>
-                                </div>
                                 <div id="stories-content-container" class="dynamic-container-results" style="height: inherit">
-                                    <h1 style="margin: 1rem 3rem 0 3rem; text-align: center; font-size: 3.5rem;">Select from the above story types to learn more about the veterans on the memorial.</h1>
+                                    <h1 style="margin: 12% 3rem 0 3rem; text-align: center; font-size: 3.5rem;">Select search from the above menu to find Veteran service information, stories, and to view on the virtual memorial.</h1>
                                     <div style="text-align: center;">
                                         <img class="story-main-imgs" style="margin: .5rem 0 0 0; width: 95%; max-width: 70rem" src="../imgs/stories.png">
                                     </div>
@@ -203,7 +173,7 @@ var htmlTemplates = (function(){
 
         $('#dynamic-container').html(htmlTemplate);
     }
-    function storyLogin(){
+    function loginHeader(){
         let htlmTemplate = `<form>
                                 <label>User</label>
                                 <input placeholder="Username">
@@ -212,6 +182,26 @@ var htmlTemplates = (function(){
                             </form>`;
 
         $('#stories-content-container').html(htlmTemplate);
+    }
+    function user(){
+        let htmlTemplate = `<div style="text-align: center; margin-top: 5%">
+                                <div id="login">
+                                    <h1 style="font-size: 3rem;">Login</h1>
+                                    <input id="login-username" class="login-creds-input" type="text" placeholder="User Name"><br>
+                                    <input id="login-password" class="login-creds-input" type="text" placeholder="Password"><br>
+                                    <button id="submit-user-login">Submit</button>
+                                </div>
+                                <hr>
+                                <div id="new-user">
+                                    <h1 style="font-size: 3rem;">New User</h1>
+                                    <input id="new-first" class="login-creds-input" type="text" placeholder="First Name"><br>
+                                    <input id="new-last" class="login-creds-input" type="text" placeholder="Last Name"><br>
+                                    <input id="new-username" class="login-creds-input" type="text" placeholder="User Name"><br>
+                                    <input id="new-password" class="login-creds-input" type="text" placeholder="Password"><br>
+                                    <button id="submit-new-user">Submit</button>
+                                </div>
+                            </div>`;
+        $('#stories-content-container').html(htmlTemplate);
     }
 
     // Text
@@ -308,28 +298,6 @@ var htmlTemplates = (function(){
         }, 3000)
     }
 
-    // Login
-    function user(){
-        let htmlTemplate = `<div style="text-align: center">
-                                <div id="login">
-                                    <h1 style="font-size: 3rem;">Login</h1>
-                                    <input id="login-username" class="login-creds-input" type="text" placeholder="User Name"><br>
-                                    <input id="login-password" class="login-creds-input" type="text" placeholder="Password"><br>
-                                    <button id="submit-user-login">Submit</button>
-                                </div>
-                                <hr>
-                                <div id="new-user">
-                                    <h1 style="font-size: 3rem;">New User</h1>
-                                    <input id="new-first" class="login-creds-input" type="text" placeholder="First Name"><br>
-                                    <input id="new-last" class="login-creds-input" type="text" placeholder="Last Name"><br>
-                                    <input id="new-username" class="login-creds-input" type="text" placeholder="User Name"><br>
-                                    <input id="new-password" class="login-creds-input" type="text" placeholder="Password"><br>
-                                    <button id="submit-new-user">Submit</button>
-                                </div>
-                            </div>`;
-        $('#stories-content-container').html(htmlTemplate);
-    }
-
     // Misc
     function loader(typeString){
         let htmlTemplate = `<div id="loader">
@@ -384,7 +352,7 @@ var htmlTemplates = (function(){
          storyMainUI: storyMainUI,
          textStoryUI: textStoryUI,
          createReviseText: createReviseText,
-         storyLogin: storyLogin,
+         loginHeader: loginHeader,
          loader: loader,
          comingSoon: comingSoon,
          submitNotification: submitNotification,
