@@ -1,7 +1,8 @@
 var wotScene = (function(){
     // Scene Boiler
     var scene = new THREE.Scene(); scene.name="scene";
-    var camera = new THREE.PerspectiveCamera(35, window.innerWidth/window.innerHeight, 0.01, 1000);// Checks for WebGL Content. If not there fallback to canvas render for older browsers.
+    var camera_Names = new THREE.PerspectiveCamera(35, window.innerWidth/window.innerHeight, 0.01, 1000);// Checks for WebGL Content. If not there fallback to canvas render for older browsers.
+    var camera_Target;
     var renderer = new THREE.WebGLRenderer({antialias:true});
     var materials;
     var load_Objs = new THREE.ObjectLoader();
@@ -30,10 +31,11 @@ var wotScene = (function(){
             scene.add(lgt_directional, lgt_ambient);
 
             // Camera
-            camera.name = 'renCam';
-            camera.position.set(0, 5, 10);
-            camera.rotation.set(-.2, 0, 0);
-            scene.add(camera);
+            camera_Names.name = 'camera_Names';
+            camera_Names.position.set(0, 5, 10);
+            camera_Names.rotation.set(-.2, 0, 0);
+            camera_Target = camera_Names;
+            scene.add(camera_Names);
 
             scene.fog = new THREE.Fog(0xd4e1f4, 10, 725);
 
@@ -83,11 +85,6 @@ var wotScene = (function(){
             // Load JSON Assets
             load_Objs.load("./js/wot-scene/json/wot-scene-minify.json", function(obj){
                     // Add the loaded object to the scene
-                    /*obj.traverse(function(child){
-                        if( child.type == 'Mesh' ){
-                            child.rotation.z = 0;
-                        }
-                    });*/
                     scene.add(obj);
                     scene.animations = obj.animations;
                 },
@@ -130,9 +127,14 @@ var wotScene = (function(){
         console.log('Setting Parents');
         // Helpers
         if(useHelpers===true){
-            THREE.SceneUtils.attach(scene.getObjectByName('renCam'), scene, scene.getObjectByName('camPivot'));
+            THREE.SceneUtils.attach(scene.getObjectByName('camera_Names'), scene, scene.getObjectByName('camPivot'));
         }
     }
+    function playAnimation(){
+        var camera_Tour = scene.getObjectByName('camTour');
+        camera_Target = camera_Tour;
+    }
+    function pauseAnimation(){}
     function positionProps(){
         console.log('Positioning Props');
         // Reposition
@@ -150,18 +152,6 @@ var wotScene = (function(){
         scene.getObjectByName('Road_TriSplit.001').rotation.z = 0;
         scene.getObjectByName('fence').rotation.z = 0;
     }
-    function addControlListeners(){
-        console.log('Adding control listeners');
-        $('#dynamic-container').on('click', '#webgl-controls-backwards', function(event){
-            console.log('Rewinding to past position');
-        });
-        $('#dynamic-container').on('click', '#webgl-controls-play', function(event){
-            console.log('Playing or pausing the animation')
-        });
-        $('#dynamic-container').on('click', '#webgl-controls-forward', function(event){
-            console.log('Fast-forwarding to past position')
-        });
-    }
     function render(){
         var animCam = scene.getObjectByName('camPivot');
         try{
@@ -173,7 +163,7 @@ var wotScene = (function(){
             console.log(err);
         }
         finally {
-            renderer.render(scene, camera);
+            renderer.render(scene, camera_Target);
             requestAnimationFrame(render);
         }
     }
@@ -181,12 +171,12 @@ var wotScene = (function(){
     // Expose scene obj for debugging purposes.
     return{
         scene: scene,
-        camera: camera,
+        camera_Target: camera_Target,
         renderer: renderer,
         init: init,
         setMaterials: setMaterials,
         setParents: setParents,
-        addControlListeners: addControlListeners,
-        positionProps: positionProps
+        positionProps: positionProps,
+        playAnimation: playAnimation
     }
 }());

@@ -125,4 +125,17 @@ var appEvents = function(){
         ev.preventDefault();
         crtl.submitTextStory();
     });
+
+    // =========== Tour Controls
+    // Clear Text Fields
+    $('#dynamic-container').on('click', '#webgl-controls-backwards', function(event){
+        console.log('Rewinding to past position');
+    });
+    $('#dynamic-container').on('click', '#webgl-controls-play', function(event){
+        console.log('Playing or pausing the animation');
+        wotScene.playAnimation();
+    });
+    $('#dynamic-container').on('click', '#webgl-controls-forward', function(event){
+        console.log('Fast-forwarding to past position')
+    });
 };
