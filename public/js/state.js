@@ -69,6 +69,10 @@ var appEvents = function(){
         ev.preventDefault();
         crtl.veteranInfo(ev);
     });
+    $('#dynamic-container').on('click', 'vet-memorial', function(ev){
+        ev.preventDefault();
+        wotScene.viewOnMemorial();
+    });
     // View Exiting Vet Stories
     $('#dynamic-container').on('click', '.vet-story', function(ev) {
         ev.preventDefault();
