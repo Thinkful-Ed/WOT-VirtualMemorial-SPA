@@ -355,7 +355,7 @@ var htmlTemplates = (function(){
                             </div>`;
 
         $('#stories-content-container').html(htmlTemplate);
-    }
+    } // REMOVE
     function errorNotification(err){
         htmlTemplate = `<div id="error-notification" style="text-align: center; position: relative;top: -50%;left: 50%;width: 50%;height: 50%;transform: translate(-50%, -50%);background-color: white;border: 5px solid #830012;border-radius: 0.25rem;z-index: 2;">
                             <h1>Sorry, an error occured!</h1>
