@@ -132,7 +132,7 @@ var htmlTemplates = (function(){
         else{
             state.currentVet = jsonObj[0];
             state.infoHtml = buildInfo(jsonObj[0]);
-            $('#menu-information-anchor').removeClass('no-click');
+            $('#menu-information').removeClass('no-click');
             $('#dynamic-container').html(state.infoHtml);
         }
     }
@@ -214,7 +214,7 @@ var htmlTemplates = (function(){
         }
         else{
             state.storiesHtml = buildTextStories(jsonObj);
-            $('#menu-stories-anchor').removeClass('no-click');
+            $('#menu-stories').removeClass('no-click');
             $('#text-stories-container').html(state.storiesHtml);
             dummyBlock('text-stories-container', 15);
         }
