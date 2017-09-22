@@ -18,7 +18,7 @@ var wotScene = (function(){
 
     // Helpers
     var useHelpers = true;
-    var mouseInput = true;
+    var mouseInput = false;
 
     function init(){
         return new Promise(function(resolve, reject){
