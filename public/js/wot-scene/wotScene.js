@@ -69,13 +69,20 @@ var wotScene = (function(){
             grass.name = 'grass';
             var sandstone = new THREE.MeshLambertMaterial({map: load_Tex.load('./js/wot-scene/textures/sandstone.jpg')});
             sandstone.name = 'sandstone';
-            var stones = new THREE.MeshPhongMaterial({map: load_Tex.load('./js/wot-scene/textures/stones.jpg')});
+            var stones = new THREE.MeshPhongMaterial({map: load_Tex.load('./js/wot-scene/textures/stones.jpg', function(texture){
+                texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
+                texture.repeat.set(3, 3);
+            })});
             stones.name = 'stones';
             var water = new THREE.MeshPhongMaterial({map: load_Tex.load('./js/wot-scene/textures/water.jpg', function(texture){
                 texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
-                texture.repeat.set(1.75, 1.75);
+                texture.repeat.set(5, 5);
             })});
             water.name = 'water';
+            var bush = new THREE.MeshPhongMaterial({map: load_Tex.load('./js/wot-scene/textures/bush.jpg', function(texture){
+                texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
+                texture.repeat.set(4, 4);
+            })});
             var memorialNames = new THREE.MeshBasicMaterial({color: 0x000000});
             materials = {
                 atlas: atlas,
@@ -84,6 +91,7 @@ var wotScene = (function(){
                 sandstone: sandstone,
                 stones: stones,
                 water: water,
+                bush: bush,
                 memorialNames: memorialNames
             }; // Package materials up in an object
 
@@ -131,7 +139,13 @@ var wotScene = (function(){
         scene.getObjectByName('fountainStone').material = materials.concrete;
         scene.getObjectByName('ground').material = materials.grass;
         scene.getObjectByName('fountainWater').material = materials.water;
+        scene.getObjectByName('fountainStone').material = materials.stones;
+        scene.getObjectByName('fountainSandstone').material = materials.sandstone;
         scene.getObjectByName('reflectingPoolWater').material = materials.water;
+        scene.getObjectByName('reflectingPoolStone').material = materials.stones;
+        scene.getObjectByName('reflectingPoolSandstone').material = materials.sandstone;
+        scene.getObjectByName('bush').material = materials.bush;
+        scene.getObjectByName('bush.001').material = materials.bush;
     }
     function setParents(){
         console.log('Setting Parents');
@@ -162,6 +176,7 @@ var wotScene = (function(){
         scene.getObjectByName('Road_HCap_L').rotation.z = 0;
         scene.getObjectByName('Road_T').rotation.z = 0;
         scene.getObjectByName('Road_T.001').rotation.z = 0;
+        scene.getObjectByName('sidewalkTileSmallBevelCap').rotation.z = 0;
         scene.getObjectByName('sidewalkFront').rotation.z = 0;
         scene.getObjectByName('sidewalkTileLargeBevel.001').rotation.z = 0;
         scene.getObjectByName('sidewalkTileLargeBevel.002').rotation.z = 0;
@@ -170,11 +185,14 @@ var wotScene = (function(){
         scene.getObjectByName('sidewalkSouthSteps').rotation.z = 0;
         scene.getObjectByName('Road_TriSplit').rotation.z = 0;
         scene.getObjectByName('Road_TriSplit.001').rotation.z = 0;
+        scene.getObjectByName('towerDecor').rotation.z = 0;
         scene.getObjectByName('fence').rotation.z = 0;
+        scene.getObjectByName('bush').rotation.z = 0;
+        scene.getObjectByName('bush.001').rotation.z = 0;
 
         if(useHelpers===true){
             controls = new THREE.FlyControls(camera_Target,  document.getElementById('dynamic-container'));
-            controls.movementSpeed = .5;
+            controls.movementSpeed = .2;
             controls.rollSpeed = 0.01;
             controls.autoForward = false;
             controls.dragToLook = true;
