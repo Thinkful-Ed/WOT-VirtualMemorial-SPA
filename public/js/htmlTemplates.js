@@ -164,10 +164,11 @@ var htmlTemplates = (function(){
     function storyMainUI(){
         let htmlTemplate = `<div id="story-container" style="height: inherit">
                                 <div id="stories-content-container" class="dynamic-container-results" style="height: inherit">
-                                    <h1 style="margin: 12% 3rem 0 3rem; text-align: center; font-size: 3.5rem;">Select search from the above menu to find Veteran service information, stories, and to view on the virtual memorial.</h1>
-                                    <div style="text-align: center;">
-                                        <img class="story-main-imgs" style="margin: .5rem 0 0 0; width: 95%; max-width: 70rem" src="../imgs/stories.png">
+                                    <div id="story-btn-container" style="text-align: center; padding: 1rem 0 1rem 0; background-color: rgba(255, 255, 255, 0.3);">
+                                        <button id="create-new-text-story">Add New Story</button>
+                                        <button id="user-login">Login</button>
                                     </div>
+                                    <div id="text-stories-container"></div>
                                 </div>
                             </div>`;
 
@@ -207,22 +208,40 @@ var htmlTemplates = (function(){
     // Text
     function textStoryUI(jsonObj){
         console.log('Entering textStoryUI');
-        let htmlTemplate = `<div style="height: inherit">
-                                <div id="story-btn-container" style="text-align: center; padding: 1rem 0 1rem 0; background-color: rgba(255, 255, 255, 0.3);">
-                                    <button id="create-new-text-story">Add New Story</button>
-                                    <button id="user-login">Login</button>
-                                </div>
-                                <div id="text-stories-container"></div>
-                            </div>`;
 
-        $('#stories-content-container').html(htmlTemplate);
         if(!(jsonObj)){
             $('#text-stories-container').html(state.storiesHtml);
         }
         else{
-            $('#text-stories-container').html(buildTextStories(jsonObj));
+            state.storiesHtml = buildTextStories(jsonObj);
+            $('#menu-stories-anchor').removeClass('no-click');
+            $('#text-stories-container').html(state.storiesHtml);
             dummyBlock('text-stories-container', 15);
         }
+    }
+    function buildTextStories(jsonObj){
+        console.log('Building Stories');
+        let htmlStory = '';
+
+        if(jsonObj.length === 0){
+            htmlStory += `<h2 style="text-decoration: underline;text-align: center;font-size: 5rem;margin: 10% 0 2.5% 0;">Sorry, no stories were found.</h2>
+                                     <h3 style="text-align: center;">Select "Add New Story" from above to share your story with the community.</h3>`;
+        }
+        else{
+            jsonObj.forEach(item => {
+                htmlStory += `<article id="${item._id}">
+                                        <h2 style="padding: 1rem 0 0 1rem; text-decoration: underline;">${item.Title}</h2>
+                                        <h3 class="inline" style="padding: .5rem 0 0 1rem; text-decoration: underline;">${item.Author}</h3>
+                                        <div style="display: inline-block; float: right;">
+                                            <button style="width: 10rem;" class="edit" data-id="${item._id}">Edit</button>
+                                            <button style="width: 10rem;" class="delete" data-id="${item._id}">Delete</button>
+                                        </div>
+                                        <p style="padding: 3rem 3rem 0 3rem; line-height: 5rem;">${item.Text}</p>
+                                        <hr style="margin: 2.5rem 0 2.5rem 0;">
+                                    </article>`;
+            });
+        }
+        return htmlStory;
     }
     function createReviseText(mode, title, author, text){
         let htmlTemplate = `<div id="new-text-story-container">
@@ -254,32 +273,6 @@ var htmlTemplates = (function(){
             $('#text-text').val(text);
         }
 
-    }
-    function buildTextStories(jsonObj){
-        let htmlStoriesTemplate = '';
-
-        if(jsonObj.length === 0){
-            htmlStoriesTemplate += `<h2 style="text-decoration: underline;text-align: center;font-size: 5rem;margin: 10% 0 2.5% 0;">Sorry, no stories were found.</h2>
-                                     <h3 style="text-align: center;">Select "Add New Story" from above to share your story with the community.</h3>`;
-        }
-        else{
-            jsonObj.forEach(item=>{
-                htmlStoriesTemplate += `<article id="${item._id}">
-                                        <h2 style="padding: 1rem 0 0 1rem; text-decoration: underline;">${item.Title}</h2>
-                                        <h3 class="inline" style="padding: .5rem 0 0 1rem; text-decoration: underline;">${item.Author}</h3>
-                                        <div style="display: inline-block; float: right;">
-                                            <button style="width: 10rem;" class="edit" data-id="${item._id}">Edit</button>
-                                            <button style="width: 10rem;" class="delete" data-id="${item._id}">Delete</button>
-                                        </div>
-                                        <p style="padding: 3rem 3rem 0 3rem; line-height: 5rem;">${item.Text}</p>
-                                        <hr style="margin: 2.5rem 0 2.5rem 0;">
-                                    </article>`;
-            });
-
-            state.storiesHtml = htmlStoriesTemplate;
-            $('#menu-stories-anchor').removeClass('no-click');
-        }
-        $('#text-stories-container').html(htmlStoriesTemplate);
     }
     function clearNewStoryFields(){
         $('#text-title').val('');
@@ -314,16 +307,6 @@ var htmlTemplates = (function(){
             checkLoader = false;
         }
     }
-    function comingSoon(){
-        let htmlTemplate = `<div id="coming-soon-container">
-                                <div style="text-align: center; margin: 5rem 0 0 0;">
-                                    <h1 style="margin: 0; font-size: 5.5rem;">Coming Soon</h1>
-                                    <h2 style="color: #830012; margin: 3.5% 4rem 0 4rem; font-size: 3rem;">Learn more about those who served with stories submitted by family and friends. Content will include pictures, audio, and video.</h2>
-                                </div>
-                            </div>`;
-
-        $('#stories-content-container').html(htmlTemplate);
-    } // REMOVE
     function errorNotification(err){
         htmlTemplate = `<div id="error-notification" style="text-align: center; position: relative;top: -50%;left: 50%;width: 50%;height: 50%;transform: translate(-50%, -50%);background-color: white;border: 5px solid #830012;border-radius: 0.25rem;z-index: 2;">
                             <h1>Sorry, an error occured!</h1>
@@ -354,7 +337,6 @@ var htmlTemplates = (function(){
          createReviseText: createReviseText,
          loginHeader: loginHeader,
          loader: loader,
-         comingSoon: comingSoon,
          submitNotification: submitNotification,
          clearNewStoryFields: clearNewStoryFields,
          errorNotification: errorNotification

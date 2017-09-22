@@ -63,123 +63,123 @@
     <script>
         $(document).ready(htmlTemplates.intro());
 
-        // ================================ Main Menu
-        // WebGL Tour Loader
-        $('#menu-tour').click(function(ev){
-            ev.preventDefault();
-            htmlTemplates.tour();
-        });
-        // Search Main Menu
-        $('#menu-search').click(function(ev){
-            ev.preventDefault();
-            htmlTemplates.searchUI();
-        });
-        // Information
-        $('#menu-information').click(function(ev) {
-            ev.preventDefault();
-            htmlTemplates.info();
-        });
-        // Stories Main Menu
-        $('#menu-stories').click(function(ev){
-            ev.preventDefault();
-            htmlTemplates.storyMainUI();
-        });
+        // Main Menu
+        (function(){
+            // Virtual Tour
+            $('#menu-tour').click(function(ev){
+                ev.preventDefault();
+                htmlTemplates.tour();
+            });
+            // Search
+            $('#menu-search').click(function(ev){
+                ev.preventDefault();
+                htmlTemplates.searchUI();
+            });
+            // Information
+            $('#menu-information').click(function(ev) {
+                ev.preventDefault();
+                htmlTemplates.info();
+            });
+            // Stories
+            $('#menu-stories').click(function(ev){
+                ev.preventDefault();
+                htmlTemplates.storyMainUI();
+                htmlTemplates.textStoryUI();
+            });
+        }());
 
-        // ================================ Dynamic Menus
-        // ====================== Users
-        // Search Submission - "Mouse Click"
-        $('#dynamic-container').on('click', '#submit-new-user', function(ev){
-            ev.preventDefault();
-            crtl.createNewUser();
-        });
-        $('#dynamic-container').on('click', '#submit-user-login', function(ev){
-            ev.preventDefault();
-            crtl.loginUser();
-        });
-        // ====================== Search
-        // Search Submission - "Mouse Click"
-        $('#dynamic-container').on('click', '#js-submitSearch', function(ev){
-            ev.preventDefault();
-            crtl.submitSearch();
-        });
-        // View Vet Info
-        $('#dynamic-container').on('click', '.vet-info', function(ev) {
-            ev.preventDefault();
-            crtl.veteranInfo(ev);
-        });
-        $('#dynamic-container').on('click', 'vet-memorial', function(ev){
-            ev.preventDefault();
-            wotScene.viewOnMemorial();
-        });
-        // View Exiting Vet Stories
-        $('#dynamic-container').on('click', '.vet-story', function(ev) {
-            ev.preventDefault();
-            crtl.getTextStories(ev);
-        });
-        // ====================== Stories
-        // =========== Stories Main Menu
-        // Load current vet text stories
-        $('#dynamic-container').on('click', '#story-text', (ev)=>{
-            ev.preventDefault();
-            htmlTemplates.textStoryUI();
-        });
-        // Load current vet picture stories
-        $('#dynamic-container').on('click', '#story-picture', (ev)=>{
-            ev.preventDefault();
-            htmlTemplates.comingSoon();
-        });
-        // Load current vet audio stories
-        $('#dynamic-container').on('click', '#story-audio', (ev)=>{
-            ev.preventDefault();
-            htmlTemplates.comingSoon();
-        });
-        // Load current vet video stories
-        $('#dynamic-container').on('click', '#story-video', (ev)=>{
-            ev.preventDefault();
-            htmlTemplates.comingSoon();
-        });
-        // =========== View Stories
-        // Load "Create New Story" window
-        $('#dynamic-container').on('click', '#user-login',(ev)=>{
-            ev.preventDefault();
-            htmlTemplates.user();
-        });
-        $('#dynamic-container').on('click', '#create-new-text-story', (ev)=>{
-            ev.preventDefault();
-            htmlTemplates.createReviseText();
-        });
-        $('#dynamic-container').on('click', '.edit', (ev)=>{
-            ev.preventDefault();
-            crtl.editTextStory(ev);
-        });
-        $('#dynamic-container').on('click', '.delete', (ev)=>{
-            ev.preventDefault();
-            crtl.deleteTextStory(ev);
-        });
-        // =========== Create New Story
-        // Clear Text Fields
-        $('#dynamic-container').on('click', '#text-story-clear', (ev)=>{
-            ev.preventDefault();
-            htmlTemplates.clearNewStoryFields();
-        });
-        // Submit Story
-        $('#dynamic-container').on('click', '#text-story-submit', (ev)=>{
-            ev.preventDefault();
-            crtl.submitTextStory();
-        });
+        // Users
+        (function(){
+            // New User
+            $('#dynamic-container').on('click', '#submit-new-user', function(ev){
+                ev.preventDefault();
+                crtl.createNewUser();
+            });
+            // Login
+            $('#dynamic-container').on('click', '#submit-user-login', function(ev){
+                ev.preventDefault();
+                crtl.loginUser();
+            });
+        }());
 
-        // =========== Tour Controls
-        // Clear Text Fields
-        $('#dynamic-container').on('click', '#webgl-controls-backwards', function(event){
-            console.log('Rewinding to past position');
-        });
-        $('#dynamic-container').on('click', '#webgl-controls-play', function(event){
-            console.log('Playing or pausing the animation');
-            wotScene.playAnimation();
-        });
-        $('#dynamic-container').on('click', '#webgl-controls-forward', function(event){
-            console.log('Fast-forwarding to past position')
-        });
+        // Veteran Search
+        (function(){
+            // Search
+            $('#dynamic-container').on('click', '#js-submitSearch', function(ev){
+                ev.preventDefault();
+                crtl.submitSearch();
+            });
+            // Info
+            $('#dynamic-container').on('click', '.vet-info', function(ev) {
+                ev.preventDefault();
+                crtl.veteranInfo(ev);
+            });
+            // Memorial
+            $('#dynamic-container').on('click', 'vet-memorial', function(ev){
+                ev.preventDefault();
+                wotScene.viewOnMemorial();
+            });
+            // Stories
+            $('#dynamic-container').on('click', '.vet-story', function(ev) {
+                ev.preventDefault();
+                crtl.getTextStories(ev);
+            });
+        }());
+
+        // View Text Stories
+        (function(){
+            // Load "Create New Story" window
+            $('#dynamic-container').on('click', '#user-login',(ev)=>{
+                ev.preventDefault();
+                htmlTemplates.user();
+            });
+            // Add New Story
+            $('#dynamic-container').on('click', '#create-new-text-story', (ev)=>{
+                ev.preventDefault();
+                htmlTemplates.createReviseText();
+            });
+            // Edit Existing Story
+            $('#dynamic-container').on('click', '.edit', (ev)=>{
+                ev.preventDefault();
+                crtl.editTextStory(ev);
+            });
+            // Remove Existing Story
+            $('#dynamic-container').on('click', '.delete', (ev)=>{
+                ev.preventDefault();
+                crtl.deleteTextStory(ev);
+            });
+        }());
+
+        // Text Story Editor
+        (function(){
+            // Clear Text Fields
+            $('#dynamic-container').on('click', '#text-story-clear', (ev)=>{
+                ev.preventDefault();
+                htmlTemplates.clearNewStoryFields();
+            });
+            // Submit Story
+            $('#dynamic-container').on('click', '#text-story-submit', (ev)=>{
+                ev.preventDefault();
+                crtl.submitTextStory();
+            });
+        }());
+
+        // Virtual Tour Controls
+        (function(){
+            // Rewind
+            $('#dynamic-container').on('click', '#webgl-controls-backwards', function(event){
+                console.log('Rewinding to past position');
+            });
+            //Play / Pause
+            $('#dynamic-container').on('click', '#webgl-controls-play', function(event){
+                console.log('Playing or pausing the animation');
+                wotScene.playAnimation();
+            });
+            // Fast Forward
+            $('#dynamic-container').on('click', '#webgl-controls-forward', function(event){
+                console.log('Fast-forwarding to past position')
+            });
+        }());
     </script>
 </body>
 </html>
