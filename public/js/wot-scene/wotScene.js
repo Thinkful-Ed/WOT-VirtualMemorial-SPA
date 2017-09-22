@@ -6,6 +6,7 @@ var wotScene = (function(){
     var camera_Names = new THREE.PerspectiveCamera(35, window.innerWidth/window.innerHeight, 0.01, 1000);// Checks for WebGL Content. If not there fallback to canvas render for older browsers.
     var camera_Tour;
     var camera_Target;
+    var controls;
     // Loaders & Controllers
     var clock = new THREE.Clock();
     var load_Objs = new THREE.ObjectLoader();
@@ -17,6 +18,7 @@ var wotScene = (function(){
 
     // Helpers
     var useHelpers = true;
+    var mouseInput = true;
 
     function init(){
         return new Promise(function(resolve, reject){
@@ -105,20 +107,6 @@ var wotScene = (function(){
                     console.error( 'An error happened' );
                 }
             );
-            // Load JSON - Test Names
-            /*load_Objs.load("./js/wot-scene/json/panel_01.json", function(obj){
-                    // Add the loaded object to the scene
-                    scene.add(obj);
-                },
-                // Function called when download progresses
-                function ( xhr ) {
-                    console.log( (xhr.loaded / xhr.total * 100) + '% loaded' );
-                },
-                // Function called when download errors
-                function ( xhr ) {
-                    console.error( 'An error happened' );
-                }
-            );*/
             render();
         });
     }
@@ -183,6 +171,14 @@ var wotScene = (function(){
         scene.getObjectByName('Road_TriSplit').rotation.z = 0;
         scene.getObjectByName('Road_TriSplit.001').rotation.z = 0;
         scene.getObjectByName('fence').rotation.z = 0;
+
+        if(useHelpers===true){
+            controls = new THREE.FlyControls(camera_Target,  document.getElementById('dynamic-container'));
+            controls.movementSpeed = .5;
+            controls.rollSpeed = 0.01;
+            controls.autoForward = false;
+            controls.dragToLook = true;
+        }
     }
     function viewOnMemorial(){
         camera_Target = camera_Names;
@@ -191,7 +187,12 @@ var wotScene = (function(){
         var animCam = scene.getObjectByName('camPivot');
         try{
             if(useHelpers===true){
-                animCam.rotation.y += 0.005;
+                if(mouseInput === true){
+                    controls.update( 1 );
+                }
+                else{
+                    animCam.rotation.y += 0.005;
+                }
             }
         }
         catch (err){
