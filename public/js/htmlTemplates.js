@@ -114,7 +114,7 @@ var htmlTemplates = (function(){
         return `
             <div>
                 <div class="search-col inline"><p><b>${item.Name}</b></p></div>
-                <div class="search-col inline" style="text-align: center">
+                <div class="search-col inline opacity" style="text-align: center">
                     <button class="vet-info" data-id="${item.Name}">Info</button>
                     <button class="vet-memorial" data-id="${item.Name}">Memorial</button>
                     <button class="vet-story" data-id="${item._id}">Stories</button>

@@ -122,6 +122,7 @@ li{
     border: 0;
     margin: 0;
 }
+
 .search-box{
     height: 6.5rem;
     text-align: center;
@@ -214,6 +215,13 @@ button:active{
 .bg-red{ background-color: #830012}
 .bg-gray{ background-color: #cdcdcd}
 .bg-white{ background-color: #ffffff}
+.opacity{
+    opacity: 0.3;
+    transition: opacity ease-in-out .25s;
+}
+.opacity:hover{
+    opacity: 1.0;
+}
 .no-click{
     opacity: 0.2575;
     pointer-events: none;
@@ -239,6 +247,7 @@ button:active{
         width: 100%;
         margin: .25rem 0 .25rem 0;
     }
+    .opacity{opacity: 1.0}
     .search-box input{ width: 45%}
     .search-box button{ width: 45%}
     form input{
