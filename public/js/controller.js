@@ -30,7 +30,7 @@ var crtl = (function(){
     }
     function getTextStories(ev){
         // Get stories for specific veteran
-        let vetID = ev.currentTarget.dataset.id;
+        let vetID = ev.currentTarget.dataset.uuid;
         state.currentStoryVet = vetID;
 
         // htmlTemplates.loader('Loading');
@@ -46,7 +46,7 @@ var crtl = (function(){
     }
     function submitTextStory(){
         // Submit story on specific veteran
-        let postType;
+        //let postType;
         if(state.newText === false){
             $.ajax({url: `veterans/${state.currentStory}`,
                 type: 'PUT',

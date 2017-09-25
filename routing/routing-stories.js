@@ -34,6 +34,18 @@ function nameUpperCase(submission){
     return submitNameUpdated;
 }
 
+/* VetID used for vet>story mapping is a uuid value created for the vet
+* The MongoDB _id for the vet is NOT used in the mapping/identifying logic
+* for this application. Stories have 2 id vals. The one provided by mongo,
+* _ui & the "vetID: uuidVetVal". The vetVal is used to map all stories back
+* to the correct vet. Mongos internal _id is used for story id. The story id
+* is placed in a DOM data attr when requested by the app, this is used to
+* revise the story if the user chooses to. If the vet & story DB are re-seeded
+* vet>mapping will still work. Although stories will have new _id, those are
+* only used for editing existing stories. The key is to ensure the uui of the
+* vet is always used to map vet to stories.
+*/
+
 // GET - All Veterans
 routerStoryText.get('/', (req, res)=>{
     VetDoc.find()

@@ -5,7 +5,8 @@ const UserSchema = new mongoose.Schema({
     firstName: {type: String},
     lastName: {type: String},
     user: {type: String},
-    password: {type: String}
+    password: {type: String},
+    vetAccess: {type: String}
 });
 
 UserSchema.statics.hashPassword = function(password){

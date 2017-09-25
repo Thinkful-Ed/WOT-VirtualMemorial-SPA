@@ -4,6 +4,7 @@ const mongoose = require('mongoose');
 // Mongoose Doc Scheme
 const vetSchema = mongoose.Schema({
     id: {type: String},
+    uuid: {type: String},
     Date: {type: String},
     Country: {type: String},
     Name: {type: String},
@@ -18,7 +19,7 @@ const vetSchema = mongoose.Schema({
     Unit: {type: String},
     Stationed: {type: String},
     Panel: {type: Number},
-    WotName: {type: String}
+    Position: {type: Number}
     },
     {collection: "veterans"}
 );
