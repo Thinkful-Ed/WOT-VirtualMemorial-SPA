@@ -17,6 +17,8 @@ const vetSchema = mongoose.Schema({
     City: {type: String},
     Unit: {type: String},
     Stationed: {type: String},
+    Panel: {type: Number},
+    WotName: {type: String}
     },
     {collection: "veterans"}
 );

@@ -1,6 +1,6 @@
 var wotScene = (function(){
     // Scene & Renderer
-    var scene = new THREE.Scene(); scene.name="scene";
+    var scene= new THREE.Scene(); scene.name="scene";
     var renderer = new THREE.WebGLRenderer({antialias:true});
     // Cameras
     var camera_Names = new THREE.PerspectiveCamera(35, window.innerWidth/window.innerHeight, 0.01, 1000);// Checks for WebGL Content. If not there fallback to canvas render for older browsers.
@@ -10,6 +10,7 @@ var wotScene = (function(){
     // Loaders & Controllers
     var clock = new THREE.Clock();
     var load_Objs = new THREE.ObjectLoader();
+    var load_JSON = new THREE.JSONLoader();
     var load_Tex = new THREE.TextureLoader();
     var mixer;
     // Content Assets
@@ -19,6 +20,7 @@ var wotScene = (function(){
     // Helpers
     var useHelpers = true;
     var mouseInput = false;
+    var frameCount = 0;
 
     function init(){
         return new Promise(function(resolve, reject){
@@ -100,21 +102,24 @@ var wotScene = (function(){
             trs_camPivot.name = 'camPivot';
             scene.add(trs_camPivot);
 
-            // Load JSON - Scene
-            load_Objs.load("./js/wot-scene/json/wot-scene-minify.json", function(obj){
-                    // Add the loaded object to the scene
-                    scene.add(obj);
-                    scene.animations = obj.animations;
-                },
-                // Function called when download progresses
-                function ( xhr ) {
-                    console.log( (xhr.loaded / xhr.total * 100) + '% loaded' );
-                },
-                // Function called when download errors
-                function ( xhr ) {
-                    console.error( 'An error happened' );
-                }
-            );
+            // Load JSONs
+            (function(){
+                // Scene
+                load_Objs.load("./js/wot-scene/json/wot-scene-minify.json", function(importScene){
+                        console.log(importScene);
+                        scene.add(importScene);
+                        scene.animations = importScene.animations;
+                    },
+                    // Function called when download progresses
+                    function ( xhr ) {
+                        console.log( (xhr.loaded / xhr.total * 100) + '% loaded' );
+                    },
+                    // Function called when download errors
+                    function ( xhr ) {
+                        console.error( 'An error happened' );
+                    }
+                );
+            }());
             render();
         });
     }
@@ -156,15 +161,20 @@ var wotScene = (function(){
     }
     function playAnimation(){
         camera_Tour = scene.getObjectByName('camera_Tour');
+
         // Anim Setup
         mixer = new THREE.AnimationMixer(camera_Tour);
         anims.tour = mixer.clipAction(scene.animations[0]);
+        // anims.tour = mixer.clipAction(scene.children[4].animations[0]);
         anims.tour.setLoop(THREE.LoopRepeat);
-        console.log(anims);
+        anims.tour.setEffectiveWeight(1);
+        anims.tour.enabled = true;
 
         // Camera Setup & Play
         camera_Target = camera_Tour;
         anims.tour.play();
+
+        console.log(scene);
     }
     function pauseAnimation(){}
     function positionProps(){
@@ -205,6 +215,7 @@ var wotScene = (function(){
         var animCam = scene.getObjectByName('camPivot');
         try{
             if(useHelpers===true){
+                //console.log(frameCount+=1);
                 if(mouseInput === true){
                     controls.update( 1 );
                 }
