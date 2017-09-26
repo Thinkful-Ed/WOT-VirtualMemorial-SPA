@@ -19,8 +19,9 @@ var wotScene = (function(){
 
     // Helpers
     var useHelpers = true;
-    var mouseInput = false;
+    var mouseInput = true;
     var frameCount = 0;
+    var textGeo;
 
     function init(){
         return new Promise(function(resolve, reject){
@@ -85,7 +86,7 @@ var wotScene = (function(){
                 texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
                 texture.repeat.set(4, 4);
             })});
-            var memorialNames = new THREE.MeshBasicMaterial({color: 0x000000});
+            var memorialNames = new THREE.MeshBasicMaterial({color: 0xffffff});
             materials = {
                 atlas: atlas,
                 concrete: concrete,
@@ -177,6 +178,28 @@ var wotScene = (function(){
         console.log(scene);
     }
     function pauseAnimation(){}
+    function createName(vetName){
+        var textLoader = new THREE.FontLoader();
+        textLoader.load('./js/wot-scene/json/Arial_Regular.json', function(font){
+            var geo = new THREE.TextGeometry(vetName,
+                {
+                    font: font,
+                    size: .1,
+                    height: .01,
+                    curveSegments: 12,
+                    bevelEnabled: false,
+                    bevelThickness: 1,
+                    bevelSize: 1,
+                    bevelSegments: 2
+                });
+
+            var textMesh = new THREE.Mesh(geo, materials.memorialNames);
+            textMesh.name = 'viewVetName';
+
+            textMesh.position.set(0,5,0);
+            scene.add(textMesh);
+        });
+    }
     function positionProps(){
         console.log('Positioning Props');
         // Reposition
@@ -207,6 +230,7 @@ var wotScene = (function(){
             controls.autoForward = false;
             controls.dragToLook = true;
         }
+        createName('Bill Wheaton');
     }
     function viewOnMemorial(){
         camera_Target = camera_Names;
@@ -238,6 +262,7 @@ var wotScene = (function(){
         scene: scene,
         camera_Target: camera_Target,
         renderer: renderer,
+        textGeo: textGeo,
         init: init,
         setMaterials: setMaterials,
         setParents: setParents,

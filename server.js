@@ -7,6 +7,7 @@ const passport = require('passport');
 const morgan = require('morgan');
 const{DATABASE_URL, PORT, JWT_SECRET} = require('./config');
 const routerStoryText = require('./routing/routing-stories');
+const routerMemorial = require('./routing/routing-memorial');
 const routerUser = require('./routing/routing-users');
 const {basicStrategy, jwtStrategy} = require('./auth/strategies');
 const bodyParser = require('body-parser');
@@ -36,6 +37,7 @@ app.use('/veterans', routerStoryText);
 app.use('/veterans/:search', routerStoryText);
 app.use('/veterans/:id', routerStoryText);
 app.use('/veterans/:id/:storyID', routerStoryText);
+app.use('/memorial/panel/:number', routerMemorial);
 app.use('/user', routerUser);
 app.use('/user/login', routerUser);
 
