@@ -10,8 +10,8 @@ var wotScene = (function(){
     // Loaders & Controllers
     var clock = new THREE.Clock();
     var load_Objs = new THREE.ObjectLoader();
-    var load_JSON = new THREE.JSONLoader();
     var load_Tex = new THREE.TextureLoader();
+    var load_Text = new THREE.FontLoader();
     var mixer;
     // Content Assets
     var materials;
@@ -21,7 +21,7 @@ var wotScene = (function(){
     var useHelpers = true;
     var mouseInput = true;
     var frameCount = 0;
-    var textGeo;
+    var yCount = 5;
 
     function init(){
         return new Promise(function(resolve, reject){
@@ -213,13 +213,13 @@ var wotScene = (function(){
     function viewOnMemorial(json){
         //camera_Target = camera_Names;
         json.forEach(function(item){
-            console.log(item)
+            console.log(item);
+            // createName(item);
         })
     }
-    function createName(vetName){
-        var textLoader = new THREE.FontLoader();
-        textLoader.load('./js/wot-scene/json/Arial_Regular.json', function(font){
-            var geo = new THREE.TextGeometry(vetName,
+    function createName(json){
+        load_Text.load('./js/wot-scene/json/Arial_Regular.json', function(font){
+            var geo = new THREE.TextGeometry(json.Name,
                 {
                     font: font,
                     size: .1,
@@ -232,9 +232,10 @@ var wotScene = (function(){
                 });
 
             var textMesh = new THREE.Mesh(geo, materials.memorialNames);
-            textMesh.name = 'viewVetName';
+            textMesh.name = json.uui;
 
-            textMesh.position.set(0,5,0);
+            //textMesh.position.set(0,5,0);
+            textMesh.position.y = yCount +1;
             scene.add(textMesh);
         });
     }
@@ -265,7 +266,6 @@ var wotScene = (function(){
         scene: scene,
         camera_Target: camera_Target,
         renderer: renderer,
-        textGeo: textGeo,
         init: init,
         setMaterials: setMaterials,
         setParents: setParents,
