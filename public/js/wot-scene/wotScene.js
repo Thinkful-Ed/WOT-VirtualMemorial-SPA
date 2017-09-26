@@ -178,28 +178,6 @@ var wotScene = (function(){
         console.log(scene);
     }
     function pauseAnimation(){}
-    function createName(vetName){
-        var textLoader = new THREE.FontLoader();
-        textLoader.load('./js/wot-scene/json/Arial_Regular.json', function(font){
-            var geo = new THREE.TextGeometry(vetName,
-                {
-                    font: font,
-                    size: .1,
-                    height: .01,
-                    curveSegments: 12,
-                    bevelEnabled: false,
-                    bevelThickness: 1,
-                    bevelSize: 1,
-                    bevelSegments: 2
-                });
-
-            var textMesh = new THREE.Mesh(geo, materials.memorialNames);
-            textMesh.name = 'viewVetName';
-
-            textMesh.position.set(0,5,0);
-            scene.add(textMesh);
-        });
-    }
     function positionProps(){
         console.log('Positioning Props');
         // Reposition
@@ -232,8 +210,33 @@ var wotScene = (function(){
         }
         createName('Bill Wheaton');
     }
-    function viewOnMemorial(){
-        camera_Target = camera_Names;
+    function viewOnMemorial(json){
+        //camera_Target = camera_Names;
+        json.forEach(function(item){
+            console.log(item)
+        })
+    }
+    function createName(vetName){
+        var textLoader = new THREE.FontLoader();
+        textLoader.load('./js/wot-scene/json/Arial_Regular.json', function(font){
+            var geo = new THREE.TextGeometry(vetName,
+                {
+                    font: font,
+                    size: .1,
+                    height: .01,
+                    curveSegments: 12,
+                    bevelEnabled: false,
+                    bevelThickness: 1,
+                    bevelSize: 1,
+                    bevelSegments: 2
+                });
+
+            var textMesh = new THREE.Mesh(geo, materials.memorialNames);
+            textMesh.name = 'viewVetName';
+
+            textMesh.position.set(0,5,0);
+            scene.add(textMesh);
+        });
     }
     function render(){
         var animCam = scene.getObjectByName('camPivot');

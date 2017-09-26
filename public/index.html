@@ -116,9 +116,9 @@
                 crtl.veteranInfo(ev);
             });
             // Memorial
-            $('#dynamic-container').on('click', 'vet-memorial', function(ev){
+            $('#dynamic-container').on('click', '.vet-memorial', function(ev){
                 ev.preventDefault();
-                wotScene.viewOnMemorial();
+                crtl.viewOnMemorial(ev);
             });
             // Stories
             $('#dynamic-container').on('click', '.vet-story', function(ev) {

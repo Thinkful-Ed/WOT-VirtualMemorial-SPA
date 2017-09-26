@@ -92,6 +92,20 @@ var crtl = (function(){
         $(`#${textID}`).remove();
     }
 
+    // Memorial
+    function viewOnMemorial(ev){
+        console.log(ev.currentTarget.dataset.panel);
+        let panel = ev.currentTarget.dataset.panel;
+
+        $.ajax({url: `memorial/${panel}`, type: 'GET'})
+            .then((res)=>{
+                wotScene.viewOnMemorial(res);
+            })
+            .catch((error)=>{
+                console.warn(error);
+            })
+    }
+
     // User Endpoints
     function createNewUser(){
         $.ajax(
@@ -130,6 +144,7 @@ var crtl = (function(){
         submitTextStory: submitTextStory,
         editTextStory: editTextStory,
         deleteTextStory: deleteTextStory,
+        viewOnMemorial: viewOnMemorial,
         createNewUser: createNewUser,
         loginUser: loginUser
     }
