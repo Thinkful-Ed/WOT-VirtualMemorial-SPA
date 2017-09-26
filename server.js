@@ -37,7 +37,7 @@ app.use('/veterans', routerStoryText);
 app.use('/veterans/:search', routerStoryText);
 app.use('/veterans/:id', routerStoryText);
 app.use('/veterans/:id/:storyID', routerStoryText);
-app.use('/memorial/panel/:number', routerMemorial);
+app.use('/memorial/', routerMemorial);
 app.use('/user', routerUser);
 app.use('/user/login', routerUser);
 
