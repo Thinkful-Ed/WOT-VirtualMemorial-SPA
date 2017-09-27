@@ -49,20 +49,30 @@ var htmlTemplates = (function(){
                                 <div id="webgl-container"></div>
                             </div>`;
 
-        try{
-            $('#dynamic-container').html(htmpTemplate);
-            wotScene.init()
-                .then(setTimeout(function(){wotScene.setMaterials()}, 3000))
-                .then(wotScene.setParents())
-                .then(setTimeout(function(){wotScene.positionProps()}, 3000))
-                .catch(function(e){
-                    alert(`An error occurred, please check the console for more info.`);
-                    console.warn(e);
-                })
+        console.log(state.webglSceneInit);
+
+        if(state.webglSceneInit === false || !wotScene){
+            try{
+                $('#dynamic-container').html(htmpTemplate);
+                wotScene.init()
+                    .then(setTimeout(function(){wotScene.setMaterials()}, 3000))
+                    .then(wotScene.setParents())
+                    .then(setTimeout(function(){wotScene.positionProps()}, 3000))
+                    .catch(function(e){
+                        alert(`An error occurred, please check the console for more info.`);
+                        console.warn(e);
+                    });
+                state.webglSceneInit = true;
+            }
+            catch(error) {
+                htmlTemplates.errorNotification('Problem loading the tour. Try refreshing the page in a moment.');
+            }
         }
-        catch(error) {
-            htmlTemplates.errorNotification('Problem loading the tour. Try refreshing the page in a moment.');
+        else{
+            wotScene.initDomWindow();
         }
+
+
     }
 
     // Search

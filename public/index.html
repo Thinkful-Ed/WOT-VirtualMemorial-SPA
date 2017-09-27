@@ -62,7 +62,10 @@
     <script type="text/javascript" src="js/wot-scene/wotScene.js"></script>
     <!-- Event Listeners -->
     <script>
-        $(document).ready(htmlTemplates.intro());
+        $(document).ready(function(){
+            state.webglSceneInit = false;
+            htmlTemplates.intro();
+        });
 
         // Main Menu
         (function(){

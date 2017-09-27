@@ -33,10 +33,11 @@ var wotScene = (function(){
             }
 
             // Window & Renderer
-            var renderWindowWidth = document.getElementById('dynamic-container').offsetWidth;
+            /*var renderWindowWidth = document.getElementById('dynamic-container').offsetWidth;
             var renderWindowHeight = document.getElementById('dynamic-container').offsetHeight;
             renderer.setSize(renderWindowWidth, renderWindowHeight);
-            document.getElementById('webgl-container').appendChild(renderer.domElement);
+            document.getElementById('webgl-container').appendChild(renderer.domElement);*/
+            initDomWindow();
 
             // Lighting
             var lgt_directional = new THREE.DirectionalLight(0xffffff, .85);
@@ -217,6 +218,14 @@ var wotScene = (function(){
             // createName(item);
         })
     }
+    function initDomWindow(){
+        var renderWindowWidth = document.getElementById('dynamic-container').offsetWidth;
+        var renderWindowHeight = document.getElementById('dynamic-container').offsetHeight;
+        renderer.setSize(renderWindowWidth, renderWindowHeight);
+        document.getElementById('webgl-container').appendChild(renderer.domElement);
+
+        render();
+    }
     function createName(json){
         load_Text.load('./js/wot-scene/json/Arial_Regular.json', function(font){
             var geo = new THREE.TextGeometry(json.Name,
@@ -271,6 +280,7 @@ var wotScene = (function(){
         setParents: setParents,
         positionProps: positionProps,
         playAnimation: playAnimation,
-        viewOnMemorial: viewOnMemorial
+        viewOnMemorial: viewOnMemorial,
+        initDomWindow: initDomWindow
     }
 }());
