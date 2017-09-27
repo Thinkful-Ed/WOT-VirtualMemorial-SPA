@@ -71,24 +71,49 @@
         (function(){
             // Virtual Tour
             $('#menu-tour').click(function(ev){
+                htmlTemplates.loader('Loading', 2);
                 ev.preventDefault();
-                htmlTemplates.tour();
+                try{
+                    console.log(state.requestNextFrame);
+                    state.requestNextFrame = true;
+                }
+                finally{
+                    htmlTemplates.tour();
+                }
             });
             // Search
             $('#menu-search').click(function(ev){
                 ev.preventDefault();
-                htmlTemplates.searchUI();
+                try{
+                    console.log(state.requestNextFrame);
+                    state.requestNextFrame = false;
+                }
+                finally{
+                    htmlTemplates.searchUI();
+                }
             });
             // Information
             $('#menu-information').click(function(ev) {
                 ev.preventDefault();
-                htmlTemplates.info();
+                try{
+                    console.log(state.requestNextFrame);
+                    state.requestNextFrame = false;
+                }
+                finally{
+                    htmlTemplates.info();
+                }
             });
             // Stories
             $('#menu-stories').click(function(ev){
                 ev.preventDefault();
-                htmlTemplates.storyMainUI();
-                htmlTemplates.textStoryUI();
+                try{
+                    console.log(state.requestNextFrame);
+                    state.requestNextFrame = false;
+                }
+                finally{
+                    htmlTemplates.storyMainUI();
+                    htmlTemplates.textStoryUI();
+                }
             });
         }());
 
@@ -121,7 +146,14 @@
             // Memorial
             $('#dynamic-container').on('click', '.vet-memorial', function(ev){
                 ev.preventDefault();
-                crtl.viewOnMemorial(ev);
+                try{
+                    console.log(state.requestNextFrame);
+                    state.requestNextFrame = true;
+                }
+                finally{
+                    crtl.viewOnMemorial(ev);
+                    htmlTemplates.tour();
+                }
             });
             // Stories
             $('#dynamic-container').on('click', '.vet-story', function(ev) {

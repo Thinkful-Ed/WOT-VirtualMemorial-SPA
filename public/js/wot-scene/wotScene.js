@@ -37,7 +37,7 @@ var wotScene = (function(){
             var renderWindowHeight = document.getElementById('dynamic-container').offsetHeight;
             renderer.setSize(renderWindowWidth, renderWindowHeight);
             document.getElementById('webgl-container').appendChild(renderer.domElement);*/
-            initDomWindow();
+            initDomWindow(renderer);
 
             // Lighting
             var lgt_directional = new THREE.DirectionalLight(0xffffff, .85);
@@ -209,22 +209,19 @@ var wotScene = (function(){
             controls.autoForward = false;
             controls.dragToLook = true;
         }
-        createName('Bill Wheaton');
+        htmlTemplates.loader();
     }
     function viewOnMemorial(json){
         //camera_Target = camera_Names;
+        var vetNameGroup = new THREE.Group();
+        vetNameGroup.name = 'vetNameGroup';
+
         json.forEach(function(item){
             console.log(item);
-            // createName(item);
-        })
-    }
-    function initDomWindow(){
-        var renderWindowWidth = document.getElementById('dynamic-container').offsetWidth;
-        var renderWindowHeight = document.getElementById('dynamic-container').offsetHeight;
-        renderer.setSize(renderWindowWidth, renderWindowHeight);
-        document.getElementById('webgl-container').appendChild(renderer.domElement);
-
-        render();
+            //names.push(createName(item));
+            vetNameGroup.add(createName(item))
+        });
+        scene.add(vetNameGroup);
     }
     function createName(json){
         load_Text.load('./js/wot-scene/json/Arial_Regular.json', function(font){
@@ -243,10 +240,18 @@ var wotScene = (function(){
             var textMesh = new THREE.Mesh(geo, materials.memorialNames);
             textMesh.name = json.uui;
 
-            //textMesh.position.set(0,5,0);
             textMesh.position.y = yCount +1;
-            scene.add(textMesh);
+            return textMesh;
+            //scene.add(textMesh);
         });
+    }
+    function initDomWindow(rendererObj){
+        var renderWindowWidth = document.getElementById('dynamic-container').offsetWidth;
+        var renderWindowHeight = document.getElementById('dynamic-container').offsetHeight;
+        rendererObj.setSize(renderWindowWidth, renderWindowHeight);
+        document.getElementById('webgl-container').appendChild(rendererObj.domElement);
+
+        render();
     }
     function render(){
         var animCam = scene.getObjectByName('camPivot');
@@ -266,7 +271,9 @@ var wotScene = (function(){
         }
         finally {
             renderer.render(scene, camera_Target);
-            requestAnimationFrame(render);
+            if(state.requestNextFrame === true){
+                requestAnimationFrame(render);
+            }
         }
     }
 

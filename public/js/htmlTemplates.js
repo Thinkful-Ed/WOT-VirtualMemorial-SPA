@@ -69,7 +69,8 @@ var htmlTemplates = (function(){
             }
         }
         else{
-            wotScene.initDomWindow();
+            $('#dynamic-container').html(htmpTemplate);
+            wotScene.initDomWindow(wotScene.renderer);
         }
 
 
@@ -288,12 +289,29 @@ var htmlTemplates = (function(){
     }
 
     // Misc
-    function loader(typeString){
-        let htmlTemplate = `<div id="loader">
+    function loader(typeString, templateID){
+        let domW = document.getElementById('dynamic-container').offsetWidth;
+        let domH = document.getElementById('dynamic-container').offsetHeight;
+        let htmlTemplate;
+        let id = templateID || 1;
+        let template1 = `<div id="loader">
                                 <img src="imgs/loader.gif" alt="Loader">
                                 <h1>${typeString}</h1>
-                            </div>`;
+                         </div>`;
+        let template2 = `<div id="loader" style="background-color: white; width: ${domW}; height: ${domH}">
+                                <img src="imgs/loader.gif" alt="Loader">
+                                <h1>${typeString}</h1>
+                         </div>`;
 
+        // Verify which loading template to use
+        if(id===2){
+            htmlTemplate = template2;
+        }
+        else{
+            htmlTemplate = template1;
+        }
+
+        //
         if(checkLoader === false){
             $('#app-container').append(htmlTemplate);
             checkLoader = true;

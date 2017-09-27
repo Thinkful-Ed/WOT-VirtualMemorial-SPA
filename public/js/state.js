@@ -7,6 +7,7 @@ var state = (function(){
     var currentStory;
     var newText = true;
     var webglSceneInit = false;
+    var requestNextFrame = true;
 
     return{
         searchHtml: searchHtml,
@@ -16,6 +17,7 @@ var state = (function(){
         currentStoryVet: currentStoryVet,
         currentStory: currentStory,
         newText: newText,
-        webglSceneInit: webglSceneInit
+        webglSceneInit: webglSceneInit,
+        requestNextFrame: requestNextFrame
     }
 }());
