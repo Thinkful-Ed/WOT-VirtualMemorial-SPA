@@ -31,12 +31,7 @@ var wotScene = (function(){
                 var sceneAxis = new THREE.AxisHelper(5);
                 scene.add(sceneAxis);
             }
-
-            // Window & Renderer
-            /*var renderWindowWidth = document.getElementById('dynamic-container').offsetWidth;
-            var renderWindowHeight = document.getElementById('dynamic-container').offsetHeight;
-            renderer.setSize(renderWindowWidth, renderWindowHeight);
-            document.getElementById('webgl-container').appendChild(renderer.domElement);*/
+            //DOM Setup
             initDomWindow(renderer);
 
             // Lighting
@@ -256,6 +251,7 @@ var wotScene = (function(){
     function render(){
         var animCam = scene.getObjectByName('camPivot');
         try{
+            mixer.update(clock.getDelta());
             if(useHelpers===true){
                 //console.log(frameCount+=1);
                 if(mouseInput === true){
