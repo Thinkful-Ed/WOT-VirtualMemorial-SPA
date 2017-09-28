@@ -18,6 +18,7 @@ var wotScene = (function(){
     // Animation Assets
     var clock = new THREE.Clock();
     var frame = 0;
+    var timeBuffer = 1;
     var animState = {
         pause: false
     };
@@ -222,29 +223,32 @@ var wotScene = (function(){
         }
     }
     function rewindAnimation(){
-        if(frame >= tourTimes.entrance && frame <= tourTimes.steps){
+        if(frame >= tourTimes.entrance + timeBuffer && frame <= tourTimes.steps + timeBuffer){
             console.log(`RR > Entrance | Current Time: ${frame}, Set Time: ${tourTimes.entrance}`);
             animClips.tour.time = tourTimes.entrance;
         }
-        else if(frame >= tourTimes.steps && frame <= tourTimes.pool){
+        else if(frame >= tourTimes.steps + timeBuffer && frame <= tourTimes.pool + timeBuffer){
             console.log(`RR > Steps | Current Time: ${frame}, Set Time: ${tourTimes.steps}`);
             animClips.tour.time = tourTimes.steps;
         }
-        else if(frame >= tourTimes.pool && frame <= tourTimes.flame){
+        else if(frame >= tourTimes.pool + timeBuffer && frame <= tourTimes.flame + timeBuffer){
             console.log(`RR > Pool | Current Time: ${frame}, Set Time: ${tourTimes.pool}`);
             animClips.tour.time = tourTimes.pool;
         }
-        else if(frame >= tourTimes.flame && frame <= tourTimes.fountain){
+        else if(frame >= tourTimes.flame + timeBuffer && frame <= tourTimes.fountain + timeBuffer){
             console.log(`RR > Flame | Current Time: ${frame}, Set Time: ${tourTimes.flame}`);
             animClips.tour.time = tourTimes.flame;
         }
-        else if(frame >= tourTimes.fountain && frame <= tourTimes.flyover){
+        else if(frame >= tourTimes.fountain + timeBuffer && frame <= tourTimes.flyover + timeBuffer){
             console.log(`RR > Fountain | Current Time: ${frame}, Set Time: ${tourTimes.fountain}`);
             animClips.tour.time = tourTimes.fountain;
         }
         else if(frame >= tourTimes.flyover){
             console.log(`RR > Flyover | Current Time: ${frame}, Set Time: ${tourTimes.flyover}`);
             animClips.tour.time = tourTimes.flyover
+        }
+        else{
+            animClips.tour.time =  tourTimes.flyover;
         }
     }
     function positionProps(){
