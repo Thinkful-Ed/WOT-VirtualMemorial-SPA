@@ -196,35 +196,42 @@ var wotScene = (function(){
         }
     }
     function fastForwardAnimation(){
-        console.log('Fast-forwarding');
-
+        console.log('Entering Fast-forward');
         if(frame >= tourTimes.entrance && frame <= tourTimes.steps){
-            console.log('FF > Steps');
-            mixer.update(tourTimes.steps);
+            console.log(`FF > Steps | Current Time: ${frame}, Set Time: ${tourTimes.steps}`);
+            animClips.tour.time = tourTimes.steps;
         }
         else if(frame >= tourTimes.steps && frame <= tourTimes.pool){
-            console.log('FF > Pool');
-            mixer.update(tourTimes.pool);
+            console.log(`FF > Pool | Current Time: ${frame}, Set Time: ${tourTimes.pool}`);
+            animClips.tour.time = tourTimes.pool;
         }
         else if(frame >= tourTimes.pool && frame <= tourTimes.flame){
-            console.log('FF > Flame');
-            mixer.update(tourTimes.flame);
+            console.log(`FF > Flame | Current Time: ${frame}, Set Time: ${tourTimes.flame}`);
+            animClips.tour.time = tourTimes.flame;
         }
         else if(frame >= tourTimes.flame && frame <= tourTimes.fountain){
-            console.log('FF > Fountain');
-            mixer.update(tourTimes.fountain);
+            console.log(`FF > Fountain | Current Time: ${frame}, Set Time: ${tourTimes.fountain}`);
+            animClips.tour.time = tourTimes.fountain
         }
         else if(frame >= tourTimes.fountain && frame <= tourTimes.flyover){
-            console.log('FF > Flyover');
-            mixer.update(tourTimes.flyover);
+            console.log(`FF > Flyover | Current Time: ${frame}, Set Time: ${tourTimes.flyover}`);
+            animClips.tour.time = tourTimes.flyover
         }
         else{
-            console.log('FF > Entrance');
-            mixer.update(tourTimes.entrance);
+            console.log(`FF > Entrance | Current Time: ${frame}, Set Time: ${tourTimes.entrance}`);
+            animClips.tour.time = tourTimes.entrance
         }
     }
     function rewindAnimation(){
         console.log('Entering Rewind');
+        if(frame >= tourTimes.entrance && frame <= tourTimes.steps){
+            console.log(`RR > Entrace | Current Time: ${frame}, Set Time: ${tourTimes.entrance}`);
+            //mixer.update(tourTimes.entrance);
+            animClips.tour.time = tourTimes.entrance;
+        }
+        else if(frame >= tourTimes.steps && frame <= tourTimes.pool){
+            mixer.update(tourTimes.steps);
+        }
     }
     function positionProps(){
         console.log('Positioning Props');
