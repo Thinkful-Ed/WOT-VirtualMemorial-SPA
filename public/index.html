@@ -50,6 +50,7 @@
             <div id="dynamic-container" class="bg-white wot-bg-matte"></div>
         </section>
     </main>
+    <div id="time" style="position: absolute; top: 0; left: 0; color: white; font-size: 2rem"></div>
 
     <!-- App Scripts -->
     <script type="text/javascript" src="libs/jquery.js"></script>
@@ -204,16 +205,15 @@
         (function(){
             // Rewind
             $('#dynamic-container').on('click', '#webgl-controls-backwards', function(event){
-                console.log('Rewinding to past position');
+                wotScene.rewindAnimation();
             });
             //Play / Pause
             $('#dynamic-container').on('click', '#webgl-controls-play', function(event){
-                console.log('Playing or pausing the animation');
-                wotScene.playAnimation();
+                wotScene.animPlayPause();
             });
             // Fast Forward
             $('#dynamic-container').on('click', '#webgl-controls-forward', function(event){
-                console.log('Fast-forwarding to past position')
+                wotScene.fastForwardAnimation()
             });
         }());
     </script>

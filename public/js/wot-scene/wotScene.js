@@ -8,14 +8,28 @@ var wotScene = (function(){
     var camera_Target;
     var controls;
     // Loaders & Controllers
-    var clock = new THREE.Clock();
     var load_Objs = new THREE.ObjectLoader();
     var load_Tex = new THREE.TextureLoader();
     var load_Text = new THREE.FontLoader();
     var mixer;
     // Content Assets
     var materials;
-    var anims = {};
+
+    // Animation Assets
+    var clock = new THREE.Clock();
+    var frame = 0;
+    var animState = {
+        pause: false
+    };
+    var tourTimes = {
+        entrance: 0,
+        steps: 15,
+        pool: 25,
+        flame: 63.5,
+        fountain: 73.5,
+        flyover: 115.5
+    };
+    var animClips = {};
 
     // Helpers
     var useHelpers = true;
@@ -156,24 +170,62 @@ var wotScene = (function(){
             THREE.SceneUtils.attach(scene.getObjectByName('camera_Names'), scene, scene.getObjectByName('camPivot'));
         }
     }
-    function playAnimation(){
+    function initTourAnimation(){
+        console.log('Playing');
         camera_Tour = scene.getObjectByName('camera_Tour');
 
         // Anim Setup
         mixer = new THREE.AnimationMixer(camera_Tour);
-        anims.tour = mixer.clipAction(scene.animations[0]);
-        // anims.tour = mixer.clipAction(scene.children[4].animations[0]);
-        anims.tour.setLoop(THREE.LoopRepeat);
-        anims.tour.setEffectiveWeight(1);
-        anims.tour.enabled = true;
+        animClips.tour = mixer.clipAction(scene.animations[0]);
+        animClips.tour.setLoop(THREE.LoopRepeat);
+        animClips.tour.setEffectiveWeight(1);
+        animClips.tour.enabled = true;
 
         // Camera Setup & Play
         camera_Target = camera_Tour;
-        anims.tour.play();
-
-        console.log(scene);
+        animClips.tour.play();
     }
-    function pauseAnimation(){}
+    function animPlayPause(){
+        if(animState.pause === false){
+            animState.pause = true;
+            animClips.tour.timeScale = 0;
+        }
+        else{
+            animState.pause = false;
+            animClips.tour.timeScale = 1;
+        }
+    }
+    function fastForwardAnimation(){
+        console.log('Fast-forwarding');
+
+        if(frame >= tourTimes.entrance && frame <= tourTimes.steps){
+            console.log('FF > Steps');
+            mixer.update(tourTimes.steps);
+        }
+        else if(frame >= tourTimes.steps && frame <= tourTimes.pool){
+            console.log('FF > Pool');
+            mixer.update(tourTimes.pool);
+        }
+        else if(frame >= tourTimes.pool && frame <= tourTimes.flame){
+            console.log('FF > Flame');
+            mixer.update(tourTimes.flame);
+        }
+        else if(frame >= tourTimes.flame && frame <= tourTimes.fountain){
+            console.log('FF > Fountain');
+            mixer.update(tourTimes.fountain);
+        }
+        else if(frame >= tourTimes.fountain && frame <= tourTimes.flyover){
+            console.log('FF > Flyover');
+            mixer.update(tourTimes.flyover);
+        }
+        else{
+            console.log('FF > Entrance');
+            mixer.update(tourTimes.entrance);
+        }
+    }
+    function rewindAnimation(){
+        console.log('Entering Rewind');
+    }
     function positionProps(){
         console.log('Positioning Props');
         // Reposition
@@ -252,8 +304,10 @@ var wotScene = (function(){
         var animCam = scene.getObjectByName('camPivot');
         try{
             mixer.update(clock.getDelta());
+            frame = animClips.tour.time;
+            $('#time').html(frame);
+
             if(useHelpers===true){
-                //console.log(frameCount+=1);
                 if(mouseInput === true){
                     controls.update( 1 );
                 }
@@ -263,7 +317,7 @@ var wotScene = (function(){
             }
         }
         catch (err){
-            console.log(err);
+            //console.log(err);
         }
         finally {
             renderer.render(scene, camera_Target);
@@ -282,7 +336,10 @@ var wotScene = (function(){
         setMaterials: setMaterials,
         setParents: setParents,
         positionProps: positionProps,
-        playAnimation: playAnimation,
+        initTourAnimation: initTourAnimation,
+        animPlayPause: animPlayPause,
+        fastForwardAnimation: fastForwardAnimation,
+        rewindAnimation: rewindAnimation,
         viewOnMemorial: viewOnMemorial,
         initDomWindow: initDomWindow
     }

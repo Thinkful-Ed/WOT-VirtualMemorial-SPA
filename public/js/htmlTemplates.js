@@ -55,9 +55,10 @@ var htmlTemplates = (function(){
             try{
                 $('#dynamic-container').html(htmpTemplate);
                 wotScene.init()
-                    .then(setTimeout(function(){wotScene.setMaterials()}, 3000))
+                    .then(setTimeout(function(){wotScene.setMaterials()}, 1500))
                     .then(wotScene.setParents())
                     .then(setTimeout(function(){wotScene.positionProps()}, 3000))
+                    .then(setTimeout(function(){wotScene.initTourAnimation()}, 4500))
                     .catch(function(e){
                         alert(`An error occurred, please check the console for more info.`);
                         console.warn(e);
