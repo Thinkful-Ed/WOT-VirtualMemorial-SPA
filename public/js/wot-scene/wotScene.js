@@ -196,7 +196,6 @@ var wotScene = (function(){
         }
     }
     function fastForwardAnimation(){
-        console.log('Entering Fast-forward');
         if(frame >= tourTimes.entrance && frame <= tourTimes.steps){
             console.log(`FF > Steps | Current Time: ${frame}, Set Time: ${tourTimes.steps}`);
             animClips.tour.time = tourTimes.steps;
@@ -223,14 +222,29 @@ var wotScene = (function(){
         }
     }
     function rewindAnimation(){
-        console.log('Entering Rewind');
         if(frame >= tourTimes.entrance && frame <= tourTimes.steps){
-            console.log(`RR > Entrace | Current Time: ${frame}, Set Time: ${tourTimes.entrance}`);
-            //mixer.update(tourTimes.entrance);
+            console.log(`RR > Entrance | Current Time: ${frame}, Set Time: ${tourTimes.entrance}`);
             animClips.tour.time = tourTimes.entrance;
         }
         else if(frame >= tourTimes.steps && frame <= tourTimes.pool){
-            mixer.update(tourTimes.steps);
+            console.log(`RR > Steps | Current Time: ${frame}, Set Time: ${tourTimes.steps}`);
+            animClips.tour.time = tourTimes.steps;
+        }
+        else if(frame >= tourTimes.pool && frame <= tourTimes.flame){
+            console.log(`RR > Pool | Current Time: ${frame}, Set Time: ${tourTimes.pool}`);
+            animClips.tour.time = tourTimes.pool;
+        }
+        else if(frame >= tourTimes.flame && frame <= tourTimes.fountain){
+            console.log(`RR > Flame | Current Time: ${frame}, Set Time: ${tourTimes.flame}`);
+            animClips.tour.time = tourTimes.flame;
+        }
+        else if(frame >= tourTimes.fountain && frame <= tourTimes.flyover){
+            console.log(`RR > Fountain | Current Time: ${frame}, Set Time: ${tourTimes.fountain}`);
+            animClips.tour.time = tourTimes.fountain;
+        }
+        else if(frame >= tourTimes.flyover){
+            console.log(`RR > Flyover | Current Time: ${frame}, Set Time: ${tourTimes.flyover}`);
+            animClips.tour.time = tourTimes.flyover
         }
     }
     function positionProps(){
