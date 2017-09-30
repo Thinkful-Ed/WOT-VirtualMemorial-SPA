@@ -6,6 +6,10 @@ var wotScene = (function(){
     var camera_Names = new THREE.PerspectiveCamera(35, window.innerWidth/window.innerHeight, 0.01, 1000);// Checks for WebGL Content. If not there fallback to canvas render for older browsers.
     var camera_Tour;
     var camera_Target;
+    var camtrs = {
+        pos: {x: 10, y: 3.5, z: 20},
+        rot: {x: -.2,y: .65, z: .125}
+    };
     var controls;
     // Loaders & Controllers
     var load_Objs = new THREE.ObjectLoader();
@@ -56,8 +60,8 @@ var wotScene = (function(){
 
             // Camera
             camera_Names.name = 'camera_Names';
-            camera_Names.position.set(10, 3.5, 20);
-            camera_Names.rotation.set(-.2,.65,.125);
+            camera_Names.position.set(camtrs.pos.x, camtrs.pos.y, camtrs.pos.z);
+            camera_Names.rotation.set(camtrs.rot.x, camtrs.rot.y, camtrs.rot.z);
             camera_Target = camera_Names;
             scene.add(camera_Names);
 
@@ -294,7 +298,16 @@ var wotScene = (function(){
         }
     }
     function viewOnMemorial(json){
-        console.log(json[0]);
+        var vetPanel = json[0].Panel;
+        var scenePanel = scene.getObjectByName(`tar_panel.${vetPanel}`);
+
+        console.log(`\nRequested Panel:${vetPanel} \nScene Panel: ${scenePanel.name}`);
+        console.log(scenePanel.position);
+        console.log(scenePanel.rotation);
+
+        setTimeout(function(){
+            console.log('Moving Camera');
+        }, 3000)
 
         // Generating Name Meshes
         /*camera_Target = camera_Names;
