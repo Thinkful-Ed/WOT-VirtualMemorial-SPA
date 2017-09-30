@@ -214,6 +214,11 @@
             $('#dynamic-container').on('click', '#webgl-controls-forward', function(event){
                 wotScene.fastForwardAnimation()
             });
+            // Toggle Camera
+            $('#dynamic-container').on('click', '#webgl-toggle-camera', function(event){
+                event.preventDefault();
+                wotScene.toggleCamera();
+            })
         }());
     </script>
 </body>

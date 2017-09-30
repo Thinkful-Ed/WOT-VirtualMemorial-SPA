@@ -186,6 +186,18 @@ var wotScene = (function(){
         camera_Target = camera_Tour;
         animClips.tour.play();
     }
+    function toggleCamera(){
+        // camera_Names camera_Tour
+        var currentCam = camera_Target.name;
+        if(currentCam === 'camera_Tour'){
+            animClips.tour.timeScale = 0;
+            camera_Target = camera_Names
+        }
+        else{
+            camera_Target = camera_Tour;
+            animClips.tour.timeScale = 1;
+        }
+    }
     function animPlayPause(){
         if(animState.pause === false){
             animState.pause = true;
@@ -283,7 +295,7 @@ var wotScene = (function(){
         }
     }
     function viewOnMemorial(json){
-        //camera_Target = camera_Names;
+        camera_Target = camera_Names;
         var vetNameGroup = new THREE.Group();
         vetNameGroup.name = 'vetNameGroup';
 
@@ -354,13 +366,13 @@ var wotScene = (function(){
     // Expose scene obj for debugging purposes.
     return{
         scene: scene,
-        camera_Target: camera_Target,
         renderer: renderer,
         init: init,
         setMaterials: setMaterials,
         setParents: setParents,
         positionProps: positionProps,
         initTourAnimation: initTourAnimation,
+        toggleCamera: toggleCamera,
         animPlayPause: animPlayPause,
         fastForwardAnimation: fastForwardAnimation,
         rewindAnimation: rewindAnimation,

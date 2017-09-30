@@ -44,6 +44,11 @@ var htmlTemplates = (function(){
                                         <a href="#">
                                             <img src="imgs/ico-controls-next.svg" alt="Fast Forward">
                                         </a>
+                                    </div>
+                                    <div id="webgl-toggle-camera" class="menu-btn menu-top inline" style="text-align: center;">
+                                        <a href="#">
+                                            <img src="imgs/ico-controls-togglecam.svg" alt="Fast Forward">
+                                        </a>
                                     </div> 
                                 </div>
                                 <div id="webgl-container"></div>
