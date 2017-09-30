@@ -33,8 +33,8 @@ var wotScene = (function(){
     var animClips = {};
 
     // Helpers
-    var useHelpers = true;
-    var mouseInput = true;
+    var useHelpers = false;
+    var mouseInput = false;
     var frameCount = 0;
     var yCount = 5;
 
@@ -187,7 +187,6 @@ var wotScene = (function(){
         animClips.tour.play();
     }
     function toggleCamera(){
-        // camera_Names camera_Tour
         var currentCam = camera_Target.name;
         if(currentCam === 'camera_Tour'){
             animClips.tour.timeScale = 0;
@@ -295,7 +294,10 @@ var wotScene = (function(){
         }
     }
     function viewOnMemorial(json){
-        camera_Target = camera_Names;
+        console.log(json[0]);
+
+        // Generating Name Meshes
+        /*camera_Target = camera_Names;
         var vetNameGroup = new THREE.Group();
         vetNameGroup.name = 'vetNameGroup';
 
@@ -304,7 +306,7 @@ var wotScene = (function(){
             //names.push(createName(item));
             vetNameGroup.add(createName(item))
         });
-        scene.add(vetNameGroup);
+        scene.add(vetNameGroup);*/
     }
     function createName(json){
         load_Text.load('./js/wot-scene/json/Arial_Regular.json', function(font){
