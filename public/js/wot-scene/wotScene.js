@@ -281,7 +281,6 @@ var wotScene = (function(){
             controls.autoForward = false;
             controls.dragToLook = true;
         }
-        htmlTemplates.loader();
     }
     function viewOnMemorial(json){
         //camera_Target = camera_Names;
