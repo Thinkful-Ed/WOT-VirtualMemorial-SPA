@@ -56,8 +56,8 @@ var wotScene = (function(){
 
             // Camera
             camera_Names.name = 'camera_Names';
-            camera_Names.position.set(0, 5, 10);
-            camera_Names.rotation.set(-.2, 0, 0);
+            camera_Names.position.set(10, 3.5, 20);
+            camera_Names.rotation.set(-.2,.65,.125);
             camera_Target = camera_Names;
             scene.add(camera_Names);
 
