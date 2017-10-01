@@ -55,31 +55,8 @@ var htmlTemplates = (function(){
                             </div>`;
 
         console.log(state.webglSceneInit);
-
-        if(state.webglSceneInit === false || !wotScene){
-            try{
-                $('#dynamic-container').html(htmpTemplate);
-                wotScene.init()
-                    .then(setTimeout(function(){wotScene.setMaterials()}, 1500))
-                    .then(wotScene.setParents())
-                    .then(setTimeout(function(){wotScene.positionProps()}, 3000))
-                    .then(setTimeout(function(){wotScene.initTourAnimation()}, 4500))
-                    .catch(function(e){
-                        alert(`An error occurred, please check the console for more info.`);
-                        console.warn(e);
-                    });
-                state.webglSceneInit = true;
-            }
-            catch(error) {
-                htmlTemplates.errorNotification('Problem loading the tour. Try refreshing the page in a moment.');
-            }
-        }
-        else{
-            $('#dynamic-container').html(htmpTemplate);
-            wotScene.initDomWindow(wotScene.renderer);
-        }
-
-
+        $('#dynamic-container').html(htmpTemplate);
+        wotScene.initDomWindow(wotScene.renderer);
     }
 
     // Search

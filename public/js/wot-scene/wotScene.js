@@ -51,7 +51,7 @@ var wotScene = (function(){
                 scene.add(sceneAxis);
             }
             //DOM Setup
-            initDomWindow(renderer);
+            // initDomWindow(renderer);
 
             // Lighting
             var lgt_directional = new THREE.DirectionalLight(0xffffff, .85);
