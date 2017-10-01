@@ -7,8 +7,8 @@ var wotScene = (function(){
     var camera_Tour;
     var camera_Target;
     var camtrs = {
-        pos: {x: 10, y: 3.5, z: 20},
-        rot: {x: -.2,y: .65, z: .125}
+        pos: {x: -20, y: 1.5, z: 0},
+        rot: {x: 0,y: -1.5708, z: 0}
     };
     var controls;
     // Loaders & Controllers
@@ -318,24 +318,14 @@ var wotScene = (function(){
         var vetPanel = json[0].Panel;
         var scenePanel = scene.getObjectByName(`tar_panel.${vetPanel}`);
 
-        console.log(`\nRequested Panel:${vetPanel} \nScene Panel: ${scenePanel.name}`);
-        console.log(scenePanel.position);
-        console.log(scenePanel.rotation);
-
-        setTimeout(function(){
-            console.log('Moving Camera');
-
-            setTimeout(function(){
-                camera_Names.rotation.set(0, 0, 0); // Clean rot
-                camera_Names.position.set(scenePanel.position.x, scenePanel.position.y, scenePanel.position.z); // Move to panel
-                camera_Names.rotation.y = scenePanel.rotation.z; // Orient to panel
-                camera_Names.translateZ(1.5); // Frame panel
-            },500);
-        }, 1000)
+        camera_Names.rotation.set(0, 0, 0); // Clean rot
+        camera_Names.position.set(scenePanel.position.x, scenePanel.position.y, scenePanel.position.z); // Move to panel
+        camera_Names.rotation.y = scenePanel.rotation.z; // Orient to panel
+        camera_Names.translateZ(1.5); // Frame panel
 
         // Generating Name Meshes
-        /*camera_Target = camera_Names;
-        var vetNameGroup = new THREE.Group();
+        camera_Target = camera_Names;
+        /*var vetNameGroup = new THREE.Group();
         vetNameGroup.name = 'vetNameGroup';
 
         json.forEach(function(item){
