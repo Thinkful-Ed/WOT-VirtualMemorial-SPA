@@ -228,7 +228,11 @@ var wotScene = (function(){
         scene.traverse(function(obj){
             objName = obj.name;
             if(objName.match(/tar_/)){
-                let axisHelper = new THREE.AxisHelper(.5);
+                let axisHelper = new THREE.AxisHelper(.35);
+                obj.add(axisHelper);
+            }
+            else if(objName.match(/camera_/)){
+                let axisHelper = new THREE.AxisHelper(.65);
                 obj.add(axisHelper);
             }
         });
