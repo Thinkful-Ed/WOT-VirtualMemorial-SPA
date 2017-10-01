@@ -175,6 +175,39 @@ var wotScene = (function(){
             THREE.SceneUtils.attach(scene.getObjectByName('camera_Names'), scene, scene.getObjectByName('camPivot'));
         }
     }
+    function positionProps(){
+        console.log('Positioning Props');
+        // Reposition
+        scene.getObjectByName('ground').rotation.z = 0;
+        scene.getObjectByName('Road_TriCap').rotation.z = 0;
+        scene.getObjectByName('Road_HCap_R').rotation.z = 0;
+        scene.getObjectByName('Road_HCap_L').rotation.z = 0;
+        scene.getObjectByName('Road_T').rotation.z = 0;
+        scene.getObjectByName('Road_T.001').rotation.z = 0;
+        scene.getObjectByName('sidewalkTileSmallBevelCap').rotation.z = 0;
+        scene.getObjectByName('sidewalkFront').rotation.z = 0;
+        scene.getObjectByName('sidewalkTileLargeBevel.001').rotation.z = 0;
+        scene.getObjectByName('sidewalkTileLargeBevel.002').rotation.z = 0;
+        scene.getObjectByName('sidewalkReflectingPoolNorth').rotation.z = 0;
+        scene.getObjectByName('sidewalkReflectingPoolSouth').rotation.z = 0;
+        scene.getObjectByName('sidewalkSouthSteps').rotation.z = 0;
+        scene.getObjectByName('Road_TriSplit').rotation.z = 0;
+        scene.getObjectByName('Road_TriSplit.001').rotation.z = 0;
+        scene.getObjectByName('towerDecor').rotation.z = 0;
+        scene.getObjectByName('fence').rotation.z = 0;
+        scene.getObjectByName('bush').rotation.z = 0;
+        scene.getObjectByName('bush.001').rotation.z = 0;
+
+        if(useHelpers===true){
+            controls = new THREE.FlyControls(camera_Target,  document.getElementById('dynamic-container'));
+            controls.movementSpeed = .2;
+            controls.rollSpeed = 0.01;
+            controls.autoForward = false;
+            controls.dragToLook = true;
+        }
+
+        buildAxisHelper();
+    }
     function initTourAnimation(){
         console.log('Playing');
         camera_Tour = scene.getObjectByName('camera_Tour');
@@ -189,6 +222,17 @@ var wotScene = (function(){
         // Camera Setup & Play
         camera_Target = camera_Tour;
         animClips.tour.play();
+    }
+    function buildAxisHelper(){
+        //var target = wotScene.scene.getObjectByName('tar_panel.61');
+        scene.traverse(function(obj){
+            objName = obj.name;
+            if(objName.match(/tar_/)){
+                let axisHelper = new THREE.AxisHelper(.5);
+                obj.add(axisHelper);
+            }
+        });
+        //target.add(axisHelper);
     }
     function toggleCamera(){
         var currentCam = camera_Target.name;
@@ -266,37 +310,6 @@ var wotScene = (function(){
             animClips.tour.time =  tourTimes.flyover;
         }
     }
-    function positionProps(){
-        console.log('Positioning Props');
-        // Reposition
-        scene.getObjectByName('ground').rotation.z = 0;
-        scene.getObjectByName('Road_TriCap').rotation.z = 0;
-        scene.getObjectByName('Road_HCap_R').rotation.z = 0;
-        scene.getObjectByName('Road_HCap_L').rotation.z = 0;
-        scene.getObjectByName('Road_T').rotation.z = 0;
-        scene.getObjectByName('Road_T.001').rotation.z = 0;
-        scene.getObjectByName('sidewalkTileSmallBevelCap').rotation.z = 0;
-        scene.getObjectByName('sidewalkFront').rotation.z = 0;
-        scene.getObjectByName('sidewalkTileLargeBevel.001').rotation.z = 0;
-        scene.getObjectByName('sidewalkTileLargeBevel.002').rotation.z = 0;
-        scene.getObjectByName('sidewalkReflectingPoolNorth').rotation.z = 0;
-        scene.getObjectByName('sidewalkReflectingPoolSouth').rotation.z = 0;
-        scene.getObjectByName('sidewalkSouthSteps').rotation.z = 0;
-        scene.getObjectByName('Road_TriSplit').rotation.z = 0;
-        scene.getObjectByName('Road_TriSplit.001').rotation.z = 0;
-        scene.getObjectByName('towerDecor').rotation.z = 0;
-        scene.getObjectByName('fence').rotation.z = 0;
-        scene.getObjectByName('bush').rotation.z = 0;
-        scene.getObjectByName('bush.001').rotation.z = 0;
-
-        if(useHelpers===true){
-            controls = new THREE.FlyControls(camera_Target,  document.getElementById('dynamic-container'));
-            controls.movementSpeed = .2;
-            controls.rollSpeed = 0.01;
-            controls.autoForward = false;
-            controls.dragToLook = true;
-        }
-    }
     function viewOnMemorial(json){
         var vetPanel = json[0].Panel;
         var scenePanel = scene.getObjectByName(`tar_panel.${vetPanel}`);
@@ -307,6 +320,10 @@ var wotScene = (function(){
 
         setTimeout(function(){
             console.log('Moving Camera');
+
+            camera_Names.position.set(scenePanel.position.x, scenePanel.position.y, scenePanel.position.z);
+            camera_Names.rotation.x = 0;
+            camera_Names.translateZ(2);
         }, 3000)
 
         // Generating Name Meshes
