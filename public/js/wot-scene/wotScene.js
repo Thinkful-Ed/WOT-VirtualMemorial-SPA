@@ -325,10 +325,13 @@ var wotScene = (function(){
         setTimeout(function(){
             console.log('Moving Camera');
 
-            camera_Names.position.set(scenePanel.position.x, scenePanel.position.y, scenePanel.position.z);
-            camera_Names.rotation.x = 0;
-            camera_Names.translateZ(2);
-        }, 3000)
+            setTimeout(function(){
+                camera_Names.rotation.set(0, 0, 0); // Clean rot
+                camera_Names.position.set(scenePanel.position.x, scenePanel.position.y, scenePanel.position.z); // Move to panel
+                camera_Names.rotation.y = scenePanel.rotation.z; // Orient to panel
+                camera_Names.translateZ(1.5); // Frame panel
+            },500);
+        }, 1000)
 
         // Generating Name Meshes
         /*camera_Target = camera_Names;
