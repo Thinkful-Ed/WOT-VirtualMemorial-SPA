@@ -218,7 +218,6 @@ var wotScene = (function(){
 
         // Camera Setup & Play
         camera_Target = camera_Tour;
-        // animClips.tour.play();
     }
     function buildAxisHelper(){
         //var target = wotScene.scene.getObjectByName('tar_panel.61');
@@ -352,13 +351,7 @@ var wotScene = (function(){
             vetNameGroup.name = 'vetNameGroup';
             scene.add(vetNameGroup);
         }
-
-        // Generating Name Meshes
-        // json.forEach(function(item){
-        //     createName(item, vetNameGroup)
-        // });
-
-        createNameAlt(json, panelPosition, vetNameGroup);
+        createName(json, panelPosition, vetNameGroup);
 
         // Positioning
         vetNameGroup.rotation.set(0, 0, 0);
@@ -366,28 +359,8 @@ var wotScene = (function(){
         vetNameGroup.rotation.y = scenePanel.rotation.z;
         vetNameGroup.translateZ(.5);
     }
-    function createName(jsonObj, nameGrp){
-        load_Text.load('./js/wot-scene/json/Arial_Regular.json', function(font){
-            var geo = new THREE.TextGeometry(jsonObj.Name,
-                {
-                    font: font,
-                    size: .1,
-                    height: .01,
-                    curveSegments: 12,
-                    bevelEnabled: false,
-                    bevelThickness: 1,
-                    bevelSize: 1,
-                    bevelSegments: 2
-                });
 
-            var textMesh = new THREE.Mesh(geo, materials.memorialNames);
-            textMesh.name = jsonObj.Name;
-
-            nameGrp.add(textMesh);
-        });
-    }
-
-    function createNameAlt(json, position, nameGrp){
+    function createName(json, position, nameGrp){
         console.log(position, json);
         load_Text.load('./js/wot-scene/json/Arial_Regular.json', function(font){
             var geo = new THREE.TextGeometry(json[position].Name,
