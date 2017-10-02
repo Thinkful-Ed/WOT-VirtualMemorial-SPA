@@ -50,8 +50,6 @@ var wotScene = (function(){
                 var sceneAxis = new THREE.AxisHelper(5);
                 scene.add(sceneAxis);
             }
-            //DOM Setup
-            // initDomWindow(renderer);
 
             // Lighting
             var lgt_directional = new THREE.DirectionalLight(0xffffff, .85);
@@ -72,7 +70,6 @@ var wotScene = (function(){
             atlas.name = 'atlas';
             atlas.transparent = true;
             atlas.side = THREE.DoubleSide;
-            // atlas.depthWrite = false;
             atlas.alphaTest = 0.5;
             var concrete = new THREE.MeshLambertMaterial({map: load_Tex.load('./js/wot-scene/textures/concrete.jpg', function(texture){
                 texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
