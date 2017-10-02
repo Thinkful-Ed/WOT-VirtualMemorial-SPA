@@ -218,6 +218,8 @@ var wotScene = (function(){
 
         // Camera Setup & Play
         camera_Target = camera_Tour;
+
+        $('#menu-tour').removeClass('no-click');
     }
     function buildAxisHelper(){
         //var target = wotScene.scene.getObjectByName('tar_panel.61');
@@ -394,8 +396,6 @@ var wotScene = (function(){
         var animCam = scene.getObjectByName('camPivot');
         try{
             mixer.update(clock.getDelta());
-            frame = animClips.tour.time;
-            $('#time').html(frame);
 
             if(useHelpers===true){
                 if(mouseInput === true){
