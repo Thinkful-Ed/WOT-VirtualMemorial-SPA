@@ -84,47 +84,27 @@
             // Virtual Tour
             $('#menu-tour').click(function(ev){
                 ev.preventDefault();
-                try{
-                    console.log(state.requestNextFrame);
-                    state.requestNextFrame = true;
-                }
-                finally{
-                    htmlTemplates.tour();
-                }
+                state.requestNextFrame = true;
+                htmlTemplates.tour();
             });
             // Search
             $('#menu-search').click(function(ev){
                 ev.preventDefault();
-                try{
-                    console.log(state.requestNextFrame);
-                    state.requestNextFrame = false;
-                }
-                finally{
-                    htmlTemplates.searchUI();
-                }
+                state.requestNextFrame = false;
+                htmlTemplates.searchUI();
             });
             // Information
             $('#menu-information').click(function(ev) {
                 ev.preventDefault();
-                try{
-                    console.log(state.requestNextFrame);
-                    state.requestNextFrame = false;
-                }
-                finally{
-                    htmlTemplates.info();
-                }
+                state.requestNextFrame = false;
+                htmlTemplates.info();
             });
             // Stories
             $('#menu-stories').click(function(ev){
                 ev.preventDefault();
-                try{
-                    console.log(state.requestNextFrame);
-                    state.requestNextFrame = false;
-                }
-                finally{
-                    htmlTemplates.storyMainUI();
-                    htmlTemplates.textStoryUI();
-                }
+                state.requestNextFrame = false;
+                htmlTemplates.storyMainUI();
+                htmlTemplates.textStoryUI();
             });
         }());
 

@@ -239,21 +239,41 @@ var wotScene = (function(){
         var currentCam = camera_Target.name;
         if(currentCam === 'camera_Tour'){
             animClips.tour.timeScale = 0;
-            camera_Target = camera_Names
+            camera_Target = camera_Names;
+            enablePlayCrtls(true);
         }
         else{
             camera_Target = camera_Tour;
             animClips.tour.timeScale = 1;
+            enablePlayCrtls(false);
         }
     }
     function animPlayPause(){
         if(animState.pause === false){
-            animState.pause = true;
-            animClips.tour.timeScale = 0;
+            stopAnim();
         }
         else{
-            animState.pause = false;
-            animClips.tour.timeScale = 1;
+            playAnim();
+        }
+    }
+    function playAnim() {
+        animState.pause = false;
+        animClips.tour.timeScale = 1;
+    }
+    function stopAnim(){
+        animState.pause = true;
+        animClips.tour.timeScale = 0;
+    }
+    function enablePlayCrtls(booVal){
+        if(booVal===true){
+            $("#webgl-controls-backwards").addClass('no-click');
+            $("#webgl-controls-play").addClass('no-click');
+            $("#webgl-controls-forward").addClass('no-click');
+        }
+        else{
+            $("#webgl-controls-backwards").removeClass('no-click');
+            $("#webgl-controls-play").removeClass('no-click');
+            $("#webgl-controls-forward").removeClass('no-click');
         }
     }
     function fastForwardAnimation(){
