@@ -133,7 +133,7 @@ var wotScene = (function(){
                     }
                 );
             }());
-            render();
+            //render();
         });
     }
     function setMaterials(){
@@ -245,6 +245,7 @@ var wotScene = (function(){
             camera_Target = camera_Tour;
             animClips.tour.timeScale = 1;
             enablePlayCrtls(false);
+            animClips.tour.play();
         }
     }
     function animPlayPause(){
