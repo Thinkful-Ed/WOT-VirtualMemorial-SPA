@@ -331,11 +331,13 @@ var wotScene = (function(){
 
         // Generating Name Meshes
         json.forEach(function(item){
-            createName(item)
+            createName(item, vetNameGroup)
         });
-        //scene.add(vetNameGroup);
+
+        // Positioning
+        vetNameGroup.position.y = 3;
     }
-    function createName(jsonObj){
+    function createName(jsonObj, nameGrp){
         load_Text.load('./js/wot-scene/json/Arial_Regular.json', function(font){
             var geo = new THREE.TextGeometry(jsonObj.Name,
                 {
@@ -351,9 +353,8 @@ var wotScene = (function(){
 
             var textMesh = new THREE.Mesh(geo, materials.memorialNames);
             textMesh.name = jsonObj.Name;
-            textMesh.position.y = 3;
 
-            scene.add(textMesh);
+            nameGrp.add(textMesh);
         });
     }
     function initDomWindow(rendererObj){
