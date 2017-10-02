@@ -218,7 +218,7 @@ var wotScene = (function(){
 
         // Camera Setup & Play
         camera_Target = camera_Tour;
-        animClips.tour.play();
+        // animClips.tour.play();
     }
     function buildAxisHelper(){
         //var target = wotScene.scene.getObjectByName('tar_panel.61');
@@ -259,6 +259,7 @@ var wotScene = (function(){
     function playAnim() {
         animState.pause = false;
         animClips.tour.timeScale = 1;
+        animClips.tour.play();
     }
     function stopAnim(){
         animState.pause = true;
@@ -451,6 +452,7 @@ var wotScene = (function(){
         setParents: setParents,
         positionProps: positionProps,
         initTourAnimation: initTourAnimation,
+        playAnim: playAnim,
         toggleCamera: toggleCamera,
         animPlayPause: animPlayPause,
         fastForwardAnimation: fastForwardAnimation,
