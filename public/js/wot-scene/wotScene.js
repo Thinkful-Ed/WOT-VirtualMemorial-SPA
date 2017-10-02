@@ -315,6 +315,7 @@ var wotScene = (function(){
         }
     }
     function viewOnMemorial(json, panel, position){
+        var panelPosition = position -1;
         var scenePanel = scene.getObjectByName(`tar_panel.${panel}`);
 
         // Position camera to vet panel
@@ -325,17 +326,30 @@ var wotScene = (function(){
         camera_Target = camera_Names;
 
         // Group to store names
-        var vetNameGroup = new THREE.Group();
-        vetNameGroup.name = 'vetNameGroup';
-        scene.add(vetNameGroup);
+        try{
+            scene.remove(scene.getObjectByName('vetNameGroup'))
+        }
+        finally{
+            var vetNameGroup = new THREE.Group();
+            vetNameGroup.name = 'vetNameGroup';
+            scene.add(vetNameGroup);
+        }
+
 
         // Generating Name Meshes
-        json.forEach(function(item){
-            createName(item, vetNameGroup)
-        });
+        // json.forEach(function(item){
+        //     createName(item, vetNameGroup)
+        // });
+
+        createNameAlt(json, panelPosition, vetNameGroup);
+
+
 
         // Positioning
-        vetNameGroup.position.y = 3;
+        vetNameGroup.rotation.set(0, 0, 0);
+        vetNameGroup.position.set(scenePanel.position.x, scenePanel.position.y, scenePanel.position.z);
+        vetNameGroup.rotation.y = scenePanel.rotation.z;
+        vetNameGroup.translateZ(.5);
     }
     function createName(jsonObj, nameGrp){
         load_Text.load('./js/wot-scene/json/Arial_Regular.json', function(font){
@@ -353,6 +367,26 @@ var wotScene = (function(){
 
             var textMesh = new THREE.Mesh(geo, materials.memorialNames);
             textMesh.name = jsonObj.Name;
+
+            nameGrp.add(textMesh);
+        });
+    }
+    function createNameAlt(json, position, nameGrp){
+        load_Text.load('./js/wot-scene/json/Arial_Regular.json', function(font){
+            var geo = new THREE.TextGeometry(json[position].Name,
+                {
+                    font: font,
+                    size: .015,
+                    height: .001,
+                    curveSegments: 12,
+                    bevelEnabled: false,
+                    bevelThickness: 1,
+                    bevelSize: 1,
+                    bevelSegments: 2
+                });
+
+            var textMesh = new THREE.Mesh(geo, materials.memorialNames);
+            textMesh.name = json[position].Name;
 
             nameGrp.add(textMesh);
         });
