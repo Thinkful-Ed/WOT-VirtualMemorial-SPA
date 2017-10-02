@@ -312,7 +312,7 @@ var wotScene = (function(){
         }
     }
     function viewOnMemorial(json, panel, position){
-        var panelPosition = position -1;
+        var panelPosition = position;
         var scenePanel = scene.getObjectByName(`tar_panel.${panel}`);
 
         // Position camera to vet panel
@@ -332,15 +332,12 @@ var wotScene = (function(){
             scene.add(vetNameGroup);
         }
 
-
         // Generating Name Meshes
         // json.forEach(function(item){
         //     createName(item, vetNameGroup)
         // });
 
         createNameAlt(json, panelPosition, vetNameGroup);
-
-
 
         // Positioning
         vetNameGroup.rotation.set(0, 0, 0);
@@ -368,7 +365,9 @@ var wotScene = (function(){
             nameGrp.add(textMesh);
         });
     }
+
     function createNameAlt(json, position, nameGrp){
+        console.log(position, json);
         load_Text.load('./js/wot-scene/json/Arial_Regular.json', function(font){
             var geo = new THREE.TextGeometry(json[position].Name,
                 {
