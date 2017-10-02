@@ -314,30 +314,30 @@ var wotScene = (function(){
             animClips.tour.time =  tourTimes.flyover;
         }
     }
-    function viewOnMemorial(json){
-        var vetPanel = json[0].Panel;
-        var scenePanel = scene.getObjectByName(`tar_panel.${vetPanel}`);
+    function viewOnMemorial(json, panel, position){
+        var scenePanel = scene.getObjectByName(`tar_panel.${panel}`);
 
-        camera_Names.rotation.set(0, 0, 0); // Clean rot
-        camera_Names.position.set(scenePanel.position.x, scenePanel.position.y, scenePanel.position.z); // Move to panel
-        camera_Names.rotation.y = scenePanel.rotation.z; // Orient to panel
-        camera_Names.translateZ(1.5); // Frame panel
+        // Position camera to vet panel
+        camera_Names.rotation.set(0, 0, 0);
+        camera_Names.position.set(scenePanel.position.x, scenePanel.position.y, scenePanel.position.z);
+        camera_Names.rotation.y = scenePanel.rotation.z;
+        camera_Names.translateZ(1.5);
+        camera_Target = camera_Names;
+
+        // Group to store names
+        var vetNameGroup = new THREE.Group();
+        vetNameGroup.name = 'vetNameGroup';
+        scene.add(vetNameGroup);
 
         // Generating Name Meshes
-        camera_Target = camera_Names;
-        /*var vetNameGroup = new THREE.Group();
-        vetNameGroup.name = 'vetNameGroup';
-
         json.forEach(function(item){
-            console.log(item);
-            //names.push(createName(item));
-            vetNameGroup.add(createName(item))
+            createName(item)
         });
-        scene.add(vetNameGroup);*/
+        //scene.add(vetNameGroup);
     }
-    function createName(json){
+    function createName(jsonObj){
         load_Text.load('./js/wot-scene/json/Arial_Regular.json', function(font){
-            var geo = new THREE.TextGeometry(json.Name,
+            var geo = new THREE.TextGeometry(jsonObj.Name,
                 {
                     font: font,
                     size: .1,
@@ -350,11 +350,10 @@ var wotScene = (function(){
                 });
 
             var textMesh = new THREE.Mesh(geo, materials.memorialNames);
-            textMesh.name = json.uui;
+            textMesh.name = jsonObj.Name;
+            textMesh.position.y = 3;
 
-            textMesh.position.y = yCount +1;
-            return textMesh;
-            //scene.add(textMesh);
+            scene.add(textMesh);
         });
     }
     function initDomWindow(rendererObj){

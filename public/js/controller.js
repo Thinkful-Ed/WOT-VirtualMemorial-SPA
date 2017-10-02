@@ -94,12 +94,12 @@ var crtl = (function(){
 
     // Memorial
     function viewOnMemorial(ev){
-        console.log(ev.currentTarget.dataset.panel);
         let panel = ev.currentTarget.dataset.panel;
+        let position = ev.currentTarget.dataset.position;
 
         $.ajax({url: `memorial/${panel}`, type: 'GET'})
             .then((res)=>{
-                wotScene.viewOnMemorial(res);
+                wotScene.viewOnMemorial(res, panel, position);
             })
             .catch((error)=>{
                 console.warn(error);
