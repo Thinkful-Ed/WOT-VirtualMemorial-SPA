@@ -338,6 +338,8 @@ var wotScene = (function(){
         var panelPosition = position;
         var scenePanel = scene.getObjectByName(`tar_panel.${panel}`);
 
+        enablePlayCrtls(false);
+
         // Position camera to vet panel
         camera_Names.rotation.set(0, 0, 0);
         camera_Names.position.set(scenePanel.position.x, scenePanel.position.y, scenePanel.position.z);
@@ -396,6 +398,7 @@ var wotScene = (function(){
         var animCam = scene.getObjectByName('camPivot');
         try{
             mixer.update(clock.getDelta());
+            frame = animClips.tour.time;
 
             if(useHelpers===true){
                 if(mouseInput === true){
