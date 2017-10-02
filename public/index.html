@@ -93,12 +93,14 @@
                 ev.preventDefault();
                 state.requestNextFrame = false;
                 htmlTemplates.searchUI();
+                wotScene.stopAnim();
             });
             // Information
             $('#menu-information').click(function(ev) {
                 ev.preventDefault();
                 state.requestNextFrame = false;
                 htmlTemplates.info();
+                wotScene.stopAnim();
             });
             // Stories
             $('#menu-stories').click(function(ev){
@@ -106,6 +108,7 @@
                 state.requestNextFrame = false;
                 htmlTemplates.storyMainUI();
                 htmlTemplates.textStoryUI();
+                wotScene.stopAnim();
             });
         }());
 

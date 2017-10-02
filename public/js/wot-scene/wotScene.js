@@ -453,6 +453,7 @@ var wotScene = (function(){
         positionProps: positionProps,
         initTourAnimation: initTourAnimation,
         playAnim: playAnim,
+        stopAnim: stopAnim,
         toggleCamera: toggleCamera,
         animPlayPause: animPlayPause,
         fastForwardAnimation: fastForwardAnimation,
