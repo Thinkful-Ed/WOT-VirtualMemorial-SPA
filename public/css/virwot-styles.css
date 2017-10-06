@@ -215,6 +215,10 @@ button:active{
 .bg-red{ background-color: #830012}
 .bg-gray{ background-color: #cdcdcd}
 .bg-white{ background-color: #ffffff}
+.scrollable{
+    overflow: hidden;
+    overflow-y: scroll;
+}
 .opacity{
     opacity: 0.3;
     transition: opacity ease-in-out .25s;

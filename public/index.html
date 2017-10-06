@@ -48,8 +48,10 @@
 
             <!-- Content / Dynamic -->
             <div id="dynamic-container" class="bg-white wot-bg-matte"></div>
-            <div id="menu-support" class="menu-btn inline" style="width: 2.5rem; margin: .5rem 0 0 0;">
-                <a id="menu-support-anchor" href="#"><img src="imgs/ico-support.svg"></a>
+            <div style="text-align: right">
+                <div id="menu-support" class="menu-btn inline" style="width: 2.5rem; margin: .5rem 0 0 0;">
+                    <a id="menu-support-anchor" href="#"><img src="imgs/ico-support.svg"></a>
+                </div>
             </div>
         </section>
     </main>
@@ -112,6 +114,17 @@
                 htmlTemplates.textStoryUI();
                 wotScene.stopAnim();
             });
+            $('#menu-support').click(function(ev){
+                ev.preventDefault();
+                try{
+                    state.requestNextFrame = false;
+                    wotScene.stopAnim();
+                }
+                catch(error){
+                    console.warn(error);
+                }
+                htmlTemplates.support();
+            })
         }());
 
         // Users

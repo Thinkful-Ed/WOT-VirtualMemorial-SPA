@@ -272,6 +272,83 @@ var htmlTemplates = (function(){
     }
 
     // Misc
+    function support(){
+        let htmlTemplate = `
+            <div style="text-align: center">
+                <div class="scrollable">
+                    <h3>War on Terror Foundation: Virtual Memorial</h3>
+                    <br>
+                    <h3>Overview</h3>
+                    <div style="text-align: left">
+                        <p>Information covered below explains how to use each section of the web application, 
+                        along with information about system requirments for the virtual tour, and how to report 
+                        a problem os suggestion.</p>
+                    </div>
+                    <h3>Search</h3>
+                    <div style="text-align: left">
+                        <p>Lorem ipsum dolor sit amet, ornare metus nec sociosqu, egestas sed augue viverra in 
+                        nam auctor, nibh sit consectetuer, elementum amet neque, tempus ante volutpat montes 
+                        eget leo et. In porta ipsum justo, ultricies ullamcorper proin pharetra, nunc quisque 
+                        sed condimentum purus amet scelerisque, ac vitae neque risus, suspendisse diam. Vivamus 
+                        sodales massa sit nisl, dapibus ac ac, justo sit nec fusce suspendisse leo, velit 
+                        porttitor neque vestibulum. Congue augue nec vel, sed pede tristique et amet, lectus 
+                        donec sodales nunc lacus sed, suspendisse volutpat vestibulum enim. Nunc bibendum euismod.</p>
+                    </div>
+                    <h3>Information</h3>
+                    <div style="text-align: left">
+                        <p>Lorem ipsum dolor sit amet, ornare metus nec sociosqu, egestas sed augue viverra in 
+                        nam auctor, nibh sit consectetuer, elementum amet neque, tempus ante volutpat montes 
+                        eget leo et. In porta ipsum justo, ultricies ullamcorper proin pharetra, nunc quisque 
+                        sed condimentum purus amet scelerisque, ac vitae neque risus, suspendisse diam. Vivamus 
+                        sodales massa sit nisl, dapibus ac ac, justo sit nec fusce suspendisse leo, velit 
+                        porttitor neque vestibulum. Congue augue nec vel, sed pede tristique et amet, lectus 
+                        donec sodales nunc lacus sed, suspendisse volutpat vestibulum enim. Nunc bibendum euismod.</p>
+                    </div>
+                    <h3>Stories</h3>
+                    <div style="text-align: left">
+                        <p>Lorem ipsum dolor sit amet, ornare metus nec sociosqu, egestas sed augue viverra in 
+                        nam auctor, nibh sit consectetuer, elementum amet neque, tempus ante volutpat montes 
+                        eget leo et. In porta ipsum justo, ultricies ullamcorper proin pharetra, nunc quisque 
+                        sed condimentum purus amet scelerisque, ac vitae neque risus, suspendisse diam. Vivamus 
+                        sodales massa sit nisl, dapibus ac ac, justo sit nec fusce suspendisse leo, velit 
+                        porttitor neque vestibulum. Congue augue nec vel, sed pede tristique et amet, lectus 
+                        donec sodales nunc lacus sed, suspendisse volutpat vestibulum enim. Nunc bibendum euismod.</p>
+                    </div>
+                    <h3>Tour</h3>
+                    <div style="text-align: left">
+                        <p>Lorem ipsum dolor sit amet, ornare metus nec sociosqu, egestas sed augue viverra in 
+                        nam auctor, nibh sit consectetuer, elementum amet neque, tempus ante volutpat montes 
+                        eget leo et. In porta ipsum justo, ultricies ullamcorper proin pharetra, nunc quisque 
+                        sed condimentum purus amet scelerisque, ac vitae neque risus, suspendisse diam. Vivamus 
+                        sodales massa sit nisl, dapibus ac ac, justo sit nec fusce suspendisse leo, velit 
+                        porttitor neque vestibulum. Congue augue nec vel, sed pede tristique et amet, lectus 
+                        donec sodales nunc lacus sed, suspendisse volutpat vestibulum enim. Nunc bibendum euismod.</p>
+                    </div>
+                    <h3>System Requirments</h3>
+                    <div style="text-align: left">
+                        <p>Lorem ipsum dolor sit amet, ornare metus nec sociosqu, egestas sed augue viverra in 
+                        nam auctor, nibh sit consectetuer, elementum amet neque, tempus ante volutpat montes 
+                        eget leo et. In porta ipsum justo, ultricies ullamcorper proin pharetra, nunc quisque 
+                        sed condimentum purus amet scelerisque, ac vitae neque risus, suspendisse diam. Vivamus 
+                        sodales massa sit nisl, dapibus ac ac, justo sit nec fusce suspendisse leo, velit 
+                        porttitor neque vestibulum. Congue augue nec vel, sed pede tristique et amet, lectus 
+                        donec sodales nunc lacus sed, suspendisse volutpat vestibulum enim. Nunc bibendum euismod.</p>
+                    </div>
+                    <h3>Support</h3>
+                    <div style="text-align: left">
+                        <p>Lorem ipsum dolor sit amet, ornare metus nec sociosqu, egestas sed augue viverra in 
+                        nam auctor, nibh sit consectetuer, elementum amet neque, tempus ante volutpat montes 
+                        eget leo et. In porta ipsum justo, ultricies ullamcorper proin pharetra, nunc quisque 
+                        sed condimentum purus amet scelerisque, ac vitae neque risus, suspendisse diam. Vivamus 
+                        sodales massa sit nisl, dapibus ac ac, justo sit nec fusce suspendisse leo, velit 
+                        porttitor neque vestibulum. Congue augue nec vel, sed pede tristique et amet, lectus 
+                        donec sodales nunc lacus sed, suspendisse volutpat vestibulum enim. Nunc bibendum euismod.</p>
+                    </div>
+                </div>
+            </div>
+        `;
+        $('#dynamic-container').html(htmlTemplate);
+    }
     function loader(typeString, templateID){
         let domW = document.getElementById('dynamic-container').offsetWidth;
         let domH = document.getElementById('dynamic-container').offsetHeight;
@@ -336,6 +413,7 @@ var htmlTemplates = (function(){
          loader: loader,
          submitNotification: submitNotification,
          clearNewStoryFields: clearNewStoryFields,
-         errorNotification: errorNotification
+         errorNotification: errorNotification,
+         support: support
      };
 }());
