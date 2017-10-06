@@ -162,8 +162,6 @@ var wotScene = (function(){
         scene.getObjectByName('reflectingPoolWater').material = materials.water;
         scene.getObjectByName('reflectingPoolStone').material = materials.stones;
         scene.getObjectByName('reflectingPoolSandstone').material = materials.sandstone;
-        scene.getObjectByName('bush').material = materials.bush;
-        scene.getObjectByName('bush.001').material = materials.bush;
     }
     function setParents(){
         console.log('Setting Parents');
@@ -183,8 +181,8 @@ var wotScene = (function(){
         scene.getObjectByName('Road_T.001').rotation.z = 0;
         scene.getObjectByName('sidewalkTileSmallBevelCap').rotation.z = 0;
         scene.getObjectByName('sidewalkFront').rotation.z = 0;
+        scene.getObjectByName('sidewalkTileLargeBevel.000').rotation.z = 0;
         scene.getObjectByName('sidewalkTileLargeBevel.001').rotation.z = 0;
-        scene.getObjectByName('sidewalkTileLargeBevel.002').rotation.z = 0;
         scene.getObjectByName('sidewalkReflectingPoolNorth').rotation.z = 0;
         scene.getObjectByName('sidewalkReflectingPoolSouth').rotation.z = 0;
         scene.getObjectByName('sidewalkSouthSteps').rotation.z = 0;
@@ -192,8 +190,6 @@ var wotScene = (function(){
         scene.getObjectByName('Road_TriSplit.001').rotation.z = 0;
         scene.getObjectByName('towerDecor').rotation.z = 0;
         scene.getObjectByName('fence').rotation.z = 0;
-        scene.getObjectByName('bush').rotation.z = 0;
-        scene.getObjectByName('bush.001').rotation.z = 0;
 
         if(useHelpers===true){
             controls = new THREE.FlyControls(camera_Target,  document.getElementById('dynamic-container'));
