@@ -66,7 +66,7 @@ var wotScene = (function(){
             scene.fog = new THREE.Fog(0xd4e1f4, 10, 725);
 
             // Materials & Textures
-            var atlas = new THREE.MeshPhongMaterial({map: load_Tex.load('./js/wot-scene/textures/atlas.png')});
+            var atlas = new THREE.MeshPhongMaterial({map: load_Tex.load('./js/wot-scene/textures/atlas-1k.png')});
             atlas.name = 'atlas';
             atlas.transparent = true;
             atlas.side = THREE.DoubleSide;

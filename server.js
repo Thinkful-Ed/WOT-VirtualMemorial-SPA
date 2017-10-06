@@ -1,6 +1,7 @@
 // Imports & Init
 const express = require('express');
 const app = express();
+const compression = require('compression');
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 const passport = require('passport');
@@ -28,6 +29,7 @@ app.use(morgan('common'));
     next();
 });*/
 app.use(bodyParser.json());
+app.use(compression);
 app.use(passport.initialize()); // Init passport
 passport.use(basicStrategy); // Register basicStrategy
 // passport.use(jwtStrategy);
