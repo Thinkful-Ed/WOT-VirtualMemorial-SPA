@@ -42,7 +42,7 @@ var wotScene = (function(){
     var frameCount = 0;
     var yCount = 5;
 
-    function init(){
+    function initWebgl(){
         return new Promise(function(resolve, reject){
             console.log('Init & Loading Scene Assets');
             // Helpers
@@ -136,70 +136,76 @@ var wotScene = (function(){
             //render();
         });
     }
-    function setMaterials(){
-        console.log('Setting Materials');
-        // Apply Atlas
-        for(var i=0; i<scene.children[4].children.length; i++){
-            scene.children[4].children[i].material = materials.atlas;
-        }
-        // Traverse Scene Mat Setup
-        scene.traverse(function(obj){
-            var objName = obj.name;
-
-            if(objName.match(/Road/)){
-                obj.material = materials.concrete;
+    function webglSceneSetup(){
+        // Materials
+        (function(){
+            console.log('Applying Prop Materials');
+            // Apply Atlas
+            for(var i=0; i<scene.children[4].children.length; i++){
+                scene.children[4].children[i].material = materials.atlas;
             }
-            if(objName.match(/sidewalk/)){
-                obj.material = materials.concrete;
+            // Traverse Scene Mat Setup
+            scene.traverse(function(obj){
+                var objName = obj.name;
+
+                if(objName.match(/Road/)){
+                    obj.material = materials.concrete;
+                }
+                if(objName.match(/sidewalk/)){
+                    obj.material = materials.concrete;
+                }
+            });
+            // Apply Specific Textures
+            scene.getObjectByName('fountainStone').material = materials.concrete;
+            scene.getObjectByName('ground').material = materials.grass;
+            scene.getObjectByName('fountainWater').material = materials.water;
+            scene.getObjectByName('fountainStone').material = materials.stones;
+            scene.getObjectByName('fountainSandstone').material = materials.sandstone;
+            scene.getObjectByName('reflectingPoolWater').material = materials.water;
+            scene.getObjectByName('reflectingPoolStone').material = materials.stones;
+            scene.getObjectByName('reflectingPoolSandstone').material = materials.sandstone;
+        }());
+        // Positioning
+        (function(){
+            console.log('Applying Prop TRS');
+            // Reposition
+            scene.getObjectByName('ground').rotation.z = 0;
+            scene.getObjectByName('Road_TriCap').rotation.z = 0;
+            scene.getObjectByName('Road_HCap_R').rotation.z = 0;
+            scene.getObjectByName('Road_HCap_L').rotation.z = 0;
+            scene.getObjectByName('Road_T').rotation.z = 0;
+            scene.getObjectByName('Road_T.001').rotation.z = 0;
+            scene.getObjectByName('sidewalkTileSmallBevelCap').rotation.z = 0;
+            scene.getObjectByName('sidewalkFront').rotation.z = 0;
+            scene.getObjectByName('sidewalkTileLargeBevel.000').rotation.z = 0;
+            scene.getObjectByName('sidewalkTileLargeBevel.001').rotation.z = 0;
+            scene.getObjectByName('sidewalkReflectingPoolNorth').rotation.z = 0;
+            scene.getObjectByName('sidewalkReflectingPoolSouth').rotation.z = 0;
+            scene.getObjectByName('sidewalkSouthSteps').rotation.z = 0;
+            scene.getObjectByName('Road_TriSplit').rotation.z = 0;
+            scene.getObjectByName('Road_TriSplit.001').rotation.z = 0;
+            scene.getObjectByName('towerDecor').rotation.z = 0;
+            scene.getObjectByName('fence').rotation.z = 0;
+
+            if(useHelpers===true){
+                controls = new THREE.FlyControls(camera_Target,  document.getElementById('dynamic-container'));
+                controls.movementSpeed = .2;
+                controls.rollSpeed = 0.01;
+                controls.autoForward = false;
+                controls.dragToLook = true;
             }
-        });
-        // Apply Specific Textures
-        scene.getObjectByName('fountainStone').material = materials.concrete;
-        scene.getObjectByName('ground').material = materials.grass;
-        scene.getObjectByName('fountainWater').material = materials.water;
-        scene.getObjectByName('fountainStone').material = materials.stones;
-        scene.getObjectByName('fountainSandstone').material = materials.sandstone;
-        scene.getObjectByName('reflectingPoolWater').material = materials.water;
-        scene.getObjectByName('reflectingPoolStone').material = materials.stones;
-        scene.getObjectByName('reflectingPoolSandstone').material = materials.sandstone;
-    }
-    function setParents(){
-        console.log('Setting Parents');
-        // Helpers
-        if(useHelpers===true){
-            THREE.SceneUtils.attach(scene.getObjectByName('camera_Names'), scene, scene.getObjectByName('camPivot'));
-        }
-    }
-    function positionProps(){
-        console.log('Positioning Props');
-        // Reposition
-        scene.getObjectByName('ground').rotation.z = 0;
-        scene.getObjectByName('Road_TriCap').rotation.z = 0;
-        scene.getObjectByName('Road_HCap_R').rotation.z = 0;
-        scene.getObjectByName('Road_HCap_L').rotation.z = 0;
-        scene.getObjectByName('Road_T').rotation.z = 0;
-        scene.getObjectByName('Road_T.001').rotation.z = 0;
-        scene.getObjectByName('sidewalkTileSmallBevelCap').rotation.z = 0;
-        scene.getObjectByName('sidewalkFront').rotation.z = 0;
-        scene.getObjectByName('sidewalkTileLargeBevel.000').rotation.z = 0;
-        scene.getObjectByName('sidewalkTileLargeBevel.001').rotation.z = 0;
-        scene.getObjectByName('sidewalkReflectingPoolNorth').rotation.z = 0;
-        scene.getObjectByName('sidewalkReflectingPoolSouth').rotation.z = 0;
-        scene.getObjectByName('sidewalkSouthSteps').rotation.z = 0;
-        scene.getObjectByName('Road_TriSplit').rotation.z = 0;
-        scene.getObjectByName('Road_TriSplit.001').rotation.z = 0;
-        scene.getObjectByName('towerDecor').rotation.z = 0;
-        scene.getObjectByName('fence').rotation.z = 0;
 
-        if(useHelpers===true){
-            controls = new THREE.FlyControls(camera_Target,  document.getElementById('dynamic-container'));
-            controls.movementSpeed = .2;
-            controls.rollSpeed = 0.01;
-            controls.autoForward = false;
-            controls.dragToLook = true;
-        }
+            buildAxisHelper();
+        }());
+        // Parenting & Merging
+        (function(){
+            console.log('Applying Parenting & Merging');
+            if(useHelpers===true){
+                THREE.SceneUtils.attach(scene.getObjectByName('camera_Names'), scene, scene.getObjectByName('camPivot'));
+            }
+        }());
 
-        buildAxisHelper();
+        initTourAnimation();
     }
     function initTourAnimation(){
         console.log('Playing');
@@ -420,10 +426,8 @@ var wotScene = (function(){
     return{
         scene: scene,
         renderer: renderer,
-        init: init,
-        setMaterials: setMaterials,
-        setParents: setParents,
-        positionProps: positionProps,
+        initWebgl: initWebgl,
+        webglSceneSetup: webglSceneSetup,
         initTourAnimation: initTourAnimation,
         playAnim: playAnim,
         stopAnim: stopAnim,
