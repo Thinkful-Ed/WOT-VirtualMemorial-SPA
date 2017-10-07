@@ -72,9 +72,7 @@
             htmlTemplates.intro();
 
             wotScene.initWebgl()
-                .then(setTimeout(function(){
-                    wotScene.webglSceneSetup()
-                }, 3000))
+                .then(wotScene.webglSceneSetup(result))
                 .catch(function(e){
                     alert(`An error occurred, please check the console for more info.`);
                     console.warn(e);

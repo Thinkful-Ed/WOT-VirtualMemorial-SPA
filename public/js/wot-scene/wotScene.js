@@ -142,7 +142,7 @@ var wotScene = (function(){
                 scene.add(trs_camPivot);
 
 
-                console.log('End of line');
+                console.log('End of Init & Loading Scene Assets...');
                 resolve('loaded');
             }
             catch(error){
@@ -151,8 +151,9 @@ var wotScene = (function(){
 
         });
     }
-    function webglSceneSetup(){
+    function webglSceneSetup(result){
         console.log('Starting Scene Setup');
+        console.log(result);
         // Materials
         (function(){
             console.log('Applying Prop Materials');
@@ -379,6 +380,9 @@ var wotScene = (function(){
             scene.add(vetNameGroup);
         }
         createName(json, panelPosition, vetNameGroup, vetName);
+
+        let axisHelper = new THREE.AxisHelper(1);
+        vetNameGroup.add(axisHelper);
 
         // Positioning
         vetNameGroup.rotation.set(0, 0, 0);
