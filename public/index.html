@@ -71,10 +71,10 @@
             state.webglSceneInit = false;
             htmlTemplates.intro();
 
-            wotScene.initWebgl()
-                .then(wotScene.webglSceneSetup(result))
+            wotScene.initWebgl().then(setTimeout(function(){
+                wotScene.webglSceneSetup()
+            }, 3000))
                 .catch(function(e){
-                    alert(`An error occurred, please check the console for more info.`);
                     console.warn(e);
                 });
             state.webglSceneInit = true;

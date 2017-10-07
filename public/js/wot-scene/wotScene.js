@@ -146,7 +146,7 @@ var wotScene = (function(){
                 resolve('loaded');
             }
             catch(error){
-                reject(error('sceneInitError'));
+                reject(error);
             }
 
         });
