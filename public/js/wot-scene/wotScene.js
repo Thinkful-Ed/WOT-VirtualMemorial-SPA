@@ -46,101 +46,113 @@ var wotScene = (function(){
     // Init
     function initWebgl(){
         return new Promise(function(resolve, reject){
-            console.log('Init & Loading Scene Assets');
-            // Helpers
-            if(useHelpers===true){
-                var sceneAxis = new THREE.AxisHelper(5);
-                scene.add(sceneAxis);
+            try{
+                console.log('Init & Loading Scene Assets');
+
+                // Load JSONs
+                (function(){
+                    // Scene
+                    load_Objs.load("./js/wot-scene/json/wot-scene-minify.json", function(importScene){
+                            console.log(importScene);
+                            scene.add(importScene);
+                            scene.animations = importScene.animations;
+                        },
+                        // Function called when download progresses
+                        function ( xhr ) {
+                            console.log( (xhr.loaded / xhr.total * 100) + '% loaded' );
+                        },
+                        // Function called when download errors
+                        function ( xhr ) {
+                            console.error( 'An error happened' );
+                        }
+                    );
+                }());
+                //render();
+
+                // Helpers
+                if(useHelpers===true){
+                    var sceneAxis = new THREE.AxisHelper(5);
+                    scene.add(sceneAxis);
+                }
+
+                // Lighting
+                var lgt_directional = new THREE.DirectionalLight(0xffffff, .85);
+                var lgt_ambient = new THREE.AmbientLight(0xffffff, .65);
+                scene.add(lgt_directional, lgt_ambient);
+
+                // Camera
+                camera_Names.name = 'camera_Names';
+                camera_Names.position.set(camtrs.pos.x, camtrs.pos.y, camtrs.pos.z);
+                camera_Names.rotation.set(camtrs.rot.x, camtrs.rot.y, camtrs.rot.z);
+                camera_Target = camera_Names;
+                scene.add(camera_Names);
+
+                scene.fog = new THREE.Fog(0xd4e1f4, 10, 725);
+
+                // Materials & Textures
+                var atlas = new THREE.MeshPhongMaterial({map: load_Tex.load('./js/wot-scene/textures/atlas-1k.png')});
+                atlas.name = 'atlas';
+                atlas.transparent = true;
+                atlas.side = THREE.DoubleSide;
+                atlas.alphaTest = 0.5;
+                var concrete = new THREE.MeshLambertMaterial({map: load_Tex.load('./js/wot-scene/textures/concrete.jpg', function(texture){
+                    texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
+                    texture.repeat.set(5, 5);
+                })});
+                concrete.name='concrete';
+                concrete.color = {r:.5, g:.5, b:.5};
+                var grass = new THREE.MeshLambertMaterial({map: load_Tex.load('./js/wot-scene/textures/grass.jpg', function(texture){
+                    texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
+                    texture.repeat.set(100, 100);
+                })});
+                grass.name = 'grass';
+                var sandstone = new THREE.MeshLambertMaterial({map: load_Tex.load('./js/wot-scene/textures/sandstone.jpg')});
+                sandstone.name = 'sandstone';
+                var stones = new THREE.MeshPhongMaterial({map: load_Tex.load('./js/wot-scene/textures/stones.jpg', function(texture){
+                    texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
+                    texture.repeat.set(3, 3);
+                })});
+                stones.name = 'stones';
+                var water = new THREE.MeshPhongMaterial({map: load_Tex.load('./js/wot-scene/textures/water.jpg', function(texture){
+                    texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
+                    texture.repeat.set(5, 5);
+                })});
+                water.name = 'water';
+                var bush = new THREE.MeshPhongMaterial({map: load_Tex.load('./js/wot-scene/textures/bush.jpg', function(texture){
+                    texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
+                    texture.repeat.set(4, 4);
+                })});
+                var nameGroup = new THREE.MeshBasicMaterial({color: 0x808080});
+                var nameFocus = new THREE.MeshBasicMaterial({color: 0xffffff});
+                materials = {
+                    atlas: atlas,
+                    concrete: concrete,
+                    grass: grass,
+                    sandstone: sandstone,
+                    stones: stones,
+                    water: water,
+                    bush: bush,
+                    nameGroup: nameGroup,
+                    nameFocus: nameFocus
+                }; // Package materials up in an object
+
+                // Helper Objects
+                var trs_camPivot = new THREE.Object3D();
+                trs_camPivot.name = 'camPivot';
+                scene.add(trs_camPivot);
+
+
+                console.log('End of line');
+                resolve('loaded');
+            }
+            catch(error){
+                reject(error('sceneInitError'));
             }
 
-            // Lighting
-            var lgt_directional = new THREE.DirectionalLight(0xffffff, .85);
-            var lgt_ambient = new THREE.AmbientLight(0xffffff, .65);
-            scene.add(lgt_directional, lgt_ambient);
-
-            // Camera
-            camera_Names.name = 'camera_Names';
-            camera_Names.position.set(camtrs.pos.x, camtrs.pos.y, camtrs.pos.z);
-            camera_Names.rotation.set(camtrs.rot.x, camtrs.rot.y, camtrs.rot.z);
-            camera_Target = camera_Names;
-            scene.add(camera_Names);
-
-            scene.fog = new THREE.Fog(0xd4e1f4, 10, 725);
-
-            // Materials & Textures
-            var atlas = new THREE.MeshPhongMaterial({map: load_Tex.load('./js/wot-scene/textures/atlas-1k.png')});
-            atlas.name = 'atlas';
-            atlas.transparent = true;
-            atlas.side = THREE.DoubleSide;
-            atlas.alphaTest = 0.5;
-            var concrete = new THREE.MeshLambertMaterial({map: load_Tex.load('./js/wot-scene/textures/concrete.jpg', function(texture){
-                texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
-                texture.repeat.set(5, 5);
-            })});
-            concrete.name='concrete';
-            concrete.color = {r:.5, g:.5, b:.5};
-            var grass = new THREE.MeshLambertMaterial({map: load_Tex.load('./js/wot-scene/textures/grass.jpg', function(texture){
-                texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
-                texture.repeat.set(100, 100);
-            })});
-            grass.name = 'grass';
-            var sandstone = new THREE.MeshLambertMaterial({map: load_Tex.load('./js/wot-scene/textures/sandstone.jpg')});
-            sandstone.name = 'sandstone';
-            var stones = new THREE.MeshPhongMaterial({map: load_Tex.load('./js/wot-scene/textures/stones.jpg', function(texture){
-                texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
-                texture.repeat.set(3, 3);
-            })});
-            stones.name = 'stones';
-            var water = new THREE.MeshPhongMaterial({map: load_Tex.load('./js/wot-scene/textures/water.jpg', function(texture){
-                texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
-                texture.repeat.set(5, 5);
-            })});
-            water.name = 'water';
-            var bush = new THREE.MeshPhongMaterial({map: load_Tex.load('./js/wot-scene/textures/bush.jpg', function(texture){
-                texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
-                texture.repeat.set(4, 4);
-            })});
-            var nameGroup = new THREE.MeshBasicMaterial({color: 0x808080});
-            var nameFocus = new THREE.MeshBasicMaterial({color: 0xffffff});
-            materials = {
-                atlas: atlas,
-                concrete: concrete,
-                grass: grass,
-                sandstone: sandstone,
-                stones: stones,
-                water: water,
-                bush: bush,
-                nameGroup: nameGroup,
-                nameFocus: nameFocus
-            }; // Package materials up in an object
-
-            // Helper Objects
-            var trs_camPivot = new THREE.Object3D();
-            trs_camPivot.name = 'camPivot';
-            scene.add(trs_camPivot);
-
-            // Load JSONs
-            (function(){
-                // Scene
-                load_Objs.load("./js/wot-scene/json/wot-scene-minify.json", function(importScene){
-                        console.log(importScene);
-                        scene.add(importScene);
-                        scene.animations = importScene.animations;
-                    },
-                    // Function called when download progresses
-                    function ( xhr ) {
-                        console.log( (xhr.loaded / xhr.total * 100) + '% loaded' );
-                    },
-                    // Function called when download errors
-                    function ( xhr ) {
-                        console.error( 'An error happened' );
-                    }
-                );
-            }());
-            //render();
         });
     }
     function webglSceneSetup(){
+        console.log('Starting Scene Setup');
         // Materials
         (function(){
             console.log('Applying Prop Materials');
@@ -387,7 +399,6 @@ var wotScene = (function(){
 
             json.forEach(function(jsonObj){
                 let textMesh;
-
                 var geo = new THREE.TextGeometry(jsonObj.Name,
                     {
                         font: font,
@@ -401,12 +412,11 @@ var wotScene = (function(){
                     });
 
                 textMesh = new THREE.Mesh(geo, materials.nameGroup);
-                textMesh.name = json[count].Name;
-                nameGrp.add(textMesh);
-
                 if(jsonObj.Name === vetName){
                     textMesh.material = materials.nameFocus;
                 }
+                textMesh.name = json[count].Name;
+                nameGrp.add(textMesh);
 
                 // Name Spread
                 if(count <= 3){
@@ -418,8 +428,6 @@ var wotScene = (function(){
                     textMesh.position.y = trsRow;
 
                     trsPos += offsetPos;
-
-
                 }
                 else{
                     // Increments
