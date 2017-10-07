@@ -100,7 +100,8 @@ var wotScene = (function(){
                 texture.wrapS = texture.wrapT = THREE.RepeatWrapping;
                 texture.repeat.set(4, 4);
             })});
-            var memorialNames = new THREE.MeshBasicMaterial({color: 0xffffff});
+            var nameGroup = new THREE.MeshBasicMaterial({color: 0x808080});
+            var nameFocus = new THREE.MeshBasicMaterial({color: 0xffffff});
             materials = {
                 atlas: atlas,
                 concrete: concrete,
@@ -109,7 +110,8 @@ var wotScene = (function(){
                 stones: stones,
                 water: water,
                 bush: bush,
-                memorialNames: memorialNames
+                nameGroup: nameGroup,
+                nameFocus: nameFocus
             }; // Package materials up in an object
 
             // Helper Objects
@@ -340,7 +342,7 @@ var wotScene = (function(){
         }
     }
     // Name Display
-    function viewOnMemorial(json, panel, position){
+    function viewOnMemorial(json, panel, position, vetName){
         var panelPosition = position;
         var scenePanel = scene.getObjectByName(`tar_panel.${panel}`);
         var horOffset = .525;
@@ -364,7 +366,7 @@ var wotScene = (function(){
             vetNameGroup.name = 'vetNameGroup';
             scene.add(vetNameGroup);
         }
-        createName(json, panelPosition, vetNameGroup);
+        createName(json, panelPosition, vetNameGroup, vetName);
 
         // Positioning
         vetNameGroup.rotation.set(0, 0, 0);
@@ -372,8 +374,8 @@ var wotScene = (function(){
         vetNameGroup.rotation.y = scenePanel.rotation.z;
         vetNameGroup.translateZ(.035);
     }
-    function createName(json, position, nameGrp){
-        console.log(position, json);
+    function createName(json, position, nameGrp, vetName){
+        console.log(position, vetName);
 
         load_Text.load('./js/wot-scene/json/Arial_Regular.json', function(font){
             let fontSize = .015;
@@ -398,9 +400,13 @@ var wotScene = (function(){
                         bevelSegments: 2
                     });
 
-                textMesh = new THREE.Mesh(geo, materials.memorialNames);
+                textMesh = new THREE.Mesh(geo, materials.nameGroup);
                 textMesh.name = json[count].Name;
                 nameGrp.add(textMesh);
+
+                if(jsonObj.Name === vetName){
+                    textMesh.material = materials.nameFocus;
+                }
 
                 // Name Spread
                 if(count <= 3){

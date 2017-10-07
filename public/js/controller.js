@@ -96,10 +96,11 @@ var crtl = (function(){
     function viewOnMemorial(ev){
         let panel = ev.currentTarget.dataset.panel;
         let position = ev.currentTarget.dataset.position;
+        let name = ev.currentTarget.dataset.name;
 
         $.ajax({url: `memorial/${panel}`, type: 'GET'})
             .then((res)=>{
-                wotScene.viewOnMemorial(res, panel, position);
+                wotScene.viewOnMemorial(res, panel, position, name);
             })
             .catch((error)=>{
                 console.warn(error);
