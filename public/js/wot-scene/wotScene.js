@@ -15,6 +15,7 @@ var wotScene = (function(){
     var load_Objs = new THREE.ObjectLoader();
     var load_Tex = new THREE.TextureLoader();
     var load_Text = new THREE.FontLoader();
+    var font;
     var mixer;
     // Content Assets
     var materials;
@@ -42,6 +43,7 @@ var wotScene = (function(){
     var frameCount = 0;
     var yCount = 5;
 
+    // Init
     function initWebgl(){
         return new Promise(function(resolve, reject){
             console.log('Init & Loading Scene Assets');
@@ -167,7 +169,7 @@ var wotScene = (function(){
         }());
         // Positioning
         (function(){
-            console.log('Applying Prop TRS');
+            console.log('Applying Prop trsPosition');
             // Reposition
             scene.getObjectByName('ground').rotation.z = 0;
             scene.getObjectByName('Road_TriCap').rotation.z = 0;
@@ -238,6 +240,7 @@ var wotScene = (function(){
         });
         //target.add(axisHelper);
     }
+    // Tour Crtls
     function toggleCamera(){
         var currentCam = camera_Target.name;
         if(currentCam === 'camera_Tour'){
@@ -336,9 +339,12 @@ var wotScene = (function(){
             animClips.tour.time =  tourTimes.flyover;
         }
     }
+    // Name Display
     function viewOnMemorial(json, panel, position){
         var panelPosition = position;
         var scenePanel = scene.getObjectByName(`tar_panel.${panel}`);
+        var horOffset = .525;
+        var verOffset = .175;
 
         enablePlayCrtls(false);
 
@@ -362,32 +368,67 @@ var wotScene = (function(){
 
         // Positioning
         vetNameGroup.rotation.set(0, 0, 0);
-        vetNameGroup.position.set(scenePanel.position.x, scenePanel.position.y, scenePanel.position.z);
+        vetNameGroup.position.set(scenePanel.position.x + horOffset, scenePanel.position.y + verOffset, scenePanel.position.z);
         vetNameGroup.rotation.y = scenePanel.rotation.z;
-        vetNameGroup.translateZ(.5);
+        vetNameGroup.translateZ(.035);
     }
-
     function createName(json, position, nameGrp){
         console.log(position, json);
+
         load_Text.load('./js/wot-scene/json/Arial_Regular.json', function(font){
-            var geo = new THREE.TextGeometry(json[position].Name,
-                {
-                    font: font,
-                    size: .015,
-                    height: .001,
-                    curveSegments: 12,
-                    bevelEnabled: false,
-                    bevelThickness: 1,
-                    bevelSize: 1,
-                    bevelSegments: 2
-                });
+            let fontSize = .015;
+            let count = 0;
+            let trsPos = 0;
+            let trsRow = 0;
+            let offsetPos = .275;
+            let offsetRow = -.025;
 
-            var textMesh = new THREE.Mesh(geo, materials.memorialNames);
-            textMesh.name = json[position].Name;
+            json.forEach(function(jsonObj){
+                let textMesh;
 
-            nameGrp.add(textMesh);
+                var geo = new THREE.TextGeometry(jsonObj.Name,
+                    {
+                        font: font,
+                        size: fontSize,
+                        height: .001,
+                        curveSegments: 1,
+                        bevelEnabled: false,
+                        bevelThickness: 1,
+                        bevelSize: 1,
+                        bevelSegments: 2
+                    });
+
+                textMesh = new THREE.Mesh(geo, materials.memorialNames);
+                textMesh.name = json[count].Name;
+                nameGrp.add(textMesh);
+
+                // Name Spread
+                if(count <= 3){
+                    // Increments
+                    count += 1;
+
+                    // Positioning
+                    textMesh.position.x = trsPos;
+                    textMesh.position.y = trsRow;
+
+                    trsPos += offsetPos;
+
+
+                }
+                else{
+                    // Increments
+                    count = 0;
+                    trsPos = 0;
+                    trsRow += offsetRow;
+
+                    // Positioning
+                    textMesh.position.x = trsPos;
+                    textMesh.position.y = trsRow;
+                }
+            });
         });
     }
+    // Renderer
     function initDomWindow(rendererObj){
         var renderWindowWidth = document.getElementById('dynamic-container').offsetWidth;
         var renderWindowHeight = document.getElementById('dynamic-container').offsetHeight;
