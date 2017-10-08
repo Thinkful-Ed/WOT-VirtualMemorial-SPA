@@ -3,7 +3,8 @@ var wotScene = (function(){
     var scene= new THREE.Scene(); scene.name="scene";
     var renderer = new THREE.WebGLRenderer({antialias:true});
     // Cameras
-    var camera_Names = new THREE.PerspectiveCamera(35, window.innerWidth/window.innerHeight, 0.01, 1000);// Checks for WebGL Content. If not there fallback to canvas render for older browsers.
+    var camAspectRatio = document.getElementById('dynamic-container').offsetWidth / document.getElementById('dynamic-container').offsetHeight;
+    var camera_Names = new THREE.PerspectiveCamera(35, camAspectRatio, 0.01, 1000);// Checks for WebGL Content. If not there fallback to canvas render for older browsers.
     var camera_Tour;
     var camera_Target;
     var camtrs = {
@@ -358,8 +359,9 @@ var wotScene = (function(){
     function viewOnMemorial(json, panel, position, vetName){
         var panelPosition = position;
         var scenePanel = scene.getObjectByName(`tar_panel.${panel}`);
-        var horOffset = -.525;
-        var verOffset = .18;
+        // Positioning
+        var horOffset = -.435; //.525
+        var verOffset = .215;
         var depOffset = .15;
 
         enablePlayCrtls(false);
@@ -403,13 +405,14 @@ var wotScene = (function(){
 
         load_Text.load('./js/wot-scene/json/Arial_Regular.json', function(font){
             // Loop counters
-            let count = 0;
+            let count = 1;
             let trsPos = 0;
             let trsRow = 0;
+            let rowMax = 4;
             // Text placement
             let fontSize = .0125;
-            let offsetPos = .275;
-            let offsetRow = -.025;
+            let offsetPos = .235;
+            let offsetRow = -.0225;
 
             json.forEach(function(jsonObj){
                 let textMesh;
@@ -436,7 +439,7 @@ var wotScene = (function(){
                 nameGrp.add(textMesh);
 
                 // Name Spread
-                if(count <= 3){
+                if(count <= rowMax){
                     // Increments
                     count += 1;
 
@@ -448,7 +451,7 @@ var wotScene = (function(){
                 }
                 else{
                     // Increments
-                    count = 0;
+                    count = 1;
                     trsPos = 0;
                     trsRow += offsetRow;
 
