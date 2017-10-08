@@ -58,7 +58,6 @@
 
     <!-- App Scripts -->
     <script type="text/javascript" src="libs/jquery.js"></script>
-    <script type="text/javascript" src="libs/Tween.js"></script>
     <script type="text/javascript" src="libs/three.js"></script>
     <script type="text/javascript" src="libs/FlyControls.js"></script>
     <script type="text/javascript" src="js/state.js"></script>
@@ -75,15 +74,16 @@
             Promise.all([wotScene.loadJson(), wotScene.loadTextureAndMaterials()])
                 .then(function(promResponse){
                     setTimeout(function(){
-                        wotScene.webglSceneSetup();
+                        wotScene.webglSceneSetup(promResponse);
                     }, 5000);
-                    //wotScene.webglSceneSetup(promResponse)
+                    // wotScene.webglSceneSetup(promResponse)
+                })
+                .then(function(){
+                    state.webglSceneInit = true;
                 })
                 .catch(function(e){
                     console.log('Error occured in promises...\n', e);
                 });
-
-            state.webglSceneInit = true;
         });
 
         // Main Menu
