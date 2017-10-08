@@ -395,15 +395,19 @@ var wotScene = (function(){
         vetNameGroup.translateY(verOffset);
         vetNameGroup.translateZ(depOffset);
         vetNameGroup.visible = true;
+
+        enablePlayCrtls(false);
     }
     function createName(json, position, nameGrp, vetName){
         console.log(position, vetName);
 
         load_Text.load('./js/wot-scene/json/Arial_Regular.json', function(font){
-            let fontSize = .015;
+            // Loop counters
             let count = 0;
             let trsPos = 0;
             let trsRow = 0;
+            // Text placement
+            let fontSize = .0125;
             let offsetPos = .275;
             let offsetRow = -.025;
 
@@ -451,6 +455,9 @@ var wotScene = (function(){
                     // Positioning
                     textMesh.position.x = trsPos;
                     textMesh.position.y = trsRow;
+
+                    count += 1;
+                    trsPos += offsetPos;
                 }
             });
         });
