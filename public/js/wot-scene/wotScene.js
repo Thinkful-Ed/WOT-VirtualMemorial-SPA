@@ -358,8 +358,9 @@ var wotScene = (function(){
     function viewOnMemorial(json, panel, position, vetName){
         var panelPosition = position;
         var scenePanel = scene.getObjectByName(`tar_panel.${panel}`);
-        var horOffset = .525;
-        var verOffset = .175;
+        var horOffset = -.525;
+        var verOffset = .18;
+        var depOffset = .15;
 
         enablePlayCrtls(false);
 
@@ -377,6 +378,7 @@ var wotScene = (function(){
         finally{
             var vetNameGroup = new THREE.Group();
             vetNameGroup.name = 'vetNameGroup';
+            vetNameGroup.visible = false;
             scene.add(vetNameGroup);
         }
         createName(json, panelPosition, vetNameGroup, vetName);
@@ -384,11 +386,15 @@ var wotScene = (function(){
         let axisHelper = new THREE.AxisHelper(1);
         vetNameGroup.add(axisHelper);
 
-        // Positioning
+        // Position & orient to panel
         vetNameGroup.rotation.set(0, 0, 0);
-        vetNameGroup.position.set(scenePanel.position.x + horOffset, scenePanel.position.y + verOffset, scenePanel.position.z);
+        vetNameGroup.position.set(scenePanel.position.x, scenePanel.position.y, scenePanel.position.z);
         vetNameGroup.rotation.y = scenePanel.rotation.z;
-        vetNameGroup.translateZ(.035);
+        // Name grp local transformations
+        vetNameGroup.translateX(horOffset);
+        vetNameGroup.translateY(verOffset);
+        vetNameGroup.translateZ(depOffset);
+        vetNameGroup.visible = true;
     }
     function createName(json, position, nameGrp, vetName){
         console.log(position, vetName);
