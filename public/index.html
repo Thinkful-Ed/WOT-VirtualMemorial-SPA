@@ -71,12 +71,18 @@
             state.webglSceneInit = false;
             htmlTemplates.intro();
 
-            wotScene.initWebgl().then(setTimeout(function(){
-                wotScene.webglSceneSetup()
-            }, 3000))
+            wotScene.initWebgl();
+            Promise.all([wotScene.loadJson(), wotScene.loadTextureAndMaterials()])
+                .then(function(promResponse){
+                    setTimeout(function(){
+                        wotScene.webglSceneSetup();
+                    }, 5000);
+                    //wotScene.webglSceneSetup(promResponse)
+                })
                 .catch(function(e){
-                    console.warn(e);
+                    console.log('Error occured in promises...\n', e);
                 });
+
             state.webglSceneInit = true;
         });
 
@@ -160,6 +166,7 @@
                 finally{
                     crtl.viewOnMemorial(ev);
                     htmlTemplates.tour();
+                    htmlTemplates.loader('Finding Veterans');
                 }
             });
             // Stories
