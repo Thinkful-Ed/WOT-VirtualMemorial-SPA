@@ -409,6 +409,7 @@ var wotScene = (function(){
 
             json.forEach(function(jsonObj){
                 let textMesh;
+                let textMeshBox;
                 var geo = new THREE.TextGeometry(jsonObj.Name,
                     {
                         font: font,
@@ -422,6 +423,8 @@ var wotScene = (function(){
                     });
 
                 textMesh = new THREE.Mesh(geo, materials.nameGroup);
+                /*textMeshBox = new THREE.Box3().setFromObject(textMesh);
+                console.log(textMeshBox.getSize());*/
                 if(jsonObj.Name === vetName){
                     textMesh.material = materials.nameFocus;
                 }
