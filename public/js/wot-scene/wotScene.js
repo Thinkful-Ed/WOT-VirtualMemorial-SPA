@@ -221,8 +221,6 @@ var wotScene = (function(){
                 controls.autoForward = false;
                 controls.dragToLook = true;
             }
-
-            buildAxisHelper();
         }());
         // Parenting & Merging
         (function(){
@@ -230,6 +228,10 @@ var wotScene = (function(){
             if(useHelpers===true){
                 THREE.SceneUtils.attach(scene.getObjectByName('camera_Names'), scene, scene.getObjectByName('camPivot'));
             }
+        }());
+        // Misc
+        (function(){
+            scene.getObjectByName('camera_Tour').aspect = camAspectRatio;
         }());
 
         initTourAnimation();
@@ -249,21 +251,6 @@ var wotScene = (function(){
         camera_Target = camera_Tour;
 
         $('#menu-tour').removeClass('no-click');
-    }
-    function buildAxisHelper(){
-        //var target = wotScene.scene.getObjectByName('tar_panel.61');
-        scene.traverse(function(obj){
-            objName = obj.name;
-            if(objName.match(/tar_/)){
-                let axisHelper = new THREE.AxisHelper(.35);
-                obj.add(axisHelper);
-            }
-            else if(objName.match(/camera_/)){
-                let axisHelper = new THREE.AxisHelper(.65);
-                obj.add(axisHelper);
-            }
-        });
-        //target.add(axisHelper);
     }
     // Tour Crtls
     function toggleCamera(){
@@ -393,9 +380,6 @@ var wotScene = (function(){
             scene.add(vetNameGroup);
         }
         createName(json, panelPosition, vetNameGroup, vetName);
-
-        let axisHelper = new THREE.AxisHelper(1);
-        vetNameGroup.add(axisHelper);
 
         // Position & orient to panel
         vetNameGroup.rotation.set(0, 0, 0);
