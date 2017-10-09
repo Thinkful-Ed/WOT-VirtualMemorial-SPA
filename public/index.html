@@ -72,8 +72,10 @@
             wotScene.initWebgl();
             Promise.all([wotScene.loadJson(), wotScene.loadTextureAndMaterials()])
                 .then(function(promResponse){
-                     wotScene.webglSceneSetup(promResponse);
-                    state.webglSceneInit = true;
+                    window.setTimeout(function () {
+                        wotScene.webglSceneSetup(promResponse);
+                        state.webglSceneInit = true;
+                    }, 0);
                 })
                 .catch(function(e){
                     console.log('Error occured in promises...\n', e);

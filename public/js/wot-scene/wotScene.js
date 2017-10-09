@@ -78,34 +78,31 @@ var wotScene = (function(){
         return new Promise(function(resolve, reject){
             try{
                 // Load JSONs
-                (function(){
-                    // Scene
-                    load_Objs.load("./js/wot-scene/json/wot-scene-minify.json", function(importScene){
-                            console.log(importScene);
-                            scene.add(importScene);
-                            scene.animations = importScene.animations;
-                        },
-                        // Function called when download progresses
-                        function ( xhr ) {
-                            console.log(loadStatus);
-                            console.log( (xhr.loaded / xhr.total * 100) + '% loaded' );
-                            loadStatus = xhr.loaded / xhr.total * 100;
-                        },
-                        // Function called when download errors
-                        function ( xhr ) {
-                            console.error( 'An error happened' );
+                // Scene
+                load_Objs.load("./js/wot-scene/json/wot-scene-minify.json", function(importScene){
+                        console.log(importScene);
+                        scene.add(importScene);
+                        scene.animations = importScene.animations;
+                    },
+                    // Function called when download progresses
+                    function ( xhr ) {
+                        console.log(loadStatus);
+                        console.log( (xhr.loaded / xhr.total * 100) + '% loaded' );
+                        loadStatus = xhr.loaded / xhr.total * 100;
+                        if(loadStatus === 100){
+                            resolve('Loading JSON Success');
                         }
-                    );
-                }());
-                /*setTimeout(function(){
-                    resolve('Loading JSON Success');
-                }, 2500);*/
-                if(loadStatus === 100){
-                    resolve('Loading JSON Success');
-                }
-                else{
-                    reject('Error Loading JSON');
-                }
+                    },
+                    // Function called when download errors
+                    function ( xhr ) {
+                        console.error( 'An error happened' );
+                    }
+                );
+                setTimeout(function(){
+                    if (loadStatus < 100) {
+                        reject('Loading JSON Success');
+                    }
+                }, 2500);
             }
             catch(error){
                 reject('Error Loading JSON');
@@ -162,86 +159,79 @@ var wotScene = (function(){
         console.log('Promises Fullfilled - Starting Scene Setup');
         console.log(promResponse);
         // Materials
-        (function(){
-            console.log('Applying Prop Materials');
-            // Apply Atlas
-            for(var i=0; i<scene.children[4].children.length; i++){
-                scene.children[4].children[i].material = materials.atlas;
+        console.log('Applying Prop Materials');
+        var lastChild = scene.children.length - 1;
+        // Apply Atlas
+        for(var i=0; i< scene.children[lastChild].children.length; i++){
+            scene.children[lastChild].children[i].material = materials.atlas;
+        }
+        // Traverse Scene Mat Setup
+        scene.traverse(function(obj){
+            var objName = obj.name;
+
+            if(objName.match(/Road/)){
+                obj.material = materials.concrete;
             }
-            // Traverse Scene Mat Setup
-            scene.traverse(function(obj){
-                var objName = obj.name;
+            if(objName.match(/sidewalk/)){
+                obj.material = materials.concrete;
+            }
+        });
+        // Modify Materials
+        materials.atlas.name = 'atlas';
+        materials.atlas.transparent = true;
+        materials.atlas.side = THREE.DoubleSide;
+        materials.atlas.alphaTest = 0.5;
+        materials.concrete.name='concrete';
+        materials.concrete.color = {r:.5, g:.5, b:.5};
+        materials.grass.name = 'grass';
+        materials.sandstone.name = 'sandstone';
+        materials.stones.name = 'stones';
+        materials.water.name = 'water';
 
-                if(objName.match(/Road/)){
-                    obj.material = materials.concrete;
-                }
-                if(objName.match(/sidewalk/)){
-                    obj.material = materials.concrete;
-                }
-            });
-            // Modify Materials
-            materials.atlas.name = 'atlas';
-            materials.atlas.transparent = true;
-            materials.atlas.side = THREE.DoubleSide;
-            materials.atlas.alphaTest = 0.5;
-            materials.concrete.name='concrete';
-            materials.concrete.color = {r:.5, g:.5, b:.5};
-            materials.grass.name = 'grass';
-            materials.sandstone.name = 'sandstone';
-            materials.stones.name = 'stones';
-            materials.water.name = 'water';
-
-            // Apply Specific Textures
-            scene.getObjectByName('fountainStone').material = materials.concrete;
-            scene.getObjectByName('ground').material = materials.grass;
-            scene.getObjectByName('fountainWater').material = materials.water;
-            scene.getObjectByName('fountainStone').material = materials.stones;
-            scene.getObjectByName('fountainSandstone').material = materials.sandstone;
-            scene.getObjectByName('reflectingPoolWater').material = materials.water;
-            scene.getObjectByName('reflectingPoolStone').material = materials.stones;
-            scene.getObjectByName('reflectingPoolSandstone').material = materials.sandstone;
-        }());
+        // Apply Specific Textures
+        scene.getObjectByName('fountainStone').material = materials.concrete;
+        scene.getObjectByName('ground').material = materials.grass;
+        scene.getObjectByName('fountainWater').material = materials.water;
+        scene.getObjectByName('fountainStone').material = materials.stones;
+        scene.getObjectByName('fountainSandstone').material = materials.sandstone;
+        scene.getObjectByName('reflectingPoolWater').material = materials.water;
+        scene.getObjectByName('reflectingPoolStone').material = materials.stones;
+        scene.getObjectByName('reflectingPoolSandstone').material = materials.sandstone;
         // Positioning
-        (function(){
-            console.log('Applying Prop trsPosition');
-            // Reposition
-            scene.getObjectByName('ground').rotation.z = 0;
-            scene.getObjectByName('Road_TriCap').rotation.z = 0;
-            scene.getObjectByName('Road_HCap_R').rotation.z = 0;
-            scene.getObjectByName('Road_HCap_L').rotation.z = 0;
-            scene.getObjectByName('Road_T').rotation.z = 0;
-            scene.getObjectByName('Road_T.001').rotation.z = 0;
-            scene.getObjectByName('sidewalkTileSmallBevelCap').rotation.z = 0;
-            scene.getObjectByName('sidewalkFront').rotation.z = 0;
-            scene.getObjectByName('sidewalkTileLargeBevel.000').rotation.z = 0;
-            scene.getObjectByName('sidewalkTileLargeBevel.001').rotation.z = 0;
-            scene.getObjectByName('sidewalkReflectingPoolNorth').rotation.z = 0;
-            scene.getObjectByName('sidewalkReflectingPoolSouth').rotation.z = 0;
-            scene.getObjectByName('sidewalkSouthSteps').rotation.z = 0;
-            scene.getObjectByName('Road_TriSplit').rotation.z = 0;
-            scene.getObjectByName('Road_TriSplit.001').rotation.z = 0;
-            scene.getObjectByName('towerDecor').rotation.z = 0;
-            scene.getObjectByName('fence').rotation.z = 0;
+        console.log('Applying Prop trsPosition');
+        // Reposition
+        scene.getObjectByName('ground').rotation.z = 0;
+        scene.getObjectByName('Road_TriCap').rotation.z = 0;
+        scene.getObjectByName('Road_HCap_R').rotation.z = 0;
+        scene.getObjectByName('Road_HCap_L').rotation.z = 0;
+        scene.getObjectByName('Road_T').rotation.z = 0;
+        scene.getObjectByName('Road_T.001').rotation.z = 0;
+        scene.getObjectByName('sidewalkTileSmallBevelCap').rotation.z = 0;
+        scene.getObjectByName('sidewalkFront').rotation.z = 0;
+        scene.getObjectByName('sidewalkTileLargeBevel.000').rotation.z = 0;
+        scene.getObjectByName('sidewalkTileLargeBevel.001').rotation.z = 0;
+        scene.getObjectByName('sidewalkReflectingPoolNorth').rotation.z = 0;
+        scene.getObjectByName('sidewalkReflectingPoolSouth').rotation.z = 0;
+        scene.getObjectByName('sidewalkSouthSteps').rotation.z = 0;
+        scene.getObjectByName('Road_TriSplit').rotation.z = 0;
+        scene.getObjectByName('Road_TriSplit.001').rotation.z = 0;
+        scene.getObjectByName('towerDecor').rotation.z = 0;
+        scene.getObjectByName('fence').rotation.z = 0;
 
-            if(useHelpers===true){
-                controls = new THREE.FlyControls(camera_Target,  document.getElementById('dynamic-container'));
-                controls.movementSpeed = .2;
-                controls.rollSpeed = 0.01;
-                controls.autoForward = false;
-                controls.dragToLook = true;
-            }
-        }());
+        if(useHelpers===true){
+            controls = new THREE.FlyControls(camera_Target,  document.getElementById('dynamic-container'));
+            controls.movementSpeed = .2;
+            controls.rollSpeed = 0.01;
+            controls.autoForward = false;
+            controls.dragToLook = true;
+        }
         // Parenting & Merging
-        (function(){
-            console.log('Applying Parenting & Merging');
-            if(useHelpers===true){
-                THREE.SceneUtils.attach(scene.getObjectByName('camera_Names'), scene, scene.getObjectByName('camPivot'));
-            }
-        }());
+        console.log('Applying Parenting & Merging');
+        if(useHelpers===true){
+            THREE.SceneUtils.attach(scene.getObjectByName('camera_Names'), scene, scene.getObjectByName('camPivot'));
+        }
         // Misc
-        (function(){
-            scene.getObjectByName('camera_Tour').aspect = camAspectRatio;
-        }());
+        scene.getObjectByName('camera_Tour').aspect = camAspectRatio;
 
         initTourAnimation();
     }
