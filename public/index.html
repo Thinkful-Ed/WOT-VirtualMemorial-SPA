@@ -72,12 +72,7 @@
             wotScene.initWebgl();
             Promise.all([wotScene.loadJson(), wotScene.loadTextureAndMaterials()])
                 .then(function(promResponse){
-                    setTimeout(function(){
-                        wotScene.webglSceneSetup(promResponse);
-                    }, 5000);
-                    // wotScene.webglSceneSetup(promResponse)
-                })
-                .then(function(){
+                     wotScene.webglSceneSetup(promResponse);
                     state.webglSceneInit = true;
                 })
                 .catch(function(e){

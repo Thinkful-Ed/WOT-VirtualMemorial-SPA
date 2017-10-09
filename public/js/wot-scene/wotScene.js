@@ -74,6 +74,7 @@ var wotScene = (function(){
         scene.add(trs_camPivot);
     }
     function loadJson(){
+        let loadStatus = 0;
         return new Promise(function(resolve, reject){
             try{
                 // Load JSONs
@@ -86,7 +87,9 @@ var wotScene = (function(){
                         },
                         // Function called when download progresses
                         function ( xhr ) {
+                            console.log(loadStatus);
                             console.log( (xhr.loaded / xhr.total * 100) + '% loaded' );
+                            loadStatus = xhr.loaded / xhr.total * 100;
                         },
                         // Function called when download errors
                         function ( xhr ) {
@@ -94,7 +97,15 @@ var wotScene = (function(){
                         }
                     );
                 }());
-                resolve('Loading JSON Success');
+                /*setTimeout(function(){
+                    resolve('Loading JSON Success');
+                }, 2500);*/
+                if(loadStatus === 100){
+                    resolve('Loading JSON Success');
+                }
+                else{
+                    reject('Error Loading JSON');
+                }
             }
             catch(error){
                 reject('Error Loading JSON');
@@ -146,8 +157,6 @@ var wotScene = (function(){
                 reject('Error Loading Textures & Materials');
             }
         });
-
-
     }
     function webglSceneSetup(promResponse){
         console.log('Promises Fullfilled - Starting Scene Setup');
